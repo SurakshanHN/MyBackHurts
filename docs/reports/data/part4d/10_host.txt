@@ -1,0 +1,54 @@
+$ which -a go
+/usr/bin/go
+/usr/sbin/go
+[exit 0]
+
+$ go version
+go version go1.26.10-X:nodwarf5 linux/amd64
+[exit 0]
+
+$ go env GOTOOLCHAIN GOROOT
+local
+/usr/lib/golang
+[exit 0]
+
+$ head -5 go.mod
+module github.com/prescale/prescale
+
+go 1.26.0
+
+require (
+[exit 0]
+
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi        11Gi       319Mi       1.3Gi       5.2Gi       3.9Gi
+Swap:          8.0Gi       6.2Gi       1.8Gi
+[exit 0]
+
+$ grep -E MemTotal|MemAvailable /proc/meminfo
+MemTotal:       16040548 kB
+MemAvailable:    4110444 kB
+[exit 0]
+
+$ nproc
+16
+[exit 0]
+
+$ docker info --format {{.MemTotal}} {{.NCPU}}
+16425521152 16
+[exit 0]
+
+$ docker ps --format {{.Names}} {{.Image}} {{.Status}}
+prescale-demo-control-plane kindest/node:v1.32.0 Up 2 hours
+prescale-demo-worker2 kindest/node:v1.32.0 Up 2 hours
+prescale-demo-worker kindest/node:v1.32.0 Up 2 hours
+prescale-dev-control-plane kindest/node:v1.32.0 Up 9 hours
+freellmapi-freellmapi-1 ghcr.io/tashfeenahmed/freellmapi:latest Up 12 hours (healthy)
+[exit 0]
+
+$ kind get clusters
+prescale-demo
+prescale-dev
+[exit 0]
+

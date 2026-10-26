@@ -1,0 +1,25 @@
+=== Trigger Arithmetic (THEORETICAL, derived from measured knee) ===
+
+Inputs (MEASURED from capacity probe):
+  - KNEE_RPS_3PODS: 299.80 RPS
+  - KNEE_PER_POD: 99.93 RPS
+  - pod_cpu_m_avg at knee: 327.2 mCPU
+  - MCPU_PER_RPS: 3.27 mCPU/RPS
+
+(a) Current HPA Scale-out Point:
+  - Current CPU request: 100m
+  - HPA target: 50% CPU utilization = 50.0m CPU per pod
+  - RPS per pod at scale-out: 50.0m / 3.27 mCPU/RPS = 15.27 RPS per pod
+  - Scale-out for 3 pods: 45.81 RPS
+  - As % of KNEE_PER_POD: (15.27 / 99.93) * 100% = 15.28%
+  - Finding: Current HPA starts scaling out at only ~15.3% of the pod's sustained capacity (far below the knee).
+
+(b) CPU Request for 50% Target at 60% of Knee:
+  - 60% of KNEE_PER_POD: 60% * 99.93 RPS = 59.96 RPS per pod
+  - CPU consumed at 60% knee: 59.96 RPS * 3.27 mCPU/RPS = 196.32m CPU
+  - Required CPU request (at 50% utilization): 196.32m / 0.50 = 392.64m CPU (~393m)
+  - Fits under 500m limit? YES (392.6m <= 500m limit, leaving 107.4m headroom)
+
+(c) RPS-based Trigger Threshold at 60% of Knee:
+  - Per-pod RPS threshold: 59.96 RPS per pod (~60 RPS)
+  - Cluster threshold (3 pods): 179.88 RPS (~180 RPS)

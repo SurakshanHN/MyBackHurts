@@ -1,0 +1,361 @@
+[2026-10-27T01:31:32+0530] SLO Parameters: SLO_P99_MS=300, SLO_ERR_PCT=1
+[2026-10-27T01:31:32+0530] Target baseline ScaledObject restoration bounds: min=3, max=10
+[2026-10-27T01:31:32+0530] Patching baseline ScaledObject to min=3, max=3...
+scaledobject.keda.sh/checkout patched (no change)
+[2026-10-27T01:31:32+0530] Waiting for HPA min=3, max=3 and 3 ready pods (max 120s)...
+[2026-10-27T01:31:33+0530] Baseline settled at min=3, max=3, ready=3
+[2026-10-27T01:31:33+0530] Initial checkout pod restarts: 0
+[2026-10-27T01:31:33+0530] ==================================================
+[2026-10-27T01:31:33+0530] Starting Stage: 330 RPS (duration 40s)
+[2026-10-27T01:31:33+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 330.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 018/100 VUs, 307 complete and 0 interrupted iterations
+capacity   [   2% ] 018/100 VUs  01.0s/40s  330.00 iters/s
+
+running (0m02.0s), 018/100 VUs, 637 complete and 0 interrupted iterations
+capacity   [   5% ] 018/100 VUs  02.0s/40s  330.00 iters/s
+
+running (0m03.0s), 021/100 VUs, 964 complete and 0 interrupted iterations
+capacity   [   7% ] 021/100 VUs  03.0s/40s  330.00 iters/s
+
+running (0m04.0s), 018/100 VUs, 1297 complete and 0 interrupted iterations
+capacity   [  10% ] 018/100 VUs  04.0s/40s  330.00 iters/s
+
+running (0m05.0s), 020/100 VUs, 1625 complete and 0 interrupted iterations
+capacity   [  12% ] 020/100 VUs  05.0s/40s  330.00 iters/s
+
+running (0m06.0s), 021/100 VUs, 1954 complete and 0 interrupted iterations
+capacity   [  15% ] 021/100 VUs  06.0s/40s  330.00 iters/s
+
+running (0m07.0s), 020/100 VUs, 2285 complete and 0 interrupted iterations
+capacity   [  17% ] 020/100 VUs  07.0s/40s  330.00 iters/s
+
+running (0m08.0s), 018/100 VUs, 2617 complete and 0 interrupted iterations
+capacity   [  20% ] 018/100 VUs  08.0s/40s  330.00 iters/s
+
+running (0m09.0s), 020/100 VUs, 2945 complete and 0 interrupted iterations
+capacity   [  22% ] 020/100 VUs  09.0s/40s  330.00 iters/s
+
+running (0m10.0s), 018/100 VUs, 3277 complete and 0 interrupted iterations
+capacity   [  25% ] 018/100 VUs  10.0s/40s  330.00 iters/s
+
+running (0m11.0s), 016/100 VUs, 3609 complete and 0 interrupted iterations
+capacity   [  27% ] 016/100 VUs  11.0s/40s  330.00 iters/s
+
+running (0m12.0s), 018/100 VUs, 3937 complete and 0 interrupted iterations
+capacity   [  30% ] 018/100 VUs  12.0s/40s  330.00 iters/s
+
+running (0m13.0s), 016/100 VUs, 4269 complete and 0 interrupted iterations
+capacity   [  32% ] 016/100 VUs  13.0s/40s  330.00 iters/s
+
+running (0m14.0s), 020/100 VUs, 4595 complete and 0 interrupted iterations
+capacity   [  35% ] 020/100 VUs  14.0s/40s  330.00 iters/s
+
+running (0m15.0s), 021/100 VUs, 4924 complete and 0 interrupted iterations
+capacity   [  37% ] 021/100 VUs  15.0s/40s  330.00 iters/s
+
+running (0m16.0s), 020/100 VUs, 5255 complete and 0 interrupted iterations
+capacity   [  40% ] 020/100 VUs  16.0s/40s  330.00 iters/s
+
+running (0m17.0s), 020/100 VUs, 5585 complete and 0 interrupted iterations
+capacity   [  42% ] 020/100 VUs  17.0s/40s  330.00 iters/s
+
+running (0m18.0s), 019/100 VUs, 5916 complete and 0 interrupted iterations
+capacity   [  45% ] 019/100 VUs  18.0s/40s  330.00 iters/s
+
+running (0m19.0s), 018/100 VUs, 6247 complete and 0 interrupted iterations
+capacity   [  47% ] 018/100 VUs  19.0s/40s  330.00 iters/s
+
+running (0m20.0s), 021/100 VUs, 6574 complete and 0 interrupted iterations
+capacity   [  50% ] 021/100 VUs  20.0s/40s  330.00 iters/s
+
+running (0m21.0s), 019/100 VUs, 6906 complete and 0 interrupted iterations
+capacity   [  52% ] 019/100 VUs  21.0s/40s  330.00 iters/s
+
+running (0m22.0s), 018/100 VUs, 7237 complete and 0 interrupted iterations
+capacity   [  55% ] 018/100 VUs  22.0s/40s  330.00 iters/s
+
+running (0m23.0s), 015/100 VUs, 7570 complete and 0 interrupted iterations
+capacity   [  57% ] 015/100 VUs  23.0s/40s  330.00 iters/s
+
+running (0m24.0s), 017/100 VUs, 7898 complete and 0 interrupted iterations
+capacity   [  60% ] 017/100 VUs  24.0s/40s  330.00 iters/s
+
+running (0m25.0s), 020/100 VUs, 8225 complete and 0 interrupted iterations
+capacity   [  62% ] 020/100 VUs  25.0s/40s  330.00 iters/s
+
+running (0m26.0s), 017/100 VUs, 8558 complete and 0 interrupted iterations
+capacity   [  65% ] 017/100 VUs  26.0s/40s  330.00 iters/s
+
+running (0m27.0s), 018/100 VUs, 8887 complete and 0 interrupted iterations
+capacity   [  67% ] 018/100 VUs  27.0s/40s  330.00 iters/s
+
+running (0m28.0s), 018/100 VUs, 9217 complete and 0 interrupted iterations
+capacity   [  70% ] 018/100 VUs  28.0s/40s  330.00 iters/s
+
+running (0m29.0s), 019/100 VUs, 9546 complete and 0 interrupted iterations
+capacity   [  72% ] 019/100 VUs  29.0s/40s  330.00 iters/s
+
+running (0m30.0s), 017/100 VUs, 9878 complete and 0 interrupted iterations
+capacity   [  75% ] 017/100 VUs  30.0s/40s  330.00 iters/s
+
+running (0m31.0s), 019/100 VUs, 10206 complete and 0 interrupted iterations
+capacity   [  77% ] 019/100 VUs  31.0s/40s  330.00 iters/s
+
+running (0m32.0s), 017/100 VUs, 10538 complete and 0 interrupted iterations
+capacity   [  80% ] 017/100 VUs  32.0s/40s  330.00 iters/s
+
+running (0m33.0s), 018/100 VUs, 10867 complete and 0 interrupted iterations
+capacity   [  82% ] 018/100 VUs  33.0s/40s  330.00 iters/s
+
+running (0m34.0s), 020/100 VUs, 11195 complete and 0 interrupted iterations
+capacity   [  85% ] 020/100 VUs  34.0s/40s  330.00 iters/s
+
+running (0m35.0s), 025/100 VUs, 11520 complete and 0 interrupted iterations
+capacity   [  87% ] 025/100 VUs  35.0s/40s  330.00 iters/s
+
+running (0m36.0s), 025/100 VUs, 11850 complete and 0 interrupted iterations
+capacity   [  90% ] 025/100 VUs  36.0s/40s  330.00 iters/s
+
+running (0m37.0s), 021/100 VUs, 12184 complete and 0 interrupted iterations
+capacity   [  92% ] 021/100 VUs  37.0s/40s  330.00 iters/s
+
+running (0m38.0s), 023/100 VUs, 12512 complete and 0 interrupted iterations
+capacity   [  95% ] 023/100 VUs  38.0s/40s  330.00 iters/s
+
+running (0m39.0s), 023/100 VUs, 12842 complete and 0 interrupted iterations
+capacity   [  97% ] 023/100 VUs  39.0s/40s  330.00 iters/s
+
+running (0m40.0s), 025/100 VUs, 13170 complete and 0 interrupted iterations
+capacity   [ 100% ] 025/100 VUs  40.0s/40s  330.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 13201   329.141829/s
+    checks_succeeded...: 100.00% 13201 out of 13201
+    checks_failed......: 0.00%   0 out of 13201
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=74.92ms min=15.39ms med=67.67ms max=274.76ms p(50)=67.67ms p(90)=154.13ms p(95)=166.3ms  p(99)=185.34ms
+      { expected_response:true }...: avg=74.92ms min=15.39ms med=67.67ms max=274.76ms p(50)=67.67ms p(90)=154.13ms p(95)=166.3ms  p(99)=185.34ms
+    http_req_failed................: 0.00%  0 out of 13201
+    http_reqs......................: 13201  329.141829/s
+
+    EXECUTION
+    iteration_duration.............: avg=75.1ms  min=15.48ms med=67.85ms max=274.84ms p(50)=67.85ms p(90)=154.33ms p(95)=166.42ms p(99)=185.47ms
+    iterations.....................: 13201  329.141829/s
+    vus............................: 25     min=15         max=25 
+    vus_max........................: 100    min=100        max=100
+
+    NETWORK
+    data_received..................: 1.8 MB 46 kB/s
+    data_sent......................: 1.6 MB 40 kB/s
+
+
+
+
+running (0m40.1s), 000/100 VUs, 13201 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  330.00 iters/s
+[2026-10-27T01:32:16+0530] Waiting 7s for VictoriaMetrics ingestion lag...
+[2026-10-27T01:32:24+0530] Results: achieved_rps=329.14, dropped=0/132.0, p99=185.34ms, fail_pct=0.00%, cpu=359.51m (container_cpu_usage_seconds_total), pod_rps=[77.75, 86.25], fakedb_conns=0, m/rps/pod=3.28, slo_ok=true
+[2026-10-27T01:32:24+0530] Resting 13s (total 20s idle)...
+[2026-10-27T01:32:37+0530] ==================================================
+[2026-10-27T01:32:37+0530] Starting Stage: 360 RPS (duration 40s)
+[2026-10-27T01:32:37+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 360.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 041/100 VUs, 314 complete and 0 interrupted iterations
+capacity   [   2% ] 041/100 VUs  01.0s/40s  360.00 iters/s
+
+running (0m02.0s), 068/100 VUs, 646 complete and 0 interrupted iterations
+capacity   [   5% ] 068/100 VUs  02.0s/40s  360.00 iters/s
+
+running (0m03.0s), 087/100 VUs, 987 complete and 0 interrupted iterations
+capacity   [   7% ] 087/100 VUs  03.0s/40s  360.00 iters/s
+
+running (0m04.0s), 094/105 VUs, 1336 complete and 0 interrupted iterations
+capacity   [  10% ] 094/105 VUs  04.0s/40s  360.00 iters/s
+
+running (0m05.0s), 107/114 VUs, 1673 complete and 0 interrupted iterations
+capacity   [  12% ] 107/114 VUs  05.0s/40s  360.00 iters/s
+
+running (0m06.0s), 109/119 VUs, 2026 complete and 0 interrupted iterations
+capacity   [  15% ] 109/119 VUs  06.0s/40s  360.00 iters/s
+
+running (0m07.0s), 119/127 VUs, 2369 complete and 0 interrupted iterations
+capacity   [  17% ] 119/127 VUs  07.0s/40s  360.00 iters/s
+
+running (0m08.0s), 125/136 VUs, 2713 complete and 0 interrupted iterations
+capacity   [  20% ] 125/136 VUs  08.0s/40s  360.00 iters/s
+
+running (0m09.0s), 143/149 VUs, 3042 complete and 0 interrupted iterations
+capacity   [  22% ] 143/149 VUs  09.0s/40s  360.00 iters/s
+
+running (0m10.0s), 148/162 VUs, 3384 complete and 0 interrupted iterations
+capacity   [  25% ] 148/162 VUs  10.0s/40s  360.00 iters/s
+
+running (0m11.0s), 161/169 VUs, 3724 complete and 0 interrupted iterations
+capacity   [  27% ] 161/169 VUs  11.0s/40s  360.00 iters/s
+
+running (0m12.0s), 167/176 VUs, 4071 complete and 0 interrupted iterations
+capacity   [  30% ] 167/176 VUs  12.0s/40s  360.00 iters/s
+
+running (0m13.0s), 177/187 VUs, 4410 complete and 0 interrupted iterations
+capacity   [  32% ] 177/187 VUs  13.0s/40s  360.00 iters/s
+
+running (0m14.0s), 190/197 VUs, 4747 complete and 0 interrupted iterations
+capacity   [  35% ] 190/197 VUs  14.0s/40s  360.00 iters/s
+
+running (0m15.0s), 199/207 VUs, 5088 complete and 0 interrupted iterations
+capacity   [  37% ] 199/207 VUs  15.0s/40s  360.00 iters/s
+
+running (0m16.0s), 204/213 VUs, 5437 complete and 0 interrupted iterations
+capacity   [  40% ] 204/213 VUs  16.0s/40s  360.00 iters/s
+
+running (0m17.0s), 213/221 VUs, 5781 complete and 0 interrupted iterations
+capacity   [  42% ] 213/221 VUs  17.0s/40s  360.00 iters/s
+
+running (0m18.0s), 225/232 VUs, 6117 complete and 0 interrupted iterations
+capacity   [  45% ] 225/232 VUs  18.0s/40s  360.00 iters/s
+
+running (0m19.0s), 235/241 VUs, 6459 complete and 0 interrupted iterations
+capacity   [  47% ] 235/241 VUs  19.0s/40s  360.00 iters/s
+
+running (0m20.0s), 238/247 VUs, 6809 complete and 0 interrupted iterations
+capacity   [  50% ] 238/247 VUs  20.0s/40s  360.00 iters/s
+
+running (0m21.0s), 252/260 VUs, 7142 complete and 0 interrupted iterations
+capacity   [  52% ] 252/260 VUs  21.0s/40s  360.00 iters/s
+
+running (0m22.0s), 261/274 VUs, 7479 complete and 0 interrupted iterations
+capacity   [  55% ] 261/274 VUs  22.0s/40s  360.00 iters/s
+
+running (0m23.0s), 275/283 VUs, 7816 complete and 0 interrupted iterations
+capacity   [  57% ] 275/283 VUs  23.0s/40s  360.00 iters/s
+
+running (0m24.0s), 285/294 VUs, 8155 complete and 0 interrupted iterations
+capacity   [  60% ] 285/294 VUs  24.0s/40s  360.00 iters/s
+
+running (0m25.0s), 295/304 VUs, 8495 complete and 0 interrupted iterations
+capacity   [  62% ] 295/304 VUs  25.0s/40s  360.00 iters/s
+
+running (0m26.0s), 304/313 VUs, 8837 complete and 0 interrupted iterations
+capacity   [  65% ] 304/313 VUs  26.0s/40s  360.00 iters/s
+
+running (0m27.0s), 313/326 VUs, 9175 complete and 0 interrupted iterations
+capacity   [  67% ] 313/326 VUs  27.0s/40s  360.00 iters/s
+
+running (0m28.0s), 327/337 VUs, 9510 complete and 0 interrupted iterations
+capacity   [  70% ] 327/337 VUs  28.0s/40s  360.00 iters/s
+
+running (0m29.0s), 337/352 VUs, 9845 complete and 0 interrupted iterations
+capacity   [  72% ] 337/352 VUs  29.0s/40s  360.00 iters/s
+
+running (0m30.0s), 358/365 VUs, 10171 complete and 0 interrupted iterations
+capacity   [  75% ] 358/365 VUs  30.0s/40s  360.00 iters/s
+
+running (0m31.0s), 361/374 VUs, 10519 complete and 0 interrupted iterations
+capacity   [  77% ] 361/374 VUs  31.0s/40s  360.00 iters/s
+
+running (0m32.0s), 381/386 VUs, 10847 complete and 0 interrupted iterations
+capacity   [  80% ] 381/386 VUs  32.0s/40s  360.00 iters/s
+
+running (0m33.0s), 387/397 VUs, 11191 complete and 0 interrupted iterations
+capacity   [  82% ] 387/397 VUs  33.0s/40s  360.00 iters/s
+
+running (0m34.0s), 393/409 VUs, 11532 complete and 0 interrupted iterations
+capacity   [  85% ] 393/409 VUs  34.0s/40s  360.00 iters/s
+
+running (0m35.0s), 405/417 VUs, 11872 complete and 0 interrupted iterations
+capacity   [  87% ] 405/417 VUs  35.0s/40s  360.00 iters/s
+
+running (0m36.0s), 415/426 VUs, 12213 complete and 0 interrupted iterations
+capacity   [  90% ] 415/426 VUs  36.0s/40s  360.00 iters/s
+
+running (0m37.0s), 423/434 VUs, 12557 complete and 0 interrupted iterations
+capacity   [  92% ] 423/434 VUs  37.0s/40s  360.00 iters/s
+
+running (0m38.0s), 432/440 VUs, 12903 complete and 0 interrupted iterations
+capacity   [  95% ] 432/440 VUs  38.0s/40s  360.00 iters/s
+
+running (0m39.0s), 443/451 VUs, 13240 complete and 0 interrupted iterations
+capacity   [  97% ] 443/451 VUs  39.0s/40s  360.00 iters/s
+
+running (0m40.0s), 451/463 VUs, 13580 complete and 0 interrupted iterations
+capacity   [ 100% ] 451/463 VUs  40.0s/40s  360.00 iters/s
+
+running (0m41.0s), 122/463 VUs, 13916 complete and 0 interrupted iterations
+capacity ↓ [ 100% ] 453/463 VUs  40s  360.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 14038   339.161713/s
+    checks_succeeded...: 100.00% 14038 out of 14038
+    checks_failed......: 0.00%   0 out of 14038
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=730.01ms min=15.64ms med=707.77ms max=1.63s p(50)=707.77ms p(90)=1.22s p(95)=1.29s p(99)=1.41s
+      { expected_response:true }...: avg=730.01ms min=15.64ms med=707.77ms max=1.63s p(50)=707.77ms p(90)=1.22s p(95)=1.29s p(99)=1.41s
+    http_req_failed................: 0.00%  0 out of 14038
+    http_reqs......................: 14038  339.161713/s
+
+    EXECUTION
+    dropped_iterations.............: 363    8.770174/s
+    iteration_duration.............: avg=730.19ms min=15.75ms med=708.04ms max=1.63s p(50)=708.04ms p(90)=1.22s p(95)=1.29s p(99)=1.41s
+    iterations.....................: 14038  339.161713/s
+    vus............................: 122    min=40         max=451
+    vus_max........................: 463    min=100        max=463
+
+    NETWORK
+    data_received..................: 2.0 MB 47 kB/s
+    data_sent......................: 1.7 MB 41 kB/s
+
+
+
+
+running (0m41.4s), 000/463 VUs, 14038 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/463 VUs  40s  360.00 iters/s
+[2026-10-27T01:33:19+0530] Waiting 7s for VictoriaMetrics ingestion lag...
+[2026-10-27T01:33:27+0530] Results: achieved_rps=339.16, dropped=363/144.0, p99=1412.72ms, fail_pct=0.00%, cpu=572.31m (container_cpu_usage_seconds_total), pod_rps=[89.30, 106.80], fakedb_conns=0, m/rps/pod=5.06, slo_ok=false
+[2026-10-27T01:33:27+0530] STOP RULE FIRED: First breached stage: 360 RPS (p99 1412.72ms > 300.0ms; dropped 363 > 1% target (144))
+[2026-10-27T01:33:27+0530] Probe stages completed. Stop rule fired: First breached stage: 360 RPS (p99 1412.72ms > 300.0ms; dropped 363 > 1% target (144))
+[2026-10-27T01:33:27+0530] Restoring baseline ScaledObject to min=3, max=10...
+scaledobject.keda.sh/checkout patched
+[2026-10-27T01:33:27+0530] Waiting for baseline ScaledObject & HPA restoration...
+[2026-10-27T01:33:27+0530] Baseline restored: min=3, max=10, ready=3
+[2026-10-27T01:33:27+0530] capacity_v2.sh completed successfully.

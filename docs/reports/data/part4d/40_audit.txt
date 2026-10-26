@@ -1,0 +1,142 @@
+$ grep -rnE image:|^FROM|:latest deploy workload cmd scripts Makefile
+deploy/kind/kind-config.yaml:5:  image: kindest/node:v1.32.0
+deploy/kind/kind-config.yaml:29:  image: kindest/node:v1.32.0
+deploy/kind/kind-config.yaml:31:  image: kindest/node:v1.32.0
+deploy/observability/metrics-server.yaml:141:        image: registry.k8s.io/metrics-server/metrics-server:v0.9.0
+deploy/observability/vmsingle.yaml:147:          image: quay.io/victoriametrics/victoria-metrics:v1.115.0
+deploy/observability/kube-state-metrics.yaml:201:      - image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.15.0
+deploy/observability/grafana.yaml:55:          image: grafana/grafana:11.4.0
+deploy/keda/keda-2.19.0.yaml:2609:                                image:
+deploy/keda/keda-2.19.0.yaml:2620:                                    Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
+deploy/keda/keda-2.19.0.yaml:4233:                                image:
+deploy/keda/keda-2.19.0.yaml:4242:                                    Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
+deploy/keda/keda-2.19.0.yaml:5860:                                image:
+deploy/keda/keda-2.19.0.yaml:5871:                                    Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
+deploy/keda/keda-2.19.0.yaml:8883:                                image:
+deploy/keda/keda-2.19.0.yaml:8906:                                        Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
+deploy/keda/keda-2.19.0.yaml:9606:                                    image:
+deploy/keda/keda-2.19.0.yaml:11490:        image: ghcr.io/kedacore/keda-admission-webhooks:2.19.0
+deploy/keda/keda-2.19.0.yaml:11582:        image: ghcr.io/kedacore/keda-metrics-apiserver:2.19.0
+deploy/keda/keda-2.19.0.yaml:11678:        image: ghcr.io/kedacore/keda:2.19.0
+deploy/prescaler/deployment.yaml:23:          image: prescale/prescaler:dev
+workload/checkout/Dockerfile:2:FROM golang:1.27-alpine AS builder
+workload/checkout/Dockerfile:15:FROM alpine:3.21
+workload/fakedb/Dockerfile:2:FROM golang:1.27-alpine AS builder
+workload/fakedb/Dockerfile:15:FROM alpine:3.21
+workload/k8s/base/checkout.yaml:23:        image: prescale/checkout:dev
+workload/k8s/base/fakedb.yaml:23:        image: prescale/fakedb:dev
+cmd/prescaler/Dockerfile:1:FROM golang:1.27-alpine AS builder
+cmd/prescaler/Dockerfile:8:FROM alpine:3.21
+Makefile:67:prescaler-image: ## Build prescaler image and load into kind
+[exit 0]
+
+
+=== find deploy files ===
+$ find deploy -maxdepth 3 -type f
+deploy/README.md
+deploy/kind/kind-config.yaml
+deploy/images.txt
+deploy/observability/namespace.yaml
+deploy/observability/metrics-server.yaml
+deploy/observability/vmsingle.yaml
+deploy/observability/kube-state-metrics.yaml
+deploy/observability/grafana.yaml
+deploy/observability/kustomization.yaml
+deploy/keda/keda-2.19.0.yaml
+deploy/keda/kustomization.yaml
+deploy/prescaler/namespace.yaml
+deploy/prescaler/rbac.yaml
+deploy/prescaler/deployment.yaml
+deploy/prescaler/kustomization.yaml
+[exit 0]
+
+
+=== helm/values files in git ===
+
+=== kubectl apply -f http or curl|sh in scripts/Makefile/deploy ===
+[done]
+
+--- /tmp/overlay_baseline.yaml	2026-10-27 00:23:32.023590712 +0530
++++ /tmp/overlay_predictive.yaml	2026-10-27 00:23:32.130590678 +0530
+@@ -2,21 +2,21 @@
+ kind: Namespace
+ metadata:
+   labels:
+-    prescale.io/side: baseline
+-  name: baseline
++    prescale.io/side: predictive
++  name: predictive
+ ---
+ apiVersion: v1
+ kind: Service
+ metadata:
+   labels:
+     app: checkout
+-    prescale.io/side: baseline
++    prescale.io/side: predictive
+   name: checkout
+-  namespace: baseline
++  namespace: predictive
+ spec:
+   ports:
+   - name: http
+-    nodePort: 30081
++    nodePort: 30082
+     port: 8080
+     targetPort: http
+   selector:
+@@ -28,13 +28,13 @@
+ metadata:
+   labels:
+     app: fakedb
+-    prescale.io/side: baseline
++    prescale.io/side: predictive
+   name: fakedb
+-  namespace: baseline
++  namespace: predictive
+ spec:
+   ports:
+   - name: http
+-    nodePort: 30083
++    nodePort: 30084
+     port: 8080
+     targetPort: http
+   selector:
+@@ -46,9 +46,9 @@
+ metadata:
+   labels:
+     app: checkout
+-    prescale.io/side: baseline
++    prescale.io/side: predictive
+   name: checkout
+-  namespace: baseline
++  namespace: predictive
+ spec:
+   replicas: 3
+   selector:
+@@ -103,9 +103,9 @@
+ metadata:
+   labels:
+     app: fakedb
+-    prescale.io/side: baseline
++    prescale.io/side: predictive
+   name: fakedb
+-  namespace: baseline
++  namespace: predictive
+ spec:
+   replicas: 1
+   selector:
+@@ -156,9 +156,9 @@
+ kind: ScaledObject
+ metadata:
+   labels:
+-    prescale.io/side: baseline
++    prescale.io/side: predictive
+   name: checkout
+-  namespace: baseline
++  namespace: predictive
+ spec:
+   advanced:
+     horizontalPodAutoscalerConfig:
+
+[overlay diff done]

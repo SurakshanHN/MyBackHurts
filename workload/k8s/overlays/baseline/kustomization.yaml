@@ -1,0 +1,40 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: baseline
+
+resources:
+  - namespace.yaml
+  - ../../base
+
+labels:
+  - pairs:
+      prescale.io/side: baseline
+
+patches:
+  - target:
+      kind: Service
+      name: checkout
+    patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: checkout
+      spec:
+        ports:
+        - name: http
+          port: 8080
+          nodePort: 30081
+  - target:
+      kind: Service
+      name: fakedb
+    patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: fakedb
+      spec:
+        ports:
+        - name: http
+          port: 8080
+          nodePort: 30083

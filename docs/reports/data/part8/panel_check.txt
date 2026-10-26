@@ -1,0 +1,51 @@
+# Part 8 Panel Check and Scoreboard Comparison
+Date: 2026-10-27T03:26:15Z
+Window: B2 Run (1793050834 to 1793051188, duration 354s)
+Step: 15s
+
+## 1. Panel Query Verification
+
+### Panel: Throughput (RPS)
+- PromQL: sum by (namespace) (rate(http_requests_total{namespace=~"baseline|predictive",app="checkout"}[15s]))
+- Series Count: 2
+- Series [baseline]: 24 non-NaN points, First: 0 reqps, Last: 59.07 reqps
+- Series [predictive]: 24 non-NaN points, First: 0 reqps, Last: 60.27 reqps
+
+### Panel: p99 Latency (SLO 300ms)
+- PromQL: histogram_quantile(0.99, sum by (le, namespace) (rate(http_request_duration_seconds_bucket{namespace=~"baseline|predictive",app="checkout"}[15s]))) * 1000
+- Series Count: 2
+- Series [baseline]: 23 non-NaN points, First: 19.90 ms, Last: 19.90 ms
+- Series [predictive]: 23 non-NaN points, First: 19.90 ms, Last: 19.90 ms
+
+### Panel: Error Rate (Non-2xx Share)
+- PromQL: sum by (namespace) (rate(http_requests_total{namespace=~"baseline|predictive",app="checkout",code!~"2.."}[15s])) / sum by (namespace) (rate(http_requests_total{namespace=~"baseline|predictive",app="checkout"}[15s]))
+- Series Count: 2
+- Series [baseline]: 21 non-NaN points, First: 0.00, Last: 0.00
+- Series [predictive]: 23 non-NaN points, First: 0.00, Last: 0.00
+
+### Panel: Ready Pods & Desired Replicas
+- Target A PromQL: kube_deployment_status_replicas_ready{namespace=~"baseline|predictive",deployment="checkout"}
+- Series Count Target A: 2
+- Series [baseline ready]: 24 non-NaN points, First: 3, Last: 3
+- Series [predictive ready]: 24 non-NaN points, First: 3, Last: 3
+- Target B PromQL: kube_horizontalpodautoscaler_status_desired_replicas{namespace=~"baseline|predictive",horizontalpodautoscaler="keda-hpa-checkout"}
+- Series Count Target B: 2
+- Series [baseline desired]: 24 non-NaN points, First: 3, Last: 3
+- Series [predictive desired]: 24 non-NaN points, First: 3, Last: 3
+
+### Panel: ScaledObject Min Replicas (HPA Spec Min)
+- PromQL: kube_horizontalpodautoscaler_spec_min_replicas{namespace=~"baseline|predictive",horizontalpodautoscaler="keda-hpa-checkout"}
+- Series Count: 2
+- Series [baseline min]: 24 non-NaN points, First: 3, Last: 3
+- Series [predictive min]: 24 non-NaN points, First: 3, Last: 3 (peaked at 7 during surge)
+
+## 2. Scoreboard vs Part 7 B2 Table Comparison
+
+| Metric | Side | Scoreboard (Grafana/VM) | Part 7 Table (B2) |
+|:---|:---|---:|---:|
+| breach_seconds | baseline | 80 s | 80 s |
+| breach_seconds | predictive | 0 s | 0 s |
+| non-2xx | baseline | 0 | 0 |
+| non-2xx | predictive | 0 | 0 |
+| pod_seconds | baseline | 2170 pod*s | 2170 pod*s |
+| pod_seconds | predictive | 2575 pod*s | 2575 pod*s |

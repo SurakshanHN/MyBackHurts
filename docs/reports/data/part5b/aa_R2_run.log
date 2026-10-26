@@ -1,0 +1,11 @@
+[2026-10-27T01:48:16+0530] === Starting A/A Run R2 (NO_REUSE=1) ===
+[2026-10-27T01:48:16+0530] SLO: SLO_P99_MS=300, SLO_ERR_PCT=1
+[2026-10-27T01:48:16+0530] Host sysctls: net.ipv4.tcp_tw_reuse=2, net.ipv4.ip_local_port_range=32768	60999
+[2026-10-27T01:48:16+0530] Pre-checking both sides for 60s stability at 3 ready pods (timeout 600s)...
+[2026-10-27T01:49:15+0530] Pre-check passed: both sides stable for 60s at min=3, desired=3, ready=3
+[2026-10-27T01:49:15+0530] T_LAUNCH: 1793045955 (SURGE_START: 1793046015 / T_LAUNCH + 60s)
+[2026-10-27T01:49:15+0530] Launched k6-aa-baseline (pid 652888) and k6-aa-predictive (pid 652889)
+[2026-10-27T01:55:09+0530] Both k6 containers exited. T_FINISH: 1793046309 (run duration: 354s)
+[2026-10-27T01:55:10+0530] ss -s TIME-WAIT count at end: 6534
+[2026-10-27T01:55:10+0530] Waiting 10s for VictoriaMetrics ingestion lag...
+[2026-10-27T01:55:20+0530] A/A Run R2 complete.

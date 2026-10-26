@@ -1,0 +1,223 @@
+=== 1. ScaledObjects in both namespaces ===
+apiVersion: v1
+items:
+- apiVersion: keda.sh/v1alpha1
+  kind: ScaledObject
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"keda.sh/v1alpha1","kind":"ScaledObject","metadata":{"annotations":{},"labels":{"prescale.io/side":"baseline"},"name":"checkout","namespace":"baseline"},"spec":{"advanced":{"horizontalPodAutoscalerConfig":{"behavior":{"scaleDown":{"stabilizationWindowSeconds":60}}}},"maxReplicaCount":10,"minReplicaCount":3,"pollingInterval":5,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"checkout"},"triggers":[{"metadata":{"value":"50"},"metricType":"Utilization","type":"cpu"}]}}
+    creationTimestamp: "2026-10-26T17:10:04Z"
+    finalizers:
+    - finalizer.keda.sh
+    generation: 4
+    labels:
+      prescale.io/side: baseline
+      scaledobject.keda.sh/name: checkout
+    name: checkout
+    namespace: baseline
+    resourceVersion: "26106"
+    uid: 3c066a5a-2586-4756-b5e1-f872ce1dfe1b
+  spec:
+    advanced:
+      horizontalPodAutoscalerConfig:
+        behavior:
+          scaleDown:
+            stabilizationWindowSeconds: 60
+      scalingModifiers: {}
+    maxReplicaCount: 10
+    minReplicaCount: 3
+    pollingInterval: 5
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: checkout
+    triggers:
+    - metadata:
+        value: "50"
+      metricType: Utilization
+      type: cpu
+  status:
+    authenticationsTypes: ""
+    conditions:
+    - message: ScaledObject is defined correctly and is ready for scaling
+      reason: ScaledObjectReady
+      status: "True"
+      type: Ready
+    - message: Scaling is performed because triggers are active
+      reason: ScalerActive
+      status: "True"
+      type: Active
+    - message: No fallbacks are active on this scaled object
+      reason: NoFallbackFound
+      status: "False"
+      type: Fallback
+    - status: "False"
+      type: Paused
+    hpaName: keda-hpa-checkout
+    lastActiveTime: "2026-10-26T19:37:18Z"
+    originalReplicaCount: 3
+    resourceMetricNames:
+    - cpu
+    scaleTargetGVKR:
+      group: apps
+      kind: Deployment
+      resource: deployments
+      version: v1
+    scaleTargetKind: apps/v1.Deployment
+    triggersTypes: cpu
+- apiVersion: keda.sh/v1alpha1
+  kind: ScaledObject
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"keda.sh/v1alpha1","kind":"ScaledObject","metadata":{"annotations":{},"labels":{"prescale.io/side":"predictive"},"name":"checkout","namespace":"predictive"},"spec":{"advanced":{"horizontalPodAutoscalerConfig":{"behavior":{"scaleDown":{"stabilizationWindowSeconds":60}}}},"maxReplicaCount":10,"minReplicaCount":3,"pollingInterval":5,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"checkout"},"triggers":[{"metadata":{"value":"50"},"metricType":"Utilization","type":"cpu"}]}}
+    creationTimestamp: "2026-10-26T17:10:05Z"
+    finalizers:
+    - finalizer.keda.sh
+    generation: 16
+    labels:
+      prescale.io/side: predictive
+      scaledobject.keda.sh/name: checkout
+    name: checkout
+    namespace: predictive
+    resourceVersion: "26103"
+    uid: abf49d2b-9167-4f9c-8b1a-62a1b530dd61
+  spec:
+    advanced:
+      horizontalPodAutoscalerConfig:
+        behavior:
+          scaleDown:
+            stabilizationWindowSeconds: 60
+      scalingModifiers: {}
+    maxReplicaCount: 10
+    minReplicaCount: 3
+    pollingInterval: 5
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: checkout
+    triggers:
+    - metadata:
+        value: "50"
+      metricType: Utilization
+      type: cpu
+  status:
+    authenticationsTypes: ""
+    conditions:
+    - message: ScaledObject is defined correctly and is ready for scaling
+      reason: ScaledObjectReady
+      status: "True"
+      type: Ready
+    - message: Scaling is performed because triggers are active
+      reason: ScalerActive
+      status: "True"
+      type: Active
+    - message: No fallbacks are active on this scaled object
+      reason: NoFallbackFound
+      status: "False"
+      type: Fallback
+    - status: "False"
+      type: Paused
+    hpaName: keda-hpa-checkout
+    lastActiveTime: "2026-10-26T19:37:17Z"
+    originalReplicaCount: 3
+    resourceMetricNames:
+    - cpu
+    scaleTargetGVKR:
+      group: apps
+      kind: Deployment
+      resource: deployments
+      version: v1
+    scaleTargetKind: apps/v1.Deployment
+    triggersTypes: cpu
+kind: List
+metadata:
+  resourceVersion: ""
+
+=== 2. Deployments in both namespaces ===
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+checkout   3/3     3            3           147m
+fakedb     1/1     1            1           147m
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+checkout    3/3     3            3           147m
+fakedb      1/1     1            1           147m
+prescaler   1/1     1            1           130m
+
+=== 3. HPAs in both namespaces ===
+NAMESPACE    NAME                REFERENCE             TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+baseline     keda-hpa-checkout   Deployment/checkout   cpu: 1%/50%   3         10        3          147m
+predictive   keda-hpa-checkout   Deployment/checkout   cpu: 1%/50%   3         10        3          147m
+
+=== 4. All Pods in all namespaces ===
+NAMESPACE            NAME                                                  READY   STATUS    RESTARTS       AGE     IP            NODE                          NOMINATED NODE   READINESS GATES
+baseline             checkout-69cf88477-55rkl                              1/1     Running   0              147m    10.244.1.8    prescale-demo-worker2         <none>           <none>
+baseline             checkout-69cf88477-mzrfp                              1/1     Running   0              4m51s   10.244.1.27   prescale-demo-worker2         <none>           <none>
+baseline             checkout-69cf88477-zmls5                              1/1     Running   0              4m51s   10.244.1.28   prescale-demo-worker2         <none>           <none>
+baseline             fakedb-c57886cdf-q4wpv                                1/1     Running   0              147m    10.244.1.9    prescale-demo-worker2         <none>           <none>
+keda                 keda-admission-cf7b8d47c-ffqz5                        1/1     Running   0              150m    10.244.2.3    prescale-demo-worker          <none>           <none>
+keda                 keda-metrics-apiserver-85bbdd8569-tshn8               1/1     Running   0              150m    10.244.1.7    prescale-demo-worker2         <none>           <none>
+keda                 keda-operator-8b7db9c5d-d5twh                         1/1     Running   1 (150m ago)   150m    10.244.1.6    prescale-demo-worker2         <none>           <none>
+kube-system          coredns-668d6bf9bc-7f2vm                              1/1     Running   0              165m    10.244.0.4    prescale-demo-control-plane   <none>           <none>
+kube-system          coredns-668d6bf9bc-nkbdm                              1/1     Running   0              165m    10.244.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          etcd-prescale-demo-control-plane                      1/1     Running   0              165m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kindnet-dg9pp                                         1/1     Running   0              162m    172.19.0.4    prescale-demo-worker          <none>           <none>
+kube-system          kindnet-krk4h                                         1/1     Running   0              162m    172.19.0.5    prescale-demo-worker2         <none>           <none>
+kube-system          kindnet-vqfs6                                         1/1     Running   0              165m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-apiserver-prescale-demo-control-plane            1/1     Running   0              165m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-controller-manager-prescale-demo-control-plane   1/1     Running   0              165m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-proxy-bg95g                                      1/1     Running   5 (163m ago)   165m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-proxy-f7wpl                                      1/1     Running   0              162m    172.19.0.5    prescale-demo-worker2         <none>           <none>
+kube-system          kube-proxy-vjqxd                                      1/1     Running   0              162m    172.19.0.4    prescale-demo-worker          <none>           <none>
+kube-system          kube-scheduler-prescale-demo-control-plane            1/1     Running   0              165m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-58cc7856b6-bx2dq               1/1     Running   4 (162m ago)   165m    10.244.0.2    prescale-demo-control-plane   <none>           <none>
+monitoring           grafana-6875b4566b-f7fxd                              1/1     Running   0              155m    10.244.1.2    prescale-demo-worker2         <none>           <none>
+monitoring           kube-state-metrics-756c8f88d6-btjdk                   1/1     Running   0              155m    10.244.1.3    prescale-demo-worker2         <none>           <none>
+monitoring           metrics-server-fccf67f5-v7jx4                         1/1     Running   0              155m    10.244.1.4    prescale-demo-worker2         <none>           <none>
+monitoring           vmsingle-7547b449f7-rhgwt                             1/1     Running   0              155m    10.244.2.2    prescale-demo-worker          <none>           <none>
+predictive           checkout-69cf88477-jt56k                              1/1     Running   0              147m    10.244.1.11   prescale-demo-worker2         <none>           <none>
+predictive           checkout-69cf88477-shrbb                              1/1     Running   0              147m    10.244.2.7    prescale-demo-worker          <none>           <none>
+predictive           checkout-69cf88477-sw8c8                              1/1     Running   0              147m    10.244.2.6    prescale-demo-worker          <none>           <none>
+predictive           fakedb-c57886cdf-xmp58                                1/1     Running   0              147m    10.244.1.10   prescale-demo-worker2         <none>           <none>
+predictive           prescaler-64b77c4567-cz76l                            1/1     Running   0              28s     10.244.2.23   prescale-demo-worker          <none>           <none>
+
+=== 5. Syntax check on scripts ===
+bash -n scripts/load/capacity.sh: OK
+bash -n scripts/measure/collect_10_host.sh: OK
+bash -n scripts/measure/collect_11_cluster.sh: OK
+bash -n scripts/measure/collect_12_13_vm.sh: OK
+bash -n scripts/measure/evidence.sh: OK
+bash -n scripts/measure/keda_actuation_v2.sh: OK
+bash -n scripts/measure/vm_freshness_v2.sh: OK
+
+=== 6. k6 inspect capacity.js ===
+k6 inspect /loadtest/capacity.js: SUCCESS
+
+=== 7. Scope check (START_HEAD=3cf7ddb..HEAD) ===
+ cmd/prescaler/Dockerfile                        |    2 +-
+ docs/reports/data/part5/02_smoke_baseline.txt   |   67 +
+ docs/reports/data/part5/02_smoke_predictive.txt |   67 +
+ docs/reports/data/part5/capacity.csv            |   11 +
+ docs/reports/data/part5/capacity_run.log        | 1832 +++++++++++++++++++++++
+ docs/reports/data/part5/capacity_summary.txt    |   10 +
+ docs/reports/data/part5/stage_120.json          |  145 ++
+ docs/reports/data/part5/stage_150.json          |  145 ++
+ docs/reports/data/part5/stage_180.json          |  145 ++
+ docs/reports/data/part5/stage_210.json          |  145 ++
+ docs/reports/data/part5/stage_240.json          |  145 ++
+ docs/reports/data/part5/stage_270.json          |  145 ++
+ docs/reports/data/part5/stage_30.json           |  145 ++
+ docs/reports/data/part5/stage_300.json          |  145 ++
+ docs/reports/data/part5/stage_60.json           |  145 ++
+ docs/reports/data/part5/stage_90.json           |  145 ++
+ docs/reports/data/part5/trigger_math.txt        |   25 +
+ loadtest/K6_IMAGE                               |    1 +
+ loadtest/capacity.js                            |   31 +
+ loadtest/slo.env                                |    3 +
+ loadtest/smoke.js                               |   31 +
+ scripts/load/capacity.sh                        |  316 ++++
+ 22 files changed, 3845 insertions(+), 1 deletion(-)
+
+=== 8. Git status short ===
+?? docs/reports/data/part5/verification.txt
+?? q

@@ -1,0 +1,7 @@
+[2026-10-27T01:40:26+0530] === Starting A/A Run R1 (NO_REUSE=0) ===
+[2026-10-27T01:40:26+0530] SLO: SLO_P99_MS=300, SLO_ERR_PCT=1
+[2026-10-27T01:40:26+0530] Host sysctls: net.ipv4.tcp_tw_reuse=2, net.ipv4.ip_local_port_range=32768	60999
+[2026-10-27T01:40:26+0530] Pre-checking both sides for 60s stability at 3 ready pods (timeout 600s)...
+[2026-10-27T01:41:25+0530] Pre-check passed: both sides stable for 60s at min=3, desired=3, ready=3
+[2026-10-27T01:41:25+0530] T_LAUNCH: 1793045485 (SURGE_START: 1793045545 / T_LAUNCH + 60s)
+[2026-10-27T01:41:25+0530] Launched k6-aa-baseline (pid 643452) and k6-aa-predictive (pid 643453)

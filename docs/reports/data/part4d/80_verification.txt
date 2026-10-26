@@ -1,0 +1,108 @@
+=== 1. ScaledObject, HPA, Deployment state ===
+NAME                            SCALETARGETKIND      SCALETARGETNAME   MIN   MAX   READY   ACTIVE   FALLBACK   PAUSED   TRIGGERS   AUTHENTICATIONS   AGE
+scaledobject.keda.sh/checkout   apps/v1.Deployment   checkout          3     10    True    True     False      False    cpu                          118m
+
+NAME                                                    REFERENCE             TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/keda-hpa-checkout   Deployment/checkout   cpu: 2%/50%   3         10        3          118m
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/checkout   3/3     3            3           118m
+deployment.apps/fakedb     1/1     1            1           118m
+---
+NAME                            SCALETARGETKIND      SCALETARGETNAME   MIN   MAX   READY   ACTIVE   FALLBACK   PAUSED   TRIGGERS   AUTHENTICATIONS   AGE
+scaledobject.keda.sh/checkout   apps/v1.Deployment   checkout          3     10    True    True     False      False    cpu                          118m
+
+NAME                                                    REFERENCE             TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/keda-hpa-checkout   Deployment/checkout   cpu: 1%/50%   3         10        3          118m
+
+NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/checkout    3/3     3            3           118m
+deployment.apps/fakedb      1/1     1            1           118m
+deployment.apps/prescaler   1/1     1            1           101m
+
+=== 2. All pods Ready in all namespaces ===
+NAMESPACE            NAME                                                  READY   STATUS    RESTARTS       AGE     IP            NODE                          NOMINATED NODE   READINESS GATES
+baseline             checkout-69cf88477-55rkl                              1/1     Running   0              118m    10.244.1.8    prescale-demo-worker2         <none>           <none>
+baseline             checkout-69cf88477-hqbh5                              1/1     Running   0              118m    10.244.2.4    prescale-demo-worker          <none>           <none>
+baseline             checkout-69cf88477-zs8rx                              1/1     Running   0              118m    10.244.2.5    prescale-demo-worker          <none>           <none>
+baseline             fakedb-c57886cdf-q4wpv                                1/1     Running   0              118m    10.244.1.9    prescale-demo-worker2         <none>           <none>
+keda                 keda-admission-cf7b8d47c-ffqz5                        1/1     Running   0              121m    10.244.2.3    prescale-demo-worker          <none>           <none>
+keda                 keda-metrics-apiserver-85bbdd8569-tshn8               1/1     Running   0              121m    10.244.1.7    prescale-demo-worker2         <none>           <none>
+keda                 keda-operator-8b7db9c5d-d5twh                         1/1     Running   1 (121m ago)   121m    10.244.1.6    prescale-demo-worker2         <none>           <none>
+kube-system          coredns-668d6bf9bc-7f2vm                              1/1     Running   0              136m    10.244.0.4    prescale-demo-control-plane   <none>           <none>
+kube-system          coredns-668d6bf9bc-nkbdm                              1/1     Running   0              136m    10.244.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          etcd-prescale-demo-control-plane                      1/1     Running   0              136m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kindnet-dg9pp                                         1/1     Running   0              133m    172.19.0.4    prescale-demo-worker          <none>           <none>
+kube-system          kindnet-krk4h                                         1/1     Running   0              133m    172.19.0.5    prescale-demo-worker2         <none>           <none>
+kube-system          kindnet-vqfs6                                         1/1     Running   0              136m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-apiserver-prescale-demo-control-plane            1/1     Running   0              136m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-controller-manager-prescale-demo-control-plane   1/1     Running   0              136m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-proxy-bg95g                                      1/1     Running   5 (134m ago)   136m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-proxy-f7wpl                                      1/1     Running   0              133m    172.19.0.5    prescale-demo-worker2         <none>           <none>
+kube-system          kube-proxy-vjqxd                                      1/1     Running   0              133m    172.19.0.4    prescale-demo-worker          <none>           <none>
+kube-system          kube-scheduler-prescale-demo-control-plane            1/1     Running   0              136m    172.19.0.3    prescale-demo-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-58cc7856b6-bx2dq               1/1     Running   4 (133m ago)   136m    10.244.0.2    prescale-demo-control-plane   <none>           <none>
+monitoring           grafana-6875b4566b-f7fxd                              1/1     Running   0              126m    10.244.1.2    prescale-demo-worker2         <none>           <none>
+monitoring           kube-state-metrics-756c8f88d6-btjdk                   1/1     Running   0              126m    10.244.1.3    prescale-demo-worker2         <none>           <none>
+monitoring           metrics-server-fccf67f5-v7jx4                         1/1     Running   0              126m    10.244.1.4    prescale-demo-worker2         <none>           <none>
+monitoring           vmsingle-7547b449f7-rhgwt                             1/1     Running   0              126m    10.244.2.2    prescale-demo-worker          <none>           <none>
+predictive           checkout-69cf88477-jt56k                              1/1     Running   0              118m    10.244.1.11   prescale-demo-worker2         <none>           <none>
+predictive           checkout-69cf88477-shrbb                              1/1     Running   0              118m    10.244.2.7    prescale-demo-worker          <none>           <none>
+predictive           checkout-69cf88477-sw8c8                              1/1     Running   0              118m    10.244.2.6    prescale-demo-worker          <none>           <none>
+predictive           fakedb-c57886cdf-xmp58                                1/1     Running   0              118m    10.244.1.10   prescale-demo-worker2         <none>           <none>
+predictive           prescaler-64b77c4567-mmlrm                            1/1     Running   0              4m19s   10.244.2.20   prescale-demo-worker          <none>           <none>
+
+=== 3. Syntax checks on scripts/measure/ ===
+bash -n scripts/measure/collect_10_host.sh: OK
+bash -n scripts/measure/collect_11_cluster.sh: OK
+bash -n scripts/measure/collect_12_13_vm.sh: OK
+bash -n scripts/measure/evidence.sh: OK
+bash -n scripts/measure/keda_actuation_v2.sh: OK
+bash -n scripts/measure/vm_freshness_v2.sh: OK
+
+=== 4. Shellcheck status ===
+shellcheck: NOT INSTALLED on host
+
+=== 5. docs/reports/data/part4d/ files existence and sizes ===
+total 184K
+-rw-r--r--. 1 unhealthycoder unhealthycoder 1.2K Oct 27 00:20 10_host.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder  33K Oct 27 00:20 11_cluster.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder   30 Oct 27 00:21 12_hpa_sync.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder  49K Oct 27 00:21 13_vm.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder  16K Oct 27 00:22 20_repo.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder 9.5K Oct 27 00:22 30_tests_full.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder 2.2K Oct 27 00:23 31_test_counts.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder 4.8K Oct 27 00:23 40_audit.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder 5.7K Oct 27 00:24 50_claims.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder 5.3K Oct 27 00:34 60_keda_poll.csv
+-rw-r--r--. 1 unhealthycoder unhealthycoder  11K Oct 27 00:34 61_keda_derived.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder 6.2K Oct 27 00:37 70_freshness_raw.csv
+-rw-r--r--. 1 unhealthycoder unhealthycoder 3.5K Oct 27 00:37 71_freshness_derived.txt
+-rw-r--r--. 1 unhealthycoder unhealthycoder 7.5K Oct 27 00:38 80_verification.txt
+
+=== 6. Scope check (START_HEAD=182a159..HEAD) ===
+ docs/{report_part4.md => reports/REPORT_PART_4.md} |   0
+ docs/reports/data/part4d/10_host.txt               |  54 ++
+ docs/reports/data/part4d/11_cluster.txt            | 683 +++++++++++++++++++++
+ docs/reports/data/part4d/12_hpa_sync.txt           |   2 +
+ docs/reports/data/part4d/13_vm.txt                 | 138 +++++
+ docs/reports/data/part4d/20_repo.txt               | 406 ++++++++++++
+ docs/reports/data/part4d/30_tests_full.txt         | 191 ++++++
+ docs/reports/data/part4d/31_test_counts.txt        |  55 ++
+ docs/reports/data/part4d/40_audit.txt              | 142 +++++
+ docs/reports/data/part4d/50_claims.txt             |  98 +++
+ docs/reports/data/part4d/60_keda_poll.csv          | 120 ++++
+ docs/reports/data/part4d/61_keda_derived.txt       | 163 +++++
+ docs/reports/data/part4d/70_freshness_raw.csv      | 221 +++++++
+ docs/reports/data/part4d/71_freshness_derived.txt  |  70 +++
+ scripts/measure/collect_10_host.sh                 |  19 +
+ scripts/measure/collect_11_cluster.sh              |  40 ++
+ scripts/measure/collect_12_13_vm.sh                |  58 ++
+ scripts/measure/evidence.sh                        |  21 +
+ scripts/measure/keda_actuation_v2.sh               | 278 +++++++++
+ scripts/measure/vm_freshness_v2.sh                 | 188 ++++++
+ 20 files changed, 2947 insertions(+)
+
+=== 7. Git status short ===
+?? docs/reports/data/part4d/80_verification.txt
+?? q

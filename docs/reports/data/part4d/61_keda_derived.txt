@@ -1,0 +1,163 @@
+prescaler original replicas: 1
+baseline initial control: so_min=3 ready=3
+prescaler scaled to 0 and confirmed
+
+=== Starting Trial 1 ===
+T0_MS=1793041243420
+patch minReplicaCount=6 returned at +93 ms
+UP reached 6/6 ready consecutive at +48716 ms
+
+=== Pod timestamps after UP trial 1 ===
+checkout-69cf88477-5d26x creationTimestamp=2026-10-26T19:00:57Z startTime=2026-10-26T19:00:57Z conditions=PodReadyToStartContainers=True@2026-10-26T19:00:58Z;Initialized=True@2026-10-26T19:00:57Z;Ready=True@2026-10-26T19:01:29Z;ContainersReady=True@2026-10-26T19:01:29Z;PodScheduled=True@2026-10-26T19:00:57Z;
+checkout-69cf88477-7nt4s creationTimestamp=2026-10-26T19:00:57Z startTime=2026-10-26T19:00:57Z conditions=PodReadyToStartContainers=True@2026-10-26T19:00:58Z;Initialized=True@2026-10-26T19:00:57Z;Ready=True@2026-10-26T19:01:29Z;ContainersReady=True@2026-10-26T19:01:29Z;PodScheduled=True@2026-10-26T19:00:57Z;
+checkout-69cf88477-jt56k creationTimestamp=2026-10-26T17:10:05Z startTime=2026-10-26T17:10:05Z conditions=PodReadyToStartContainers=True@2026-10-26T17:10:06Z;Initialized=True@2026-10-26T17:10:05Z;Ready=True@2026-10-26T17:10:37Z;ContainersReady=True@2026-10-26T17:10:37Z;PodScheduled=True@2026-10-26T17:10:05Z;
+checkout-69cf88477-shrbb creationTimestamp=2026-10-26T17:10:05Z startTime=2026-10-26T17:10:05Z conditions=PodReadyToStartContainers=True@2026-10-26T17:10:06Z;Initialized=True@2026-10-26T17:10:05Z;Ready=True@2026-10-26T17:10:37Z;ContainersReady=True@2026-10-26T17:10:37Z;PodScheduled=True@2026-10-26T17:10:05Z;
+checkout-69cf88477-sw8c8 creationTimestamp=2026-10-26T17:10:05Z startTime=2026-10-26T17:10:05Z conditions=PodReadyToStartContainers=True@2026-10-26T17:10:06Z;Initialized=True@2026-10-26T17:10:05Z;Ready=True@2026-10-26T17:10:36Z;ContainersReady=True@2026-10-26T17:10:36Z;PodScheduled=True@2026-10-26T17:10:05Z;
+checkout-69cf88477-v4q9n creationTimestamp=2026-10-26T19:00:57Z startTime=2026-10-26T19:00:57Z conditions=PodReadyToStartContainers=True@2026-10-26T19:00:58Z;Initialized=True@2026-10-26T19:00:57Z;Ready=True@2026-10-26T19:01:29Z;ContainersReady=True@2026-10-26T19:01:29Z;PodScheduled=True@2026-10-26T19:00:57Z;
+
+=== Describe HPA after UP trial 1 ===
+Name:                                                  keda-hpa-checkout
+Namespace:                                             predictive
+Labels:                                                app.kubernetes.io/managed-by=keda-operator
+                                                       app.kubernetes.io/name=keda-hpa-checkout
+                                                       app.kubernetes.io/part-of=checkout
+                                                       app.kubernetes.io/version=2.19.0
+                                                       prescale.io/side=predictive
+                                                       scaledobject.keda.sh/name=checkout
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Oct 2026 22:40:05 +0530
+Reference:                                             Deployment/checkout
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  1% (1m) / 50%
+Min replicas:                                          6
+Max replicas:                                          10
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 60 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       6 current / 6 desired
+Conditions:
+  Type            Status  Reason               Message
+  ----            ------  ------               -------
+  AbleToScale     True    ScaleDownStabilized  recent recommendations were higher than current one, applying the highest recent recommendation
+  ScalingActive   True    ValidMetricFound     the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange   the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                From                       Message
+  ----    ------             ----               ----                       -------
+  Normal  SuccessfulRescale  35s (x6 over 69m)  horizontal-pod-autoscaler  New size: 6; reason: Current number of replicas below Spec.MinReplicas
+
+=== Trial 1 DOWN (T0_DOWN=1793041292294) ===
+patch minReplicaCount=3 returned at +72 ms
+DOWN finished (status_replicas=3, pods_total=3) at +40998 ms
+Settle check (ready=3, total=3)...
+Settled at ready=3 total=3
+
+=== Starting Trial 2 ===
+T0_MS=1793041350598
+patch minReplicaCount=6 returned at +81 ms
+UP reached 6/6 ready consecutive at +46066 ms
+
+=== Pod timestamps after UP trial 2 ===
+checkout-69cf88477-2vmck creationTimestamp=2026-10-26T19:02:42Z startTime=2026-10-26T19:02:42Z conditions=PodReadyToStartContainers=True@2026-10-26T19:02:43Z;Initialized=True@2026-10-26T19:02:42Z;Ready=True@2026-10-26T19:03:14Z;ContainersReady=True@2026-10-26T19:03:14Z;PodScheduled=True@2026-10-26T19:02:42Z;
+checkout-69cf88477-jt56k creationTimestamp=2026-10-26T17:10:05Z startTime=2026-10-26T17:10:05Z conditions=PodReadyToStartContainers=True@2026-10-26T17:10:06Z;Initialized=True@2026-10-26T17:10:05Z;Ready=True@2026-10-26T17:10:37Z;ContainersReady=True@2026-10-26T17:10:37Z;PodScheduled=True@2026-10-26T17:10:05Z;
+checkout-69cf88477-kv47p creationTimestamp=2026-10-26T19:02:42Z startTime=2026-10-26T19:02:42Z conditions=PodReadyToStartContainers=True@2026-10-26T19:02:43Z;Initialized=True@2026-10-26T19:02:42Z;Ready=True@2026-10-26T19:03:14Z;ContainersReady=True@2026-10-26T19:03:14Z;PodScheduled=True@2026-10-26T19:02:42Z;
+checkout-69cf88477-rlrh5 creationTimestamp=2026-10-26T19:02:42Z startTime=2026-10-26T19:02:42Z conditions=PodReadyToStartContainers=True@2026-10-26T19:02:43Z;Initialized=True@2026-10-26T19:02:42Z;Ready=True@2026-10-26T19:03:14Z;ContainersReady=True@2026-10-26T19:03:14Z;PodScheduled=True@2026-10-26T19:02:42Z;
+checkout-69cf88477-shrbb creationTimestamp=2026-10-26T17:10:05Z startTime=2026-10-26T17:10:05Z conditions=PodReadyToStartContainers=True@2026-10-26T17:10:06Z;Initialized=True@2026-10-26T17:10:05Z;Ready=True@2026-10-26T17:10:37Z;ContainersReady=True@2026-10-26T17:10:37Z;PodScheduled=True@2026-10-26T17:10:05Z;
+checkout-69cf88477-sw8c8 creationTimestamp=2026-10-26T17:10:05Z startTime=2026-10-26T17:10:05Z conditions=PodReadyToStartContainers=True@2026-10-26T17:10:06Z;Initialized=True@2026-10-26T17:10:05Z;Ready=True@2026-10-26T17:10:36Z;ContainersReady=True@2026-10-26T17:10:36Z;PodScheduled=True@2026-10-26T17:10:05Z;
+
+=== Describe HPA after UP trial 2 ===
+Name:                                                  keda-hpa-checkout
+Namespace:                                             predictive
+Labels:                                                app.kubernetes.io/managed-by=keda-operator
+                                                       app.kubernetes.io/name=keda-hpa-checkout
+                                                       app.kubernetes.io/part-of=checkout
+                                                       app.kubernetes.io/version=2.19.0
+                                                       prescale.io/side=predictive
+                                                       scaledobject.keda.sh/name=checkout
+Annotations:                                           <none>
+CreationTimestamp:                                     Mon, 26 Oct 2026 22:40:05 +0530
+Reference:                                             Deployment/checkout
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  1% (1m) / 50%
+Min replicas:                                          6
+Max replicas:                                          10
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 60 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       6 current / 6 desired
+Conditions:
+  Type            Status  Reason               Message
+  ----            ------  ------               -------
+  AbleToScale     True    ScaleDownStabilized  recent recommendations were higher than current one, applying the highest recent recommendation
+  ScalingActive   True    ValidMetricFound     the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange   the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                From                       Message
+  ----    ------             ----               ----                       -------
+  Normal  SuccessfulRescale  64s (x6 over 70m)  horizontal-pod-autoscaler  New size: 3; reason: All metrics below target
+  Normal  SuccessfulRescale  34s (x7 over 71m)  horizontal-pod-autoscaler  New size: 6; reason: Current number of replicas below Spec.MinReplicas
+
+=== Trial 2 DOWN (T0_DOWN=1793041396791) ===
+patch minReplicaCount=3 returned at +89 ms
+DOWN finished (status_replicas=3, pods_total=3) at +43502 ms
+Settle check (ready=3, total=3)...
+Settled at ready=3 total=3
+prescaler restored to 1 replicas
+
+=== Trial 1 Derived Offsets ===
+T0 up: 1793041243519
+  so_min == 6: +0 ms (0.00 s)
+  hpa_min == 6: +0 ms (0.00 s)
+  hpa_desired == 6: +13733 ms (13.73 s)
+  deploy_spec == 6: +13733 ms (13.73 s)
+  pods_total > 3: +13733 ms (13.73 s)
+  pods_ready_true > 3: +46829 ms (46.83 s)
+  pods_ready_true == 6: +46829 ms (46.83 s)
+T0 down: 1793041292370
+  hpa_min == 3: +0 ms (0.00 s)
+  hpa_desired == 3: +40599 ms (40.60 s)
+  deploy_spec == 3: +40599 ms (40.60 s)
+  deploy_status_replicas == 3: +40599 ms (40.60 s)
+
+=== Trial 2 Derived Offsets ===
+T0 up: 1793041350684
+  so_min == 6: +0 ms (0.00 s)
+  hpa_min == 6: +0 ms (0.00 s)
+  hpa_desired == 6: +12419 ms (12.42 s)
+  deploy_spec == 6: +12419 ms (12.42 s)
+  pods_total > 3: +12419 ms (12.42 s)
+  pods_ready_true > 3: +44222 ms (44.22 s)
+  pods_ready_true == 6: +44222 ms (44.22 s)
+T0 down: 1793041396885
+  hpa_min == 3: +0 ms (0.00 s)
+  hpa_desired == 3: +40553 ms (40.55 s)
+  deploy_spec == 3: +40553 ms (40.55 s)
+  deploy_status_replicas == 3: +40553 ms (40.55 s)
+
+=== Poll Gap Analysis ===
+Total rows: 119, Gaps: 118
+Median gap: 1395 ms (1.40 s)
+Min gap: 328 ms (0.33 s)
+Max gap: 10397 ms (10.40 s)
+
+=== Baseline Control Check ===
+Baseline control remained stable: so_min=3 ready=3 across all polls.
+keda_actuation_v2.sh completed successfully

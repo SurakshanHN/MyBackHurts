@@ -1,0 +1,29 @@
+=== A/A Run R1 Results (NO_REUSE=0) ===
+Bucket boundaries: [0.005, 0.01, 0.02, 0.04, 0.08, 0.16, 0.32, 0.64, 1.28, 2.56, 5, 10, +Inf]
+No bucket is exactly 0.3 s; smallest bucket >= 0.3 s is 0.32 s.
+
+--- Side: baseline ---
+k6 http_reqs: 67304, achieved avg rps: 192.30, failed %: 0.01%, dropped_iters: 22495
+client p95: 1594.11 ms, client p99: 1684.63 ms
+server breach_seconds: 180 s (p99 > 300.0 ms), peak p99: 2546.63 ms, total non-2xx: 0
+ready replicas: sec_to_first_scale=60s, sec_to_max_ready=90s, max_ready=8
+pod_seconds: 1910 pod*s
+per-pod rps at +110s: min=110.50, max=116.70, ratio=1.06
+per-pod rps at +140s: min=111.10, max=116.30, ratio=1.05
+fakedb peak connections: 3
+connect errors: cannot_assign=0, conn_refused=0, io_timeout=0
+max loadavg1: 2.15, min MemAvailable: 3650.0 MiB
+ss -s TIME-WAIT count: 28
+
+--- Side: predictive ---
+k6 http_reqs: 68175, achieved avg rps: 194.78, failed %: 0.00%, dropped_iters: 21624
+client p95: 1627.13 ms, client p99: 1697.40 ms
+server breach_seconds: 180 s (p99 > 300.0 ms), peak p99: 2543.83 ms, total non-2xx: 0
+ready replicas: sec_to_first_scale=75s, sec_to_max_ready=75s, max_ready=7
+pod_seconds: 1780 pod*s
+per-pod rps at +110s: min=113.80, max=118.15, ratio=1.04
+per-pod rps at +140s: min=115.00, max=115.95, ratio=1.01
+fakedb peak connections: 17
+connect errors: cannot_assign=0, conn_refused=0, io_timeout=0
+max loadavg1: 2.15, min MemAvailable: 3650.0 MiB
+ss -s TIME-WAIT count: 28

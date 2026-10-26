@@ -1,0 +1,191 @@
+$ go build ./...
+[exit 0]
+
+$ go vet ./...
+[exit 0]
+
+?   	github.com/prescale/prescale/cmd/prescaler	[no test files]
+=== RUN   TestActuator_CapRestoreRoundTrip
+--- PASS: TestActuator_CapRestoreRoundTrip (0.08s)
+=== RUN   TestActuator_CapIdempotent
+--- PASS: TestActuator_CapIdempotent (0.00s)
+=== RUN   TestActuator_NeverBelowCurrentReplicas
+--- PASS: TestActuator_NeverBelowCurrentReplicas (0.00s)
+=== RUN   TestActuator_MinReplicasUntouched
+--- PASS: TestActuator_MinReplicasUntouched (0.00s)
+=== RUN   TestActuator_HPANotFound
+--- PASS: TestActuator_HPANotFound (0.00s)
+=== RUN   TestActuator_MalformedAnnotation
+--- PASS: TestActuator_MalformedAnnotation (0.00s)
+=== RUN   TestActuator_Expired_PastFuture
+=== RUN   TestActuator_Expired_PastFuture/past
+=== RUN   TestActuator_Expired_PastFuture/future
+--- PASS: TestActuator_Expired_PastFuture (0.00s)
+    --- PASS: TestActuator_Expired_PastFuture/past (0.00s)
+    --- PASS: TestActuator_Expired_PastFuture/future (0.00s)
+=== RUN   TestActuator_Expired_MalformedTimestamp
+--- PASS: TestActuator_Expired_MalformedTimestamp (0.00s)
+=== RUN   TestActuator_Expired_MissingTimestamp
+--- PASS: TestActuator_Expired_MissingTimestamp (0.00s)
+=== RUN   TestActuator_ConflictPropagates
+--- PASS: TestActuator_ConflictPropagates (0.00s)
+=== RUN   TestActuator_AnnotationsWrittenWithMaxReplicas
+--- PASS: TestActuator_AnnotationsWrittenWithMaxReplicas (0.00s)
+=== RUN   TestPlanCap_Refuse
+=== RUN   TestPlanCap_Refuse/MinReplicas_zero
+=== RUN   TestPlanCap_Refuse/MinReplicas_negative
+=== RUN   TestPlanCap_Refuse/MaxReplicas_zero
+=== RUN   TestPlanCap_Refuse/MaxReplicas_negative
+=== RUN   TestPlanCap_Refuse/CurrentReplicas_zero
+=== RUN   TestPlanCap_Refuse/CurrentReplicas_negative
+=== RUN   TestPlanCap_Refuse/proposed_zero
+=== RUN   TestPlanCap_Refuse/proposed_negative
+=== RUN   TestPlanCap_Refuse/floor_zero
+=== RUN   TestPlanCap_Refuse/floor_negative
+=== RUN   TestPlanCap_Refuse/Min_>_Max
+--- PASS: TestPlanCap_Refuse (0.00s)
+    --- PASS: TestPlanCap_Refuse/MinReplicas_zero (0.00s)
+    --- PASS: TestPlanCap_Refuse/MinReplicas_negative (0.00s)
+    --- PASS: TestPlanCap_Refuse/MaxReplicas_zero (0.00s)
+    --- PASS: TestPlanCap_Refuse/MaxReplicas_negative (0.00s)
+    --- PASS: TestPlanCap_Refuse/CurrentReplicas_zero (0.00s)
+    --- PASS: TestPlanCap_Refuse/CurrentReplicas_negative (0.00s)
+    --- PASS: TestPlanCap_Refuse/proposed_zero (0.00s)
+    --- PASS: TestPlanCap_Refuse/proposed_negative (0.00s)
+    --- PASS: TestPlanCap_Refuse/floor_zero (0.00s)
+    --- PASS: TestPlanCap_Refuse/floor_negative (0.00s)
+    --- PASS: TestPlanCap_Refuse/Min_>_Max (0.00s)
+=== RUN   TestPlanCap_Noop
+--- PASS: TestPlanCap_Noop (0.00s)
+=== RUN   TestPlanCap_Cap_BasicLower
+--- PASS: TestPlanCap_Cap_BasicLower (0.00s)
+=== RUN   TestPlanCap_Rule2_EffFloorClampsUp
+--- PASS: TestPlanCap_Rule2_EffFloorClampsUp (0.00s)
+=== RUN   TestPlanCap_Rule2_MinReplicasClampsUp
+--- PASS: TestPlanCap_Rule2_MinReplicasClampsUp (0.00s)
+=== RUN   TestPlanCap_Rule3_RespectsOriginalMax
+--- PASS: TestPlanCap_Rule3_RespectsOriginalMax (0.00s)
+=== RUN   TestPlanCap_Rule6_SaveOriginalNotOverwritten
+--- PASS: TestPlanCap_Rule6_SaveOriginalNotOverwritten (0.00s)
+=== RUN   TestPlanCap_Idempotent
+--- PASS: TestPlanCap_Idempotent (0.00s)
+=== RUN   TestPlanRestore_WithOriginalMax
+--- PASS: TestPlanRestore_WithOriginalMax (0.00s)
+=== RUN   TestPlanRestore_NoOriginalMax
+--- PASS: TestPlanRestore_NoOriginalMax (0.00s)
+=== RUN   TestPlanCap_Properties
+--- PASS: TestPlanCap_Properties (0.00s)
+PASS
+ok  	github.com/prescale/prescale/internal/actuator	0.099s
+=== RUN   TestPrometheus_GoodData
+--- PASS: TestPrometheus_GoodData (0.00s)
+=== RUN   TestPrometheus_DepSeries_GoodData
+--- PASS: TestPrometheus_DepSeries_GoodData (0.00s)
+=== RUN   TestPrometheus_HTTP500
+--- PASS: TestPrometheus_HTTP500 (0.00s)
+=== RUN   TestPrometheus_StatusError
+--- PASS: TestPrometheus_StatusError (0.00s)
+=== RUN   TestPrometheus_MalformedJSON
+--- PASS: TestPrometheus_MalformedJSON (0.00s)
+=== RUN   TestPrometheus_NaNPointsDropped
+--- PASS: TestPrometheus_NaNPointsDropped (0.00s)
+=== RUN   TestPrometheus_TooManyDropped
+--- PASS: TestPrometheus_TooManyDropped (0.00s)
+=== RUN   TestPrometheus_Stale
+--- PASS: TestPrometheus_Stale (0.00s)
+=== RUN   TestPrometheus_EmptyResult
+--- PASS: TestPrometheus_EmptyResult (0.00s)
+=== RUN   TestPrometheus_InvalidLabel
+--- PASS: TestPrometheus_InvalidLabel (0.00s)
+=== RUN   TestPrometheus_Timeout
+--- PASS: TestPrometheus_Timeout (0.20s)
+=== RUN   TestFake_RangeAndCopies
+--- PASS: TestFake_RangeAndCopies (0.00s)
+=== RUN   TestFake_InjectErrors
+--- PASS: TestFake_InjectErrors (0.00s)
+PASS
+ok  	github.com/prescale/prescale/internal/metrics	0.211s
+=== RUN   TestPredict_ok
+--- PASS: TestPredict_ok (0.00s)
+=== RUN   TestPredict_non200
+--- PASS: TestPredict_non200 (0.00s)
+=== RUN   TestReplicasFor
+--- PASS: TestReplicasFor (0.00s)
+PASS
+ok  	github.com/prescale/prescale/internal/predictor	0.004s
+=== RUN   TestGetInfo_ExtractsStateAndAnnotations
+--- PASS: TestGetInfo_ExtractsStateAndAnnotations (0.00s)
+=== RUN   TestBuildPatch_InitialBoost
+--- PASS: TestBuildPatch_InitialBoost (0.00s)
+=== RUN   TestBuildPatch_ReleaseSetsNullAnnotations
+--- PASS: TestBuildPatch_ReleaseSetsNullAnnotations (0.00s)
+=== RUN   TestPatcher_NamespaceGuard
+--- PASS: TestPatcher_NamespaceGuard (0.00s)
+=== RUN   TestPatcher_DryRunDoesNotSendPatch
+--- PASS: TestPatcher_DryRunDoesNotSendPatch (0.00s)
+=== RUN   TestPlanDecision_Table
+=== RUN   TestPlanDecision_Table/initial_boost_saves_original_and_sets_boosted-until
+=== RUN   TestPlanDecision_Table/subsequent_boost_does_NOT_overwrite_original
+=== RUN   TestPlanDecision_Table/hold_at_same_boost_level_renews_lease
+=== RUN   TestPlanDecision_Table/clamp:_max-step_limits_rise_to_CurrentMin_+_3
+=== RUN   TestPlanDecision_Table/clamp:_ceiling_respects_ScaledObject_maxReplicaCount
+=== RUN   TestPlanDecision_Table/clamp:_ceiling_respects_config_MaxLimit_if_lower
+=== RUN   TestPlanDecision_Table/release_trigger:_desired_<=_original_when_boosted
+=== RUN   TestPlanDecision_Table/release_trigger:_lease_expired_when_boosted
+=== RUN   TestPlanDecision_Table/release_trigger:_consecutive_failures_reaching_max-failures
+=== RUN   TestPlanDecision_Table/failures_under_max-failures_holds_lease
+=== RUN   TestPlanDecision_Table/failure_when_not_boosted_returns_error_action
+=== RUN   TestPlanDecision_Table/cooldown_blocks_new_boost_if_within_cooldown_window
+=== RUN   TestPlanDecision_Table/cooldown_allows_new_boost_after_cooldown_elapsed
+=== RUN   TestPlanDecision_Table/noop_when_desired_<=_baseline_and_not_boosted
+=== RUN   TestPlanDecision_Table/restart:_boosted_with_active_lease_continues_and_renews
+=== RUN   TestPlanDecision_Table/step-down_while_boosted_above_baseline
+--- PASS: TestPlanDecision_Table (0.00s)
+    --- PASS: TestPlanDecision_Table/initial_boost_saves_original_and_sets_boosted-until (0.00s)
+    --- PASS: TestPlanDecision_Table/subsequent_boost_does_NOT_overwrite_original (0.00s)
+    --- PASS: TestPlanDecision_Table/hold_at_same_boost_level_renews_lease (0.00s)
+    --- PASS: TestPlanDecision_Table/clamp:_max-step_limits_rise_to_CurrentMin_+_3 (0.00s)
+    --- PASS: TestPlanDecision_Table/clamp:_ceiling_respects_ScaledObject_maxReplicaCount (0.00s)
+    --- PASS: TestPlanDecision_Table/clamp:_ceiling_respects_config_MaxLimit_if_lower (0.00s)
+    --- PASS: TestPlanDecision_Table/release_trigger:_desired_<=_original_when_boosted (0.00s)
+    --- PASS: TestPlanDecision_Table/release_trigger:_lease_expired_when_boosted (0.00s)
+    --- PASS: TestPlanDecision_Table/release_trigger:_consecutive_failures_reaching_max-failures (0.00s)
+    --- PASS: TestPlanDecision_Table/failures_under_max-failures_holds_lease (0.00s)
+    --- PASS: TestPlanDecision_Table/failure_when_not_boosted_returns_error_action (0.00s)
+    --- PASS: TestPlanDecision_Table/cooldown_blocks_new_boost_if_within_cooldown_window (0.00s)
+    --- PASS: TestPlanDecision_Table/cooldown_allows_new_boost_after_cooldown_elapsed (0.00s)
+    --- PASS: TestPlanDecision_Table/noop_when_desired_<=_baseline_and_not_boosted (0.00s)
+    --- PASS: TestPlanDecision_Table/restart:_boosted_with_active_lease_continues_and_renews (0.00s)
+    --- PASS: TestPlanDecision_Table/step-down_while_boosted_above_baseline (0.00s)
+PASS
+ok  	github.com/prescale/prescale/internal/scaledobject	0.006s
+=== RUN   TestBurnCPU
+--- PASS: TestBurnCPU (0.01s)
+=== RUN   TestCheckoutHandler_Success
+--- PASS: TestCheckoutHandler_Success (0.01s)
+=== RUN   TestCheckoutHandler_Downstream503
+--- PASS: TestCheckoutHandler_Downstream503 (0.00s)
+=== RUN   TestReadinessGating
+2026/10/27 00:22:25 Startup delay elapsed; checkout service is now ready
+--- PASS: TestReadinessGating (0.00s)
+=== RUN   TestLivezHandler
+--- PASS: TestLivezHandler (0.00s)
+=== RUN   TestParseCPUBurnMS
+2026/10/27 00:22:25 warning: invalid CPU_BURN_MS "0", falling back to 5ms
+2026/10/27 00:22:25 warning: invalid CPU_BURN_MS "-5", falling back to 5ms
+2026/10/27 00:22:25 warning: invalid CPU_BURN_MS "abc", falling back to 5ms
+--- PASS: TestParseCPUBurnMS (0.00s)
+=== RUN   TestParseStartupDelay
+2026/10/27 00:22:25 warning: invalid STARTUP_DELAY_SECONDS "-1", falling back to 0s
+2026/10/27 00:22:25 warning: invalid STARTUP_DELAY_SECONDS "notanumber", falling back to 0s
+--- PASS: TestParseStartupDelay (0.00s)
+PASS
+ok  	github.com/prescale/prescale/workload/checkout	0.022s
+=== RUN   TestCalcLatency
+--- PASS: TestCalcLatency (0.00s)
+=== RUN   TestOverLimit503
+--- PASS: TestOverLimit503 (0.01s)
+=== RUN   TestMetricsEndpoint
+--- PASS: TestMetricsEndpoint (0.00s)
+PASS
+ok  	github.com/prescale/prescale/workload/fakedb	0.017s

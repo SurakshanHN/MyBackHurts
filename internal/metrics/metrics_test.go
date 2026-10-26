@@ -10,7 +10,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/prescale/prescale/internal/detector"
 	"github.com/prescale/prescale/internal/metrics"
 )
 
@@ -351,12 +350,12 @@ func TestFake_RangeAndCopies(t *testing.T) {
 	dep := metrics.DepRef{Name: "db"}
 
 	t0 := time.Date(2026, 1, 1, 0, 0, 0, 0, time.UTC)
-	origSamples := []detector.Sample{
+	origSamples := []metrics.Sample{
 		{T: t0.Add(0 * time.Minute), RPS: 10, P99Ms: 1, ErrRate: 0, Replicas: 2, Ready: 2},
 		{T: t0.Add(1 * time.Minute), RPS: 20, P99Ms: 2, ErrRate: 0, Replicas: 2, Ready: 2},
 		{T: t0.Add(2 * time.Minute), RPS: 30, P99Ms: 3, ErrRate: 0, Replicas: 2, Ready: 2},
 	}
-	origDep := []detector.DepSample{
+	origDep := []metrics.DepSample{
 		{T: t0.Add(0 * time.Minute), Saturation: 0.1, LatencyMs: 5},
 		{T: t0.Add(1 * time.Minute), Saturation: 0.2, LatencyMs: 6},
 		{T: t0.Add(2 * time.Minute), Saturation: 0.3, LatencyMs: 7},

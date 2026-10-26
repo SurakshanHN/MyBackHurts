@@ -1,0 +1,70 @@
+=== Prescaler metric query source and URL ===
+File: internal/metrics/prometheus.go:117
+Line 117: url := strings.TrimRight(p.cfg.BaseURL, "/") + "/api/v1/query_range"
+File: cmd/prescaler/main.go:148-150
+148:		RPS:        `sum(rate(checkout_requests_total{namespace="{{namespace}}",deployment="{{name}}"}[{{step}}]))`,
+149-		P99Ms:      `histogram_quantile(0.99, sum by (le) (rate(checkout_request_duration_seconds_bucket{namespace="{{namespace}}",deployment="{{name}}"}[{{step}}]))) * 1000`,
+150-		ErrRate:    `sum(rate(checkout_requests_total{namespace="{{namespace}}",deployment="{{name}}",status=~"5.."}[{{step}}])) / sum(rate(checkout_requests_total{namespace="{{namespace}}",deployment="{{name}}"}[{{step}}]))`,
+151-		Replicas:   `kube_deployment_spec_replicas{namespace="{{namespace}}",deployment="{{name}}"}`,
+
+Note: cmd/prescaler/main.go:148 references checkout_requests_total, but actual exported metric is http_requests_total.
+
+=== Part 1: Sample Age (10 instant queries, 1 s apart) ===
+Sample  1: now=1793041539534 sample_ts=1793041535873 age=3661 ms (3.66 s)
+Sample  2: now=1793041540641 sample_ts=1793041539502 age=1139 ms (1.14 s)
+Sample  3: now=1793041541701 sample_ts=1793041539502 age=2199 ms (2.20 s)
+Sample  4: now=1793041542795 sample_ts=1793041539502 age=3293 ms (3.29 s)
+Sample  5: now=1793041543869 sample_ts=1793041539502 age=4367 ms (4.37 s)
+Sample  6: now=1793041544950 sample_ts=1793041540873 age=4077 ms (4.08 s)
+Sample  7: now=1793041546020 sample_ts=1793041540873 age=5147 ms (5.15 s)
+Sample  8: now=1793041547104 sample_ts=1793041540873 age=6231 ms (6.23 s)
+Sample  9: now=1793041548187 sample_ts=1793041545873 age=2314 ms (2.31 s)
+Sample 10: now=1793041549264 sample_ts=1793041545873 age=3391 ms (3.39 s)
+
+=== Part 2: End-to-End Lag (5 trials, 20s apart, 30 requests each) ===
+
+--- Trial 1 ---
+Trial 1: initial counter C0=1244, target (+30)=1274
+Sent 30 requests; last request finished at epoch_ms=1793041551342
+Trial 1: detected target 1274 (counter=1274) at epoch_ms=1793041557384
+Trial 1: derived lag = 6042 ms (6.04 s)
+
+--- Trial 2 ---
+Waiting 20 s cooldown between trials...
+Trial 2: initial counter C0=1274, target (+30)=1304
+Sent 30 requests; last request finished at epoch_ms=1793041578338
+Trial 2: detected target 1304 (counter=1304) at epoch_ms=1793041584348
+Trial 2: derived lag = 6010 ms (6.01 s)
+
+--- Trial 3 ---
+Waiting 20 s cooldown between trials...
+Trial 3: initial counter C0=1304, target (+30)=1334
+Sent 30 requests; last request finished at epoch_ms=1793041605269
+Trial 3: detected target 1334 (counter=1334) at epoch_ms=1793041612453
+Trial 3: derived lag = 7184 ms (7.18 s)
+Trial 3: CONTRADICTION: lag 7184 ms exceeds theoretical window 6500 ms
+
+--- Trial 4 ---
+Waiting 20 s cooldown between trials...
+Trial 4: initial counter C0=1334, target (+30)=1364
+Sent 30 requests; last request finished at epoch_ms=1793041633495
+Trial 4: detected target 1364 (counter=1364) at epoch_ms=1793041637400
+Trial 4: derived lag = 3905 ms (3.90 s)
+
+--- Trial 5 ---
+Waiting 20 s cooldown between trials...
+Trial 5: initial counter C0=1364, target (+30)=1394
+Sent 30 requests; last request finished at epoch_ms=1793041658463
+Trial 5: detected target 1394 (counter=1394) at epoch_ms=1793041664577
+Trial 5: derived lag = 6114 ms (6.11 s)
+
+=== Sample Age Summary ===
+Sample count: 10
+Min age: 1139 ms (1.14 s)
+Max age: 6231 ms (6.23 s)
+Average age: 3582 ms (3.58 s)
+
+=== Lag Summary Table ===
+
+THEORETICAL window: 0 to ~6.5 s (scrape_interval=5s + latencyOffset=1s + query latency)
+vm_freshness_v2.sh completed successfully

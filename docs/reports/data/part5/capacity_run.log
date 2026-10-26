@@ -1,0 +1,1832 @@
+[2026-10-27T00:52:25+0530] SLO Parameters: SLO_P99_MS=300, SLO_ERR_PCT=1
+[2026-10-27T00:52:25+0530] Original baseline ScaledObject: min=3, max=10
+[2026-10-27T00:52:25+0530] Patching baseline ScaledObject to min=3, max=3...
+scaledobject.keda.sh/checkout patched
+[2026-10-27T00:52:25+0530] Waiting for HPA min=3, max=3 and 3 ready pods (max 120s)...
+[2026-10-27T00:52:25+0530] Baseline settled at min=3, max=3, ready=3
+[2026-10-27T00:52:26+0530] Initial checkout pod restarts: 0
+[2026-10-27T00:52:26+0530] ==================================================
+[2026-10-27T00:52:26+0530] Starting Stage: 30 RPS (duration 40s)
+[2026-10-27T00:52:26+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 30.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 000/100 VUs, 30 complete and 0 interrupted iterations
+capacity   [   2% ] 000/100 VUs  01.0s/40s  30.00 iters/s
+
+running (0m02.0s), 000/100 VUs, 60 complete and 0 interrupted iterations
+capacity   [   5% ] 000/100 VUs  02.0s/40s  30.00 iters/s
+
+running (0m03.0s), 000/100 VUs, 90 complete and 0 interrupted iterations
+capacity   [   7% ] 000/100 VUs  03.0s/40s  30.00 iters/s
+
+running (0m04.0s), 000/100 VUs, 120 complete and 0 interrupted iterations
+capacity   [  10% ] 000/100 VUs  04.0s/40s  30.00 iters/s
+
+running (0m05.0s), 000/100 VUs, 150 complete and 0 interrupted iterations
+capacity   [  12% ] 000/100 VUs  05.0s/40s  30.00 iters/s
+
+running (0m06.0s), 000/100 VUs, 180 complete and 0 interrupted iterations
+capacity   [  15% ] 000/100 VUs  06.0s/40s  30.00 iters/s
+
+running (0m07.0s), 000/100 VUs, 210 complete and 0 interrupted iterations
+capacity   [  17% ] 000/100 VUs  07.0s/40s  30.00 iters/s
+
+running (0m08.0s), 000/100 VUs, 240 complete and 0 interrupted iterations
+capacity   [  20% ] 000/100 VUs  08.0s/40s  30.00 iters/s
+
+running (0m09.0s), 000/100 VUs, 270 complete and 0 interrupted iterations
+capacity   [  22% ] 000/100 VUs  09.0s/40s  30.00 iters/s
+
+running (0m10.0s), 000/100 VUs, 300 complete and 0 interrupted iterations
+capacity   [  25% ] 000/100 VUs  10.0s/40s  30.00 iters/s
+
+running (0m11.0s), 000/100 VUs, 330 complete and 0 interrupted iterations
+capacity   [  27% ] 000/100 VUs  11.0s/40s  30.00 iters/s
+
+running (0m12.0s), 000/100 VUs, 360 complete and 0 interrupted iterations
+capacity   [  30% ] 000/100 VUs  12.0s/40s  30.00 iters/s
+
+running (0m13.0s), 000/100 VUs, 390 complete and 0 interrupted iterations
+capacity   [  32% ] 000/100 VUs  13.0s/40s  30.00 iters/s
+
+running (0m14.0s), 000/100 VUs, 420 complete and 0 interrupted iterations
+capacity   [  35% ] 000/100 VUs  14.0s/40s  30.00 iters/s
+
+running (0m15.0s), 000/100 VUs, 450 complete and 0 interrupted iterations
+capacity   [  37% ] 000/100 VUs  15.0s/40s  30.00 iters/s
+
+running (0m16.0s), 000/100 VUs, 480 complete and 0 interrupted iterations
+capacity   [  40% ] 000/100 VUs  16.0s/40s  30.00 iters/s
+
+running (0m17.0s), 000/100 VUs, 510 complete and 0 interrupted iterations
+capacity   [  42% ] 000/100 VUs  17.0s/40s  30.00 iters/s
+
+running (0m18.0s), 000/100 VUs, 540 complete and 0 interrupted iterations
+capacity   [  45% ] 000/100 VUs  18.0s/40s  30.00 iters/s
+
+running (0m19.0s), 000/100 VUs, 570 complete and 0 interrupted iterations
+capacity   [  47% ] 000/100 VUs  19.0s/40s  30.00 iters/s
+
+running (0m20.0s), 000/100 VUs, 600 complete and 0 interrupted iterations
+capacity   [  50% ] 000/100 VUs  20.0s/40s  30.00 iters/s
+
+running (0m21.0s), 000/100 VUs, 630 complete and 0 interrupted iterations
+capacity   [  52% ] 000/100 VUs  21.0s/40s  30.00 iters/s
+
+running (0m22.0s), 000/100 VUs, 660 complete and 0 interrupted iterations
+capacity   [  55% ] 000/100 VUs  22.0s/40s  30.00 iters/s
+
+running (0m23.0s), 000/100 VUs, 690 complete and 0 interrupted iterations
+capacity   [  57% ] 000/100 VUs  23.0s/40s  30.00 iters/s
+
+running (0m24.0s), 000/100 VUs, 720 complete and 0 interrupted iterations
+capacity   [  60% ] 000/100 VUs  24.0s/40s  30.00 iters/s
+[2026-10-27T00:52:51+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   22m   11Mi   
+checkout-69cf88477-hqbh5   1m    7Mi    
+checkout-69cf88477-zs8rx   1m    9Mi    
+
+running (0m25.0s), 000/100 VUs, 750 complete and 0 interrupted iterations
+capacity   [  62% ] 000/100 VUs  25.0s/40s  30.00 iters/s
+
+running (0m26.0s), 000/100 VUs, 780 complete and 0 interrupted iterations
+capacity   [  65% ] 000/100 VUs  26.0s/40s  30.00 iters/s
+
+running (0m27.0s), 000/100 VUs, 810 complete and 0 interrupted iterations
+capacity   [  67% ] 000/100 VUs  27.0s/40s  30.00 iters/s
+
+running (0m28.0s), 000/100 VUs, 840 complete and 0 interrupted iterations
+capacity   [  70% ] 000/100 VUs  28.0s/40s  30.00 iters/s
+
+running (0m29.0s), 000/100 VUs, 870 complete and 0 interrupted iterations
+capacity   [  72% ] 000/100 VUs  29.0s/40s  30.00 iters/s
+
+running (0m30.0s), 000/100 VUs, 900 complete and 0 interrupted iterations
+capacity   [  75% ] 000/100 VUs  30.0s/40s  30.00 iters/s
+
+running (0m31.0s), 000/100 VUs, 930 complete and 0 interrupted iterations
+capacity   [  77% ] 000/100 VUs  31.0s/40s  30.00 iters/s
+
+running (0m32.0s), 000/100 VUs, 960 complete and 0 interrupted iterations
+capacity   [  80% ] 000/100 VUs  32.0s/40s  30.00 iters/s
+
+running (0m33.0s), 000/100 VUs, 990 complete and 0 interrupted iterations
+capacity   [  82% ] 000/100 VUs  33.0s/40s  30.00 iters/s
+
+running (0m34.0s), 000/100 VUs, 1020 complete and 0 interrupted iterations
+capacity   [  85% ] 000/100 VUs  34.0s/40s  30.00 iters/s
+
+running (0m35.0s), 000/100 VUs, 1050 complete and 0 interrupted iterations
+capacity   [  87% ] 000/100 VUs  35.0s/40s  30.00 iters/s
+
+running (0m36.0s), 000/100 VUs, 1080 complete and 0 interrupted iterations
+capacity   [  90% ] 000/100 VUs  36.0s/40s  30.00 iters/s
+
+running (0m37.0s), 000/100 VUs, 1110 complete and 0 interrupted iterations
+capacity   [  92% ] 000/100 VUs  37.0s/40s  30.00 iters/s
+[2026-10-27T00:53:04+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   59m   12Mi   
+checkout-69cf88477-hqbh5   65m   9Mi    
+checkout-69cf88477-zs8rx   32m   10Mi   
+
+running (0m38.0s), 000/100 VUs, 1140 complete and 0 interrupted iterations
+capacity   [  95% ] 000/100 VUs  38.0s/40s  30.00 iters/s
+
+running (0m39.0s), 000/100 VUs, 1170 complete and 0 interrupted iterations
+capacity   [  97% ] 000/100 VUs  39.0s/40s  30.00 iters/s
+
+running (0m40.0s), 000/100 VUs, 1200 complete and 0 interrupted iterations
+capacity   [ 100% ] 000/100 VUs  40.0s/40s  30.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 1201    30.011622/s
+    checks_succeeded...: 100.00% 1201 out of 1201
+    checks_failed......: 0.00%   0 out of 1201
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=17ms   min=15.95ms med=17ms    max=29.71ms p(50)=17ms    p(90)=17.41ms p(95)=17.56ms p(99)=18.04ms
+      { expected_response:true }...: avg=17ms   min=15.95ms med=17ms    max=29.71ms p(50)=17ms    p(90)=17.41ms p(95)=17.56ms p(99)=18.04ms
+    http_req_failed................: 0.00%  0 out of 1201
+    http_reqs......................: 1201   30.011622/s
+
+    EXECUTION
+    iteration_duration.............: avg=17.4ms min=16.1ms  med=17.35ms max=31.13ms p(50)=17.35ms p(90)=17.94ms p(95)=18.33ms p(99)=19.09ms
+    iterations.....................: 1201   30.011622/s
+    vus............................: 0      min=0         max=0  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 167 kB 4.2 kB/s
+    data_sent......................: 147 kB 3.7 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 1201 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  30.00 iters/s
+[2026-10-27T00:53:07+0530] Loadavg1: 0.46, MemAvailable: 3756.9 MiB, Restarts: 0
+[2026-10-27T00:53:07+0530] fakedb peak active connections (40s): 1
+[2026-10-27T00:53:07+0530] pod_cpu_m_avg: 30.0 mCPU (sample1=8, sample2=52)
+[2026-10-27T00:53:07+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T00:53:07+0530] Resting 20s between stages...
+[2026-10-27T00:53:27+0530] ==================================================
+[2026-10-27T00:53:27+0530] Starting Stage: 60 RPS (duration 40s)
+[2026-10-27T00:53:27+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 60.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 002/100 VUs, 58 complete and 0 interrupted iterations
+capacity   [   2% ] 002/100 VUs  01.0s/40s  60.00 iters/s
+
+running (0m02.0s), 001/100 VUs, 119 complete and 0 interrupted iterations
+capacity   [   5% ] 001/100 VUs  02.0s/40s  60.00 iters/s
+
+running (0m03.0s), 001/100 VUs, 179 complete and 0 interrupted iterations
+capacity   [   7% ] 001/100 VUs  03.0s/40s  60.00 iters/s
+
+running (0m04.0s), 001/100 VUs, 239 complete and 0 interrupted iterations
+capacity   [  10% ] 001/100 VUs  04.0s/40s  60.00 iters/s
+
+running (0m05.0s), 001/100 VUs, 299 complete and 0 interrupted iterations
+capacity   [  12% ] 001/100 VUs  05.0s/40s  60.00 iters/s
+
+running (0m06.0s), 001/100 VUs, 359 complete and 0 interrupted iterations
+capacity   [  15% ] 001/100 VUs  06.0s/40s  60.00 iters/s
+
+running (0m07.0s), 001/100 VUs, 419 complete and 0 interrupted iterations
+capacity   [  17% ] 001/100 VUs  07.0s/40s  60.00 iters/s
+
+running (0m08.0s), 001/100 VUs, 479 complete and 0 interrupted iterations
+capacity   [  20% ] 001/100 VUs  08.0s/40s  60.00 iters/s
+
+running (0m09.0s), 001/100 VUs, 539 complete and 0 interrupted iterations
+capacity   [  22% ] 001/100 VUs  09.0s/40s  60.00 iters/s
+
+running (0m10.0s), 001/100 VUs, 599 complete and 0 interrupted iterations
+capacity   [  25% ] 001/100 VUs  10.0s/40s  60.00 iters/s
+
+running (0m11.0s), 001/100 VUs, 659 complete and 0 interrupted iterations
+capacity   [  27% ] 001/100 VUs  11.0s/40s  60.00 iters/s
+
+running (0m12.0s), 001/100 VUs, 719 complete and 0 interrupted iterations
+capacity   [  30% ] 001/100 VUs  12.0s/40s  60.00 iters/s
+
+running (0m13.0s), 001/100 VUs, 779 complete and 0 interrupted iterations
+capacity   [  32% ] 001/100 VUs  13.0s/40s  60.00 iters/s
+
+running (0m14.0s), 001/100 VUs, 839 complete and 0 interrupted iterations
+capacity   [  35% ] 001/100 VUs  14.0s/40s  60.00 iters/s
+
+running (0m15.0s), 001/100 VUs, 899 complete and 0 interrupted iterations
+capacity   [  37% ] 001/100 VUs  15.0s/40s  60.00 iters/s
+
+running (0m16.0s), 001/100 VUs, 959 complete and 0 interrupted iterations
+capacity   [  40% ] 001/100 VUs  16.0s/40s  60.00 iters/s
+
+running (0m17.0s), 001/100 VUs, 1019 complete and 0 interrupted iterations
+capacity   [  42% ] 001/100 VUs  17.0s/40s  60.00 iters/s
+
+running (0m18.0s), 001/100 VUs, 1079 complete and 0 interrupted iterations
+capacity   [  45% ] 001/100 VUs  18.0s/40s  60.00 iters/s
+
+running (0m19.0s), 001/100 VUs, 1139 complete and 0 interrupted iterations
+capacity   [  47% ] 001/100 VUs  19.0s/40s  60.00 iters/s
+
+running (0m20.0s), 001/100 VUs, 1199 complete and 0 interrupted iterations
+capacity   [  50% ] 001/100 VUs  20.0s/40s  60.00 iters/s
+
+running (0m21.0s), 001/100 VUs, 1259 complete and 0 interrupted iterations
+capacity   [  52% ] 001/100 VUs  21.0s/40s  60.00 iters/s
+
+running (0m22.0s), 001/100 VUs, 1319 complete and 0 interrupted iterations
+capacity   [  55% ] 001/100 VUs  22.0s/40s  60.00 iters/s
+
+running (0m23.0s), 001/100 VUs, 1379 complete and 0 interrupted iterations
+capacity   [  57% ] 001/100 VUs  23.0s/40s  60.00 iters/s
+
+running (0m24.0s), 001/100 VUs, 1439 complete and 0 interrupted iterations
+capacity   [  60% ] 001/100 VUs  24.0s/40s  60.00 iters/s
+[2026-10-27T00:53:52+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   118m   13Mi   
+checkout-69cf88477-hqbh5   115m   10Mi   
+checkout-69cf88477-zs8rx   113m   13Mi   
+
+running (0m25.0s), 001/100 VUs, 1499 complete and 0 interrupted iterations
+capacity   [  62% ] 001/100 VUs  25.0s/40s  60.00 iters/s
+
+running (0m26.0s), 002/100 VUs, 1558 complete and 0 interrupted iterations
+capacity   [  65% ] 002/100 VUs  26.0s/40s  60.00 iters/s
+
+running (0m27.0s), 001/100 VUs, 1619 complete and 0 interrupted iterations
+capacity   [  67% ] 001/100 VUs  27.0s/40s  60.00 iters/s
+
+running (0m28.0s), 001/100 VUs, 1679 complete and 0 interrupted iterations
+capacity   [  70% ] 001/100 VUs  28.0s/40s  60.00 iters/s
+
+running (0m29.0s), 001/100 VUs, 1739 complete and 0 interrupted iterations
+capacity   [  72% ] 001/100 VUs  29.0s/40s  60.00 iters/s
+
+running (0m30.0s), 001/100 VUs, 1799 complete and 0 interrupted iterations
+capacity   [  75% ] 001/100 VUs  30.0s/40s  60.00 iters/s
+
+running (0m31.0s), 001/100 VUs, 1859 complete and 0 interrupted iterations
+capacity   [  77% ] 001/100 VUs  31.0s/40s  60.00 iters/s
+
+running (0m32.0s), 001/100 VUs, 1919 complete and 0 interrupted iterations
+capacity   [  80% ] 001/100 VUs  32.0s/40s  60.00 iters/s
+
+running (0m33.0s), 001/100 VUs, 1979 complete and 0 interrupted iterations
+capacity   [  82% ] 001/100 VUs  33.0s/40s  60.00 iters/s
+
+running (0m34.0s), 001/100 VUs, 2039 complete and 0 interrupted iterations
+capacity   [  85% ] 001/100 VUs  34.0s/40s  60.00 iters/s
+
+running (0m35.0s), 001/100 VUs, 2099 complete and 0 interrupted iterations
+capacity   [  87% ] 001/100 VUs  35.0s/40s  60.00 iters/s
+
+running (0m36.0s), 001/100 VUs, 2159 complete and 0 interrupted iterations
+capacity   [  90% ] 001/100 VUs  36.0s/40s  60.00 iters/s
+
+running (0m37.0s), 001/100 VUs, 2219 complete and 0 interrupted iterations
+capacity   [  92% ] 001/100 VUs  37.0s/40s  60.00 iters/s
+[2026-10-27T00:54:05+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   118m   13Mi   
+checkout-69cf88477-hqbh5   115m   10Mi   
+checkout-69cf88477-zs8rx   113m   13Mi   
+
+running (0m38.0s), 001/100 VUs, 2279 complete and 0 interrupted iterations
+capacity   [  95% ] 001/100 VUs  38.0s/40s  60.00 iters/s
+
+running (0m39.0s), 001/100 VUs, 2339 complete and 0 interrupted iterations
+capacity   [  97% ] 001/100 VUs  39.0s/40s  60.00 iters/s
+
+running (0m40.0s), 001/100 VUs, 2399 complete and 0 interrupted iterations
+capacity   [ 100% ] 001/100 VUs  40.0s/40s  60.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 2401    59.998663/s
+    checks_succeeded...: 100.00% 2401 out of 2401
+    checks_failed......: 0.00%   0 out of 2401
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=16.51ms min=15.66ms med=16.52ms max=17.85ms p(50)=16.52ms p(90)=16.78ms p(95)=16.89ms p(99)=17.16ms
+      { expected_response:true }...: avg=16.51ms min=15.66ms med=16.52ms max=17.85ms p(50)=16.52ms p(90)=16.78ms p(95)=16.89ms p(99)=17.16ms
+    http_req_failed................: 0.00%  0 out of 2401
+    http_reqs......................: 2401   59.998663/s
+
+    EXECUTION
+    iteration_duration.............: avg=16.78ms min=15.8ms  med=16.76ms max=22.81ms p(50)=16.76ms p(90)=17.08ms p(95)=17.29ms p(99)=17.83ms
+    iterations.....................: 2401   59.998663/s
+    vus............................: 1      min=1         max=2  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 334 kB 8.3 kB/s
+    data_sent......................: 293 kB 7.3 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 2401 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  60.00 iters/s
+[2026-10-27T00:54:08+0530] Loadavg1: 0.68, MemAvailable: 3645.8 MiB, Restarts: 0
+[2026-10-27T00:54:08+0530] fakedb peak active connections (40s): 1
+[2026-10-27T00:54:08+0530] pod_cpu_m_avg: 115.3 mCPU (sample1=115.333, sample2=115.333)
+[2026-10-27T00:54:08+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T00:54:08+0530] Resting 20s between stages...
+[2026-10-27T00:54:28+0530] ==================================================
+[2026-10-27T00:54:28+0530] Starting Stage: 90 RPS (duration 40s)
+[2026-10-27T00:54:28+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 90.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 001/100 VUs, 88 complete and 0 interrupted iterations
+capacity   [   2% ] 001/100 VUs  01.0s/40s  90.00 iters/s
+
+running (0m02.0s), 001/100 VUs, 178 complete and 0 interrupted iterations
+capacity   [   5% ] 001/100 VUs  02.0s/40s  90.00 iters/s
+
+running (0m03.0s), 001/100 VUs, 268 complete and 0 interrupted iterations
+capacity   [   7% ] 001/100 VUs  03.0s/40s  90.00 iters/s
+
+running (0m04.0s), 001/100 VUs, 358 complete and 0 interrupted iterations
+capacity   [  10% ] 001/100 VUs  04.0s/40s  90.00 iters/s
+
+running (0m05.0s), 001/100 VUs, 448 complete and 0 interrupted iterations
+capacity   [  12% ] 001/100 VUs  05.0s/40s  90.00 iters/s
+
+running (0m06.0s), 001/100 VUs, 538 complete and 0 interrupted iterations
+capacity   [  15% ] 001/100 VUs  06.0s/40s  90.00 iters/s
+
+running (0m07.0s), 001/100 VUs, 628 complete and 0 interrupted iterations
+capacity   [  17% ] 001/100 VUs  07.0s/40s  90.00 iters/s
+
+running (0m08.0s), 001/100 VUs, 718 complete and 0 interrupted iterations
+capacity   [  20% ] 001/100 VUs  08.0s/40s  90.00 iters/s
+
+running (0m09.0s), 001/100 VUs, 808 complete and 0 interrupted iterations
+capacity   [  22% ] 001/100 VUs  09.0s/40s  90.00 iters/s
+
+running (0m10.0s), 001/100 VUs, 898 complete and 0 interrupted iterations
+capacity   [  25% ] 001/100 VUs  10.0s/40s  90.00 iters/s
+
+running (0m11.0s), 001/100 VUs, 988 complete and 0 interrupted iterations
+capacity   [  27% ] 001/100 VUs  11.0s/40s  90.00 iters/s
+
+running (0m12.0s), 001/100 VUs, 1078 complete and 0 interrupted iterations
+capacity   [  30% ] 001/100 VUs  12.0s/40s  90.00 iters/s
+
+running (0m13.0s), 001/100 VUs, 1168 complete and 0 interrupted iterations
+capacity   [  32% ] 001/100 VUs  13.0s/40s  90.00 iters/s
+
+running (0m14.0s), 001/100 VUs, 1258 complete and 0 interrupted iterations
+capacity   [  35% ] 001/100 VUs  14.0s/40s  90.00 iters/s
+
+running (0m15.0s), 001/100 VUs, 1348 complete and 0 interrupted iterations
+capacity   [  37% ] 001/100 VUs  15.0s/40s  90.00 iters/s
+
+running (0m16.0s), 001/100 VUs, 1438 complete and 0 interrupted iterations
+capacity   [  40% ] 001/100 VUs  16.0s/40s  90.00 iters/s
+
+running (0m17.0s), 001/100 VUs, 1528 complete and 0 interrupted iterations
+capacity   [  42% ] 001/100 VUs  17.0s/40s  90.00 iters/s
+
+running (0m18.0s), 001/100 VUs, 1618 complete and 0 interrupted iterations
+capacity   [  45% ] 001/100 VUs  18.0s/40s  90.00 iters/s
+
+running (0m19.0s), 001/100 VUs, 1708 complete and 0 interrupted iterations
+capacity   [  47% ] 001/100 VUs  19.0s/40s  90.00 iters/s
+
+running (0m20.0s), 001/100 VUs, 1798 complete and 0 interrupted iterations
+capacity   [  50% ] 001/100 VUs  20.0s/40s  90.00 iters/s
+
+running (0m21.0s), 001/100 VUs, 1888 complete and 0 interrupted iterations
+capacity   [  52% ] 001/100 VUs  21.0s/40s  90.00 iters/s
+
+running (0m22.0s), 001/100 VUs, 1978 complete and 0 interrupted iterations
+capacity   [  55% ] 001/100 VUs  22.0s/40s  90.00 iters/s
+
+running (0m23.0s), 001/100 VUs, 2068 complete and 0 interrupted iterations
+capacity   [  57% ] 001/100 VUs  23.0s/40s  90.00 iters/s
+
+running (0m24.0s), 001/100 VUs, 2158 complete and 0 interrupted iterations
+capacity   [  60% ] 001/100 VUs  24.0s/40s  90.00 iters/s
+[2026-10-27T00:54:53+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   112m   13Mi   
+checkout-69cf88477-hqbh5   91m    10Mi   
+checkout-69cf88477-zs8rx   79m    13Mi   
+
+running (0m25.0s), 001/100 VUs, 2248 complete and 0 interrupted iterations
+capacity   [  62% ] 001/100 VUs  25.0s/40s  90.00 iters/s
+
+running (0m26.0s), 001/100 VUs, 2338 complete and 0 interrupted iterations
+capacity   [  65% ] 001/100 VUs  26.0s/40s  90.00 iters/s
+
+running (0m27.0s), 001/100 VUs, 2428 complete and 0 interrupted iterations
+capacity   [  67% ] 001/100 VUs  27.0s/40s  90.00 iters/s
+
+running (0m28.0s), 001/100 VUs, 2518 complete and 0 interrupted iterations
+capacity   [  70% ] 001/100 VUs  28.0s/40s  90.00 iters/s
+
+running (0m29.0s), 001/100 VUs, 2608 complete and 0 interrupted iterations
+capacity   [  72% ] 001/100 VUs  29.0s/40s  90.00 iters/s
+
+running (0m30.0s), 001/100 VUs, 2698 complete and 0 interrupted iterations
+capacity   [  75% ] 001/100 VUs  30.0s/40s  90.00 iters/s
+
+running (0m31.0s), 002/100 VUs, 2787 complete and 0 interrupted iterations
+capacity   [  77% ] 002/100 VUs  31.0s/40s  90.00 iters/s
+
+running (0m32.0s), 001/100 VUs, 2878 complete and 0 interrupted iterations
+capacity   [  80% ] 001/100 VUs  32.0s/40s  90.00 iters/s
+
+running (0m33.0s), 001/100 VUs, 2968 complete and 0 interrupted iterations
+capacity   [  82% ] 001/100 VUs  33.0s/40s  90.00 iters/s
+
+running (0m34.0s), 001/100 VUs, 3058 complete and 0 interrupted iterations
+capacity   [  85% ] 001/100 VUs  34.0s/40s  90.00 iters/s
+
+running (0m35.0s), 001/100 VUs, 3148 complete and 0 interrupted iterations
+capacity   [  87% ] 001/100 VUs  35.0s/40s  90.00 iters/s
+
+running (0m36.0s), 001/100 VUs, 3238 complete and 0 interrupted iterations
+capacity   [  90% ] 001/100 VUs  36.0s/40s  90.00 iters/s
+
+running (0m37.0s), 001/100 VUs, 3328 complete and 0 interrupted iterations
+capacity   [  92% ] 001/100 VUs  37.0s/40s  90.00 iters/s
+[2026-10-27T00:55:06+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   187m   12Mi   
+checkout-69cf88477-hqbh5   172m   9Mi    
+checkout-69cf88477-zs8rx   161m   11Mi   
+
+running (0m38.0s), 001/100 VUs, 3418 complete and 0 interrupted iterations
+capacity   [  95% ] 001/100 VUs  38.0s/40s  90.00 iters/s
+
+running (0m39.0s), 001/100 VUs, 3508 complete and 0 interrupted iterations
+capacity   [  97% ] 001/100 VUs  39.0s/40s  90.00 iters/s
+
+running (0m40.0s), 001/100 VUs, 3598 complete and 0 interrupted iterations
+capacity   [ 100% ] 001/100 VUs  40.0s/40s  90.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 3601    89.983384/s
+    checks_succeeded...: 100.00% 3601 out of 3601
+    checks_failed......: 0.00%   0 out of 3601
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=16.4ms  min=15.68ms med=16.39ms max=18.56ms p(50)=16.39ms p(90)=16.7ms p(95)=16.83ms p(99)=17.15ms
+      { expected_response:true }...: avg=16.4ms  min=15.68ms med=16.39ms max=18.56ms p(50)=16.39ms p(90)=16.7ms p(95)=16.83ms p(99)=17.15ms
+    http_req_failed................: 0.00%  0 out of 3601
+    http_reqs......................: 3601   89.983384/s
+
+    EXECUTION
+    iteration_duration.............: avg=16.65ms min=15.8ms  med=16.62ms max=22.87ms p(50)=16.62ms p(90)=17ms   p(95)=17.16ms p(99)=17.68ms
+    iterations.....................: 3601   89.983384/s
+    vus............................: 1      min=1         max=2  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 501 kB 13 kB/s
+    data_sent......................: 439 kB 11 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 3601 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  90.00 iters/s
+[2026-10-27T00:55:09+0530] Loadavg1: 0.97, MemAvailable: 3640.9 MiB, Restarts: 0
+[2026-10-27T00:55:09+0530] fakedb peak active connections (40s): 1
+[2026-10-27T00:55:09+0530] pod_cpu_m_avg: 133.7 mCPU (sample1=94, sample2=173.333)
+[2026-10-27T00:55:09+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T00:55:09+0530] Resting 20s between stages...
+[2026-10-27T00:55:29+0530] ==================================================
+[2026-10-27T00:55:29+0530] Starting Stage: 120 RPS (duration 40s)
+[2026-10-27T00:55:29+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 120.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 002/100 VUs, 116 complete and 0 interrupted iterations
+capacity   [   2% ] 002/100 VUs  01.0s/40s  120.00 iters/s
+
+running (0m02.0s), 002/100 VUs, 236 complete and 0 interrupted iterations
+capacity   [   5% ] 002/100 VUs  02.0s/40s  120.00 iters/s
+
+running (0m03.0s), 002/100 VUs, 356 complete and 0 interrupted iterations
+capacity   [   7% ] 002/100 VUs  03.0s/40s  120.00 iters/s
+
+running (0m04.0s), 002/100 VUs, 476 complete and 0 interrupted iterations
+capacity   [  10% ] 002/100 VUs  04.0s/40s  120.00 iters/s
+
+running (0m05.0s), 002/100 VUs, 596 complete and 0 interrupted iterations
+capacity   [  12% ] 002/100 VUs  05.0s/40s  120.00 iters/s
+
+running (0m06.0s), 002/100 VUs, 716 complete and 0 interrupted iterations
+capacity   [  15% ] 002/100 VUs  06.0s/40s  120.00 iters/s
+
+running (0m07.0s), 002/100 VUs, 836 complete and 0 interrupted iterations
+capacity   [  17% ] 002/100 VUs  07.0s/40s  120.00 iters/s
+
+running (0m08.0s), 002/100 VUs, 956 complete and 0 interrupted iterations
+capacity   [  20% ] 002/100 VUs  08.0s/40s  120.00 iters/s
+
+running (0m09.0s), 002/100 VUs, 1076 complete and 0 interrupted iterations
+capacity   [  22% ] 002/100 VUs  09.0s/40s  120.00 iters/s
+
+running (0m10.0s), 002/100 VUs, 1196 complete and 0 interrupted iterations
+capacity   [  25% ] 002/100 VUs  10.0s/40s  120.00 iters/s
+
+running (0m11.0s), 002/100 VUs, 1316 complete and 0 interrupted iterations
+capacity   [  27% ] 002/100 VUs  11.0s/40s  120.00 iters/s
+
+running (0m12.0s), 002/100 VUs, 1436 complete and 0 interrupted iterations
+capacity   [  30% ] 002/100 VUs  12.0s/40s  120.00 iters/s
+
+running (0m13.0s), 002/100 VUs, 1556 complete and 0 interrupted iterations
+capacity   [  32% ] 002/100 VUs  13.0s/40s  120.00 iters/s
+
+running (0m14.0s), 002/100 VUs, 1676 complete and 0 interrupted iterations
+capacity   [  35% ] 002/100 VUs  14.0s/40s  120.00 iters/s
+
+running (0m15.0s), 002/100 VUs, 1796 complete and 0 interrupted iterations
+capacity   [  37% ] 002/100 VUs  15.0s/40s  120.00 iters/s
+
+running (0m16.0s), 002/100 VUs, 1916 complete and 0 interrupted iterations
+capacity   [  40% ] 002/100 VUs  16.0s/40s  120.00 iters/s
+
+running (0m17.0s), 002/100 VUs, 2036 complete and 0 interrupted iterations
+capacity   [  42% ] 002/100 VUs  17.0s/40s  120.00 iters/s
+
+running (0m18.0s), 002/100 VUs, 2156 complete and 0 interrupted iterations
+capacity   [  45% ] 002/100 VUs  18.0s/40s  120.00 iters/s
+
+running (0m19.0s), 002/100 VUs, 2276 complete and 0 interrupted iterations
+capacity   [  47% ] 002/100 VUs  19.0s/40s  120.00 iters/s
+
+running (0m20.0s), 002/100 VUs, 2396 complete and 0 interrupted iterations
+capacity   [  50% ] 002/100 VUs  20.0s/40s  120.00 iters/s
+
+running (0m21.0s), 002/100 VUs, 2516 complete and 0 interrupted iterations
+capacity   [  52% ] 002/100 VUs  21.0s/40s  120.00 iters/s
+
+running (0m22.0s), 002/100 VUs, 2636 complete and 0 interrupted iterations
+capacity   [  55% ] 002/100 VUs  22.0s/40s  120.00 iters/s
+
+running (0m23.0s), 002/100 VUs, 2756 complete and 0 interrupted iterations
+capacity   [  57% ] 002/100 VUs  23.0s/40s  120.00 iters/s
+
+running (0m24.0s), 002/100 VUs, 2876 complete and 0 interrupted iterations
+capacity   [  60% ] 002/100 VUs  24.0s/40s  120.00 iters/s
+[2026-10-27T00:55:54+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   185m   13Mi   
+checkout-69cf88477-hqbh5   188m   8Mi    
+checkout-69cf88477-zs8rx   126m   13Mi   
+
+running (0m25.0s), 002/100 VUs, 2996 complete and 0 interrupted iterations
+capacity   [  62% ] 002/100 VUs  25.0s/40s  120.00 iters/s
+
+running (0m26.0s), 002/100 VUs, 3116 complete and 0 interrupted iterations
+capacity   [  65% ] 002/100 VUs  26.0s/40s  120.00 iters/s
+
+running (0m27.0s), 002/100 VUs, 3236 complete and 0 interrupted iterations
+capacity   [  67% ] 002/100 VUs  27.0s/40s  120.00 iters/s
+
+running (0m28.0s), 002/100 VUs, 3356 complete and 0 interrupted iterations
+capacity   [  70% ] 002/100 VUs  28.0s/40s  120.00 iters/s
+
+running (0m29.0s), 002/100 VUs, 3476 complete and 0 interrupted iterations
+capacity   [  72% ] 002/100 VUs  29.0s/40s  120.00 iters/s
+
+running (0m30.0s), 002/100 VUs, 3596 complete and 0 interrupted iterations
+capacity   [  75% ] 002/100 VUs  30.0s/40s  120.00 iters/s
+
+running (0m31.0s), 002/100 VUs, 3716 complete and 0 interrupted iterations
+capacity   [  77% ] 002/100 VUs  31.0s/40s  120.00 iters/s
+
+running (0m32.0s), 002/100 VUs, 3836 complete and 0 interrupted iterations
+capacity   [  80% ] 002/100 VUs  32.0s/40s  120.00 iters/s
+
+running (0m33.0s), 002/100 VUs, 3956 complete and 0 interrupted iterations
+capacity   [  82% ] 002/100 VUs  33.0s/40s  120.00 iters/s
+
+running (0m34.0s), 002/100 VUs, 4076 complete and 0 interrupted iterations
+capacity   [  85% ] 002/100 VUs  34.0s/40s  120.00 iters/s
+
+running (0m35.0s), 002/100 VUs, 4196 complete and 0 interrupted iterations
+capacity   [  87% ] 002/100 VUs  35.0s/40s  120.00 iters/s
+
+running (0m36.0s), 002/100 VUs, 4316 complete and 0 interrupted iterations
+capacity   [  90% ] 002/100 VUs  36.0s/40s  120.00 iters/s
+
+running (0m37.0s), 002/100 VUs, 4436 complete and 0 interrupted iterations
+capacity   [  92% ] 002/100 VUs  37.0s/40s  120.00 iters/s
+[2026-10-27T00:56:07+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   220m   11Mi   
+checkout-69cf88477-hqbh5   266m   8Mi    
+checkout-69cf88477-zs8rx   199m   10Mi   
+
+running (0m38.0s), 002/100 VUs, 4556 complete and 0 interrupted iterations
+capacity   [  95% ] 002/100 VUs  38.0s/40s  120.00 iters/s
+
+running (0m39.0s), 002/100 VUs, 4676 complete and 0 interrupted iterations
+capacity   [  97% ] 002/100 VUs  39.0s/40s  120.00 iters/s
+
+running (0m40.0s), 002/100 VUs, 4796 complete and 0 interrupted iterations
+capacity   [ 100% ] 002/100 VUs  40.0s/40s  120.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 4801    119.97299/s
+    checks_succeeded...: 100.00% 4801 out of 4801
+    checks_failed......: 0.00%   0 out of 4801
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=16.56ms min=15.56ms med=16.53ms max=24.88ms p(50)=16.53ms p(90)=17.01ms p(95)=17.18ms p(99)=17.58ms
+      { expected_response:true }...: avg=16.56ms min=15.56ms med=16.53ms max=24.88ms p(50)=16.53ms p(90)=17.01ms p(95)=17.18ms p(99)=17.58ms
+    http_req_failed................: 0.00%  0 out of 4801
+    http_reqs......................: 4801   119.97299/s
+
+    EXECUTION
+    iteration_duration.............: avg=16.79ms min=15.69ms med=16.75ms max=27.57ms p(50)=16.75ms p(90)=17.29ms p(95)=17.49ms p(99)=18.24ms
+    iterations.....................: 4801   119.97299/s
+    vus............................: 2      min=2         max=2  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 667 kB 17 kB/s
+    data_sent......................: 586 kB 15 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 4801 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  120.00 iters/s
+[2026-10-27T00:56:10+0530] Loadavg1: 2.15, MemAvailable: 3678.6 MiB, Restarts: 0
+[2026-10-27T00:56:10+0530] fakedb peak active connections (40s): 1
+[2026-10-27T00:56:10+0530] pod_cpu_m_avg: 197.3 mCPU (sample1=166.333, sample2=228.333)
+[2026-10-27T00:56:10+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T00:56:10+0530] Resting 20s between stages...
+[2026-10-27T00:56:30+0530] ==================================================
+[2026-10-27T00:56:30+0530] Starting Stage: 150 RPS (duration 40s)
+[2026-10-27T00:56:30+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 150.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 002/100 VUs, 146 complete and 0 interrupted iterations
+capacity   [   2% ] 002/100 VUs  01.0s/40s  150.00 iters/s
+
+running (0m02.0s), 002/100 VUs, 296 complete and 0 interrupted iterations
+capacity   [   5% ] 002/100 VUs  02.0s/40s  150.00 iters/s
+
+running (0m03.0s), 002/100 VUs, 446 complete and 0 interrupted iterations
+capacity   [   7% ] 002/100 VUs  03.0s/40s  150.00 iters/s
+
+running (0m04.0s), 002/100 VUs, 596 complete and 0 interrupted iterations
+capacity   [  10% ] 002/100 VUs  04.0s/40s  150.00 iters/s
+
+running (0m05.0s), 002/100 VUs, 746 complete and 0 interrupted iterations
+capacity   [  12% ] 002/100 VUs  05.0s/40s  150.00 iters/s
+
+running (0m06.0s), 002/100 VUs, 896 complete and 0 interrupted iterations
+capacity   [  15% ] 002/100 VUs  06.0s/40s  150.00 iters/s
+
+running (0m07.0s), 002/100 VUs, 1046 complete and 0 interrupted iterations
+capacity   [  17% ] 002/100 VUs  07.0s/40s  150.00 iters/s
+
+running (0m08.0s), 002/100 VUs, 1196 complete and 0 interrupted iterations
+capacity   [  20% ] 002/100 VUs  08.0s/40s  150.00 iters/s
+
+running (0m09.0s), 002/100 VUs, 1346 complete and 0 interrupted iterations
+capacity   [  22% ] 002/100 VUs  09.0s/40s  150.00 iters/s
+
+running (0m10.0s), 002/100 VUs, 1496 complete and 0 interrupted iterations
+capacity   [  25% ] 002/100 VUs  10.0s/40s  150.00 iters/s
+
+running (0m11.0s), 002/100 VUs, 1646 complete and 0 interrupted iterations
+capacity   [  27% ] 002/100 VUs  11.0s/40s  150.00 iters/s
+
+running (0m12.0s), 002/100 VUs, 1796 complete and 0 interrupted iterations
+capacity   [  30% ] 002/100 VUs  12.0s/40s  150.00 iters/s
+
+running (0m13.0s), 002/100 VUs, 1946 complete and 0 interrupted iterations
+capacity   [  32% ] 002/100 VUs  13.0s/40s  150.00 iters/s
+
+running (0m14.0s), 002/100 VUs, 2096 complete and 0 interrupted iterations
+capacity   [  35% ] 002/100 VUs  14.0s/40s  150.00 iters/s
+
+running (0m15.0s), 002/100 VUs, 2246 complete and 0 interrupted iterations
+capacity   [  37% ] 002/100 VUs  15.0s/40s  150.00 iters/s
+
+running (0m16.0s), 002/100 VUs, 2396 complete and 0 interrupted iterations
+capacity   [  40% ] 002/100 VUs  16.0s/40s  150.00 iters/s
+
+running (0m17.0s), 002/100 VUs, 2546 complete and 0 interrupted iterations
+capacity   [  42% ] 002/100 VUs  17.0s/40s  150.00 iters/s
+
+running (0m18.0s), 002/100 VUs, 2696 complete and 0 interrupted iterations
+capacity   [  45% ] 002/100 VUs  18.0s/40s  150.00 iters/s
+
+running (0m19.0s), 002/100 VUs, 2846 complete and 0 interrupted iterations
+capacity   [  47% ] 002/100 VUs  19.0s/40s  150.00 iters/s
+
+running (0m20.0s), 002/100 VUs, 2996 complete and 0 interrupted iterations
+capacity   [  50% ] 002/100 VUs  20.0s/40s  150.00 iters/s
+
+running (0m21.0s), 002/100 VUs, 3146 complete and 0 interrupted iterations
+capacity   [  52% ] 002/100 VUs  21.0s/40s  150.00 iters/s
+
+running (0m22.0s), 002/100 VUs, 3296 complete and 0 interrupted iterations
+capacity   [  55% ] 002/100 VUs  22.0s/40s  150.00 iters/s
+
+running (0m23.0s), 002/100 VUs, 3446 complete and 0 interrupted iterations
+capacity   [  57% ] 002/100 VUs  23.0s/40s  150.00 iters/s
+
+running (0m24.0s), 002/100 VUs, 3596 complete and 0 interrupted iterations
+capacity   [  60% ] 002/100 VUs  24.0s/40s  150.00 iters/s
+[2026-10-27T00:56:55+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   79m    13Mi   
+checkout-69cf88477-hqbh5   196m   10Mi   
+checkout-69cf88477-zs8rx   299m   12Mi   
+
+running (0m25.0s), 002/100 VUs, 3746 complete and 0 interrupted iterations
+capacity   [  62% ] 002/100 VUs  25.0s/40s  150.00 iters/s
+
+running (0m26.0s), 002/100 VUs, 3896 complete and 0 interrupted iterations
+capacity   [  65% ] 002/100 VUs  26.0s/40s  150.00 iters/s
+
+running (0m27.0s), 002/100 VUs, 4046 complete and 0 interrupted iterations
+capacity   [  67% ] 002/100 VUs  27.0s/40s  150.00 iters/s
+
+running (0m28.0s), 002/100 VUs, 4196 complete and 0 interrupted iterations
+capacity   [  70% ] 002/100 VUs  28.0s/40s  150.00 iters/s
+
+running (0m29.0s), 002/100 VUs, 4346 complete and 0 interrupted iterations
+capacity   [  72% ] 002/100 VUs  29.0s/40s  150.00 iters/s
+
+running (0m30.0s), 002/100 VUs, 4496 complete and 0 interrupted iterations
+capacity   [  75% ] 002/100 VUs  30.0s/40s  150.00 iters/s
+
+running (0m31.0s), 002/100 VUs, 4646 complete and 0 interrupted iterations
+capacity   [  77% ] 002/100 VUs  31.0s/40s  150.00 iters/s
+
+running (0m32.0s), 002/100 VUs, 4796 complete and 0 interrupted iterations
+capacity   [  80% ] 002/100 VUs  32.0s/40s  150.00 iters/s
+
+running (0m33.0s), 002/100 VUs, 4946 complete and 0 interrupted iterations
+capacity   [  82% ] 002/100 VUs  33.0s/40s  150.00 iters/s
+
+running (0m34.0s), 002/100 VUs, 5096 complete and 0 interrupted iterations
+capacity   [  85% ] 002/100 VUs  34.0s/40s  150.00 iters/s
+
+running (0m35.0s), 002/100 VUs, 5246 complete and 0 interrupted iterations
+capacity   [  87% ] 002/100 VUs  35.0s/40s  150.00 iters/s
+
+running (0m36.0s), 002/100 VUs, 5396 complete and 0 interrupted iterations
+capacity   [  90% ] 002/100 VUs  36.0s/40s  150.00 iters/s
+
+running (0m37.0s), 002/100 VUs, 5546 complete and 0 interrupted iterations
+capacity   [  92% ] 002/100 VUs  37.0s/40s  150.00 iters/s
+[2026-10-27T00:57:09+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   266m   13Mi   
+checkout-69cf88477-hqbh5   266m   8Mi    
+checkout-69cf88477-zs8rx   300m   11Mi   
+
+running (0m38.0s), 002/100 VUs, 5696 complete and 0 interrupted iterations
+capacity   [  95% ] 002/100 VUs  38.0s/40s  150.00 iters/s
+
+running (0m39.0s), 002/100 VUs, 5846 complete and 0 interrupted iterations
+capacity   [  97% ] 002/100 VUs  39.0s/40s  150.00 iters/s
+
+running (0m40.0s), 002/100 VUs, 5996 complete and 0 interrupted iterations
+capacity   [ 100% ] 002/100 VUs  40.0s/40s  150.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 6001    149.960679/s
+    checks_succeeded...: 100.00% 6001 out of 6001
+    checks_failed......: 0.00%   0 out of 6001
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=16.41ms min=15.5ms  med=16.44ms max=19.37ms p(50)=16.44ms p(90)=16.8ms  p(95)=16.87ms p(99)=17.06ms
+      { expected_response:true }...: avg=16.41ms min=15.5ms  med=16.44ms max=19.37ms p(50)=16.44ms p(90)=16.8ms  p(95)=16.87ms p(99)=17.06ms
+    http_req_failed................: 0.00%  0 out of 6001
+    http_reqs......................: 6001   149.960679/s
+
+    EXECUTION
+    iteration_duration.............: avg=16.58ms min=15.59ms med=16.6ms  max=26.01ms p(50)=16.6ms  p(90)=16.98ms p(95)=17.06ms p(99)=17.4ms 
+    iterations.....................: 6001   149.960679/s
+    vus............................: 2      min=2         max=2  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 834 kB 21 kB/s
+    data_sent......................: 732 kB 18 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 6001 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  150.00 iters/s
+[2026-10-27T00:57:11+0530] Loadavg1: 1.63, MemAvailable: 3702.2 MiB, Restarts: 0
+[2026-10-27T00:57:11+0530] fakedb peak active connections (40s): 1
+[2026-10-27T00:57:12+0530] pod_cpu_m_avg: 234.3 mCPU (sample1=191.333, sample2=277.333)
+[2026-10-27T00:57:12+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T00:57:12+0530] Resting 20s between stages...
+[2026-10-27T00:57:32+0530] ==================================================
+[2026-10-27T00:57:32+0530] Starting Stage: 180 RPS (duration 40s)
+[2026-10-27T00:57:32+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 180.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 003/100 VUs, 175 complete and 0 interrupted iterations
+capacity   [   2% ] 003/100 VUs  01.0s/40s  180.00 iters/s
+
+running (0m02.0s), 003/100 VUs, 355 complete and 0 interrupted iterations
+capacity   [   5% ] 003/100 VUs  02.0s/40s  180.00 iters/s
+
+running (0m03.0s), 003/100 VUs, 535 complete and 0 interrupted iterations
+capacity   [   7% ] 003/100 VUs  03.0s/40s  180.00 iters/s
+
+running (0m04.0s), 003/100 VUs, 715 complete and 0 interrupted iterations
+capacity   [  10% ] 003/100 VUs  04.0s/40s  180.00 iters/s
+
+running (0m05.0s), 003/100 VUs, 895 complete and 0 interrupted iterations
+capacity   [  12% ] 003/100 VUs  05.0s/40s  180.00 iters/s
+
+running (0m06.0s), 003/100 VUs, 1075 complete and 0 interrupted iterations
+capacity   [  15% ] 003/100 VUs  06.0s/40s  180.00 iters/s
+
+running (0m07.0s), 003/100 VUs, 1255 complete and 0 interrupted iterations
+capacity   [  17% ] 003/100 VUs  07.0s/40s  180.00 iters/s
+
+running (0m08.0s), 003/100 VUs, 1435 complete and 0 interrupted iterations
+capacity   [  20% ] 003/100 VUs  08.0s/40s  180.00 iters/s
+
+running (0m09.0s), 003/100 VUs, 1615 complete and 0 interrupted iterations
+capacity   [  22% ] 003/100 VUs  09.0s/40s  180.00 iters/s
+
+running (0m10.0s), 003/100 VUs, 1795 complete and 0 interrupted iterations
+capacity   [  25% ] 003/100 VUs  10.0s/40s  180.00 iters/s
+
+running (0m11.0s), 003/100 VUs, 1975 complete and 0 interrupted iterations
+capacity   [  27% ] 003/100 VUs  11.0s/40s  180.00 iters/s
+
+running (0m12.0s), 003/100 VUs, 2155 complete and 0 interrupted iterations
+capacity   [  30% ] 003/100 VUs  12.0s/40s  180.00 iters/s
+
+running (0m13.0s), 003/100 VUs, 2335 complete and 0 interrupted iterations
+capacity   [  32% ] 003/100 VUs  13.0s/40s  180.00 iters/s
+
+running (0m14.0s), 003/100 VUs, 2515 complete and 0 interrupted iterations
+capacity   [  35% ] 003/100 VUs  14.0s/40s  180.00 iters/s
+
+running (0m15.0s), 003/100 VUs, 2695 complete and 0 interrupted iterations
+capacity   [  37% ] 003/100 VUs  15.0s/40s  180.00 iters/s
+
+running (0m16.0s), 003/100 VUs, 2875 complete and 0 interrupted iterations
+capacity   [  40% ] 003/100 VUs  16.0s/40s  180.00 iters/s
+
+running (0m17.0s), 003/100 VUs, 3055 complete and 0 interrupted iterations
+capacity   [  42% ] 003/100 VUs  17.0s/40s  180.00 iters/s
+
+running (0m18.0s), 003/100 VUs, 3235 complete and 0 interrupted iterations
+capacity   [  45% ] 003/100 VUs  18.0s/40s  180.00 iters/s
+
+running (0m19.0s), 003/100 VUs, 3415 complete and 0 interrupted iterations
+capacity   [  47% ] 003/100 VUs  19.0s/40s  180.00 iters/s
+
+running (0m20.0s), 003/100 VUs, 3595 complete and 0 interrupted iterations
+capacity   [  50% ] 003/100 VUs  20.0s/40s  180.00 iters/s
+
+running (0m21.0s), 003/100 VUs, 3775 complete and 0 interrupted iterations
+capacity   [  52% ] 003/100 VUs  21.0s/40s  180.00 iters/s
+
+running (0m22.0s), 003/100 VUs, 3955 complete and 0 interrupted iterations
+capacity   [  55% ] 003/100 VUs  22.0s/40s  180.00 iters/s
+
+running (0m23.0s), 003/100 VUs, 4135 complete and 0 interrupted iterations
+capacity   [  57% ] 003/100 VUs  23.0s/40s  180.00 iters/s
+
+running (0m24.0s), 003/100 VUs, 4315 complete and 0 interrupted iterations
+capacity   [  60% ] 003/100 VUs  24.0s/40s  180.00 iters/s
+[2026-10-27T00:57:57+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   53m    13Mi   
+checkout-69cf88477-hqbh5   221m   9Mi    
+checkout-69cf88477-zs8rx   62m    11Mi   
+
+running (0m25.0s), 003/100 VUs, 4495 complete and 0 interrupted iterations
+capacity   [  62% ] 003/100 VUs  25.0s/40s  180.00 iters/s
+
+running (0m26.0s), 003/100 VUs, 4675 complete and 0 interrupted iterations
+capacity   [  65% ] 003/100 VUs  26.0s/40s  180.00 iters/s
+
+running (0m27.0s), 003/100 VUs, 4855 complete and 0 interrupted iterations
+capacity   [  67% ] 003/100 VUs  27.0s/40s  180.00 iters/s
+
+running (0m28.0s), 003/100 VUs, 5035 complete and 0 interrupted iterations
+capacity   [  70% ] 003/100 VUs  28.0s/40s  180.00 iters/s
+
+running (0m29.0s), 003/100 VUs, 5215 complete and 0 interrupted iterations
+capacity   [  72% ] 003/100 VUs  29.0s/40s  180.00 iters/s
+
+running (0m30.0s), 003/100 VUs, 5395 complete and 0 interrupted iterations
+capacity   [  75% ] 003/100 VUs  30.0s/40s  180.00 iters/s
+
+running (0m31.0s), 003/100 VUs, 5575 complete and 0 interrupted iterations
+capacity   [  77% ] 003/100 VUs  31.0s/40s  180.00 iters/s
+
+running (0m32.0s), 003/100 VUs, 5755 complete and 0 interrupted iterations
+capacity   [  80% ] 003/100 VUs  32.0s/40s  180.00 iters/s
+
+running (0m33.0s), 003/100 VUs, 5935 complete and 0 interrupted iterations
+capacity   [  82% ] 003/100 VUs  33.0s/40s  180.00 iters/s
+
+running (0m34.0s), 003/100 VUs, 6115 complete and 0 interrupted iterations
+capacity   [  85% ] 003/100 VUs  34.0s/40s  180.00 iters/s
+
+running (0m35.0s), 003/100 VUs, 6295 complete and 0 interrupted iterations
+capacity   [  87% ] 003/100 VUs  35.0s/40s  180.00 iters/s
+
+running (0m36.0s), 003/100 VUs, 6475 complete and 0 interrupted iterations
+capacity   [  90% ] 003/100 VUs  36.0s/40s  180.00 iters/s
+
+running (0m37.0s), 003/100 VUs, 6655 complete and 0 interrupted iterations
+capacity   [  92% ] 003/100 VUs  37.0s/40s  180.00 iters/s
+[2026-10-27T00:58:10+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   282m   12Mi   
+checkout-69cf88477-hqbh5   291m   8Mi    
+checkout-69cf88477-zs8rx   419m   12Mi   
+
+running (0m38.0s), 003/100 VUs, 6835 complete and 0 interrupted iterations
+capacity   [  95% ] 003/100 VUs  38.0s/40s  180.00 iters/s
+
+running (0m39.0s), 003/100 VUs, 7015 complete and 0 interrupted iterations
+capacity   [  97% ] 003/100 VUs  39.0s/40s  180.00 iters/s
+
+running (0m40.0s), 003/100 VUs, 7195 complete and 0 interrupted iterations
+capacity   [ 100% ] 003/100 VUs  40.0s/40s  180.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 7201    179.946103/s
+    checks_succeeded...: 100.00% 7201 out of 7201
+    checks_failed......: 0.00%   0 out of 7201
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=16.52ms min=15.64ms med=16.39ms max=54.89ms p(50)=16.39ms p(90)=16.91ms p(95)=17.05ms p(99)=17.63ms
+      { expected_response:true }...: avg=16.52ms min=15.64ms med=16.39ms max=54.89ms p(50)=16.39ms p(90)=16.91ms p(95)=17.05ms p(99)=17.63ms
+    http_req_failed................: 0.00%  0 out of 7201
+    http_reqs......................: 7201   179.946103/s
+
+    EXECUTION
+    iteration_duration.............: avg=16.71ms min=15.76ms med=16.57ms max=55.27ms p(50)=16.57ms p(90)=17.11ms p(95)=17.27ms p(99)=18.02ms
+    iterations.....................: 7201   179.946103/s
+    vus............................: 3      min=3         max=3  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 1.0 MB 25 kB/s
+    data_sent......................: 879 kB 22 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 7201 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  180.00 iters/s
+[2026-10-27T00:58:13+0530] Loadavg1: 1.96, MemAvailable: 3747.8 MiB, Restarts: 0
+[2026-10-27T00:58:13+0530] fakedb peak active connections (40s): 2
+[2026-10-27T00:58:13+0530] pod_cpu_m_avg: 221.3 mCPU (sample1=112, sample2=330.667)
+[2026-10-27T00:58:13+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T00:58:13+0530] Resting 20s between stages...
+[2026-10-27T00:58:33+0530] ==================================================
+[2026-10-27T00:58:33+0530] Starting Stage: 210 RPS (duration 40s)
+[2026-10-27T00:58:33+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 210.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 003/100 VUs, 204 complete and 0 interrupted iterations
+capacity   [   2% ] 003/100 VUs  01.0s/40s  210.00 iters/s
+
+running (0m02.0s), 003/100 VUs, 414 complete and 0 interrupted iterations
+capacity   [   5% ] 003/100 VUs  02.0s/40s  210.00 iters/s
+
+running (0m03.0s), 003/100 VUs, 624 complete and 0 interrupted iterations
+capacity   [   7% ] 003/100 VUs  03.0s/40s  210.00 iters/s
+
+running (0m04.0s), 004/100 VUs, 833 complete and 0 interrupted iterations
+capacity   [  10% ] 004/100 VUs  04.0s/40s  210.00 iters/s
+
+running (0m05.0s), 005/100 VUs, 1042 complete and 0 interrupted iterations
+capacity   [  12% ] 005/100 VUs  05.0s/40s  210.00 iters/s
+
+running (0m06.0s), 004/100 VUs, 1253 complete and 0 interrupted iterations
+capacity   [  15% ] 004/100 VUs  06.0s/40s  210.00 iters/s
+
+running (0m07.0s), 003/100 VUs, 1464 complete and 0 interrupted iterations
+capacity   [  17% ] 003/100 VUs  07.0s/40s  210.00 iters/s
+
+running (0m08.0s), 003/100 VUs, 1674 complete and 0 interrupted iterations
+capacity   [  20% ] 003/100 VUs  08.0s/40s  210.00 iters/s
+
+running (0m09.0s), 003/100 VUs, 1884 complete and 0 interrupted iterations
+capacity   [  22% ] 003/100 VUs  09.0s/40s  210.00 iters/s
+
+running (0m10.0s), 003/100 VUs, 2094 complete and 0 interrupted iterations
+capacity   [  25% ] 003/100 VUs  10.0s/40s  210.00 iters/s
+
+running (0m11.0s), 003/100 VUs, 2304 complete and 0 interrupted iterations
+capacity   [  27% ] 003/100 VUs  11.0s/40s  210.00 iters/s
+
+running (0m12.0s), 003/100 VUs, 2514 complete and 0 interrupted iterations
+capacity   [  30% ] 003/100 VUs  12.0s/40s  210.00 iters/s
+
+running (0m13.0s), 003/100 VUs, 2724 complete and 0 interrupted iterations
+capacity   [  32% ] 003/100 VUs  13.0s/40s  210.00 iters/s
+
+running (0m14.0s), 003/100 VUs, 2934 complete and 0 interrupted iterations
+capacity   [  35% ] 003/100 VUs  14.0s/40s  210.00 iters/s
+
+running (0m15.0s), 003/100 VUs, 3144 complete and 0 interrupted iterations
+capacity   [  37% ] 003/100 VUs  15.0s/40s  210.00 iters/s
+
+running (0m16.0s), 004/100 VUs, 3353 complete and 0 interrupted iterations
+capacity   [  40% ] 004/100 VUs  16.0s/40s  210.00 iters/s
+
+running (0m17.0s), 003/100 VUs, 3564 complete and 0 interrupted iterations
+capacity   [  42% ] 003/100 VUs  17.0s/40s  210.00 iters/s
+
+running (0m18.0s), 003/100 VUs, 3774 complete and 0 interrupted iterations
+capacity   [  45% ] 003/100 VUs  18.0s/40s  210.00 iters/s
+
+running (0m19.0s), 003/100 VUs, 3984 complete and 0 interrupted iterations
+capacity   [  47% ] 003/100 VUs  19.0s/40s  210.00 iters/s
+
+running (0m20.0s), 003/100 VUs, 4194 complete and 0 interrupted iterations
+capacity   [  50% ] 003/100 VUs  20.0s/40s  210.00 iters/s
+
+running (0m21.0s), 003/100 VUs, 4404 complete and 0 interrupted iterations
+capacity   [  52% ] 003/100 VUs  21.0s/40s  210.00 iters/s
+
+running (0m22.0s), 003/100 VUs, 4614 complete and 0 interrupted iterations
+capacity   [  55% ] 003/100 VUs  22.0s/40s  210.00 iters/s
+
+running (0m23.0s), 003/100 VUs, 4824 complete and 0 interrupted iterations
+capacity   [  57% ] 003/100 VUs  23.0s/40s  210.00 iters/s
+
+running (0m24.0s), 003/100 VUs, 5034 complete and 0 interrupted iterations
+capacity   [  60% ] 003/100 VUs  24.0s/40s  210.00 iters/s
+[2026-10-27T00:58:58+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   200m   12Mi   
+checkout-69cf88477-hqbh5   253m   8Mi    
+checkout-69cf88477-zs8rx   129m   11Mi   
+
+running (0m25.0s), 004/100 VUs, 5243 complete and 0 interrupted iterations
+capacity   [  62% ] 004/100 VUs  25.0s/40s  210.00 iters/s
+
+running (0m26.0s), 004/100 VUs, 5453 complete and 0 interrupted iterations
+capacity   [  65% ] 004/100 VUs  26.0s/40s  210.00 iters/s
+
+running (0m27.0s), 004/100 VUs, 5663 complete and 0 interrupted iterations
+capacity   [  67% ] 004/100 VUs  27.0s/40s  210.00 iters/s
+
+running (0m28.0s), 003/100 VUs, 5874 complete and 0 interrupted iterations
+capacity   [  70% ] 003/100 VUs  28.0s/40s  210.00 iters/s
+
+running (0m29.0s), 004/100 VUs, 6083 complete and 0 interrupted iterations
+capacity   [  72% ] 004/100 VUs  29.0s/40s  210.00 iters/s
+
+running (0m30.0s), 003/100 VUs, 6294 complete and 0 interrupted iterations
+capacity   [  75% ] 003/100 VUs  30.0s/40s  210.00 iters/s
+
+running (0m31.0s), 003/100 VUs, 6504 complete and 0 interrupted iterations
+capacity   [  77% ] 003/100 VUs  31.0s/40s  210.00 iters/s
+
+running (0m32.0s), 003/100 VUs, 6714 complete and 0 interrupted iterations
+capacity   [  80% ] 003/100 VUs  32.0s/40s  210.00 iters/s
+
+running (0m33.0s), 003/100 VUs, 6924 complete and 0 interrupted iterations
+capacity   [  82% ] 003/100 VUs  33.0s/40s  210.00 iters/s
+
+running (0m34.0s), 003/100 VUs, 7134 complete and 0 interrupted iterations
+capacity   [  85% ] 003/100 VUs  34.0s/40s  210.00 iters/s
+
+running (0m35.0s), 003/100 VUs, 7344 complete and 0 interrupted iterations
+capacity   [  87% ] 003/100 VUs  35.0s/40s  210.00 iters/s
+
+running (0m36.0s), 004/100 VUs, 7553 complete and 0 interrupted iterations
+capacity   [  90% ] 004/100 VUs  36.0s/40s  210.00 iters/s
+
+running (0m37.0s), 003/100 VUs, 7764 complete and 0 interrupted iterations
+capacity   [  92% ] 003/100 VUs  37.0s/40s  210.00 iters/s
+[2026-10-27T00:59:11+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   372m   12Mi   
+checkout-69cf88477-hqbh5   372m   9Mi    
+checkout-69cf88477-zs8rx   415m   12Mi   
+
+running (0m38.0s), 003/100 VUs, 7974 complete and 0 interrupted iterations
+capacity   [  95% ] 003/100 VUs  38.0s/40s  210.00 iters/s
+
+running (0m39.0s), 003/100 VUs, 8184 complete and 0 interrupted iterations
+capacity   [  97% ] 003/100 VUs  39.0s/40s  210.00 iters/s
+
+running (0m40.0s), 003/100 VUs, 8394 complete and 0 interrupted iterations
+capacity   [ 100% ] 003/100 VUs  40.0s/40s  210.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 8400    209.933879/s
+    checks_succeeded...: 100.00% 8400 out of 8400
+    checks_failed......: 0.00%   0 out of 8400
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=16.47ms min=15.42ms med=16.37ms max=40.65ms p(50)=16.37ms p(90)=16.96ms p(95)=17.27ms p(99)=18.27ms
+      { expected_response:true }...: avg=16.47ms min=15.42ms med=16.37ms max=40.65ms p(50)=16.37ms p(90)=16.96ms p(95)=17.27ms p(99)=18.27ms
+    http_req_failed................: 0.00%  0 out of 8400
+    http_reqs......................: 8400   209.933879/s
+
+    EXECUTION
+    iteration_duration.............: avg=16.65ms min=15.5ms  med=16.55ms max=40.87ms p(50)=16.55ms p(90)=17.18ms p(95)=17.51ms p(99)=18.58ms
+    iterations.....................: 8400   209.933879/s
+    vus............................: 4      min=3         max=5  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 1.2 MB 29 kB/s
+    data_sent......................: 1.0 MB 26 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 8400 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  210.00 iters/s
+[2026-10-27T00:59:14+0530] Loadavg1: 2.30, MemAvailable: 3703.2 MiB, Restarts: 0
+[2026-10-27T00:59:14+0530] fakedb peak active connections (40s): 3
+[2026-10-27T00:59:14+0530] pod_cpu_m_avg: 290.2 mCPU (sample1=194, sample2=386.333)
+[2026-10-27T00:59:14+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T00:59:14+0530] Resting 20s between stages...
+[2026-10-27T00:59:34+0530] ==================================================
+[2026-10-27T00:59:34+0530] Starting Stage: 240 RPS (duration 40s)
+[2026-10-27T00:59:34+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 240.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 005/100 VUs, 232 complete and 0 interrupted iterations
+capacity   [   2% ] 005/100 VUs  01.0s/40s  240.00 iters/s
+
+running (0m02.0s), 004/100 VUs, 472 complete and 0 interrupted iterations
+capacity   [   5% ] 004/100 VUs  02.0s/40s  240.00 iters/s
+
+running (0m03.0s), 004/100 VUs, 713 complete and 0 interrupted iterations
+capacity   [   7% ] 004/100 VUs  03.0s/40s  240.00 iters/s
+
+running (0m04.0s), 004/100 VUs, 952 complete and 0 interrupted iterations
+capacity   [  10% ] 004/100 VUs  04.0s/40s  240.00 iters/s
+
+running (0m05.0s), 004/100 VUs, 1192 complete and 0 interrupted iterations
+capacity   [  12% ] 004/100 VUs  05.0s/40s  240.00 iters/s
+
+running (0m06.0s), 005/100 VUs, 1432 complete and 0 interrupted iterations
+capacity   [  15% ] 005/100 VUs  06.0s/40s  240.00 iters/s
+
+running (0m07.0s), 004/100 VUs, 1672 complete and 0 interrupted iterations
+capacity   [  17% ] 004/100 VUs  07.0s/40s  240.00 iters/s
+
+running (0m08.0s), 005/100 VUs, 1912 complete and 0 interrupted iterations
+capacity   [  20% ] 005/100 VUs  08.0s/40s  240.00 iters/s
+
+running (0m09.0s), 004/100 VUs, 2153 complete and 0 interrupted iterations
+capacity   [  22% ] 004/100 VUs  09.0s/40s  240.00 iters/s
+
+running (0m10.0s), 004/100 VUs, 2392 complete and 0 interrupted iterations
+capacity   [  25% ] 004/100 VUs  10.0s/40s  240.00 iters/s
+
+running (0m11.0s), 005/100 VUs, 2632 complete and 0 interrupted iterations
+capacity   [  27% ] 004/100 VUs  11.0s/40s  240.00 iters/s
+
+running (0m12.0s), 005/100 VUs, 2872 complete and 0 interrupted iterations
+capacity   [  30% ] 005/100 VUs  12.0s/40s  240.00 iters/s
+
+running (0m13.0s), 005/100 VUs, 3111 complete and 0 interrupted iterations
+capacity   [  32% ] 005/100 VUs  13.0s/40s  240.00 iters/s
+
+running (0m14.0s), 004/100 VUs, 3353 complete and 0 interrupted iterations
+capacity   [  35% ] 004/100 VUs  14.0s/40s  240.00 iters/s
+
+running (0m15.0s), 005/100 VUs, 3592 complete and 0 interrupted iterations
+capacity   [  37% ] 005/100 VUs  15.0s/40s  240.00 iters/s
+
+running (0m16.0s), 004/100 VUs, 3832 complete and 0 interrupted iterations
+capacity   [  40% ] 004/100 VUs  16.0s/40s  240.00 iters/s
+
+running (0m17.0s), 004/100 VUs, 4072 complete and 0 interrupted iterations
+capacity   [  42% ] 004/100 VUs  17.0s/40s  240.00 iters/s
+
+running (0m18.0s), 004/100 VUs, 4312 complete and 0 interrupted iterations
+capacity   [  45% ] 004/100 VUs  18.0s/40s  240.00 iters/s
+
+running (0m19.0s), 005/100 VUs, 4552 complete and 0 interrupted iterations
+capacity   [  47% ] 005/100 VUs  19.0s/40s  240.00 iters/s
+
+running (0m20.0s), 005/100 VUs, 4792 complete and 0 interrupted iterations
+capacity   [  50% ] 005/100 VUs  20.0s/40s  240.00 iters/s
+
+running (0m21.0s), 004/100 VUs, 5032 complete and 0 interrupted iterations
+capacity   [  52% ] 004/100 VUs  21.0s/40s  240.00 iters/s
+
+running (0m22.0s), 004/100 VUs, 5272 complete and 0 interrupted iterations
+capacity   [  55% ] 004/100 VUs  22.0s/40s  240.00 iters/s
+
+running (0m23.0s), 005/100 VUs, 5512 complete and 0 interrupted iterations
+capacity   [  57% ] 005/100 VUs  23.0s/40s  240.00 iters/s
+
+running (0m24.0s), 004/100 VUs, 5752 complete and 0 interrupted iterations
+capacity   [  60% ] 004/100 VUs  24.0s/40s  240.00 iters/s
+[2026-10-27T00:59:59+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   226m   13Mi   
+checkout-69cf88477-hqbh5   50m    9Mi    
+checkout-69cf88477-zs8rx   204m   12Mi   
+
+running (0m25.0s), 004/100 VUs, 5992 complete and 0 interrupted iterations
+capacity   [  62% ] 004/100 VUs  25.0s/40s  240.00 iters/s
+
+running (0m26.0s), 004/100 VUs, 6232 complete and 0 interrupted iterations
+capacity   [  65% ] 004/100 VUs  26.0s/40s  240.00 iters/s
+
+running (0m27.0s), 005/100 VUs, 6472 complete and 0 interrupted iterations
+capacity   [  67% ] 005/100 VUs  27.0s/40s  240.00 iters/s
+
+running (0m28.0s), 005/100 VUs, 6711 complete and 0 interrupted iterations
+capacity   [  70% ] 005/100 VUs  28.0s/40s  240.00 iters/s
+
+running (0m29.0s), 005/100 VUs, 6953 complete and 0 interrupted iterations
+capacity   [  72% ] 004/100 VUs  29.0s/40s  240.00 iters/s
+
+running (0m30.0s), 004/100 VUs, 7193 complete and 0 interrupted iterations
+capacity   [  75% ] 004/100 VUs  30.0s/40s  240.00 iters/s
+
+running (0m31.0s), 004/100 VUs, 7432 complete and 0 interrupted iterations
+capacity   [  77% ] 004/100 VUs  31.0s/40s  240.00 iters/s
+
+running (0m32.0s), 005/100 VUs, 7672 complete and 0 interrupted iterations
+capacity   [  80% ] 005/100 VUs  32.0s/40s  240.00 iters/s
+
+running (0m33.0s), 004/100 VUs, 7912 complete and 0 interrupted iterations
+capacity   [  82% ] 004/100 VUs  33.0s/40s  240.00 iters/s
+
+running (0m34.0s), 005/100 VUs, 8152 complete and 0 interrupted iterations
+capacity   [  85% ] 005/100 VUs  34.0s/40s  240.00 iters/s
+
+running (0m35.0s), 005/100 VUs, 8392 complete and 0 interrupted iterations
+capacity   [  87% ] 005/100 VUs  35.0s/40s  240.00 iters/s
+
+running (0m36.0s), 004/100 VUs, 8632 complete and 0 interrupted iterations
+capacity   [  90% ] 004/100 VUs  36.0s/40s  240.00 iters/s
+
+running (0m37.0s), 004/100 VUs, 8872 complete and 0 interrupted iterations
+capacity   [  92% ] 004/100 VUs  37.0s/40s  240.00 iters/s
+[2026-10-27T01:00:12+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   413m   13Mi   
+checkout-69cf88477-hqbh5   406m   9Mi    
+checkout-69cf88477-zs8rx   480m   13Mi   
+
+running (0m38.0s), 004/100 VUs, 9112 complete and 0 interrupted iterations
+capacity   [  95% ] 004/100 VUs  38.0s/40s  240.00 iters/s
+
+running (0m39.0s), 005/100 VUs, 9352 complete and 0 interrupted iterations
+capacity   [  97% ] 005/100 VUs  39.0s/40s  240.00 iters/s
+
+running (0m40.0s), 004/100 VUs, 9592 complete and 0 interrupted iterations
+capacity   [ 100% ] 004/100 VUs  40.0s/40s  240.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 9601    239.915672/s
+    checks_succeeded...: 100.00% 9601 out of 9601
+    checks_failed......: 0.00%   0 out of 9601
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=16.52ms min=15.48ms med=16.3ms  max=39.96ms p(50)=16.3ms  p(90)=16.91ms p(95)=17.42ms p(99)=20.75ms
+      { expected_response:true }...: avg=16.52ms min=15.48ms med=16.3ms  max=39.96ms p(50)=16.3ms  p(90)=16.91ms p(95)=17.42ms p(99)=20.75ms
+    http_req_failed................: 0.00%  0 out of 9601
+    http_reqs......................: 9601   239.915672/s
+
+    EXECUTION
+    iteration_duration.............: avg=16.69ms min=15.57ms med=16.47ms max=40.54ms p(50)=16.47ms p(90)=17.11ms p(95)=17.64ms p(99)=21.16ms
+    iterations.....................: 9601   239.915672/s
+    vus............................: 5      min=3         max=5  
+    vus_max........................: 100    min=100       max=100
+
+    NETWORK
+    data_received..................: 1.3 MB 33 kB/s
+    data_sent......................: 1.2 MB 29 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 9601 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  240.00 iters/s
+[2026-10-27T01:00:15+0530] Loadavg1: 2.92, MemAvailable: 3762.9 MiB, Restarts: 0
+[2026-10-27T01:00:15+0530] fakedb peak active connections (40s): 3
+[2026-10-27T01:00:15+0530] pod_cpu_m_avg: 296.5 mCPU (sample1=160, sample2=433)
+[2026-10-27T01:00:15+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T01:00:15+0530] Resting 20s between stages...
+[2026-10-27T01:00:35+0530] ==================================================
+[2026-10-27T01:00:35+0530] Starting Stage: 270 RPS (duration 40s)
+[2026-10-27T01:00:35+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 270.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 004/100 VUs, 262 complete and 0 interrupted iterations
+capacity   [   2% ] 004/100 VUs  01.0s/40s  270.00 iters/s
+
+running (0m02.0s), 006/100 VUs, 530 complete and 0 interrupted iterations
+capacity   [   5% ] 006/100 VUs  02.0s/40s  270.00 iters/s
+
+running (0m03.0s), 005/100 VUs, 801 complete and 0 interrupted iterations
+capacity   [   7% ] 005/100 VUs  03.0s/40s  270.00 iters/s
+
+running (0m04.0s), 006/100 VUs, 1070 complete and 0 interrupted iterations
+capacity   [  10% ] 006/100 VUs  04.0s/40s  270.00 iters/s
+
+running (0m05.0s), 006/100 VUs, 1340 complete and 0 interrupted iterations
+capacity   [  12% ] 006/100 VUs  05.0s/40s  270.00 iters/s
+
+running (0m06.0s), 005/100 VUs, 1611 complete and 0 interrupted iterations
+capacity   [  15% ] 005/100 VUs  06.0s/40s  270.00 iters/s
+
+running (0m07.0s), 005/100 VUs, 1881 complete and 0 interrupted iterations
+capacity   [  17% ] 005/100 VUs  07.0s/40s  270.00 iters/s
+
+running (0m08.0s), 006/100 VUs, 2150 complete and 0 interrupted iterations
+capacity   [  20% ] 006/100 VUs  08.0s/40s  270.00 iters/s
+
+running (0m09.0s), 007/100 VUs, 2419 complete and 0 interrupted iterations
+capacity   [  22% ] 007/100 VUs  09.0s/40s  270.00 iters/s
+
+running (0m10.0s), 007/100 VUs, 2689 complete and 0 interrupted iterations
+capacity   [  25% ] 007/100 VUs  10.0s/40s  270.00 iters/s
+
+running (0m11.0s), 006/100 VUs, 2960 complete and 0 interrupted iterations
+capacity   [  27% ] 006/100 VUs  11.0s/40s  270.00 iters/s
+
+running (0m12.0s), 006/100 VUs, 3230 complete and 0 interrupted iterations
+capacity   [  30% ] 006/100 VUs  12.0s/40s  270.00 iters/s
+
+running (0m13.0s), 005/100 VUs, 3501 complete and 0 interrupted iterations
+capacity   [  32% ] 005/100 VUs  13.0s/40s  270.00 iters/s
+
+running (0m14.0s), 006/100 VUs, 3770 complete and 0 interrupted iterations
+capacity   [  35% ] 006/100 VUs  14.0s/40s  270.00 iters/s
+
+running (0m15.0s), 005/100 VUs, 4041 complete and 0 interrupted iterations
+capacity   [  37% ] 005/100 VUs  15.0s/40s  270.00 iters/s
+
+running (0m16.0s), 006/100 VUs, 4310 complete and 0 interrupted iterations
+capacity   [  40% ] 006/100 VUs  16.0s/40s  270.00 iters/s
+
+running (0m17.0s), 005/100 VUs, 4581 complete and 0 interrupted iterations
+capacity   [  42% ] 005/100 VUs  17.0s/40s  270.00 iters/s
+
+running (0m18.0s), 006/100 VUs, 4850 complete and 0 interrupted iterations
+capacity   [  45% ] 006/100 VUs  18.0s/40s  270.00 iters/s
+
+running (0m19.0s), 005/100 VUs, 5121 complete and 0 interrupted iterations
+capacity   [  47% ] 005/100 VUs  19.0s/40s  270.00 iters/s
+
+running (0m20.0s), 006/100 VUs, 5390 complete and 0 interrupted iterations
+capacity   [  50% ] 006/100 VUs  20.0s/40s  270.00 iters/s
+
+running (0m21.0s), 005/100 VUs, 5661 complete and 0 interrupted iterations
+capacity   [  52% ] 005/100 VUs  21.0s/40s  270.00 iters/s
+
+running (0m22.0s), 006/100 VUs, 5930 complete and 0 interrupted iterations
+capacity   [  55% ] 006/100 VUs  22.0s/40s  270.00 iters/s
+
+running (0m23.0s), 007/100 VUs, 6199 complete and 0 interrupted iterations
+capacity   [  57% ] 007/100 VUs  23.0s/40s  270.00 iters/s
+
+running (0m24.0s), 006/100 VUs, 6470 complete and 0 interrupted iterations
+capacity   [  60% ] 006/100 VUs  24.0s/40s  270.00 iters/s
+[2026-10-27T01:01:00+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   170m   14Mi   
+checkout-69cf88477-hqbh5   320m   9Mi    
+checkout-69cf88477-zs8rx   65m    11Mi   
+
+running (0m25.0s), 005/100 VUs, 6741 complete and 0 interrupted iterations
+capacity   [  62% ] 005/100 VUs  25.0s/40s  270.00 iters/s
+
+running (0m26.0s), 005/100 VUs, 7011 complete and 0 interrupted iterations
+capacity   [  65% ] 005/100 VUs  26.0s/40s  270.00 iters/s
+
+running (0m27.0s), 006/100 VUs, 7280 complete and 0 interrupted iterations
+capacity   [  67% ] 006/100 VUs  27.0s/40s  270.00 iters/s
+
+running (0m28.0s), 006/100 VUs, 7550 complete and 0 interrupted iterations
+capacity   [  70% ] 006/100 VUs  28.0s/40s  270.00 iters/s
+
+running (0m29.0s), 006/100 VUs, 7820 complete and 0 interrupted iterations
+capacity   [  72% ] 005/100 VUs  29.0s/40s  270.00 iters/s
+
+running (0m30.0s), 005/100 VUs, 8091 complete and 0 interrupted iterations
+capacity   [  75% ] 005/100 VUs  30.0s/40s  270.00 iters/s
+
+running (0m31.0s), 006/100 VUs, 8361 complete and 0 interrupted iterations
+capacity   [  77% ] 005/100 VUs  31.0s/40s  270.00 iters/s
+
+running (0m32.0s), 006/100 VUs, 8630 complete and 0 interrupted iterations
+capacity   [  80% ] 006/100 VUs  32.0s/40s  270.00 iters/s
+
+running (0m33.0s), 005/100 VUs, 8901 complete and 0 interrupted iterations
+capacity   [  82% ] 005/100 VUs  33.0s/40s  270.00 iters/s
+
+running (0m34.0s), 005/100 VUs, 9171 complete and 0 interrupted iterations
+capacity   [  85% ] 005/100 VUs  34.0s/40s  270.00 iters/s
+
+running (0m35.0s), 006/100 VUs, 9440 complete and 0 interrupted iterations
+capacity   [  87% ] 006/100 VUs  35.0s/40s  270.00 iters/s
+
+running (0m36.0s), 006/100 VUs, 9710 complete and 0 interrupted iterations
+capacity   [  90% ] 006/100 VUs  36.0s/40s  270.00 iters/s
+
+running (0m37.0s), 005/100 VUs, 9981 complete and 0 interrupted iterations
+capacity   [  92% ] 005/100 VUs  37.0s/40s  270.00 iters/s
+[2026-10-27T01:01:13+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   452m   14Mi   
+checkout-69cf88477-hqbh5   483m   9Mi    
+checkout-69cf88477-zs8rx   461m   12Mi   
+
+running (0m38.0s), 005/100 VUs, 10251 complete and 0 interrupted iterations
+capacity   [  95% ] 005/100 VUs  38.0s/40s  270.00 iters/s
+
+running (0m39.0s), 006/100 VUs, 10520 complete and 0 interrupted iterations
+capacity   [  97% ] 006/100 VUs  39.0s/40s  270.00 iters/s
+
+running (0m40.0s), 007/100 VUs, 10789 complete and 0 interrupted iterations
+capacity   [ 100% ] 007/100 VUs  40.0s/40s  270.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 10800   269.905256/s
+    checks_succeeded...: 100.00% 10800 out of 10800
+    checks_failed......: 0.00%   0 out of 10800
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=17.55ms min=15.44ms med=16.48ms max=61.73ms p(50)=16.48ms p(90)=19.44ms p(95)=25.66ms p(99)=33.79ms
+      { expected_response:true }...: avg=17.55ms min=15.44ms med=16.48ms max=61.73ms p(50)=16.48ms p(90)=19.44ms p(95)=25.66ms p(99)=33.79ms
+    http_req_failed................: 0.00%  0 out of 10800
+    http_reqs......................: 10800  269.905256/s
+
+    EXECUTION
+    iteration_duration.............: avg=17.72ms min=15.52ms med=16.65ms max=61.95ms p(50)=16.65ms p(90)=19.65ms p(95)=25.82ms p(99)=33.95ms
+    iterations.....................: 10800  269.905256/s
+    vus............................: 7      min=4          max=7  
+    vus_max........................: 100    min=100        max=100
+
+    NETWORK
+    data_received..................: 1.5 MB 38 kB/s
+    data_sent......................: 1.3 MB 33 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 10800 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  270.00 iters/s
+[2026-10-27T01:01:16+0530] Loadavg1: 2.70, MemAvailable: 3804.2 MiB, Restarts: 0
+[2026-10-27T01:01:16+0530] fakedb peak active connections (40s): 3
+[2026-10-27T01:01:16+0530] pod_cpu_m_avg: 325.2 mCPU (sample1=185, sample2=465.333)
+[2026-10-27T01:01:16+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T01:01:16+0530] Resting 20s between stages...
+[2026-10-27T01:01:36+0530] ==================================================
+[2026-10-27T01:01:36+0530] Starting Stage: 300 RPS (duration 40s)
+[2026-10-27T01:01:36+0530] ==================================================
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/capacity.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 600 max VUs, 1m10s max duration (incl. graceful stop):
+              * capacity: 300.00 iterations/s for 40s (maxVUs: 100-600, gracefulStop: 30s)
+
+
+running (0m01.0s), 013/100 VUs, 283 complete and 0 interrupted iterations
+capacity   [   2% ] 013/100 VUs  01.0s/40s  300.00 iters/s
+
+running (0m02.0s), 015/100 VUs, 581 complete and 0 interrupted iterations
+capacity   [   5% ] 015/100 VUs  02.0s/40s  300.00 iters/s
+
+running (0m03.0s), 016/100 VUs, 880 complete and 0 interrupted iterations
+capacity   [   7% ] 016/100 VUs  03.0s/40s  300.00 iters/s
+
+running (0m04.0s), 016/100 VUs, 1180 complete and 0 interrupted iterations
+capacity   [  10% ] 016/100 VUs  04.0s/40s  300.00 iters/s
+
+running (0m05.0s), 015/100 VUs, 1482 complete and 0 interrupted iterations
+capacity   [  12% ] 015/100 VUs  05.0s/40s  300.00 iters/s
+
+running (0m06.0s), 015/100 VUs, 1781 complete and 0 interrupted iterations
+capacity   [  15% ] 015/100 VUs  06.0s/40s  300.00 iters/s
+
+running (0m07.0s), 013/100 VUs, 2083 complete and 0 interrupted iterations
+capacity   [  17% ] 013/100 VUs  07.0s/40s  300.00 iters/s
+
+running (0m08.0s), 014/100 VUs, 2382 complete and 0 interrupted iterations
+capacity   [  20% ] 014/100 VUs  08.0s/40s  300.00 iters/s
+
+running (0m09.0s), 015/100 VUs, 2681 complete and 0 interrupted iterations
+capacity   [  22% ] 015/100 VUs  09.0s/40s  300.00 iters/s
+
+running (0m10.0s), 013/100 VUs, 2983 complete and 0 interrupted iterations
+capacity   [  25% ] 013/100 VUs  10.0s/40s  300.00 iters/s
+
+running (0m11.0s), 016/100 VUs, 3280 complete and 0 interrupted iterations
+capacity   [  27% ] 016/100 VUs  11.0s/40s  300.00 iters/s
+
+running (0m12.0s), 015/100 VUs, 3581 complete and 0 interrupted iterations
+capacity   [  30% ] 015/100 VUs  12.0s/40s  300.00 iters/s
+
+running (0m13.0s), 015/100 VUs, 3881 complete and 0 interrupted iterations
+capacity   [  32% ] 015/100 VUs  13.0s/40s  300.00 iters/s
+
+running (0m14.0s), 014/100 VUs, 4182 complete and 0 interrupted iterations
+capacity   [  35% ] 014/100 VUs  14.0s/40s  300.00 iters/s
+
+running (0m15.0s), 014/100 VUs, 4482 complete and 0 interrupted iterations
+capacity   [  37% ] 014/100 VUs  15.0s/40s  300.00 iters/s
+
+running (0m16.0s), 015/100 VUs, 4781 complete and 0 interrupted iterations
+capacity   [  40% ] 015/100 VUs  16.0s/40s  300.00 iters/s
+
+running (0m17.0s), 013/100 VUs, 5083 complete and 0 interrupted iterations
+capacity   [  42% ] 013/100 VUs  17.0s/40s  300.00 iters/s
+
+running (0m18.0s), 013/100 VUs, 5383 complete and 0 interrupted iterations
+capacity   [  45% ] 013/100 VUs  18.0s/40s  300.00 iters/s
+
+running (0m19.0s), 014/100 VUs, 5682 complete and 0 interrupted iterations
+capacity   [  47% ] 014/100 VUs  19.0s/40s  300.00 iters/s
+
+running (0m20.0s), 018/100 VUs, 5978 complete and 0 interrupted iterations
+capacity   [  50% ] 018/100 VUs  20.0s/40s  300.00 iters/s
+
+running (0m21.0s), 017/100 VUs, 6279 complete and 0 interrupted iterations
+capacity   [  52% ] 017/100 VUs  21.0s/40s  300.00 iters/s
+
+running (0m22.0s), 015/100 VUs, 6581 complete and 0 interrupted iterations
+capacity   [  55% ] 015/100 VUs  22.0s/40s  300.00 iters/s
+
+running (0m23.0s), 016/100 VUs, 6880 complete and 0 interrupted iterations
+capacity   [  57% ] 015/100 VUs  23.0s/40s  300.00 iters/s
+
+running (0m24.0s), 014/100 VUs, 7182 complete and 0 interrupted iterations
+capacity   [  60% ] 014/100 VUs  24.0s/40s  300.00 iters/s
+[2026-10-27T01:02:01+0530] top pods sample 1 (~25s):
+checkout-69cf88477-55rkl   97m    16Mi   
+checkout-69cf88477-hqbh5   255m   10Mi   
+checkout-69cf88477-zs8rx   121m   10Mi   
+
+running (0m25.0s), 014/100 VUs, 7482 complete and 0 interrupted iterations
+capacity   [  62% ] 014/100 VUs  25.0s/40s  300.00 iters/s
+
+running (0m26.0s), 014/100 VUs, 7782 complete and 0 interrupted iterations
+capacity   [  65% ] 014/100 VUs  26.0s/40s  300.00 iters/s
+
+running (0m27.0s), 015/100 VUs, 8081 complete and 0 interrupted iterations
+capacity   [  67% ] 015/100 VUs  27.0s/40s  300.00 iters/s
+
+running (0m28.0s), 013/100 VUs, 8383 complete and 0 interrupted iterations
+capacity   [  70% ] 013/100 VUs  28.0s/40s  300.00 iters/s
+
+running (0m29.0s), 011/100 VUs, 8685 complete and 0 interrupted iterations
+capacity   [  72% ] 011/100 VUs  29.0s/40s  300.00 iters/s
+
+running (0m30.0s), 013/100 VUs, 8983 complete and 0 interrupted iterations
+capacity   [  75% ] 013/100 VUs  30.0s/40s  300.00 iters/s
+
+running (0m31.0s), 015/100 VUs, 9281 complete and 0 interrupted iterations
+capacity   [  77% ] 015/100 VUs  31.0s/40s  300.00 iters/s
+
+running (0m32.0s), 014/100 VUs, 9582 complete and 0 interrupted iterations
+capacity   [  80% ] 014/100 VUs  32.0s/40s  300.00 iters/s
+
+running (0m33.0s), 016/100 VUs, 9880 complete and 0 interrupted iterations
+capacity   [  82% ] 016/100 VUs  33.0s/40s  300.00 iters/s
+
+running (0m34.0s), 015/100 VUs, 10181 complete and 0 interrupted iterations
+capacity   [  85% ] 015/100 VUs  34.0s/40s  300.00 iters/s
+
+running (0m35.0s), 013/100 VUs, 10483 complete and 0 interrupted iterations
+capacity   [  87% ] 013/100 VUs  35.0s/40s  300.00 iters/s
+
+running (0m36.0s), 013/100 VUs, 10784 complete and 0 interrupted iterations
+capacity   [  90% ] 013/100 VUs  36.0s/40s  300.00 iters/s
+
+running (0m37.0s), 012/100 VUs, 11084 complete and 0 interrupted iterations
+capacity   [  92% ] 012/100 VUs  37.0s/40s  300.00 iters/s
+[2026-10-27T01:02:15+0530] top pods sample 2 (~38s):
+checkout-69cf88477-55rkl   500m   14Mi   
+checkout-69cf88477-hqbh5   496m   11Mi   
+checkout-69cf88477-zs8rx   494m   12Mi   
+
+running (0m38.0s), 013/100 VUs, 11383 complete and 0 interrupted iterations
+capacity   [  95% ] 013/100 VUs  38.0s/40s  300.00 iters/s
+
+running (0m39.0s), 014/100 VUs, 11682 complete and 0 interrupted iterations
+capacity   [  97% ] 014/100 VUs  39.0s/40s  300.00 iters/s
+
+running (0m40.0s), 013/100 VUs, 11983 complete and 0 interrupted iterations
+capacity   [ 100% ] 013/100 VUs  40.0s/40s  300.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 12000   299.795068/s
+    checks_succeeded...: 100.00% 12000 out of 12000
+    checks_failed......: 0.00%   0 out of 12000
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=45.11ms min=15.36ms med=17.09ms max=328.57ms p(50)=17.09ms p(90)=111.6ms  p(95)=120.69ms p(99)=182.18ms
+      { expected_response:true }...: avg=45.11ms min=15.36ms med=17.09ms max=328.57ms p(50)=17.09ms p(90)=111.6ms  p(95)=120.69ms p(99)=182.18ms
+    http_req_failed................: 0.00%  0 out of 12000
+    http_reqs......................: 12000  299.795068/s
+
+    EXECUTION
+    iteration_duration.............: avg=45.25ms min=15.44ms med=17.26ms max=328.74ms p(50)=17.26ms p(90)=111.72ms p(95)=120.83ms p(99)=182.3ms 
+    iterations.....................: 12000  299.795068/s
+    vus............................: 13     min=11         max=18 
+    vus_max........................: 100    min=100        max=100
+
+    NETWORK
+    data_received..................: 1.7 MB 42 kB/s
+    data_sent......................: 1.5 MB 37 kB/s
+
+
+
+
+running (0m40.0s), 000/100 VUs, 12000 complete and 0 interrupted iterations
+capacity ✓ [ 100% ] 000/100 VUs  40s  300.00 iters/s
+[2026-10-27T01:02:17+0530] Loadavg1: 2.05, MemAvailable: 3728.6 MiB, Restarts: 0
+[2026-10-27T01:02:17+0530] fakedb peak active connections (40s): 4
+[2026-10-27T01:02:18+0530] pod_cpu_m_avg: 327.2 mCPU (sample1=157.667, sample2=496.667)
+[2026-10-27T01:02:18+0530] Results: achieved_rps=0.00, p99=0.00ms, fail_pct=0.00%, slo_ok=true
+[2026-10-27T01:02:18+0530] Probe stages completed. Stop rule fired: none
+[2026-10-27T01:02:18+0530] Restoring baseline ScaledObject to min=3, max=10...
+scaledobject.keda.sh/checkout patched
+[2026-10-27T01:02:18+0530] Waiting for baseline ScaledObject & HPA restoration...
+[2026-10-27T01:02:18+0530] Baseline restored: min=3, max=10, ready=3
+[2026-10-27T01:02:18+0530] capacity.sh completed successfully.
