@@ -1,0 +1,14 @@
+=== Corrected Spike Windows (prescale_model.joblib / sklearn) ===
+Teammate constants: cpu_request=0.5, target_util=0.6, min_replicas=1
+Our constants: cpu_request=0.4, target_util=0.5, min_replicas=1
+
+W0 flat baseline (no spike, t=60): cpu_now=0.3500 P10=0.3412 P50=0.489 P90=0.4903 desired_teammate=2 desired_ours=3
+W1 end at min 49 (before spike): cpu_now=0.3500 P10=0.342 P50=0.4917 P90=0.5088 desired_teammate=2 desired_ours=3
+W2 end at min 52 (mid spike, last sample=spike): cpu_now=0.3500 P10=0.342 P50=0.4917 P90=0.5077 desired_teammate=2 desired_ours=3
+W3 end at min 53 (1 min after spike drops): cpu_now=0.3500 P10=0.342 P50=0.4917 P90=0.5077 desired_teammate=2 desired_ours=3
+
+=== LightGBM model (prescale_model.pkl) ===
+W0 flat baseline: cpu_now=0.3500 P10=0.3543 P50=0.4805 P90=0.4871 desired_teammate=2 desired_ours=3
+W1 end at min 49: cpu_now=0.3500 P10=0.359 P50=0.4819 P90=0.5086 desired_teammate=2 desired_ours=3
+W2 end at min 52: cpu_now=0.3500 P10=0.359 P50=0.4811 P90=0.5086 desired_teammate=2 desired_ours=3
+W3 end at min 53: cpu_now=0.3500 P10=0.359 P50=0.4811 P90=0.5086 desired_teammate=2 desired_ours=3
