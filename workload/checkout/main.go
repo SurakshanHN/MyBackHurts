@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"sync/atomic"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -24,6 +25,33 @@ func BurnCPU(d time.Duration) {
 	}
 }
 
+// ParseCPUBurnMS parses the CPU_BURN_MS environment variable, defaulting to 5ms on empty or invalid input.
+func ParseCPUBurnMS(val string) time.Duration {
+	const defaultBurn = 5 * time.Millisecond
+	if val == "" {
+		return defaultBurn
+	}
+	n, err := strconv.Atoi(val)
+	if err != nil || n <= 0 {
+		log.Printf("warning: invalid CPU_BURN_MS %q, falling back to 5ms", val)
+		return defaultBurn
+	}
+	return time.Duration(n) * time.Millisecond
+}
+
+// ParseStartupDelay parses the STARTUP_DELAY_SECONDS environment variable, defaulting to 0s on empty or invalid input.
+func ParseStartupDelay(val string) time.Duration {
+	if val == "" {
+		return 0
+	}
+	n, err := strconv.Atoi(val)
+	if err != nil || n < 0 {
+		log.Printf("warning: invalid STARTUP_DELAY_SECONDS %q, falling back to 0s", val)
+		return 0
+	}
+	return time.Duration(n) * time.Second
+}
+
 // CheckoutServer manages checkout requests, downstream DB calls, and Prometheus metrics.
 type CheckoutServer struct {
 	dbURL         string
@@ -32,15 +60,29 @@ type CheckoutServer struct {
 	reg           *prometheus.Registry
 	requestsTotal *prometheus.CounterVec
 	durationHisto prometheus.Histogram
+
+	cpuBurnDuration time.Duration
+	startupDelay    time.Duration
+	startTime       time.Time
+	nowFn           func() time.Time
+	readyLogged     atomic.Bool
 }
 
-// NewCheckoutServer creates and initializes a CheckoutServer.
+// NewCheckoutServer creates and initializes a CheckoutServer with defaults.
 func NewCheckoutServer(dbURL string, connsPerPod int) *CheckoutServer {
+	return NewCheckoutServerConfig(dbURL, connsPerPod, 5*time.Millisecond, 0, time.Now())
+}
+
+// NewCheckoutServerConfig creates a CheckoutServer with explicit cpuBurn and startupDelay settings.
+func NewCheckoutServerConfig(dbURL string, connsPerPod int, cpuBurn time.Duration, startupDelay time.Duration, start time.Time) *CheckoutServer {
 	if dbURL == "" {
 		dbURL = "http://localhost:8080"
 	}
 	if connsPerPod <= 0 {
 		connsPerPod = 20
+	}
+	if cpuBurn <= 0 {
+		cpuBurn = 5 * time.Millisecond
 	}
 
 	reg := prometheus.NewRegistry()
@@ -59,17 +101,21 @@ func NewCheckoutServer(dbURL string, connsPerPod int) *CheckoutServer {
 	reg.MustRegister(requestsTotal, durationHisto)
 
 	return &CheckoutServer{
-		dbURL:         dbURL,
-		connsSem:      make(chan struct{}, connsPerPod),
-		httpClient:    &http.Client{Timeout: 10 * time.Second},
-		reg:           reg,
-		requestsTotal: requestsTotal,
-		durationHisto: durationHisto,
+		dbURL:           dbURL,
+		connsSem:        make(chan struct{}, connsPerPod),
+		httpClient:      &http.Client{Timeout: 10 * time.Second},
+		reg:             reg,
+		requestsTotal:   requestsTotal,
+		durationHisto:   durationHisto,
+		cpuBurnDuration: cpuBurn,
+		startupDelay:    startupDelay,
+		startTime:       start,
+		nowFn:           time.Now,
 	}
 }
 
 // CheckoutHandler processes a checkout request by acquiring a connection slot,
-// invoking fakedb /query, performing ~5ms of CPU work, and recording metrics.
+// invoking fakedb /query, performing CPU work, and recording metrics.
 func (s *CheckoutServer) CheckoutHandler(w http.ResponseWriter, r *http.Request) {
 	start := time.Now()
 
@@ -107,8 +153,8 @@ func (s *CheckoutServer) CheckoutHandler(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	// 2. Perform ~5ms of CPU work
-	BurnCPU(5 * time.Millisecond)
+	// 2. Perform configurable CPU work
+	BurnCPU(s.cpuBurnDuration)
 
 	// 3. Return success
 	w.Header().Set("Content-Type", "application/json")
@@ -126,8 +172,28 @@ func (s *CheckoutServer) recordMetrics(code int, start time.Time) {
 	s.durationHisto.Observe(duration)
 }
 
-// HealthzHandler returns 200 OK for probes.
+func (s *CheckoutServer) now() time.Time {
+	if s.nowFn != nil {
+		return s.nowFn()
+	}
+	return time.Now()
+}
+
+// HealthzHandler handles readiness probes. Returns 503 during startup delay, then 200.
 func (s *CheckoutServer) HealthzHandler(w http.ResponseWriter, r *http.Request) {
+	if s.startupDelay > 0 && s.now().Sub(s.startTime) < s.startupDelay {
+		http.Error(w, "starting up", http.StatusServiceUnavailable)
+		return
+	}
+	if s.readyLogged.CompareAndSwap(false, true) {
+		log.Printf("Startup delay elapsed; checkout service is now ready")
+	}
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write([]byte("ok"))
+}
+
+// LivezHandler handles liveness probes. Always returns 200 OK.
+func (s *CheckoutServer) LivezHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	_, _ = w.Write([]byte("ok"))
 }
@@ -137,6 +203,7 @@ func (s *CheckoutServer) Routes() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", s.CheckoutHandler)
 	mux.HandleFunc("/healthz", s.HealthzHandler)
+	mux.HandleFunc("/livez", s.LivezHandler)
 	mux.Handle("/metrics", promhttp.HandlerFor(s.reg, promhttp.HandlerOpts{}))
 	return mux
 }
@@ -159,10 +226,14 @@ func main() {
 		port = "8080"
 	}
 
-	srv := NewCheckoutServer(dbURL, connsPerPod)
+	cpuBurn := ParseCPUBurnMS(os.Getenv("CPU_BURN_MS"))
+	startupDelay := ParseStartupDelay(os.Getenv("STARTUP_DELAY_SECONDS"))
+
+	srv := NewCheckoutServerConfig(dbURL, connsPerPod, cpuBurn, startupDelay, time.Now())
 
 	addr := ":" + port
-	log.Printf("Starting checkout service on %s (DB_URL=%s, CONNS_PER_POD=%d)", addr, dbURL, connsPerPod)
+	log.Printf("Starting checkout service on %s (DB_URL=%s, CONNS_PER_POD=%d, CPU_BURN=%v, STARTUP_DELAY=%v)",
+		addr, dbURL, connsPerPod, cpuBurn, startupDelay)
 	if err := http.ListenAndServe(addr, srv.Routes()); err != nil && err != http.ErrServerClosed {
 		log.Fatalf("checkout service failed: %v", err)
 	}

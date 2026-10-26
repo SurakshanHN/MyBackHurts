@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:1.24-alpine AS builder
+FROM golang:1.27-alpine AS builder
 
 WORKDIR /workspace
 
@@ -8,8 +8,8 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy source code and build
-COPY demo/checkout/ ./demo/checkout/
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /bin/checkout ./demo/checkout
+COPY workload/checkout/ ./workload/checkout/
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /bin/checkout ./workload/checkout
 
 # Runtime stage
 FROM alpine:3.21
