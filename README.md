@@ -1,226 +1,110 @@
-# prescale
+# Predictive Autoscaler (PreScale)
 
-**prescale** is a Kubernetes operator that protects your workloads from harmful Horizontal Pod Autoscaler (HPA) scale-ups by evaluating their actual impact on latency, error rates, and throughput.
+A predictive autoscaling system for Kubernetes that forecasts incoming traffic surges and proactively scales up HPA `minReplicas` *before* traffic arrives, eliminating the 30+ second pod-readiness latency of reactive HPA.
 
-When an HPA scales up a Deployment, prescale correlates the scaling event with Prometheus metrics to determine if the scale-up **helped**, was **useless**, or **harmed** performance. In `enforce` mode, it can automatically cap the HPA's `maxReplicas` to prevent repeated harmful scale-ups.
+> **Note on Project Transition**: The previous reactive `ScaleGuard` operator (which judged HPA scale-ups after the fact and capped `maxReplicas`) has been removed and preserved at git tag `pre-rebuild`.
 
-## How It Works
+---
 
-1. **Watch** — prescale monitors `ScaleGuard` resources, each linked to an HPA by name
-2. **Detect** — On each HPA scale-up, prescale queries Prometheus (via the configured `queries`) for a time window around the event
-3. **Evaluate** — The detector classifies the scale-up as:
-   - **helped** — Latency/error rate improved or stayed stable
-   - **useless** — No measurable improvement (wasted resources)
-   - **harmful** — Latency/error rate degraded significantly
-   - **unknown** — Insufficient data to decide
-4. **Act** — In `enforce` mode, harmful scale-ups trigger an HPA `maxReplicas` cap (with a configurable floor and max freeze duration). In `observe` mode, only records the decision.
-5. **Record** — Every evaluation creates a `ScaleDecision` CR for audit trail and dashboards.
+## Architecture Overview
 
-## Core Concepts
+```
+                      [ Load Generator: k6 ]
+                                 │
+                   ┌─────────────┴─────────────┐
+                   ▼                           ▼
+        [ Baseline App: HPA-only ]   [ Prescaled App: HPA + PreScale ]
+                   │                           │
+                   └─────────────┬─────────────┘
+                                 ▼
+                     [ VictoriaMetrics / vmagent ]
+                                 │
+                        (queries recent RPS)
+                                 │
+                                 ▼
+                    ┌─────────────────────────┐
+                    │     prescaler daemon    │
+                    │   (cmd/prescaler/main)  │
+                    └────────────┬────────────┘
+                                 │
+              ┌──────────────────┴──────────────────┐
+              ▼                                     ▼
+     (POST /predict RPS)                  (PATCH minReplicas)
+              ▼                                     ▼
+   [ Predictor Service ]                    [ Target HPA ]
+ (Python 3.12 + ML .pkl)
+```
 
-### ScaleGuard (CRD)
-The primary configuration resource. Each `ScaleGuard` binds to one HPA and defines:
-- **Mode**: `observe` (record only) or `enforce` (cap HPA on harmful scale-ups)
-- **Prometheus URL**: Where to query metrics
-- **Queries**: PromQL for RPS, P99 latency, and error rate
-- **Dependencies**: Optional downstream services to check for saturation (e.g., database, cache)
-- **Warmup Window**: Time to wait after scale-up before evaluating (default: 2m)
-- **Max Freeze Duration**: How long to keep a cap before auto-restore (default: 30m)
-- **Min Replicas Floor**: Safety floor — caps never go below this
+---
 
-### ScaleDecision (CRD)
-Immutable audit record created for every scale-up evaluation:
-- Verdict (`helped` / `useless` / `harmful` / `unknown`)
-- Confidence score (0–1)
-- From/to replica counts
-- Culprit dependency (if any)
-- Human-readable reasons
-- Action taken (`capped` / `restored` / `observed`)
+## Directory Layout
 
-## Quickstart
+```
+.
+├── cmd/
+│   └── prescaler/          # Pre-scaler daemon entrypoint
+├── deploy/                 # Kubernetes deployment manifests & Helm configs (planned)
+├── docs/                   # Documentation & historical references
+│   ├── old-demo-README.md  # Original demo guide
+│   └── reports/            # Analysis and audit reports (Part 1 & 2)
+├── experiments/            # Benchmark definitions & load test results
+├── internal/
+│   ├── actuator/           # Kubernetes HPA actuation & safety planner
+│   └── metrics/            # VictoriaMetrics / Prometheus range query client
+├── loadtest/
+│   └── surge.js            # k6 traffic surge load test script
+├── predictor/              # ML-based traffic forecast service (planned)
+├── workload/               # Demo applications & manifests
+│   ├── checkout/           # HTTP microservice with CPU load & DB dependency
+│   ├── fakedb/             # Database simulation with normal/contention modes
+│   └── k8s/                # Workload deployments, services, and HPA
+├── Makefile                # Standard developer commands
+├── go.mod / go.sum         # Go module dependencies
+└── README.md               # Project documentation
+```
+
+---
+
+## Current Status
+
+- **What Exists**:
+  - `internal/metrics`: Functional VictoriaMetrics/Prometheus time-series client.
+  - `internal/actuator`: Conflict-safe Kubernetes HPA patch engine (currently configured for capping `maxReplicas`; inversion to `minReplicas` scheduled for next part).
+  - `workload/checkout` & `workload/fakedb`: Fully implemented Go demo microservices with unit tests.
+  - `workload/k8s`: Kubernetes manifests for namespace, checkout, and fakedb deployments with HPA.
+  - `loadtest/surge.js`: Ramping arrival rate k6 scenario (20 -> 120 -> 20 RPS).
+  - `cmd/prescaler`: Skeleton Go daemon with standard-library CLI flags and signal handling.
+- **What is Planned**:
+  - Inverting actuator logic to raise `minReplicas` ahead of predicted surges.
+  - Integration between `prescaler`, VictoriaMetrics, and the predictor service.
+  - Packaging the Python 3.12 ML model inference service.
+  - Side-by-side benchmark harness in Kubernetes.
+
+---
+
+## Building and Testing
 
 ### Prerequisites
-- Go 1.24+
-- Docker 17.03+
-- kubectl 1.11.3+
-- Kubernetes 1.11.3+ cluster with HPA and Prometheus
+- Go 1.24+ (developed with Go 1.26)
 
-### Deploy
+### Common Commands
 
 ```bash
-# Build and push the controller image
-export IMG=<your-registry>/prescale:v0.1.0
-make docker-build docker-push IMG=$IMG
+# Display help and available Makefile targets
+make help
 
-# Install CRDs
-make install
+# Build the prescaler daemon binary into bin/
+make build
 
-# Deploy the controller
-make deploy IMG=$IMG
-```
-
-### Create a ScaleGuard
-
-```yaml
-# config/samples/autoscaling_v1alpha1_scaleguard.yaml
-apiVersion: autoscaling.prescale.io/v1alpha1
-kind: ScaleGuard
-metadata:
-  name: my-app-guard
-  namespace: production
-spec:
-  hpaName: my-app-hpa                    # Must match existing HPA name
-  mode: enforce                          # or "observe"
-  prometheusURL: "http://prometheus:9090"
-  queries:
-    rps: 'sum(rate(http_requests_total{namespace="production",service="my-app"}[1m]))'
-    p99Millis: 'histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{namespace="production",service="my-app"}[5m])) by (le)) * 1000'
-    errorRate: 'sum(rate(http_requests_total{namespace="production",service="my-app",code=~"5.."}[5m])) / sum(rate(http_requests_total{namespace="production",service="my-app"}[5m]))'
-  dependencies:
-    - name: postgres
-      saturationQuery: 'pg_stat_database_max_connections / pg_settings_max_connections * 100'
-      thresholdPercent: 85
-  warmupWindow: 2m
-  maxFreezeDuration: 30m
-  minReplicasFloor: 2
-```
-
-Apply it:
-```bash
-kubectl apply -f config/samples/autoscaling_v1alpha1_scaleguard.yaml
-```
-
-### Verify
-
-```bash
-# Watch ScaleGuard status
-kubectl get scaleguard my-app-guard -n production -w
-
-# See recorded decisions
-kubectl get scaledecision -n production
-```
-
-## Configuration Reference
-
-### ScaleGuard Spec
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `hpaName` | string | Yes | Name of the HPA to guard (same namespace) |
-| `mode` | enum (`observe`, `enforce`) | Yes | Observe only, or actively cap HPA |
-| `prometheusURL` | string | Yes | Prometheus query endpoint |
-| `queries.rps` | string | Yes | PromQL returning requests/second |
-| `queries.p99Millis` | string | Yes | PromQL returning P99 latency in milliseconds |
-| `queries.errorRate` | string | Yes | PromQL returning error rate (0–1) |
-| `dependencies[]` | array | No | Downstream services to check for saturation |
-| `dependencies[].name` | string | Yes | Identifier for the dependency |
-| `dependencies[].saturationQuery` | string | Yes | PromQL returning saturation percentage (0–100) |
-| `dependencies[].thresholdPercent` | int | Yes | Saturation % above which the dependency is a culprit |
-| `warmupWindow` | Duration | Yes | Time to wait post-scale-up before evaluating (e.g., `2m`) |
-| `maxFreezeDuration` | Duration | Yes | Max time to keep a cap before auto-restore (e.g., `30m`) |
-| `minReplicasFloor` | int32 | Yes | Safety floor — caps never reduce maxReplicas below this |
-
-### ScaleGuard Status
-
-| Field | Description |
-|-------|-------------|
-| `phase` | Current phase: `Evaluating`, `Capped`, `Restored`, `Idle` |
-| `lastVerdict` | Most recent verdict: `helped`, `useless`, `harmful`, `unknown` |
-| `lastConfidence` | Confidence of last verdict (0–1) |
-| `lastMessage` | Human-readable summary |
-| `cap` | Active cap details (if any): `originalMaxReplicas`, `cappedAt`, `since`, `reason` |
-| `trustScore` | Running trust score (0–100) — increases on `helped`, decreases on `harmful` |
-| `conditions` | Standard Kubernetes conditions (`Ready`, `PrometheusReachable`, `HPAExists`) |
-
-## Architecture
-
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   HPA       │────▶│  ScaleGuard │────▶│  Prometheus │
-│  (scales up)│     │ Controller  │     │  (metrics)  │
-└─────────────┘     └──────┬──────┘     └─────────────┘
-                           │
-                    ┌──────▼──────┐
-                    │  Detector   │  (helped / useless / harmful / unknown)
-                    └──────┬──────┘
-                           │
-                    ┌──────▼──────┐     ┌─────────────┐
-                    │  Actuator   │────▶│    HPA      │
-                    │ (cap/restore)│     │ (maxReplicas)│
-                    └─────────────┘     └─────────────┘
-                           │
-                    ┌──────▼──────┐
-                    │ ScaleDecision│  (audit record)
-                    └─────────────┘
-```
-
-### Detector (`internal/detector/`)
-Implements the causal inference logic:
-- Compares post-scale-up metrics against a counterfactual baseline (pre-scale-up trend)
-- Checks dependency saturation to identify culprits
-- Outputs verdict, confidence, culprit, and plain-English reasons
-
-### Actuator (`internal/actuator/`)
-Safely modifies HPA `maxReplicas`:
-- Stores original `maxReplicas` in annotation (`prescale.io/original-max-replicas`)
-- Applies cap with `minReplicasFloor` safety bound
-- Auto-restores after `maxFreezeDuration`
-- Idempotent and conflict-safe (re-fetches before update)
-
-## Modes
-
-| Mode | Behavior |
-|------|----------|
-| `observe` | Records `ScaleDecision` for every scale-up. Never modifies HPA. Use for validation and tuning. |
-| `enforce` | Same as observe, **plus** caps HPA `maxReplicas` on `harmful` verdicts. Auto-restores after `maxFreezeDuration`. |
-
-## Development
-
-```bash
-# Run unit tests (uses envtest)
+# Run all unit tests
 make test
 
-# Run locally against your cluster (uses ~/.kube/config)
-make run
+# Run code vet
+make vet
 
-# Lint & format
-make lint-fix
+# Format all Go source files
+make fmt
 
-# Generate manifests & deepcopy code after API changes
-make manifests generate
+# Clean built binaries
+make clean
 ```
-
-## Distribution
-
-### YAML Bundle (Kustomize)
-```bash
-make build-installer IMG=<registry>/prescale:v0.1.0
-# Outputs dist/install.yaml — users install with:
-# kubectl apply -f dist/install.yaml
-```
-
-### Helm Chart
-```bash
-# Generate chart (first time)
-kubebuilder edit --plugins=helm/v2-alpha
-
-# Deploy via Helm (development)
-make helm-deploy IMG=<registry>/prescale:v0.1.0
-
-# Package for distribution
-helm package dist/chart/
-```
-
-## RBAC
-
-The controller requires permissions to:
-- Read/write `ScaleGuard` and `ScaleDecision` (own CRDs)
-- Read `HPA` and `Deployment` (to watch scale events and patch maxReplicas)
-- Create `Events` (for visibility)
-- Leader election (configmap/lease)
-
-See `config/rbac/` for generated roles.
-
-## License
-
-Apache License 2.0 — see [LICENSE](LICENSE) for details.
