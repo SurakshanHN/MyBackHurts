@@ -43,7 +43,7 @@ type Input struct {
     FromReplicas int
     ToReplicas   int
     Series       []Sample              // sorted by time
-    DepS        map[string][]DepSample // name -> sorted series
+    Deps        map[string][]DepSample // name -> sorted series
     Cfg          Config
 }
 

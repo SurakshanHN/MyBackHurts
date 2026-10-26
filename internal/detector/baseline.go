@@ -21,6 +21,7 @@
 package detector
 
 import (
+    "math"
     "time"
 )
 
@@ -111,4 +112,102 @@ func ProjectP99Ms(samples []Sample, now time.Time, window time.Duration, points 
 // ProjectErrRate projects the expected error rate over the given window.
 func ProjectErrRate(samples []Sample, now time.Time, window time.Duration, points int) []float64 {
     return projectMetric(samples, func(s Sample) float64 { return s.ErrRate }, now, window, points)
+}
+
+// Fit captures the parameters of a linear regression fit of a metric
+// over time.  The slice of Sample points used in the fit are restricted
+// to those with T < before.  T0 is the time of the first used sample and
+// X is measured in seconds since T0.
+//
+// The fit is only considered successful (ok==true) if there are at least
+// three samples, the design matrix has non‑zero variance in x, all
+// numeric values are finite, and the regression algorithm succeeds.
+//
+// `Fit` is deliberately small; it only stores the quantities that are
+// needed for confidence interval prediction.
+type Fit struct {
+    Slope, Intercept, ResidStd, XMean, Sxx float64
+    N  int
+    T0 time.Time // x = seconds since T0
+}
+
+// FitMetric performs a linear regression of the metric produced by
+// `extract` over the subset of `samples` that occur before `before`.
+// The function returns a `Fit` containing the regression parameters
+// and a boolean indicating whether the fit was successful.
+func FitMetric(samples []Sample, extract func(Sample) float64, before time.Time) (Fit, bool) {
+    // Determine the sample window and collect x,y.
+    var xs, ys []float64
+    var t0 time.Time
+    for _, s := range samples {
+        if !s.T.Before(before) {
+            continue
+        }
+        if t0.IsZero() {
+            t0 = s.T
+        }
+        // compute x in seconds since t0
+        x := s.T.Sub(t0).Seconds()
+        y := extract(s)
+        if math.IsNaN(x) || math.IsNaN(y) || math.IsInf(x, 0) || math.IsInf(y, 0) {
+            return Fit{}, false
+        }
+        xs = append(xs, x)
+        ys = append(ys, y)
+    }
+    n := len(xs)
+    if n < 3 {
+        return Fit{}, false
+    }
+    // Compute Sxx and meanX for later use.
+    var sumX float64
+    for _, x := range xs { sumX += x }
+    meanX := sumX / float64(n)
+    var sxx float64
+    for _, x := range xs { d := x - meanX; sxx += d * d }
+    if sxx == 0 {
+        return Fit{}, false
+    }
+    slope, intercept, ok := fitLinear(xs, ys)
+    if !ok {
+        return Fit{}, false
+    }
+    // Compute residual standard deviation.
+    var rsq float64
+    for i := 0; i < n; i++ {
+        pred := intercept + slope*xs[i]
+        d := ys[i] - pred
+        rsq += d * d
+    }
+    residStd := math.Sqrt(rsq / float64(n-2))
+    f := Fit{Slope: slope, Intercept: intercept, ResidStd: residStd,
+        XMean: meanX, Sxx: sxx, N: n, T0: t0}
+    return f, true
+}
+
+// Predict returns the mean, lower and upper prediction bounds for the
+// metric at time `t`.  `z` specifies the number of standard deviations
+// for the interval.  If z <= 0, a default of 1.96 (95% confidence) is
+// used.  If the underlying fit had fewer than three points (f.N < 3) the
+// function returns NaN for all three outputs.
+func (f Fit) Predict(t time.Time, z float64) (mean, lower, upper float64) {
+    if f.N < 3 {
+        return math.NaN(), math.NaN(), math.NaN()
+    }
+    if z <= 0 {
+        z = 1.96
+    }
+    // x is seconds since T0.
+    x := t.Sub(f.T0).Seconds()
+    mean = f.Intercept + f.Slope*x
+    // half width of the prediction interval
+    var half float64
+    if f.Sxx != 0 {
+        half = z * f.ResidStd * math.Sqrt(1+1/float64(f.N)+(x-f.XMean)*(x-f.XMean)/f.Sxx)
+    } else {
+        half = 0
+    }
+    lower = mean - half
+    upper = mean + half
+    return
 }
