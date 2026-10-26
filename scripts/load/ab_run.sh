@@ -181,6 +181,9 @@ log "Both k6 containers exited. T_FINISH: ${T_FINISH} (run duration: $((T_FINISH
 ann_after=$($KC get scaledobject checkout -n predictive -o jsonpath='{.metadata.annotations}' 2>/dev/null || echo "{}")
 log "Predictive ScaledObject annotations AFTER run: ${ann_after}"
 
+# Save prescaler logs before scaling to 0
+$KC logs -n predictive deploy/prescaler > "${OUT_DIR}/ab_${RUN_ID}_prescaler.log" 2>&1 || true
+
 # Scale prescaler to 0
 log "Scaling prescaler to 0 in predictive namespace..."
 $KC scale deploy prescaler -n predictive --replicas=0
