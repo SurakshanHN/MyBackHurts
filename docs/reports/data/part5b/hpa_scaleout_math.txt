@@ -1,0 +1,39 @@
+HPA Scale-Out Arithmetic (Part 5B Step 2)
+===========================================
+
+Parameters:
+- Checkout CPU request: 400m (raised from 100m)
+- Checkout CPU limit: 500m (unchanged)
+- ScaledObject CPU target: 50%
+- Scale-out target CPU per pod: 0.5 * 400m = 200m (THEORETICAL)
+- KNEE_3 = 330 RPS target (329.14 RPS achieved) (MEASURED)
+- KNEE_3 / 3 = 110.0 RPS/pod (109.71 RPS/pod achieved)
+
+Step 1 Measured mCPU-per-RPS per pod:
+- Stage 330 RPS: 3.28 mCPU/RPS per pod (pod CPU = 359.51m, pod RPS = 109.71)
+- Stage 360 RPS: 5.06 mCPU/RPS per pod (pod CPU = 572.31m, pod RPS = 113.05)
+Min mCPU/RPS: 3.28 mCPU/RPS
+Max mCPU/RPS: 5.06 mCPU/RPS
+
+Scale-out point per pod = 200m / (mCPU-per-RPS):
+- At min (3.28 mCPU/RPS):
+  200m / 3.28 = 60.98 RPS/pod (THEORETICAL)
+  3 pods total = 182.93 RPS
+  As % of KNEE_3/3 (110.0 RPS/pod): 55.43% (55.58% of achieved 109.71 RPS/pod)
+
+- At max (5.06 mCPU/RPS):
+  200m / 5.06 = 39.53 RPS/pod (THEORETICAL)
+  3 pods total = 118.58 RPS
+  As % of KNEE_3/3 (110.0 RPS/pod): 35.93% (36.03% of achieved 109.71 RPS/pod)
+
+Scale-out point per pod range:
+39.53 - 60.98 RPS/pod (35.9% - 55.6% of KNEE_3/3) (THEORETICAL)
+
+HPA Status ($KC get hpa -A):
+NAMESPACE    NAME                REFERENCE             TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+baseline     keda-hpa-checkout   Deployment/checkout   cpu: 0%/50%   3         10        3          176m
+predictive   keda-hpa-checkout   Deployment/checkout   cpu: 0%/50%   3         10        3          176m
+
+Overlay Diff:
+diff -u <(kubectl kustomize workload/k8s/overlays/baseline) <(kubectl kustomize workload/k8s/overlays/predictive)
+Verdict: Overlays differ ONLY in namespace, labels (prescale.io/side), and nodePorts (30081/30083 vs 30082/30084).
