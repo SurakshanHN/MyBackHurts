@@ -2,55 +2,72 @@ package detector
 
 import "time"
 
-// Sample holds a point in time with basic metrics.
-type Sample struct {
-    T        time.Time
-    Replicas int
-    Ready    int
-    RPS      float64
-    P99Ms    float64
-    ErrRate  float64 // 0-1
-}
-
-// Verdict represents the outcome of a scale assessment.
 type Verdict string
 
 const (
-    Helped  Verdict = "helped"
-    Useless Verdict = "useless"
-    Harmful Verdict = "harmful"
-    Unknown Verdict = "unknown"
+	Helped  Verdict = "helped"
+	Useless Verdict = "useless"
+	Harmful Verdict = "harmful"
+	Unknown Verdict = "unknown"
 )
 
-// DepSample is a simple packaging for optional dependency metrics.
+const (
+	AltRuledOut    = "ruled_out"
+	AltNotRuledOut = "not_ruled_out"
+)
+
+type Sample struct {
+	T                   time.Time
+	Replicas, Ready     int
+	RPS, P99Ms, ErrRate float64
+}
+
 type DepSample struct {
-    T          time.Time
-    Saturation float64
+	T          time.Time
+	Saturation float64
+	LatencyMs  float64
 }
 
-// Config contains thresholds used by the detector.
 type Config struct {
-    MinSamples    int     // below this -> Unknown
-    HarmMargin    float64 // e.g. 0.15 = 15% worse than counterfactual
-    SaturationPct float64 // e.g. 90
-    MinConfidence float64 // below this -> Unknown
-    WarmupSeconds int
+	MinSamples        int
+	HarmMargin        float64
+	SaturationPct     float64
+	MinConfidence     float64
+	WarmupSeconds     int
+	MinThroughputGain float64
 }
 
-// Input holds all context needed for detection.
 type Input struct {
-    ScaleUpAt    time.Time
-    FromReplicas int
-    ToReplicas   int
-    Series       []Sample              // sorted by time
-    Deps        map[string][]DepSample // name -> sorted series
-    Cfg          Config
+	ScaleUpAt    time.Time
+	FromReplicas int
+	ToReplicas   int
+	Series       []Sample
+	Deps         map[string][]DepSample
+	Cfg          Config
 }
 
-// Result contains the detector's conclusion.
+// Finding is one measured quantity with its expected range.
+type Finding struct {
+	Name     string
+	Observed float64
+	Expected float64
+	Lower    float64
+	Upper    float64
+}
+
+// Alternative is a competing explanation and whether the data rules it out.
+type Alternative struct {
+	Hypothesis string
+	Status     string // AltRuledOut or AltNotRuledOut
+	Why        string
+}
+
 type Result struct {
-    Verdict    Verdict
-    Confidence float64  // 0-1
-    Culprit    string   // "" if none
-    Reasons    []string // plain facts: "p99 rose 82% vs counterfactual"
+	Verdict      Verdict
+	Confidence   float64
+	Culprit      string
+	Reasons      []string
+	Findings     []Finding
+	Alternatives []Alternative
+	DataQuality  []string
 }
