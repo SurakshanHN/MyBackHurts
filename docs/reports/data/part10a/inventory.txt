@@ -1,0 +1,84 @@
+# Part 10A Inventory: Teammate Model & Code Inspection
+
+1. Tracked Status & Model File Sizes / Hashes:
+- Prescale/ tracked status: Fully tracked in git (git status --short Prescale/ is clean, git ls-files Prescale/ lists 11 files).
+- Prescale/prescale_model.pkl:
+  Size: 5223522 bytes
+  SHA256: 451b6c8cbbc26335ab1486510a478600544071bece5aafe80a15e4564d7a7308
+- Prescale/prescale_model.joblib:
+  Size: 3307732 bytes
+  SHA256: b5ee6a6cd5bee092af3e29eaf56806439c5bc855912e3ea1e3cf9a827b5f3271
+
+2. Exact Feature Names and Order (79 total features):
+['cpu_lag1', 'cpu_lag2', 'cpu_lag3', 'cpu_lag5', 'cpu_lag10', 'cpu_lag15', 'cpu_lag30', 'cpu_mean5', 'cpu_std5', 'cpu_max5', 'cpu_mean15', 'cpu_std15', 'cpu_max15', 'cpu_mean30', 'cpu_std30', 'cpu_max30', 'cpu_diff1', 'cpu_slope5', 'rps_lag1', 'rps_lag2', 'rps_lag3', 'rps_lag5', 'rps_lag10', 'rps_lag15', 'rps_lag30', 'rps_mean5', 'rps_std5', 'rps_max5', 'rps_mean15', 'rps_std15', 'rps_max15', 'rps_mean30', 'rps_std30', 'rps_max30', 'rps_diff1', 'rps_slope5', 'mem_lag1', 'mem_lag2', 'mem_lag3', 'mem_lag5', 'mem_lag10', 'mem_lag15', 'mem_lag30', 'mem_mean5', 'mem_std5', 'mem_max5', 'mem_mean15', 'mem_std15', 'mem_max15', 'mem_mean30', 'mem_std30', 'mem_max30', 'mem_diff1', 'mem_slope5', 'pending_pods_lag1', 'pending_pods_lag2', 'pending_pods_lag3', 'pending_pods_lag5', 'pending_pods_lag10', 'pending_pods_lag15', 'pending_pods_lag30', 'pending_pods_mean5', 'pending_pods_std5', 'pending_pods_max5', 'pending_pods_mean15', 'pending_pods_std15', 'pending_pods_max15', 'pending_pods_mean30', 'pending_pods_std30', 'pending_pods_max30', 'pending_pods_diff1', 'pending_pods_slope5', 'cpu_request', 'mem_limit', 'mem_util', 'cpu_util_now', 'tod_sin', 'tod_cos', 'dow']
+
+3. How each signal is queried (PromQL in serve_app.py / online.py):
+- cpu: 'sum(rate(container_cpu_usage_seconds_total{deployment="{dep}",container!=""}[2m]))'
+- rps: 'sum(rate(http_requests_total{deployment="{dep}"}[1m]))'
+- mem: 'sum(container_memory_working_set_bytes{deployment="{dep}",container!=""})'
+- pod_count: 'count(kube_pod_info{deployment="{dep}"})'
+- ready_pods: 'sum(kube_pod_status_ready{deployment="{dep}",condition="true"})'
+Queried via VictoriaMetrics /api/v1/query_range with step="60s" over a 60-minute lookback window.
+
+4. Static Settings:
+- HORIZON_MIN: 3 minutes ahead
+- TARGET_UTIL: 0.6 (60% CPU target utilisation per pod)
+- MIN_REPLICAS: 1
+- MIN_HISTORY: 35 minutes (max(lags+windows) + 5)
+- MAX_STALENESS_S: 120 seconds
+- LOOKBACK_MIN: 60 minutes
+- MIN_P50_CORES: 0.05 cores
+- STATIC per deployment: cpu_request (cores), mem_limit (GiB) stored in bundle["deployments"][DEPLOYMENT]
+
+5. Output Schema:
+- On success ("mode": "prescale"):
+  - mode: str ("prescale")
+  - action: str ("scale_up" | "hold")
+  - current_replicas: int
+  - desired_replicas: int
+  - forecast_horizon_min: int (3)
+  - cpu_now_cores: float (total cores)
+  - cpu_forecast_cores: {"p10": float, "p50": float, "p90": float} (total cores)
+  - reason: str
+  - data_staleness_s: float (seconds)
+  - deployment: str (in serve_app.py)
+  - generated_at: str ISO-8601 (in serve_app.py)
+- On fallback ("mode": "fallback_hpa"):
+  - mode: str ("fallback_hpa")
+  - action: str ("defer_to_hpa")
+  - desired_replicas: null
+  - reason: str
+  - data_staleness_s: float | null
+
+6. serve_app Endpoints:
+- GET /health: returns {"status": "ok", "deployment": DEPLOYMENT, "backend": bundle["backend"], "horizon_min": bundle["horizon_min"]}
+- GET /predict: returns JSON per output schema above (no request body or query parameters accepted).
+
+7. Model Files and Loaders:
+- serve_app.py loads: MODEL_PATH defaulting to "prescale_model.joblib" via joblib.load(MODEL_PATH)
+- train_prescale.py saves: OUT_MODEL defaulting to "prescale_model.joblib" via joblib.dump(bundle, OUT_MODEL)
+- prescale_model.pkl is NOT loaded or referenced anywhere in Prescale/ code.
+- Model backend: LightGBM (lgb.LGBMRegressor) if installed, fallback to sklearn (HistGradientBoostingRegressor).
+
+8. How Replica Count is Produced:
+- Formula: desired = max(min_replicas, math.ceil(p90_abs / (cpu_request * target_util)))
+- Scale-down is never recommended: if desired > current_replicas, action="scale_up"; else action="hold".
+
+9. Units of CPU:
+- Total cores across all pods of the deployment (stated in README.md line 34: "total cores used by all pods of the deployment", and sum(rate(...)) in PromQL).
+
+10. Code-Review Grep List:
+- pickle/joblib load calls:
+  Prescale/serve_app.py:33:bundle = joblib.load(MODEL_PATH)
+  Prescale/train_prescale.py:180:joblib.dump(bundle, OUT_MODEL)
+  Prescale/PreScale_training.ipynb:761:    "joblib.dump(bundle, OUT_MODEL)\n",
+  Prescale/PreScale_training.ipynb:764:    "reloaded = joblib.load(OUT_MODEL)\n",
+- os.system: None (0 hits)
+- subprocess: None (0 hits)
+- eval/exec: None (0 hits)
+- file writes: None via open() (only joblib.dump writes OUT_MODEL)
+- network calls:
+  Prescale/serve_app.py:12:import httpx
+  Prescale/serve_app.py:19:VM_URL = os.getenv("VM_URL", "http://victoriametrics:8428")
+  Prescale/serve_app.py:53:        async with httpx.AsyncClient(timeout=5) as client:
+  Prescale/serve_app.py:55:                r = await client.get(f"{VM_URL}/api/v1/query_range", params={
