@@ -1,0 +1,45 @@
+=== (a) 79 Feature Names by Group ===
+lag: 28 features: ['cpu_lag1', 'cpu_lag2', 'cpu_lag3', 'cpu_lag5', 'cpu_lag10', 'cpu_lag15', 'cpu_lag30', 'rps_lag1', 'rps_lag2', 'rps_lag3', 'rps_lag5', 'rps_lag10', 'rps_lag15', 'rps_lag30', 'mem_lag1', 'mem_lag2', 'mem_lag3', 'mem_lag5', 'mem_lag10', 'mem_lag15', 'mem_lag30', 'pending_pods_lag1', 'pending_pods_lag2', 'pending_pods_lag3', 'pending_pods_lag5', 'pending_pods_lag10', 'pending_pods_lag15', 'pending_pods_lag30']
+rolling_mean: 12 features: ['cpu_mean5', 'cpu_mean15', 'cpu_mean30', 'rps_mean5', 'rps_mean15', 'rps_mean30', 'mem_mean5', 'mem_mean15', 'mem_mean30', 'pending_pods_mean5', 'pending_pods_mean15', 'pending_pods_mean30']
+rolling_std: 12 features: ['cpu_std5', 'cpu_std15', 'cpu_std30', 'rps_std5', 'rps_std15', 'rps_std30', 'mem_std5', 'mem_std15', 'mem_std30', 'pending_pods_std5', 'pending_pods_std15', 'pending_pods_std30']
+rolling_max: 12 features: ['cpu_max5', 'cpu_max15', 'cpu_max30', 'rps_max5', 'rps_max15', 'rps_max30', 'mem_max5', 'mem_max15', 'mem_max30', 'pending_pods_max5', 'pending_pods_max15', 'pending_pods_max30']
+diff1: 4 features: ['cpu_diff1', 'rps_diff1', 'mem_diff1', 'pending_pods_diff1']
+slope5: 4 features: ['cpu_slope5', 'rps_slope5', 'mem_slope5', 'pending_pods_slope5']
+static: 2 features: ['cpu_request', 'mem_limit']
+ratio: 2 features: ['mem_util', 'cpu_util_now']
+calendar: 3 features: ['tod_sin', 'tod_cos', 'dow']
+Total: 79
+
+=== (b) Replica Constants ===
+HORIZON_MIN: 3  # features.py:17
+TARGET_UTIL: 0.6  # features.py:18
+MIN_REPLICAS: 1  # features.py:19
+MAX_REPLICAS: not hard-coded in features.py/recommend(); ceiling applied by online.py/bundle only if set
+Formula (features.py:146): desired = max(min_replicas, math.ceil(p90_abs / (cpu_request * target_util)))
+cpu_request: stored per deployment in bundle["deployments"][name]["cpu_request"]
+
+=== (c) Conditions for mode=fallback_hpa (online.py) ===
+1. len(grid) < MIN_HISTORY (MIN_HISTORY = 35, online.py:56)
+2. staleness = (now - grid.index[-1]).total_seconds() > 120 (online.py:59-60)
+3. x.isna().any(axis=None) – feature gap in recent metrics > 2 min (online.py:64-65)
+4. rel_width = (p90-p10)/max(p50,0.05) > bundle["max_rel_width"] (online.py:72-76)
+   joblib rel_width threshold: 0.213; pkl rel_width threshold: 0.219
+
+=== (d) CPU: per pod or deployment total? ===
+Deployment total. README.md:34 states: "total cores used by all pods of the deployment".
+PromQL: sum(rate(container_cpu_usage_seconds_total{...}[2m])) sums across all pods (serve_app.py:26).
+grid_from_arrays: cpu column = sum of all pod CPU usage (training CSV column: cpu_used_cores).
+
+=== (e) Deployment name check ===
+serve_app.py:34: if DEPLOYMENT not in bundle["deployments"]: raise RuntimeError(...)
+Bundle deployments: ["auth-svc", "checkout-api", "recs-worker", "report-batch", "search-svc"]
+Our cluster deployment is named "checkout", which is NOT in the bundle.
+
+Container test of predict_from_grid with name "checkout" on valid synthetic input:
+predict_from_grid result (no name arg): {'mode': 'fallback_hpa', 'action': 'defer_to_hpa', 'desired_replicas': None, 'reason': 'low confidence: forecast interval too wide (relative width 0.24 > limit 0.21)', 'data_staleness_s': 60.0}
+Note: predict_from_grid itself does NOT check deployment name. Name check is at serve_app.py startup.
+The rejection (serve_app.py:34) fires when uvicorn starts, not per-predict.
+
+=== (f) Prescale/ tracked by git ===
+YES. git ls-files Prescale/ lists 11 files including features.py, both model files, etc.
+git status --short Prescale/ is clean (no untracked or modified files).
