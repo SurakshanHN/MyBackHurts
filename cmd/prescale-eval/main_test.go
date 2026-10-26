@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -75,6 +76,29 @@ func TestEval_NoArmReadsGroundTruth(t *testing.T) {
 				t.Fatalf("scenario %d arm %s decision changed when ground truth label changed: (%v,%v) vs (%v,%v)",
 					i, arm.Name(), cap1, unk1, cap2, unk2)
 			}
+		}
+	}
+}
+
+func TestEval_DistinctP99Series(t *testing.T) {
+	scenarios := evGenerateScenarios(42)
+	byType := make(map[ScenarioType][]Scenario)
+	for _, sc := range scenarios {
+		byType[sc.Type] = append(byType[sc.Type], sc)
+	}
+
+	for sType, list := range byType {
+		distinct := make(map[string]bool)
+		for _, sc := range list {
+			var p99s []string
+			for _, s := range sc.Input.Series {
+				p99s = append(p99s, fmt.Sprintf("%.2f", s.P99Ms))
+			}
+			distinct[fmt.Sprint(p99s)] = true
+		}
+		t.Logf("Scenario %s has %d distinct p99 series out of %d", sType, len(distinct), len(list))
+		if len(distinct) < 150 {
+			t.Fatalf("Scenario %s has only %d distinct p99 series; expected >= 150", sType, len(distinct))
 		}
 	}
 }
