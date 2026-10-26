@@ -1,0 +1,683 @@
+$ kubectl --context kind-prescale-demo get nodes -o wide
+NAME                          STATUS   ROLES           AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION           CONTAINER-RUNTIME
+prescale-demo-control-plane   Ready    control-plane   118m   v1.32.0   172.19.0.3    <none>        Debian GNU/Linux 12 (bookworm)   7.2.11-200.fc44.x86_64   containerd://1.7.24
+prescale-demo-worker          Ready    <none>          116m   v1.32.0   172.19.0.4    <none>        Debian GNU/Linux 12 (bookworm)   7.2.11-200.fc44.x86_64   containerd://1.7.24
+prescale-demo-worker2         Ready    <none>          116m   v1.32.0   172.19.0.5    <none>        Debian GNU/Linux 12 (bookworm)   7.2.11-200.fc44.x86_64   containerd://1.7.24
+[exit 0]
+
+$ kubectl --context kind-prescale-demo get pods -A -o wide
+NAMESPACE            NAME                                                  READY   STATUS    RESTARTS       AGE    IP            NODE                          NOMINATED NODE   READINESS GATES
+baseline             checkout-69cf88477-55rkl                              1/1     Running   0              100m   10.244.1.8    prescale-demo-worker2         <none>           <none>
+baseline             checkout-69cf88477-hqbh5                              1/1     Running   0              100m   10.244.2.4    prescale-demo-worker          <none>           <none>
+baseline             checkout-69cf88477-zs8rx                              1/1     Running   0              100m   10.244.2.5    prescale-demo-worker          <none>           <none>
+baseline             fakedb-c57886cdf-q4wpv                                1/1     Running   0              100m   10.244.1.9    prescale-demo-worker2         <none>           <none>
+keda                 keda-admission-cf7b8d47c-ffqz5                        1/1     Running   0              103m   10.244.2.3    prescale-demo-worker          <none>           <none>
+keda                 keda-metrics-apiserver-85bbdd8569-tshn8               1/1     Running   0              103m   10.244.1.7    prescale-demo-worker2         <none>           <none>
+keda                 keda-operator-8b7db9c5d-d5twh                         1/1     Running   1 (103m ago)   103m   10.244.1.6    prescale-demo-worker2         <none>           <none>
+kube-system          coredns-668d6bf9bc-7f2vm                              1/1     Running   0              118m   10.244.0.4    prescale-demo-control-plane   <none>           <none>
+kube-system          coredns-668d6bf9bc-nkbdm                              1/1     Running   0              118m   10.244.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          etcd-prescale-demo-control-plane                      1/1     Running   0              118m   172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kindnet-dg9pp                                         1/1     Running   0              116m   172.19.0.4    prescale-demo-worker          <none>           <none>
+kube-system          kindnet-krk4h                                         1/1     Running   0              116m   172.19.0.5    prescale-demo-worker2         <none>           <none>
+kube-system          kindnet-vqfs6                                         1/1     Running   0              118m   172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-apiserver-prescale-demo-control-plane            1/1     Running   0              118m   172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-controller-manager-prescale-demo-control-plane   1/1     Running   0              118m   172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-proxy-bg95g                                      1/1     Running   5 (117m ago)   118m   172.19.0.3    prescale-demo-control-plane   <none>           <none>
+kube-system          kube-proxy-f7wpl                                      1/1     Running   0              116m   172.19.0.5    prescale-demo-worker2         <none>           <none>
+kube-system          kube-proxy-vjqxd                                      1/1     Running   0              116m   172.19.0.4    prescale-demo-worker          <none>           <none>
+kube-system          kube-scheduler-prescale-demo-control-plane            1/1     Running   0              118m   172.19.0.3    prescale-demo-control-plane   <none>           <none>
+local-path-storage   local-path-provisioner-58cc7856b6-bx2dq               1/1     Running   4 (115m ago)   118m   10.244.0.2    prescale-demo-control-plane   <none>           <none>
+monitoring           grafana-6875b4566b-f7fxd                              1/1     Running   0              109m   10.244.1.2    prescale-demo-worker2         <none>           <none>
+monitoring           kube-state-metrics-756c8f88d6-btjdk                   1/1     Running   0              109m   10.244.1.3    prescale-demo-worker2         <none>           <none>
+monitoring           metrics-server-fccf67f5-v7jx4                         1/1     Running   0              109m   10.244.1.4    prescale-demo-worker2         <none>           <none>
+monitoring           vmsingle-7547b449f7-rhgwt                             1/1     Running   0              109m   10.244.2.2    prescale-demo-worker          <none>           <none>
+predictive           checkout-69cf88477-jt56k                              1/1     Running   0              100m   10.244.1.11   prescale-demo-worker2         <none>           <none>
+predictive           checkout-69cf88477-shrbb                              1/1     Running   0              100m   10.244.2.7    prescale-demo-worker          <none>           <none>
+predictive           checkout-69cf88477-sw8c8                              1/1     Running   0              100m   10.244.2.6    prescale-demo-worker          <none>           <none>
+predictive           fakedb-c57886cdf-xmp58                                1/1     Running   0              100m   10.244.1.10   prescale-demo-worker2         <none>           <none>
+predictive           prescaler-64b77c4567-fz8h2                            1/1     Running   0              51m    10.244.2.16   prescale-demo-worker          <none>           <none>
+[exit 0]
+
+$ kubectl --context kind-prescale-demo get pods -A -o jsonpath={range .items[*]}{.metadata.namespace}/{.metadata.name}{" "}{range .spec.containers[*]}{.image}{" "}{end}{"\n"}{end}
+baseline/checkout-69cf88477-55rkl prescale/checkout:dev 
+baseline/checkout-69cf88477-hqbh5 prescale/checkout:dev 
+baseline/checkout-69cf88477-zs8rx prescale/checkout:dev 
+baseline/fakedb-c57886cdf-q4wpv prescale/fakedb:dev 
+keda/keda-admission-cf7b8d47c-ffqz5 ghcr.io/kedacore/keda-admission-webhooks:2.19.0 
+keda/keda-metrics-apiserver-85bbdd8569-tshn8 ghcr.io/kedacore/keda-metrics-apiserver:2.19.0 
+keda/keda-operator-8b7db9c5d-d5twh ghcr.io/kedacore/keda:2.19.0 
+kube-system/coredns-668d6bf9bc-7f2vm registry.k8s.io/coredns/coredns:v1.11.3 
+kube-system/coredns-668d6bf9bc-nkbdm registry.k8s.io/coredns/coredns:v1.11.3 
+kube-system/etcd-prescale-demo-control-plane registry.k8s.io/etcd:3.5.16-0 
+kube-system/kindnet-dg9pp docker.io/kindest/kindnetd:v20241212-9f82dd49 
+kube-system/kindnet-krk4h docker.io/kindest/kindnetd:v20241212-9f82dd49 
+kube-system/kindnet-vqfs6 docker.io/kindest/kindnetd:v20241212-9f82dd49 
+kube-system/kube-apiserver-prescale-demo-control-plane registry.k8s.io/kube-apiserver:v1.32.0 
+kube-system/kube-controller-manager-prescale-demo-control-plane registry.k8s.io/kube-controller-manager:v1.32.0 
+kube-system/kube-proxy-bg95g registry.k8s.io/kube-proxy:v1.32.0 
+kube-system/kube-proxy-f7wpl registry.k8s.io/kube-proxy:v1.32.0 
+kube-system/kube-proxy-vjqxd registry.k8s.io/kube-proxy:v1.32.0 
+kube-system/kube-scheduler-prescale-demo-control-plane registry.k8s.io/kube-scheduler:v1.32.0 
+local-path-storage/local-path-provisioner-58cc7856b6-bx2dq docker.io/kindest/local-path-provisioner:v20241212-8ac705d0 
+monitoring/grafana-6875b4566b-f7fxd grafana/grafana:11.4.0 
+monitoring/kube-state-metrics-756c8f88d6-btjdk registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.15.0 
+monitoring/metrics-server-fccf67f5-v7jx4 registry.k8s.io/metrics-server/metrics-server:v0.9.0 
+monitoring/vmsingle-7547b449f7-rhgwt quay.io/victoriametrics/victoria-metrics:v1.115.0 
+predictive/checkout-69cf88477-jt56k prescale/checkout:dev 
+predictive/checkout-69cf88477-shrbb prescale/checkout:dev 
+predictive/checkout-69cf88477-sw8c8 prescale/checkout:dev 
+predictive/fakedb-c57886cdf-xmp58 prescale/fakedb:dev 
+predictive/prescaler-64b77c4567-fz8h2 prescale/prescaler:dev 
+[exit 0]
+
+$ kubectl --context kind-prescale-demo get deploy,sts,ds -A
+NAMESPACE            NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+baseline             deployment.apps/checkout                 3/3     3            3           100m
+baseline             deployment.apps/fakedb                   1/1     1            1           100m
+keda                 deployment.apps/keda-admission           1/1     1            1           103m
+keda                 deployment.apps/keda-metrics-apiserver   1/1     1            1           103m
+keda                 deployment.apps/keda-operator            1/1     1            1           103m
+kube-system          deployment.apps/coredns                  2/2     2            2           118m
+local-path-storage   deployment.apps/local-path-provisioner   1/1     1            1           118m
+monitoring           deployment.apps/grafana                  1/1     1            1           109m
+monitoring           deployment.apps/kube-state-metrics       1/1     1            1           109m
+monitoring           deployment.apps/metrics-server           1/1     1            1           109m
+monitoring           deployment.apps/vmsingle                 1/1     1            1           109m
+predictive           deployment.apps/checkout                 3/3     3            3           100m
+predictive           deployment.apps/fakedb                   1/1     1            1           100m
+predictive           deployment.apps/prescaler                1/1     1            1           83m
+
+NAMESPACE     NAME                        DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-system   daemonset.apps/kindnet      3         3         3       3            3           kubernetes.io/os=linux   118m
+kube-system   daemonset.apps/kube-proxy   3         3         3       3            3           kubernetes.io/os=linux   118m
+[exit 0]
+
+$ kubectl --context kind-prescale-demo top nodes
+NAME                          CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+prescale-demo-control-plane   161m         1%       695Mi           4%          
+prescale-demo-worker          72m          0%       269Mi           1%          
+prescale-demo-worker2         73m          0%       374Mi           2%          
+[exit 0]
+
+$ kubectl --context kind-prescale-demo top pods -A
+NAMESPACE            NAME                                                  CPU(cores)   MEMORY(bytes)   
+baseline             checkout-69cf88477-55rkl                              1m           11Mi            
+baseline             checkout-69cf88477-hqbh5                              1m           6Mi             
+baseline             checkout-69cf88477-zs8rx                              1m           13Mi            
+baseline             fakedb-c57886cdf-q4wpv                                1m           8Mi             
+keda                 keda-admission-cf7b8d47c-ffqz5                        1m           17Mi            
+keda                 keda-metrics-apiserver-85bbdd8569-tshn8               2m           27Mi            
+keda                 keda-operator-8b7db9c5d-d5twh                         3m           29Mi            
+kube-system          coredns-668d6bf9bc-7f2vm                              3m           16Mi            
+kube-system          coredns-668d6bf9bc-nkbdm                              3m           18Mi            
+kube-system          etcd-prescale-demo-control-plane                      35m          57Mi            
+kube-system          kindnet-dg9pp                                         1m           15Mi            
+kube-system          kindnet-krk4h                                         1m           14Mi            
+kube-system          kindnet-vqfs6                                         1m           14Mi            
+kube-system          kube-apiserver-prescale-demo-control-plane            57m          299Mi           
+kube-system          kube-controller-manager-prescale-demo-control-plane   18m          65Mi            
+kube-system          kube-proxy-bg95g                                      1m           16Mi            
+kube-system          kube-proxy-f7wpl                                      1m           17Mi            
+kube-system          kube-proxy-vjqxd                                      1m           15Mi            
+kube-system          kube-scheduler-prescale-demo-control-plane            10m          30Mi            
+local-path-storage   local-path-provisioner-58cc7856b6-bx2dq               1m           10Mi            
+monitoring           grafana-6875b4566b-f7fxd                              3m           57Mi            
+monitoring           kube-state-metrics-756c8f88d6-btjdk                   3m           20Mi            
+monitoring           metrics-server-fccf67f5-v7jx4                         5m           32Mi            
+monitoring           vmsingle-7547b449f7-rhgwt                             20m          45Mi            
+predictive           checkout-69cf88477-jt56k                              1m           6Mi             
+predictive           checkout-69cf88477-shrbb                              1m           7Mi             
+predictive           checkout-69cf88477-sw8c8                              1m           6Mi             
+predictive           fakedb-c57886cdf-xmp58                                1m           6Mi             
+predictive           prescaler-64b77c4567-fz8h2                            1m           5Mi             
+[exit 0]
+
+$ kubectl --context kind-prescale-demo get scaledobject -A -o yaml
+apiVersion: v1
+items:
+- apiVersion: keda.sh/v1alpha1
+  kind: ScaledObject
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"keda.sh/v1alpha1","kind":"ScaledObject","metadata":{"annotations":{},"labels":{"prescale.io/side":"baseline"},"name":"checkout","namespace":"baseline"},"spec":{"advanced":{"horizontalPodAutoscalerConfig":{"behavior":{"scaleDown":{"stabilizationWindowSeconds":60}}}},"maxReplicaCount":10,"minReplicaCount":3,"pollingInterval":5,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"checkout"},"triggers":[{"metadata":{"value":"50"},"metricType":"Utilization","type":"cpu"}]}}
+    creationTimestamp: "2026-10-26T17:10:04Z"
+    finalizers:
+    - finalizer.keda.sh
+    generation: 2
+    labels:
+      prescale.io/side: baseline
+      scaledobject.keda.sh/name: checkout
+    name: checkout
+    namespace: baseline
+    resourceVersion: "18665"
+    uid: 3c066a5a-2586-4756-b5e1-f872ce1dfe1b
+  spec:
+    advanced:
+      horizontalPodAutoscalerConfig:
+        behavior:
+          scaleDown:
+            stabilizationWindowSeconds: 60
+      scalingModifiers: {}
+    maxReplicaCount: 10
+    minReplicaCount: 3
+    pollingInterval: 5
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: checkout
+    triggers:
+    - metadata:
+        value: "50"
+      metricType: Utilization
+      type: cpu
+  status:
+    authenticationsTypes: ""
+    conditions:
+    - message: ScaledObject is defined correctly and is ready for scaling
+      reason: ScaledObjectReady
+      status: "True"
+      type: Ready
+    - message: Scaling is performed because triggers are active
+      reason: ScalerActive
+      status: "True"
+      type: Active
+    - message: No fallbacks are active on this scaled object
+      reason: NoFallbackFound
+      status: "False"
+      type: Fallback
+    - status: "False"
+      type: Paused
+    hpaName: keda-hpa-checkout
+    lastActiveTime: "2026-10-26T18:50:35Z"
+    originalReplicaCount: 3
+    resourceMetricNames:
+    - cpu
+    scaleTargetGVKR:
+      group: apps
+      kind: Deployment
+      resource: deployments
+      version: v1
+    scaleTargetKind: apps/v1.Deployment
+    triggersTypes: cpu
+- apiVersion: keda.sh/v1alpha1
+  kind: ScaledObject
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"keda.sh/v1alpha1","kind":"ScaledObject","metadata":{"annotations":{},"labels":{"prescale.io/side":"predictive"},"name":"checkout","namespace":"predictive"},"spec":{"advanced":{"horizontalPodAutoscalerConfig":{"behavior":{"scaleDown":{"stabilizationWindowSeconds":60}}}},"maxReplicaCount":10,"minReplicaCount":3,"pollingInterval":5,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"checkout"},"triggers":[{"metadata":{"value":"50"},"metricType":"Utilization","type":"cpu"}]}}
+    creationTimestamp: "2026-10-26T17:10:05Z"
+    finalizers:
+    - finalizer.keda.sh
+    generation: 12
+    labels:
+      prescale.io/side: predictive
+      scaledobject.keda.sh/name: checkout
+    name: checkout
+    namespace: predictive
+    resourceVersion: "18662"
+    uid: abf49d2b-9167-4f9c-8b1a-62a1b530dd61
+  spec:
+    advanced:
+      horizontalPodAutoscalerConfig:
+        behavior:
+          scaleDown:
+            stabilizationWindowSeconds: 60
+      scalingModifiers: {}
+    maxReplicaCount: 10
+    minReplicaCount: 3
+    pollingInterval: 5
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: checkout
+    triggers:
+    - metadata:
+        value: "50"
+      metricType: Utilization
+      type: cpu
+  status:
+    authenticationsTypes: ""
+    conditions:
+    - message: ScaledObject is defined correctly and is ready for scaling
+      reason: ScaledObjectReady
+      status: "True"
+      type: Ready
+    - message: Scaling is performed because triggers are active
+      reason: ScalerActive
+      status: "True"
+      type: Active
+    - message: No fallbacks are active on this scaled object
+      reason: NoFallbackFound
+      status: "False"
+      type: Fallback
+    - status: "False"
+      type: Paused
+    hpaName: keda-hpa-checkout
+    lastActiveTime: "2026-10-26T18:50:34Z"
+    originalReplicaCount: 3
+    resourceMetricNames:
+    - cpu
+    scaleTargetGVKR:
+      group: apps
+      kind: Deployment
+      resource: deployments
+      version: v1
+    scaleTargetKind: apps/v1.Deployment
+    triggersTypes: cpu
+kind: List
+metadata:
+  resourceVersion: ""
+[exit 0]
+
+$ kubectl --context kind-prescale-demo get hpa -A -o yaml
+apiVersion: v1
+items:
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"keda.sh/v1alpha1","kind":"ScaledObject","metadata":{"annotations":{},"labels":{"prescale.io/side":"baseline"},"name":"checkout","namespace":"baseline"},"spec":{"advanced":{"horizontalPodAutoscalerConfig":{"behavior":{"scaleDown":{"stabilizationWindowSeconds":60}}}},"maxReplicaCount":10,"minReplicaCount":3,"pollingInterval":5,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"checkout"},"triggers":[{"metadata":{"value":"50"},"metricType":"Utilization","type":"cpu"}]}}
+    creationTimestamp: "2026-10-26T17:10:04Z"
+    labels:
+      app.kubernetes.io/managed-by: keda-operator
+      app.kubernetes.io/name: keda-hpa-checkout
+      app.kubernetes.io/part-of: checkout
+      app.kubernetes.io/version: 2.19.0
+      prescale.io/side: baseline
+      scaledobject.keda.sh/name: checkout
+    name: keda-hpa-checkout
+    namespace: baseline
+    ownerReferences:
+    - apiVersion: keda.sh/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ScaledObject
+      name: checkout
+      uid: 3c066a5a-2586-4756-b5e1-f872ce1dfe1b
+    resourceVersion: "5084"
+    uid: 9ae8d944-7664-45f5-8667-6d09b7002a5d
+  spec:
+    behavior:
+      scaleDown:
+        policies:
+        - periodSeconds: 15
+          type: Percent
+          value: 100
+        selectPolicy: Max
+        stabilizationWindowSeconds: 60
+      scaleUp:
+        policies:
+        - periodSeconds: 15
+          type: Pods
+          value: 4
+        - periodSeconds: 15
+          type: Percent
+          value: 100
+        selectPolicy: Max
+        stabilizationWindowSeconds: 0
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: checkout
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-26T17:10:19Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2026-10-26T17:11:20Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2026-10-26T17:22:35Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 1
+          averageValue: 1m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+- apiVersion: autoscaling/v2
+  kind: HorizontalPodAutoscaler
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"keda.sh/v1alpha1","kind":"ScaledObject","metadata":{"annotations":{},"labels":{"prescale.io/side":"predictive"},"name":"checkout","namespace":"predictive"},"spec":{"advanced":{"horizontalPodAutoscalerConfig":{"behavior":{"scaleDown":{"stabilizationWindowSeconds":60}}}},"maxReplicaCount":10,"minReplicaCount":3,"pollingInterval":5,"scaleTargetRef":{"apiVersion":"apps/v1","kind":"Deployment","name":"checkout"},"triggers":[{"metadata":{"value":"50"},"metricType":"Utilization","type":"cpu"}]}}
+    creationTimestamp: "2026-10-26T17:10:05Z"
+    labels:
+      app.kubernetes.io/managed-by: keda-operator
+      app.kubernetes.io/name: keda-hpa-checkout
+      app.kubernetes.io/part-of: checkout
+      app.kubernetes.io/version: 2.19.0
+      prescale.io/side: predictive
+      scaledobject.keda.sh/name: checkout
+    name: keda-hpa-checkout
+    namespace: predictive
+    ownerReferences:
+    - apiVersion: keda.sh/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ScaledObject
+      name: checkout
+      uid: abf49d2b-9167-4f9c-8b1a-62a1b530dd61
+    resourceVersion: "11293"
+    uid: a11c44c8-ab3e-40f8-aba9-ec2121f00e78
+  spec:
+    behavior:
+      scaleDown:
+        policies:
+        - periodSeconds: 15
+          type: Percent
+          value: 100
+        selectPolicy: Max
+        stabilizationWindowSeconds: 60
+      scaleUp:
+        policies:
+        - periodSeconds: 15
+          type: Pods
+          value: 4
+        - periodSeconds: 15
+          type: Percent
+          value: 100
+        selectPolicy: Max
+        stabilizationWindowSeconds: 0
+    maxReplicas: 10
+    metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 50
+          type: Utilization
+      type: Resource
+    minReplicas: 3
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: checkout
+  status:
+    conditions:
+    - lastTransitionTime: "2026-10-26T17:10:20Z"
+      message: recommended size matches current size
+      reason: ReadyForNewScale
+      status: "True"
+      type: AbleToScale
+    - lastTransitionTime: "2026-10-26T17:11:20Z"
+      message: the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: "True"
+      type: ScalingActive
+    - lastTransitionTime: "2026-10-26T17:22:36Z"
+      message: the desired replica count is less than the minimum replica count
+      reason: TooFewReplicas
+      status: "True"
+      type: ScalingLimited
+    currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 1
+          averageValue: 1m
+        name: cpu
+      type: Resource
+    currentReplicas: 3
+    desiredReplicas: 3
+    lastScaleTime: "2026-10-26T17:59:08Z"
+kind: List
+metadata:
+  resourceVersion: ""
+[exit 0]
+
+$ kubectl --context kind-prescale-demo get deploy checkout -n baseline -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"checkout","prescale.io/side":"baseline"},"name":"checkout","namespace":"baseline"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"checkout"}},"template":{"metadata":{"annotations":{"prometheus.io/path":"/metrics","prometheus.io/port":"8080","prometheus.io/scrape":"true"},"labels":{"app":"checkout"}},"spec":{"containers":[{"env":[{"name":"STARTUP_DELAY_SECONDS","value":"30"},{"name":"CPU_BURN_MS","value":"5"},{"name":"CONNS_PER_POD","value":"20"},{"name":"DB_URL","value":"http://fakedb:8080"}],"image":"prescale/checkout:dev","imagePullPolicy":"IfNotPresent","livenessProbe":{"httpGet":{"path":"/livez","port":"http"},"initialDelaySeconds":5,"periodSeconds":10},"name":"checkout","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"httpGet":{"path":"/healthz","port":"http"},"periodSeconds":2},"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"100m","memory":"64Mi"}}}]}}}}
+  creationTimestamp: "2026-10-26T17:10:04Z"
+  generation: 1
+  labels:
+    app: checkout
+    prescale.io/side: baseline
+  name: checkout
+  namespace: baseline
+  resourceVersion: "3315"
+  uid: f1b62980-e222-4ec4-a653-3896c4e2f620
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: checkout
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+      creationTimestamp: null
+      labels:
+        app: checkout
+    spec:
+      containers:
+      - env:
+        - name: STARTUP_DELAY_SECONDS
+          value: "30"
+        - name: CPU_BURN_MS
+          value: "5"
+        - name: CONNS_PER_POD
+          value: "20"
+        - name: DB_URL
+          value: http://fakedb:8080
+        image: prescale/checkout:dev
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /livez
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: checkout
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-26T17:10:36Z"
+    lastUpdateTime: "2026-10-26T17:10:36Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-10-26T17:10:04Z"
+    lastUpdateTime: "2026-10-26T17:10:36Z"
+    message: ReplicaSet "checkout-69cf88477" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
+[exit 0]
+
+$ kubectl --context kind-prescale-demo get deploy checkout -n predictive -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"checkout","prescale.io/side":"predictive"},"name":"checkout","namespace":"predictive"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"checkout"}},"template":{"metadata":{"annotations":{"prometheus.io/path":"/metrics","prometheus.io/port":"8080","prometheus.io/scrape":"true"},"labels":{"app":"checkout"}},"spec":{"containers":[{"env":[{"name":"STARTUP_DELAY_SECONDS","value":"30"},{"name":"CPU_BURN_MS","value":"5"},{"name":"CONNS_PER_POD","value":"20"},{"name":"DB_URL","value":"http://fakedb:8080"}],"image":"prescale/checkout:dev","imagePullPolicy":"IfNotPresent","livenessProbe":{"httpGet":{"path":"/livez","port":"http"},"initialDelaySeconds":5,"periodSeconds":10},"name":"checkout","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"httpGet":{"path":"/healthz","port":"http"},"periodSeconds":2},"resources":{"limits":{"cpu":"500m","memory":"256Mi"},"requests":{"cpu":"100m","memory":"64Mi"}}}]}}}}
+  creationTimestamp: "2026-10-26T17:10:05Z"
+  generation: 11
+  labels:
+    app: checkout
+    prescale.io/side: predictive
+  name: checkout
+  namespace: predictive
+  resourceVersion: "11245"
+  uid: bef5ebfa-7a67-484a-8464-50888d461e74
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: checkout
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "8080"
+        prometheus.io/scrape: "true"
+      creationTimestamp: null
+      labels:
+        app: checkout
+    spec:
+      containers:
+      - env:
+        - name: STARTUP_DELAY_SECONDS
+          value: "30"
+        - name: CPU_BURN_MS
+          value: "5"
+        - name: CONNS_PER_POD
+          value: "20"
+        - name: DB_URL
+          value: http://fakedb:8080
+        image: prescale/checkout:dev
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /livez
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: checkout
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-26T17:10:05Z"
+    lastUpdateTime: "2026-10-26T17:10:37Z"
+    message: ReplicaSet "checkout-69cf88477" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2026-10-26T17:58:55Z"
+    lastUpdateTime: "2026-10-26T17:58:55Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 11
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
+[exit 0]
+
+$ kubectl get cm -A | grep -iE scrape|vm|prometheus
+monitoring           vmsingle-scrape-config                                 1      109m
+[exit 0]
+
+$ kubectl get deploy -A | grep -i prescal
+predictive           prescaler                1/1     1            1           83m
+[exit done]
+
+$ kubectl get pods -A | grep -i vmagent
+[exit done]
+
+$ kubectl get pods -A | grep observ
+[exit done]
+

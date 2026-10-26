@@ -1,0 +1,55 @@
+=== top-level ok/FAIL/? lines ===
+?   	github.com/prescale/prescale/cmd/prescaler	[no test files]
+ok  	github.com/prescale/prescale/internal/actuator	0.099s
+ok  	github.com/prescale/prescale/internal/metrics	0.211s
+ok  	github.com/prescale/prescale/internal/predictor	0.004s
+ok  	github.com/prescale/prescale/internal/scaledobject	0.006s
+ok  	github.com/prescale/prescale/workload/checkout	0.022s
+ok  	github.com/prescale/prescale/workload/fakedb	0.017s
+
+=== top-level PASS count (grep -c ^--- PASS) ===
+54
+
+=== top-level FAIL count (grep -c ^--- FAIL) ===
+0
+
+=== SKIP count (grep -c ^--- SKIP) ===
+0
+
+=== subtest PASS count (grep -c subtest PASS with leading spaces) ===
+29
+
+=== ALL --- PASS lines (top-level + subtest) ===
+
+=== Per-package breakdown ===
+ok  	github.com/prescale/prescale/internal/actuator	0.099s
+ok  	github.com/prescale/prescale/internal/metrics	0.211s
+ok  	github.com/prescale/prescale/internal/predictor	0.004s
+ok  	github.com/prescale/prescale/internal/scaledobject	0.006s
+ok  	github.com/prescale/prescale/workload/checkout	0.022s
+ok  	github.com/prescale/prescale/workload/fakedb	0.017s
+
+=== Count of "=== RUN" (tests started) ===
+83
+
+=== ALL lines matching "--- PASS" (any indentation) ===
+
+=== Counting method analysis ===
+Top-level ^--- PASS: 54
+Subtest    spaces+--- PASS: 29
+Total top+sub: 83
+=== RUN count: 83
+"73 tests" claim: NO RAW DATA in part4c files to verify.
+If counted as top-level-only ^--- PASS: 54 (not 73 and not 74).
+If counted as ALL --- PASS: 83 (not 73 and not 74).
+CONTRADICTION: C6 claims "73 tests run, 74 PASS" - neither figure matches any counting method applied to this run.
+
+=== Corrected counts via grep PASS/FAIL/SKIP (all occurrences) ===
+Lines containing PASS: 89
+Lines containing FAIL: 0
+Lines containing SKIP: 0
+(Note: the 89 PASS lines include "PASS" on per-package summary lines and =^--- PASS lines)
+Top-level test functions = ^--- PASS with no leading spaces = 54
+SubTests = lines with spaces before --- PASS = 29
+VERDICT on C6: 54 top-level PASS, 0 FAIL, 0 SKIP; 29 subtests; 6 packages ok.
+CONTRADICTION C6: 4C claimed "73 tests run, 74 PASS". Actual: 54 top-level+29 subtests=83 total, or 54 if top-only. Neither 73 nor 74.
