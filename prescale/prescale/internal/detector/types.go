@@ -37,7 +37,7 @@ type Input struct {
 	ScaleUpAt    time.Time
 	FromReplicas int
 	ToReplicas   int
-	Series       []Sample              // sorted by time
+	Series       []Sample               // sorted by time
 	Deps         map[string][]DepSample // name -> sorted series
 	Cfg          Config
 }
