@@ -1,5 +1,0 @@
-## Append samples of your project ##
-resources:
-- autoscaling_v1alpha1_scaleguard.yaml
-- autoscaling_v1alpha1_scaledecision.yaml
-# +kubebuilder:scaffold:manifestskustomizesamples
