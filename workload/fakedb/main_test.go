@@ -24,12 +24,12 @@ func TestCalcLatency(t *testing.T) {
 		activeQueries int
 		expectedMs    float64
 	}{
-		{activeQueries: 0, expectedMs: 10.0},                  // 10 * 1^2 = 10
-		{activeQueries: 20, expectedMs: 40.0},                 // 10 * (1 + 1)^2 = 40
-		{activeQueries: 40, expectedMs: 90.0},                 // 10 * (1 + 2)^2 = 90
-		{activeQueries: 60, expectedMs: 160.0},                // 10 * (1 + 3)^2 = 160
-		{activeQueries: 80, expectedMs: 250.0},                // 10 * (1 + 4)^2 = 250
-		{activeQueries: 100, expectedMs: 360.0},               // 10 * (1 + 5)^2 = 360
+		{activeQueries: 0, expectedMs: 10.0},    // 10 * 1^2 = 10
+		{activeQueries: 20, expectedMs: 40.0},   // 10 * (1 + 1)^2 = 40
+		{activeQueries: 40, expectedMs: 90.0},   // 10 * (1 + 2)^2 = 90
+		{activeQueries: 60, expectedMs: 160.0},  // 10 * (1 + 3)^2 = 160
+		{activeQueries: 80, expectedMs: 250.0},  // 10 * (1 + 4)^2 = 250
+		{activeQueries: 100, expectedMs: 360.0}, // 10 * (1 + 5)^2 = 360
 	}
 
 	for _, tc := range cases {
