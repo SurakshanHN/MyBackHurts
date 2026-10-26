@@ -1,0 +1,9 @@
+apiVersion: autoscaling.prescale.io/v1alpha1
+kind: ScaleGuard
+metadata:
+  labels:
+    app.kubernetes.io/name: prescale
+    app.kubernetes.io/managed-by: kustomize
+  name: scaleguard-sample
+spec:
+  # TODO(user): Add fields here
