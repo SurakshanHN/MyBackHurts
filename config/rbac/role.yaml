@@ -5,12 +5,10 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - autoscaling.prescale.io
+  - autoscaling
   resources:
-  - scaleguards
+  - horizontalpodautoscalers
   verbs:
-  - create
-  - delete
   - get
   - list
   - patch
@@ -19,14 +17,39 @@ rules:
 - apiGroups:
   - autoscaling.prescale.io
   resources:
+  - scaledecisions
+  - scaleguards
+  verbs:
+  - create
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - autoscaling.prescale.io
+  resources:
+  - scaledecisions/finalizers
   - scaleguards/finalizers
   verbs:
   - update
 - apiGroups:
   - autoscaling.prescale.io
   resources:
+  - scaledecisions/status
   - scaleguards/status
   verbs:
   - get
   - patch
   - update
+- apiGroups:
+  - events.k8s.io
+  resources:
+  - events
+  verbs:
+  - create
+  - get
+  - list
+  - patch
+  - update
+  - watch

@@ -39,25 +39,66 @@ spec:
           spec:
             description: spec defines the desired state of ScaleGuard
             properties:
-              foo:
-                description: foo is an example field of ScaleGuard. Edit scaleguard_types.go
-                  to remove/update
+              dependencies:
+                description: Dependencies lists downstream dependencies to evaluate
+                  for contention.
+                items:
+                  type: string
+                type: array
+              floor:
+                description: Floor is the minimum replica count to never cap below.
+                format: int32
+                type: integer
+              harmMargin:
+                description: HarmMargin is the margin threshold for harm detection
+                  (e.g. "0.15").
                 type: string
+              minConfidence:
+                description: MinConfidence is the minimum confidence score required
+                  (e.g. "0.6").
+                type: string
+              minSamples:
+                description: MinSamples is the minimum number of pre and post samples
+                  required.
+                type: integer
+              minThroughputGain:
+                description: MinThroughputGain is the minimum throughput gain expected
+                  from scaling (e.g. "0.05").
+                type: string
+              mode:
+                default: observe
+                description: Mode is either "observe" or "enforce". Defaults to "observe".
+                type: string
+              saturationPct:
+                description: SaturationPct is the saturation threshold percentage
+                  (e.g. "90.0").
+                type: string
+              step:
+                description: Step is the metric sampling interval.
+                type: string
+              targetHPA:
+                description: TargetHPA is the name of the HorizontalPodAutoscaler
+                  to protect.
+                type: string
+              ttl:
+                description: TTL is the duration for which a cap is applied before
+                  expiring.
+                type: string
+              warmupSeconds:
+                description: WarmupSeconds is the cooldown period after scale-up before
+                  evaluating metrics.
+                type: integer
             type: object
           status:
             description: status defines the observed state of ScaleGuard
             properties:
+              capped:
+                description: Capped indicates whether the target HPA is currently
+                  capped.
+                type: boolean
               conditions:
-                description: |-
-                  conditions represent the current state of the ScaleGuard resource.
-                  Each condition has a unique type and reflects the status of a specific aspect of the resource.
-
-                  Standard condition types include:
-                  - "Available": the resource is fully functional
-                  - "Progressing": the resource is being created or updated
-                  - "Degraded": the resource failed to reach or maintain its desired state
-
-                  The status of each condition is one of True, False, or Unknown.
+                description: conditions represent the current state of the ScaleGuard
+                  resource.
                 items:
                   description: Condition contains details for one aspect of the current
                     state of this API Resource.
@@ -116,6 +157,33 @@ spec:
                 x-kubernetes-list-map-keys:
                 - type
                 x-kubernetes-list-type: map
+              lastAction:
+                description: LastAction is the action decided from the most recent
+                  evaluation.
+                type: string
+              lastObservedReplicas:
+                description: LastObservedReplicas is the replica count last recorded
+                  from the HPA.
+                format: int32
+                type: integer
+              lastScaleUpTime:
+                description: LastScaleUpTime is the timestamp when the most recent
+                  scale-up occurred.
+                format: date-time
+                type: string
+              lastVerdict:
+                description: LastVerdict is the verdict from the most recent evaluation.
+                type: string
+              scaleUpFrom:
+                description: ScaleUpFrom is the replica count before the most recent
+                  scale-up.
+                format: int32
+                type: integer
+              scaleUpTo:
+                description: ScaleUpTo is the replica count after the most recent
+                  scale-up.
+                format: int32
+                type: integer
             type: object
         required:
         - spec

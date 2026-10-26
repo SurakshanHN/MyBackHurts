@@ -39,25 +39,56 @@ spec:
           spec:
             description: spec defines the desired state of ScaleDecision
             properties:
-              foo:
-                description: foo is an example field of ScaleDecision. Edit scaledecision_types.go
-                  to remove/update
+              action:
+                description: Action is the action decided by controller (None, Cap,
+                  Restore, RecordOnly).
+                type: string
+              appliedAction:
+                description: AppliedAction is the action actually executed on the
+                  cluster.
+                type: string
+              confidence:
+                description: Confidence is the heuristic confidence score between
+                  0.0 and 1.0.
+                type: string
+              fromReplicas:
+                description: FromReplicas is the replica count before scale-up.
+                format: int32
+                type: integer
+              proposedCap:
+                description: ProposedCap is the proposed replica limit if capped.
+                format: int32
+                type: integer
+              report:
+                description: Report is the rendered plain-English explanation generated
+                  by report.Render.
+                type: string
+              scaleGuard:
+                description: ScaleGuard is the name of the ScaleGuard managing this
+                  decision.
+                type: string
+              scaleUpAt:
+                description: ScaleUpAt is the recorded time of the scale-up event.
+                format: date-time
+                type: string
+              targetHPA:
+                description: TargetHPA is the name of the evaluated HorizontalPodAutoscaler.
+                type: string
+              toReplicas:
+                description: ToReplicas is the replica count after scale-up.
+                format: int32
+                type: integer
+              verdict:
+                description: Verdict is the outcome of the detector evaluation (helped,
+                  useless, harmful, unknown).
                 type: string
             type: object
           status:
             description: status defines the observed state of ScaleDecision
             properties:
               conditions:
-                description: |-
-                  conditions represent the current state of the ScaleDecision resource.
-                  Each condition has a unique type and reflects the status of a specific aspect of the resource.
-
-                  Standard condition types include:
-                  - "Available": the resource is fully functional
-                  - "Progressing": the resource is being created or updated
-                  - "Degraded": the resource failed to reach or maintain its desired state
-
-                  The status of each condition is one of True, False, or Unknown.
+                description: conditions represent the current state of the ScaleDecision
+                  resource.
                 items:
                   description: Condition contains details for one aspect of the current
                     state of this API Resource.
