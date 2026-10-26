@@ -1,135 +1,226 @@
 # prescale
-// TODO(user): Add simple overview of use/purpose
 
-## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+**prescale** is a Kubernetes operator that protects your workloads from harmful Horizontal Pod Autoscaler (HPA) scale-ups by evaluating their actual impact on latency, error rates, and throughput.
 
-## Getting Started
+When an HPA scales up a Deployment, prescale correlates the scaling event with Prometheus metrics to determine if the scale-up **helped**, was **useless**, or **harmed** performance. In `enforce` mode, it can automatically cap the HPA's `maxReplicas` to prevent repeated harmful scale-ups.
+
+## How It Works
+
+1. **Watch** — prescale monitors `ScaleGuard` resources, each linked to an HPA by name
+2. **Detect** — On each HPA scale-up, prescale queries Prometheus (via the configured `queries`) for a time window around the event
+3. **Evaluate** — The detector classifies the scale-up as:
+   - **helped** — Latency/error rate improved or stayed stable
+   - **useless** — No measurable improvement (wasted resources)
+   - **harmful** — Latency/error rate degraded significantly
+   - **unknown** — Insufficient data to decide
+4. **Act** — In `enforce` mode, harmful scale-ups trigger an HPA `maxReplicas` cap (with a configurable floor and max freeze duration). In `observe` mode, only records the decision.
+5. **Record** — Every evaluation creates a `ScaleDecision` CR for audit trail and dashboards.
+
+## Core Concepts
+
+### ScaleGuard (CRD)
+The primary configuration resource. Each `ScaleGuard` binds to one HPA and defines:
+- **Mode**: `observe` (record only) or `enforce` (cap HPA on harmful scale-ups)
+- **Prometheus URL**: Where to query metrics
+- **Queries**: PromQL for RPS, P99 latency, and error rate
+- **Dependencies**: Optional downstream services to check for saturation (e.g., database, cache)
+- **Warmup Window**: Time to wait after scale-up before evaluating (default: 2m)
+- **Max Freeze Duration**: How long to keep a cap before auto-restore (default: 30m)
+- **Min Replicas Floor**: Safety floor — caps never go below this
+
+### ScaleDecision (CRD)
+Immutable audit record created for every scale-up evaluation:
+- Verdict (`helped` / `useless` / `harmful` / `unknown`)
+- Confidence score (0–1)
+- From/to replica counts
+- Culprit dependency (if any)
+- Human-readable reasons
+- Action taken (`capped` / `restored` / `observed`)
+
+## Quickstart
 
 ### Prerequisites
-- go version v1.24.6+
-- docker version 17.03+.
-- kubectl version v1.11.3+.
-- Access to a Kubernetes v1.11.3+ cluster.
+- Go 1.24+
+- Docker 17.03+
+- kubectl 1.11.3+
+- Kubernetes 1.11.3+ cluster with HPA and Prometheus
 
-### To Deploy on the cluster
-**Build and push your image to the location specified by `IMG`:**
+### Deploy
 
-```sh
-make docker-build docker-push IMG=<some-registry>/prescale:tag
-```
+```bash
+# Build and push the controller image
+export IMG=<your-registry>/prescale:v0.1.0
+make docker-build docker-push IMG=$IMG
 
-**NOTE:** This image ought to be published in the personal registry you specified.
-And it is required to have access to pull the image from the working environment.
-Make sure you have the proper permission to the registry if the above commands don’t work.
-
-**Install the CRDs into the cluster:**
-
-```sh
+# Install CRDs
 make install
+
+# Deploy the controller
+make deploy IMG=$IMG
 ```
 
-**Deploy the Manager to the cluster with the image specified by `IMG`:**
+### Create a ScaleGuard
 
-```sh
-make deploy IMG=<some-registry>/prescale:tag
+```yaml
+# config/samples/autoscaling_v1alpha1_scaleguard.yaml
+apiVersion: autoscaling.prescale.io/v1alpha1
+kind: ScaleGuard
+metadata:
+  name: my-app-guard
+  namespace: production
+spec:
+  hpaName: my-app-hpa                    # Must match existing HPA name
+  mode: enforce                          # or "observe"
+  prometheusURL: "http://prometheus:9090"
+  queries:
+    rps: 'sum(rate(http_requests_total{namespace="production",service="my-app"}[1m]))'
+    p99Millis: 'histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{namespace="production",service="my-app"}[5m])) by (le)) * 1000'
+    errorRate: 'sum(rate(http_requests_total{namespace="production",service="my-app",code=~"5.."}[5m])) / sum(rate(http_requests_total{namespace="production",service="my-app"}[5m]))'
+  dependencies:
+    - name: postgres
+      saturationQuery: 'pg_stat_database_max_connections / pg_settings_max_connections * 100'
+      thresholdPercent: 85
+  warmupWindow: 2m
+  maxFreezeDuration: 30m
+  minReplicasFloor: 2
 ```
 
-> **NOTE**: If you encounter RBAC errors, you may need to grant yourself cluster-admin
-privileges or be logged in as admin.
-
-**Create instances of your solution**
-You can apply the samples (examples) from the config/sample:
-
-```sh
-kubectl apply -k config/samples/
+Apply it:
+```bash
+kubectl apply -f config/samples/autoscaling_v1alpha1_scaleguard.yaml
 ```
 
->**NOTE**: Ensure that the samples has default values to test it out.
+### Verify
 
-### To Uninstall
-**Delete the instances (CRs) from the cluster:**
+```bash
+# Watch ScaleGuard status
+kubectl get scaleguard my-app-guard -n production -w
 
-```sh
-kubectl delete -k config/samples/
+# See recorded decisions
+kubectl get scaledecision -n production
 ```
 
-**Delete the APIs(CRDs) from the cluster:**
+## Configuration Reference
 
-```sh
-make uninstall
+### ScaleGuard Spec
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `hpaName` | string | Yes | Name of the HPA to guard (same namespace) |
+| `mode` | enum (`observe`, `enforce`) | Yes | Observe only, or actively cap HPA |
+| `prometheusURL` | string | Yes | Prometheus query endpoint |
+| `queries.rps` | string | Yes | PromQL returning requests/second |
+| `queries.p99Millis` | string | Yes | PromQL returning P99 latency in milliseconds |
+| `queries.errorRate` | string | Yes | PromQL returning error rate (0–1) |
+| `dependencies[]` | array | No | Downstream services to check for saturation |
+| `dependencies[].name` | string | Yes | Identifier for the dependency |
+| `dependencies[].saturationQuery` | string | Yes | PromQL returning saturation percentage (0–100) |
+| `dependencies[].thresholdPercent` | int | Yes | Saturation % above which the dependency is a culprit |
+| `warmupWindow` | Duration | Yes | Time to wait post-scale-up before evaluating (e.g., `2m`) |
+| `maxFreezeDuration` | Duration | Yes | Max time to keep a cap before auto-restore (e.g., `30m`) |
+| `minReplicasFloor` | int32 | Yes | Safety floor — caps never reduce maxReplicas below this |
+
+### ScaleGuard Status
+
+| Field | Description |
+|-------|-------------|
+| `phase` | Current phase: `Evaluating`, `Capped`, `Restored`, `Idle` |
+| `lastVerdict` | Most recent verdict: `helped`, `useless`, `harmful`, `unknown` |
+| `lastConfidence` | Confidence of last verdict (0–1) |
+| `lastMessage` | Human-readable summary |
+| `cap` | Active cap details (if any): `originalMaxReplicas`, `cappedAt`, `since`, `reason` |
+| `trustScore` | Running trust score (0–100) — increases on `helped`, decreases on `harmful` |
+| `conditions` | Standard Kubernetes conditions (`Ready`, `PrometheusReachable`, `HPAExists`) |
+
+## Architecture
+
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   HPA       │────▶│  ScaleGuard │────▶│  Prometheus │
+│  (scales up)│     │ Controller  │     │  (metrics)  │
+└─────────────┘     └──────┬──────┘     └─────────────┘
+                           │
+                    ┌──────▼──────┐
+                    │  Detector   │  (helped / useless / harmful / unknown)
+                    └──────┬──────┘
+                           │
+                    ┌──────▼──────┐     ┌─────────────┐
+                    │  Actuator   │────▶│    HPA      │
+                    │ (cap/restore)│     │ (maxReplicas)│
+                    └─────────────┘     └─────────────┘
+                           │
+                    ┌──────▼──────┐
+                    │ ScaleDecision│  (audit record)
+                    └─────────────┘
 ```
 
-**UnDeploy the controller from the cluster:**
+### Detector (`internal/detector/`)
+Implements the causal inference logic:
+- Compares post-scale-up metrics against a counterfactual baseline (pre-scale-up trend)
+- Checks dependency saturation to identify culprits
+- Outputs verdict, confidence, culprit, and plain-English reasons
 
-```sh
-make undeploy
+### Actuator (`internal/actuator/`)
+Safely modifies HPA `maxReplicas`:
+- Stores original `maxReplicas` in annotation (`prescale.io/original-max-replicas`)
+- Applies cap with `minReplicasFloor` safety bound
+- Auto-restores after `maxFreezeDuration`
+- Idempotent and conflict-safe (re-fetches before update)
+
+## Modes
+
+| Mode | Behavior |
+|------|----------|
+| `observe` | Records `ScaleDecision` for every scale-up. Never modifies HPA. Use for validation and tuning. |
+| `enforce` | Same as observe, **plus** caps HPA `maxReplicas` on `harmful` verdicts. Auto-restores after `maxFreezeDuration`. |
+
+## Development
+
+```bash
+# Run unit tests (uses envtest)
+make test
+
+# Run locally against your cluster (uses ~/.kube/config)
+make run
+
+# Lint & format
+make lint-fix
+
+# Generate manifests & deepcopy code after API changes
+make manifests generate
 ```
 
-## Project Distribution
+## Distribution
 
-Following the options to release and provide this solution to the users.
-
-### By providing a bundle with all YAML files
-
-1. Build the installer for the image built and published in the registry:
-
-```sh
-make build-installer IMG=<some-registry>/prescale:tag
+### YAML Bundle (Kustomize)
+```bash
+make build-installer IMG=<registry>/prescale:v0.1.0
+# Outputs dist/install.yaml — users install with:
+# kubectl apply -f dist/install.yaml
 ```
 
-**NOTE:** The makefile target mentioned above generates an 'install.yaml'
-file in the dist directory. This file contains all the resources built
-with Kustomize, which are necessary to install this project without its
-dependencies.
-
-2. Using the installer
-
-Users can just run 'kubectl apply -f <URL for YAML BUNDLE>' to install
-the project, i.e.:
-
-```sh
-kubectl apply -f https://raw.githubusercontent.com/<org>/prescale/<tag or branch>/dist/install.yaml
-```
-
-### By providing a Helm Chart
-
-1. Build the chart using the optional helm plugin
-
-```sh
+### Helm Chart
+```bash
+# Generate chart (first time)
 kubebuilder edit --plugins=helm/v2-alpha
+
+# Deploy via Helm (development)
+make helm-deploy IMG=<registry>/prescale:v0.1.0
+
+# Package for distribution
+helm package dist/chart/
 ```
 
-2. See that a chart was generated under 'dist/chart', and users
-can obtain this solution from there.
+## RBAC
 
-**NOTE:** If you change the project, you need to update the Helm Chart
-using the same command above to sync the latest changes. Furthermore,
-if you create webhooks, you need to use the above command with
-the '--force' flag and manually ensure that any custom configuration
-previously added to 'dist/chart/values.yaml' or 'dist/chart/manager/manager.yaml'
-is manually re-applied afterwards.
+The controller requires permissions to:
+- Read/write `ScaleGuard` and `ScaleDecision` (own CRDs)
+- Read `HPA` and `Deployment` (to watch scale events and patch maxReplicas)
+- Create `Events` (for visibility)
+- Leader election (configmap/lease)
 
-## Contributing
-// TODO(user): Add detailed information on how you would like others to contribute to this project
-
-**NOTE:** Run `make help` for more information on all potential `make` targets
-
-More information can be found via the [Kubebuilder Documentation](https://book.kubebuilder.io/introduction.html)
+See `config/rbac/` for generated roles.
 
 ## License
 
-Copyright 2026.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
+Apache License 2.0 — see [LICENSE](LICENSE) for details.
