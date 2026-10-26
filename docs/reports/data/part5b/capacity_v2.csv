@@ -1,0 +1,3 @@
+target_rps,achieved_rps,dropped,p50_ms,p95_ms,p99_ms,fail_pct,restarts,loadavg1,mem_avail_mib,cpu_source,pod_cpu_m_avg,pod_rps_min,pod_rps_max,fakedb_peak_conns,mcpu_per_rps_per_pod,slo_ok
+330,329.14,0,67.67,166.30,185.34,0.00,0,2.29,4022.0,container_cpu_usage_seconds_total,359.51,77.75,86.25,0,3.28,true
+360,339.16,363,707.78,1293.86,1412.72,0.00,0,1.70,3849.3,container_cpu_usage_seconds_total,572.31,89.30,106.80,0,5.06,false

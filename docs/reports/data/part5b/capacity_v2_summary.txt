@@ -1,0 +1,5 @@
+
+=== Capacity Probe v2 Derived Summary ===
+KNEE_3: 330 RPS (achieved 329.14 RPS) (MEASURED)
+BRACKETED: yes
+Stop rule fired: First breached stage: 360 RPS (p99 1412.72ms > 300.0ms; dropped 363 > 1% target (144))
