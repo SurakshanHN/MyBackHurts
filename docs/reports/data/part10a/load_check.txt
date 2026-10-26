@@ -1,0 +1,65 @@
+=== Environment & Library Versions ===
+Python: 3.12.15
+sklearn: 1.8.0
+numpy: 2.4.4
+pandas: 3.0.2
+joblib: 1.5.3
+lightgbm: 4.6.0
+
+=== Model File: /model/prescale_model.pkl ===
+Loader: joblib
+  Loaded: YES
+  Object Type: <class 'dict'>
+  Backend: lightgbm
+  Schema Version: 1
+  Horizon (min): 3
+  Target Util: 0.6
+  Max Rel Width: 0.21855753065780564
+  Deployments: ['auth-svc', 'checkout-api', 'recs-worker', 'report-batch', 'search-svc']
+  n_features_in_: 79
+  Feature Names (first 5): ['cpu_lag1', 'cpu_lag2', 'cpu_lag3', 'cpu_lag5', 'cpu_lag10']
+  Feature Names (last 5): ['mem_util', 'cpu_util_now', 'tod_sin', 'tod_cos', 'dow']
+  Quantile Models:
+    Quantile 0.1: class=<class 'lightgbm.sklearn.LGBMRegressor'>, n_features_in_=79
+    Quantile 0.5: class=<class 'lightgbm.sklearn.LGBMRegressor'>, n_features_in_=79
+    Quantile 0.9: class=<class 'lightgbm.sklearn.LGBMRegressor'>, n_features_in_=79
+  Warnings: None
+Loader: pickle
+  Loaded: YES
+  Object Type: <class 'dict'>
+  Backend: lightgbm
+  Schema Version: 1
+  Horizon (min): 3
+  Target Util: 0.6
+  Max Rel Width: 0.21855753065780564
+  Deployments: ['auth-svc', 'checkout-api', 'recs-worker', 'report-batch', 'search-svc']
+  n_features_in_: 79
+  Feature Names (first 5): ['cpu_lag1', 'cpu_lag2', 'cpu_lag3', 'cpu_lag5', 'cpu_lag10']
+  Feature Names (last 5): ['mem_util', 'cpu_util_now', 'tod_sin', 'tod_cos', 'dow']
+  Quantile Models:
+    Quantile 0.1: class=<class 'lightgbm.sklearn.LGBMRegressor'>, n_features_in_=79
+    Quantile 0.5: class=<class 'lightgbm.sklearn.LGBMRegressor'>, n_features_in_=79
+    Quantile 0.9: class=<class 'lightgbm.sklearn.LGBMRegressor'>, n_features_in_=79
+  Warnings: ["unclosed file <_io.BufferedReader name='/model/prescale_model.pkl'>"]
+
+=== Model File: /model/prescale_model.joblib ===
+Loader: joblib
+  Loaded: YES
+  Object Type: <class 'dict'>
+  Backend: sklearn
+  Schema Version: 1
+  Horizon (min): 3
+  Target Util: 0.6
+  Max Rel Width: 0.21295040542604357
+  Deployments: ['auth-svc', 'checkout-api', 'recs-worker', 'report-batch', 'search-svc']
+  n_features_in_: 79
+  Feature Names (first 5): ['cpu_lag1', 'cpu_lag2', 'cpu_lag3', 'cpu_lag5', 'cpu_lag10']
+  Feature Names (last 5): ['mem_util', 'cpu_util_now', 'tod_sin', 'tod_cos', 'dow']
+  Quantile Models:
+    Quantile 0.1: class=<class 'sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor'>, n_features_in_=79
+    Quantile 0.5: class=<class 'sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor'>, n_features_in_=79
+    Quantile 0.9: class=<class 'sklearn.ensemble._hist_gradient_boosting.gradient_boosting.HistGradientBoostingRegressor'>, n_features_in_=79
+  Warnings: None
+Loader: pickle
+  Loaded: NO
+  Exact Exception: AttributeError: Can't get attribute 'dtype' on <module 'sklearn' from '/usr/local/lib/python3.12/site-packages/sklearn/__init__.py'>
