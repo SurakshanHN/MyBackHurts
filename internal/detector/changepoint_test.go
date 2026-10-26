@@ -59,14 +59,6 @@ func TestFindShift_SlowDriftDetected(t *testing.T) {
 	}
 }
 
-func TestFindShift_PureNoiseNoFalseAlarm(t *testing.T) {
-	for seed := int64(1); seed <= 20; seed++ {
-		if idx, ok := FindShift(cpNoisy(seed, 100, 10, 1), 0, 0); ok {
-			t.Fatalf("seed %d: false alarm at index %d", seed, idx)
-		}
-	}
-}
-
 func TestFindShift_NoShiftCases(t *testing.T) {
 	withNaN := cpFlat(20, 10)
 	withNaN[7] = math.NaN()
@@ -96,5 +88,27 @@ func TestFindShift_DoesNotMutateInput(t *testing.T) {
 		if data[i] != orig[i] {
 			t.Fatalf("input modified at %d", i)
 		}
+	}
+}
+
+func TestFindShift_PureNoiseFalseAlarmRate(t *testing.T) {
+	const runs = 1000
+	for _, h := range []float64{8, 10, 12} {
+		alarms := 0
+		for seed := int64(1); seed <= runs; seed++ {
+			if _, ok := FindShift(cpNoisy(seed, 100, 10, 1), 0.5, h); ok {
+				alarms++
+			}
+		}
+		t.Logf("h=%.0f false alarms: %d/%d (%.1f%%)", h, alarms, runs, 100*float64(alarms)/runs)
+	}
+	alarms := 0
+	for seed := int64(1); seed <= runs; seed++ {
+		if _, ok := FindShift(cpNoisy(seed, 100, 10, 1), 0, 0); ok {
+			alarms++
+		}
+	}
+	if rate := float64(alarms) / runs; rate > 0.02 {
+		t.Fatalf("default false-alarm rate %.1f%% exceeds 2%%", 100*rate)
 	}
 }

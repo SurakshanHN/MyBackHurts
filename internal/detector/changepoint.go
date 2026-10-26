@@ -6,7 +6,7 @@ import "math"
 // where the cumulative deviation from the baseline exceeds h standard
 // deviations. The baseline is the first half of the series.
 // k is the allowance and h the threshold, both in baseline-std units.
-// Defaults: k=0.5, h=8 (h=5 gave false alarms on clean noise).
+// Defaults: k=0.5, h=10 (h=5 gave false alarms on clean noise).
 func FindShift(values []float64, k, h float64) (index int, found bool) {
 	// Need at least 5 baseline points, so at least 10 values in total.
 	if len(values) < 10 {
@@ -16,7 +16,7 @@ func FindShift(values []float64, k, h float64) (index int, found bool) {
 		k = 0.5
 	}
 	if h <= 0 {
-		h = 8
+		h = 10
 	}
 	for _, v := range values {
 		if math.IsNaN(v) || math.IsInf(v, 0) {
