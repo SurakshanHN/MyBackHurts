@@ -1,0 +1,52 @@
+Prescaler Configuration Flags and Environment Variables (Part 7 Step 3)
+========================================================================
+
+Listing of flags and environment variables from cmd/prescaler/main.go and internal packages:
+
+1. Predictor URL:
+   - Flag: --predictor-url
+   - Env: PREDICTOR_URL
+   - Default: http://predictor.predictive.svc.cluster.local:8000
+   - Configured Target: http://172.19.0.100:8000/predict
+
+2. Evaluation Interval:
+   - Flag: --interval
+   - Env: INTERVAL
+   - Default: 15s
+
+3. Lookahead Horizon:
+   - Flag: None (NOT configurable in prescaler daemon; Go client sends POST /predict with window only)
+   - Default: Uses predictor service env DEFAULT_HORIZON=90 (90s)
+
+4. Lease Duration (Boost TTL):
+   - Flag: --boost-ttl
+   - Env: BOOST_TTL
+   - Default: 60s
+
+5. Cooldown Window:
+   - Flag: --cooldown
+   - Env: COOLDOWN
+   - Default: 30s
+
+6. Clamps (Min / Max Replicas):
+   - Flag: --min-replicas, --max-replicas
+   - Env: MIN_REPLICAS, MAX_REPLICAS
+   - Default: 3 and 10
+
+7. Dry-Run Mode:
+   - Flag: --dry-run
+   - Env: DRY_RUN
+   - Default: false (set to true during initial gate check, false for A/B demo runs)
+
+8. Per-Pod RPS Capacity (used to convert predicted_rps into desired replicas):
+   - Flag: --conns-per-pod (semaphore width), --headroom (multiplier)
+   - Env: CONNS_PER_POD, HEADROOM
+   - Formula: Replicas = ceil(predicted_rps * headroom / conns_per_pod)
+   - Configured Target: --conns-per-pod=80 --headroom=1.0 (80 rps per pod capacity)
+   - Arithmetic: 490 RPS / 80 = 6.125 -> ceil = 7 pods (THEORETICAL)
+
+Network Wiring:
+- Docker network: kind (Subnet 172.19.0.0/16, Gateway 172.19.0.1)
+- Selected Unused IP: 172.19.0.100
+- Container Name: prescale-predictor
+- Image: prescale-predictor:0.1.1

@@ -100,7 +100,7 @@ class PredictorHandler(BaseHTTPRequestHandler):
             self._send_text(200, "ok\n")
             return
 
-        if url.path == "/predict":
+        if url.path in ("/predict", "/predict/predict"):
             if self._handle_fail_mode():
                 return
 
@@ -139,7 +139,7 @@ class PredictorHandler(BaseHTTPRequestHandler):
         except Exception:
             payload = {}
 
-        if url.path == "/predict":
+        if url.path in ("/predict", "/predict/predict"):
             if self._handle_fail_mode():
                 return
 

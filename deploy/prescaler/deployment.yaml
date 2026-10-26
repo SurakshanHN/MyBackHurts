@@ -24,15 +24,15 @@ spec:
           imagePullPolicy: IfNotPresent
           args:
             - --victoria-url=http://vmsingle.monitoring.svc.cluster.local:8428
-            - --predictor-url=http://predictor.predictive.svc.cluster.local:8000
+            - --predictor-url=http://172.19.0.100:8000/predict
             - --namespace=predictive
             - --scaled-object=checkout
             - --interval=15s
             - --window=5m
             - --min-replicas=3
             - --max-replicas=10
-            - --conns-per-pod=20
-            - --headroom=1.20
+            - --conns-per-pod=80
+            - --headroom=1.0
             - --boost-ttl=60s
             - --max-failures=3
             - --max-step=3
