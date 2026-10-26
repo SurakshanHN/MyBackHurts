@@ -1,0 +1,66 @@
+Part 5B Verification
+====================
+
+1. ScaledObjects:
+baseline: min 3, max 10, no prescale.io/* annotations
+predictive: min 3, max 10, no prescale.io/* annotations
+
+2. Deployments:
+baseline checkout: 3/3 Ready
+predictive checkout: 3/3 Ready
+
+3. Prescaler Deployment:
+predictive prescaler: restored to 1/1 Ready (original replicas=1)
+
+4. Cluster Pods:
+$KC get pods -A
+NAMESPACE            NAME                                                  READY   STATUS    RESTARTS        AGE
+baseline             checkout-5c74b4cc47-5jd8j                             1/1     Running   0               28m
+baseline             checkout-5c74b4cc47-pplms                             1/1     Running   0               27m
+baseline             checkout-5c74b4cc47-w5s9l                             1/1     Running   0               20m
+baseline             fakedb-c57886cdf-q4wpv                                1/1     Running   0               3h23m
+keda                 keda-admission-cf7b8d47c-ffqz5                        1/1     Running   0               3h26m
+keda                 keda-metrics-apiserver-85bbdd8569-tshn8               1/1     Running   0               3h26m
+keda                 keda-operator-8b7db9c5d-d5twh                         1/1     Running   1 (3h26m ago)   3h26m
+kube-system          coredns-668d6bf9bc-7f2vm                              1/1     Running   0               3h41m
+kube-system          coredns-668d6bf9bc-nkbdm                              1/1     Running   0               3h41m
+kube-system          etcd-prescale-demo-control-plane                      1/1     Running   0               3h41m
+kube-system          kindnet-dg9pp                                         1/1     Running   0               3h39m
+kube-system          kindnet-krk4h                                         1/1     Running   0               3h39m
+kube-system          kindnet-vqfs6                                         1/1     Running   0               3h41m
+kube-system          kube-apiserver-prescale-demo-control-plane            1/1     Running   0               3h41m
+kube-system          kube-controller-manager-prescale-demo-control-plane   1/1     Running   0               3h41m
+kube-system          kube-proxy-bg95g                                      1/1     Running   5 (3h39m ago)   3h41m
+kube-system          kube-proxy-f7wpl                                      1/1     Running   0               3h39m
+kube-system          kube-proxy-vjqxd                                      1/1     Running   0               3h39m
+kube-system          kube-scheduler-prescale-demo-control-plane            1/1     Running   0               3h41m
+local-path-storage   local-path-provisioner-58cc7856b6-bx2dq               1/1     Running   4 (3h38m ago)   3h41m
+monitoring           grafana-6875b4566b-f7fxd                              1/1     Running   0               3h31m
+monitoring           kube-state-metrics-756c8f88d6-btjdk                   1/1     Running   0               3h31m
+monitoring           metrics-server-fccf67f5-v7jx4                         1/1     Running   0               3h31m
+monitoring           vmsingle-7547b449f7-rhgwt                             1/1     Running   0               3h31m
+predictive           checkout-5c74b4cc47-4f6c4                             1/1     Running   0               5m8s
+predictive           checkout-5c74b4cc47-gk8gt                             1/1     Running   0               28m
+predictive           checkout-5c74b4cc47-wbz76                             1/1     Running   0               20m
+predictive           fakedb-c57886cdf-xmp58                                1/1     Running   0               3h23m
+predictive           prescaler-64b77c4567-2tmnp                            1/1     Running   0               22s
+Verdict: All pods Ready across all namespaces.
+
+5. Container Cleanup:
+docker ps -a --filter name=k6-
+No k6-* containers found.
+
+6. Script Syntax:
+bash -n scripts/load/capacity_v2.sh: EXIT 0
+bash -n scripts/load/aa_run.sh: EXIT 0
+
+7. k6 inspect:
+k6 inspect loadtest/surge_demo.js: EXIT 0 (valid ramping-arrival-rate scenario)
+
+8. Scope Check:
+git --no-pager diff --stat af1a4a2163945885febb3aa0ab4d6f009237ed85..HEAD
+All changes isolated to loadtest/**, scripts/load/**, workload/k8s/** (checkout CPU request only), and docs/reports/**.
+Verdict: Zero drift.
+
+9. Working tree status:
+git --no-pager status --short: Clean.
