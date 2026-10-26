@@ -1,0 +1,20 @@
+CSV rows loaded: 50400
+Deployments: ['auth-svc', 'checkout-api', 'recs-worker', 'report-batch', 'search-svc']
+
+=== Model: prescale_model.joblib (backend=sklearn) ===
+  dep=auth-svc: n=10047, coverage=0.755, mae_p50=0.0784, mae_pers=0.0902, events=79, recall=0.2532, fa_rate=0.0028
+  dep=checkout-api: n=10047, coverage=0.7835, mae_p50=0.0901, mae_pers=0.101, events=51, recall=0.2549, fa_rate=0.0015
+  dep=recs-worker: n=10047, coverage=0.7512, mae_p50=0.1024, mae_pers=0.1162, events=45, recall=0.2222, fa_rate=0.0019
+  dep=report-batch: n=10047, coverage=0.7845, mae_p50=0.0857, mae_pers=0.0981, events=57, recall=0.2281, fa_rate=0.0031
+  dep=search-svc: n=10047, coverage=0.7683, mae_p50=0.0913, mae_pers=0.1044, events=82, recall=0.2561, fa_rate=0.0031
+  OVERALL: n=50235, coverage=0.7685, mae_p50=0.0896, mae_pers=0.1020
+  OVERALL spikes: events=314, recall=0.2452, fa_rate=0.0025
+
+=== Model: prescale_model.pkl (backend=lightgbm) ===
+  dep=auth-svc: n=10047, coverage=0.7505, mae_p50=0.0784, mae_pers=0.0902, events=79, recall=0.2532, fa_rate=0.0026
+  dep=checkout-api: n=10047, coverage=0.7823, mae_p50=0.0899, mae_pers=0.101, events=51, recall=0.2549, fa_rate=0.0017
+  dep=recs-worker: n=10047, coverage=0.7504, mae_p50=0.102, mae_pers=0.1162, events=45, recall=0.2222, fa_rate=0.0015
+  dep=report-batch: n=10047, coverage=0.779, mae_p50=0.0854, mae_pers=0.0981, events=57, recall=0.2456, fa_rate=0.0034
+  dep=search-svc: n=10047, coverage=0.7639, mae_p50=0.0912, mae_pers=0.1044, events=82, recall=0.2561, fa_rate=0.0029
+  OVERALL: n=50235, coverage=0.7652, mae_p50=0.0894, mae_pers=0.1020
+  OVERALL spikes: events=314, recall=0.2484, fa_rate=0.0024
