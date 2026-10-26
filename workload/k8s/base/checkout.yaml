@@ -1,68 +1,69 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fakedb
-  namespace: demo
+  name: checkout
   labels:
-    app: fakedb
+    app: checkout
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: fakedb
+      app: checkout
   template:
     metadata:
       labels:
-        app: fakedb
+        app: checkout
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
         prometheus.io/path: "/metrics"
     spec:
       containers:
-      - name: fakedb
-        image: prescale-demo/fakedb:latest
+      - name: checkout
+        image: prescale/checkout:dev
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
           containerPort: 8080
         env:
-        - name: MAX_CONNS
-          value: "100"
-        - name: MODE
-          value: "contention"
+        - name: STARTUP_DELAY_SECONDS
+          value: "30"
+        - name: CPU_BURN_MS
+          value: "5"
+        - name: CONNS_PER_POD
+          value: "20"
+        - name: DB_URL
+          value: "http://fakedb:8080"
         resources:
           requests:
             cpu: 100m
             memory: 64Mi
           limits:
             cpu: 500m
-            memory: 128Mi
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: http
-          initialDelaySeconds: 2
-          periodSeconds: 5
+            memory: 256Mi
         readinessProbe:
           httpGet:
             path: /healthz
             port: http
-          initialDelaySeconds: 2
-          periodSeconds: 5
+          periodSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fakedb
-  namespace: demo
+  name: checkout
   labels:
-    app: fakedb
+    app: checkout
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: http
     port: 8080
     targetPort: http
   selector:
-    app: fakedb
+    app: checkout

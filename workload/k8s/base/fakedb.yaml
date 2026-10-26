@@ -1,43 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: checkout
-  namespace: demo
+  name: fakedb
   labels:
-    app: checkout
+    app: fakedb
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: checkout
+      app: fakedb
   template:
     metadata:
       labels:
-        app: checkout
+        app: fakedb
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
         prometheus.io/path: "/metrics"
     spec:
       containers:
-      - name: checkout
-        image: prescale-demo/checkout:latest
+      - name: fakedb
+        image: prescale/fakedb:dev
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
           containerPort: 8080
         env:
-        - name: DB_URL
-          value: "http://fakedb:8080"
-        - name: CONNS_PER_POD
-          value: "20"
+        - name: MAX_CONNS
+          value: "100"
+        - name: MODE
+          value: "normal"
         resources:
           requests:
             cpu: 100m
             memory: 64Mi
           limits:
             cpu: 500m
-            memory: 256Mi
+            memory: 128Mi
         livenessProbe:
           httpGet:
             path: /healthz
@@ -54,35 +53,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: checkout
-  namespace: demo
+  name: fakedb
   labels:
-    app: checkout
+    app: fakedb
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: http
     port: 8080
     targetPort: http
   selector:
-    app: checkout
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: checkout
-  namespace: demo
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: checkout
-  minReplicas: 3
-  maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 50
+    app: fakedb
