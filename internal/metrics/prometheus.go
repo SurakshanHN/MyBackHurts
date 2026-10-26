@@ -11,8 +11,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/prescale/prescale/internal/detector"
 )
 
 // labelRe is the Kubernetes label-value pattern that namespace and name must match.
@@ -173,7 +171,7 @@ func (p *Prometheus) queryRange(ctx context.Context, query string, from, to time
 
 // Series fetches the five service metrics, aligns them by timestamp, and
 // returns samples for timestamps where all five are present.
-func (p *Prometheus) Series(ctx context.Context, t Target, from, to time.Time, step time.Duration) ([]detector.Sample, error) {
+func (p *Prometheus) Series(ctx context.Context, t Target, from, to time.Time, step time.Duration) ([]Sample, error) {
 	if err := validateLabel(t.Namespace); err != nil {
 		return nil, err
 	}
@@ -238,7 +236,7 @@ func (p *Prometheus) Series(ctx context.Context, t Target, from, to time.Time, s
 		return nil, ErrNoData
 	}
 
-	var samples []detector.Sample
+	var samples []Sample
 	for _, ts := range tsList {
 		rps, ok1 := rpsF.m[ts]
 		p99, ok2 := p99F.m[ts]
@@ -248,7 +246,7 @@ func (p *Prometheus) Series(ctx context.Context, t Target, from, to time.Time, s
 		if !ok1 || !ok2 || !ok3 || !ok4 || !ok5 {
 			continue // skip timestamps missing any service metric
 		}
-		samples = append(samples, detector.Sample{
+		samples = append(samples, Sample{
 			T:        time.Unix(ts, 0).UTC(),
 			RPS:      rps,
 			P99Ms:    p99,
@@ -269,7 +267,7 @@ func (p *Prometheus) Series(ctx context.Context, t Target, from, to time.Time, s
 // --- DepSeries --------------------------------------------------------------
 
 // DepSeries fetches saturation and latency_ms, aligns them, and returns dep samples.
-func (p *Prometheus) DepSeries(ctx context.Context, t Target, d DepRef, from, to time.Time, step time.Duration) ([]detector.DepSample, error) {
+func (p *Prometheus) DepSeries(ctx context.Context, t Target, d DepRef, from, to time.Time, step time.Duration) ([]DepSample, error) {
 	if err := validateLabel(t.Namespace); err != nil {
 		return nil, err
 	}
@@ -303,14 +301,14 @@ func (p *Prometheus) DepSeries(ctx context.Context, t Target, d DepRef, from, to
 		return nil, ErrNoData
 	}
 
-	var samples []detector.DepSample
+	var samples []DepSample
 	for _, ts := range tsList {
 		sat, ok1 := satM[ts]
 		lat, ok2 := latM[ts]
 		if !ok1 || !ok2 {
 			continue
 		}
-		samples = append(samples, detector.DepSample{
+		samples = append(samples, DepSample{
 			T:          time.Unix(ts, 0).UTC(),
 			Saturation: sat,
 			LatencyMs:  lat,
