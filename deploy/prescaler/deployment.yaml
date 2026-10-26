@@ -23,7 +23,7 @@ spec:
           image: prescale/prescaler:dev
           imagePullPolicy: IfNotPresent
           args:
-            - --victoria-url=http://vmsingle.monitoring.svc.cluster.local:8428
+            - --victoria-url=http://vmsingle.monitoring.svc.cluster.local.:8428
             - --predictor-url=http://172.19.0.100:8000/predict
             - --namespace=predictive
             - --scaled-object=checkout
