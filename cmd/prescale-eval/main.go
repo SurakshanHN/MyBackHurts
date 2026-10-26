@@ -1059,6 +1059,85 @@ func main() {
 	wTot.Flush()
 
 	fmt.Println("\n========================================================================================================")
+	fmt.Println("JUDGE VERDICTS PER SCENARIO TYPE")
+	fmt.Println("========================================================================================================")
+
+	type verdictCounts struct {
+		helped  int
+		useless int
+		harmful int
+		unknown int
+	}
+	judgeCounts := make(map[string]*verdictCounts)
+	for _, t := range types {
+		judgeCounts[t] = &verdictCounts{}
+	}
+
+	var scenAMissedMags []float64
+	var scenACaughtMags []float64
+
+	for _, s := range scenarios {
+		res := detector.Judge(s.Input)
+		st := judgeCounts[string(s.Type)]
+		switch res.Verdict {
+		case detector.Helped:
+			st.helped++
+		case detector.Useless:
+			st.useless++
+		case detector.Harmful:
+			st.harmful++
+		case detector.Unknown:
+			st.unknown++
+		}
+
+		if s.Type == ScenarioContentionHarmful {
+			var p99Mag float64
+			for _, f := range res.Findings {
+				if f.Name == "p99_ms" {
+					if f.Expected > 0 {
+						p99Mag = (f.Observed - f.Expected) / f.Expected * 100.0
+					}
+					break
+				}
+			}
+			if res.Verdict == detector.Harmful {
+				scenACaughtMags = append(scenACaughtMags, p99Mag)
+			} else {
+				scenAMissedMags = append(scenAMissedMags, p99Mag)
+			}
+		}
+	}
+
+	wJudge := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(wJudge, "Scenario\tHelped\tUseless\tHarmful\tUnknown")
+	for _, sType := range types {
+		st := judgeCounts[sType]
+		fmt.Fprintf(wJudge, "%s\t%d\t%d\t%d\t%d\n",
+			sType, st.helped, st.useless, st.harmful, st.unknown)
+	}
+	wJudge.Flush()
+
+	var meanMissed, meanCaught float64
+	if len(scenAMissedMags) > 0 {
+		var sum float64
+		for _, m := range scenAMissedMags {
+			sum += m
+		}
+		meanMissed = sum / float64(len(scenAMissedMags))
+	}
+	if len(scenACaughtMags) > 0 {
+		var sum float64
+		for _, m := range scenACaughtMags {
+			sum += m
+		}
+		meanCaught = sum / float64(len(scenACaughtMags))
+	}
+
+	fmt.Println("\nScenario (A) p99 effect magnitude (post vs expected, as a percent):")
+	fmt.Printf("  PreScale missed (N=%d): mean = %.1f%%\n", len(scenAMissedMags), meanMissed)
+	fmt.Printf("  PreScale caught (N=%d): mean = %.1f%%\n", len(scenACaughtMags), meanCaught)
+
+	fmt.Println("\n========================================================================================================")
 	fmt.Println("95% WILSON CONFIDENCE INTERVALS")
 	fmt.Println("========================================================================================================")
 
