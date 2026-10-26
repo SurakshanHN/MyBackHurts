@@ -1,0 +1,10 @@
+=== Capacity Probe Summary (MEASURED) ===
+KNEE_RPS_3PODS: 299.80 RPS (target stage: 300 RPS)
+KNEE_PER_POD: 99.93 RPS per pod
+Pod CPU at knee (pod_cpu_m_avg): 327.2 mCPU
+MCPU_PER_RPS: 3.27 mCPU per RPS
+Stop rule fired: none (all 10 stages completed within SLO_P99_MS=300ms, SLO_ERR_PCT=1%)
+
+=== Theoretical Comparison ===
+THEORETICAL: limit 500m / 5ms CPU burn = 100 RPS per pod
+THEORETICAL 3 pods: 300 RPS (ignoring fakedb and network overhead)

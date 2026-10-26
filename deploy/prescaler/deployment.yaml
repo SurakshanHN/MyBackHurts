@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prescaler
+  namespace: predictive
+  labels:
+    app: prescaler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prescaler
+  template:
+    metadata:
+      labels:
+        app: prescaler
+    spec:
+      serviceAccountName: prescaler
+      # Single replica: the prescaler is a singleton loop – no leader election needed.
+      terminationGracePeriodSeconds: 15
+      containers:
+        - name: prescaler
+          image: prescale/prescaler:dev
+          imagePullPolicy: IfNotPresent
+          args:
+            - --victoria-url=http://vmsingle.monitoring.svc.cluster.local.:8428
+            - --predictor-url=http://172.19.0.100:8000/predict
+            - --namespace=predictive
+            - --scaled-object=checkout
+            - --interval=15s
+            - --window=5m
+            - --min-replicas=3
+            - --max-replicas=10
+            - --conns-per-pod=80
+            - --headroom=1.0
+            - --boost-ttl=60s
+            - --max-failures=3
+            - --max-step=3
+            - --cooldown=30s
+            - --dry-run=false
+          env:
+            # Expose pod name for structured logging (optional, nice-to-have).
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          # No ports needed: the prescaler is a pure outbound daemon.
+          livenessProbe:
+            # The prescaler doesn't expose HTTP; use a process-alive exec probe.
+            exec:
+              command: ["true"]
+            periodSeconds: 30
+            failureThreshold: 3

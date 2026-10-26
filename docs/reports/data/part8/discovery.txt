@@ -1,0 +1,34 @@
+# Part 8 Discovery: Grafana Auth, Datasource, and Metric Availability
+Date: 2026-10-27T03:22:30Z
+
+## 1. Grafana Authentication Method
+- Auth Type: Anonymous Authentication (Admin role)
+- Configuration:
+  GF_AUTH_ANONYMOUS_ENABLED = "true"
+  GF_AUTH_ANONYMOUS_ORG_ROLE = "Admin"
+  GF_AUTH_DISABLE_LOGIN_FORM = "true"
+  (Defined in deploy/observability/grafana.yaml and in-cluster Deployment monitoring/grafana)
+- Secret/Password: None needed (anonymous access enabled).
+
+## 2. VictoriaMetrics Datasource in Grafana
+- Datasource Name: VictoriaMetrics
+- Datasource UID: P4169E866C3094E38
+- Type: prometheus
+- URL: http://vmsingle.monitoring.svc:8428
+- isDefault: true
+
+## 3. Metric Name Availability
+- http_requests_total: EXISTS (exported by checkout workloads in baseline and predictive)
+- http_request_duration_seconds_bucket: EXISTS (exported by checkout workloads)
+- kube_deployment_status_replicas_ready: EXISTS (exported by kube-state-metrics)
+- kube_deployment_spec_replicas: EXISTS (exported by kube-state-metrics)
+- kube_horizontalpodautoscaler_status_desired_replicas: EXISTS (exported by kube-state-metrics for keda-hpa-checkout)
+- ScaledObject / HPA min metric:
+  - kube_customresource_*: NONE (not exposed)
+  - scaledobject_*: NONE (not exposed)
+  - kube_horizontalpodautoscaler_spec_min_replicas: EXISTS (reflects ScaledObject minReplicaCount synced by KEDA)
+
+## 4. Prescaler Metric Export Check
+- Grep cmd/prescaler and internal: No prometheus exporter, no promhttp handler, no HTTP listener. Prescaler is a pure outbound reconciliation loop daemon.
+- VictoriaMetrics query for ^prescale.*: 0 series found.
+- Forecast or boost metrics: NONE.

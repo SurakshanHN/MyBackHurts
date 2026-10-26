@@ -1,0 +1,67 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/smoke.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 20 max VUs, 35s max duration (incl. graceful stop):
+              * smoke: 5.00 iterations/s for 5s (maxVUs: 5-20, gracefulStop: 30s)
+
+
+running (01.0s), 00/05 VUs, 5 complete and 0 interrupted iterations
+smoke   [  20% ] 00/05 VUs  1.0s/5s  5.00 iters/s
+
+running (02.0s), 00/05 VUs, 10 complete and 0 interrupted iterations
+smoke   [  40% ] 00/05 VUs  2.0s/5s  5.00 iters/s
+
+running (03.0s), 00/05 VUs, 15 complete and 0 interrupted iterations
+smoke   [  60% ] 00/05 VUs  3.0s/5s  5.00 iters/s
+
+running (04.0s), 00/05 VUs, 20 complete and 0 interrupted iterations
+smoke   [  80% ] 00/05 VUs  4.0s/5s  5.00 iters/s
+
+running (05.0s), 00/05 VUs, 25 complete and 0 interrupted iterations
+smoke   [ 100% ] 00/05 VUs  5.0s/5s  5.00 iters/s
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1.0' rate=100.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 25      4.998664/s
+    checks_succeeded...: 100.00% 25 out of 25
+    checks_failed......: 0.00%   0 out of 25
+
+    ✓ status is 200
+
+    HTTP
+    http_req_duration..............: avg=17.21ms min=16.22ms med=16.95ms max=20.22ms p(90)=18.38ms p(95)=18.81ms
+      { expected_response:true }...: avg=17.21ms min=16.22ms med=16.95ms max=20.22ms p(90)=18.38ms p(95)=18.81ms
+    http_req_failed................: 0.00%  0 out of 25
+    http_reqs......................: 25     4.998664/s
+
+    EXECUTION
+    iteration_duration.............: avg=17.63ms min=16.49ms med=17.22ms max=21.35ms p(90)=19.27ms p(95)=19.58ms
+    iterations.....................: 25     4.998664/s
+    vus............................: 0      min=0       max=0
+    vus_max........................: 5      min=5       max=5
+
+    NETWORK
+    data_received..................: 3.5 kB 695 B/s
+    data_sent......................: 3.1 kB 610 B/s
+
+
+
+
+running (05.0s), 00/05 VUs, 25 complete and 0 interrupted iterations
+smoke ✓ [ 100% ] 00/05 VUs  5s  5.00 iters/s

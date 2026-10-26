@@ -1,30 +1,34 @@
-# Binaries for programs and plugins
+# Binaries and build artifacts
+bin/
+dist/
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
-bin/*
-Dockerfile.cross
 
-# Test binary, built with `go test -c`
+# Test binaries and coverage
 *.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+cover.out
 
-# Go workspace file
-go.work
+# Python environment and cache
+.venv/
+__pycache__/
+*.pyc
 
-# Kubernetes Generated files - skip generated files, except for vendored files
-!vendor/**/zz_generated.*
+# Operating system files
+.DS_Store
 
-# editor and IDE paraphernalia
-.idea
-.vscode
+# Editor and IDE
+.idea/
+.vscode/
 *.swp
 *.swo
 *~
 
-# Kubeconfig might contain secrets
+# Go workspace
+go.work
+
+# Secrets
 *.kubeconfig

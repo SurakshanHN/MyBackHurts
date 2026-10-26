@@ -1,0 +1,7 @@
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.15
+Date: Mon, 26 Oct 2026 20:58:37 GMT
+Content-Type: text/plain
+Content-Length: 3
+
+ok

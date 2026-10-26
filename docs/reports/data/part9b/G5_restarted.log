@@ -1,0 +1,2 @@
+time=2026-10-26T22:50:03.778Z level=INFO msg="Starting prescaler daemon" victoria_url=http://vmsingle.monitoring.svc.cluster.local.:8428 predictor_url=http://172.19.0.100:8000/predict namespace=predictive scaled_object=checkout interval=15s window=5m0s min_replicas=3 max_replicas=10 conns_per_pod=80 headroom=1 boost_ttl=1m0s max_failures=3 max_step=3 cooldown=30s dry_run=false
+time=2026-10-26T22:50:03.882Z level=INFO msg="Prescaler tick" forecast=60 desired=3 current=6 original=3 action=release reason="desired (3) <= original (3)"

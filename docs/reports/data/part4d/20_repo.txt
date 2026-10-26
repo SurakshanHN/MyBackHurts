@@ -1,0 +1,406 @@
+$ git --no-pager log --oneline pre-rebuild..HEAD
+182a159 docs: part 4 verification report (73 tests, live cluster state)
+65cad3b docs: predictor contract draft
+b5c9f02 scripts: stub predictor for prescaler testing
+4f88a87 prescaler: lease-based boost with safe release
+56bbb78 workload: kustomize base and baseline/predictive overlays
+462acb1 deploy: keda
+ca271ee deploy: observability stack (victoriametrics, ksm, metrics-server, grafana)
+641d272 deploy: kind cluster config
+db316c2 workload: configurable startup delay and cpu burn
+d160a25 docs: part 2 report
+ac2e19e style: format workload/fakedb/main_test.go
+d8e9eef chore: new project skeleton
+5e986d3 workload: restore checkout, fakedb and k6 script from history
+528e538 refactor(metrics): remove dependency on detector package
+4f6a474 chore: remove nested copy, kubebuilder scaffold and detector
+[exit 0]
+
+
+=== git cat-file -t e3c2b1d ===
+fatal: Not a valid object name e3c2b1d
+
+=== git show --stat e3c2b1d ===
+
+=== git cat-file -t b2d9e0a ===
+fatal: Not a valid object name b2d9e0a
+
+=== git show --stat b2d9e0a ===
+
+=== git cat-file -t c1a7f3e ===
+fatal: Not a valid object name c1a7f3e
+
+=== git show --stat c1a7f3e ===
+
+=== git cat-file -t 5e986d3 ===
+commit
+
+=== git show --stat 5e986d3 ===
+5e986d3 workload: restore checkout, fakedb and k6 script from history
+
+ demo/checkout/Dockerfile                  |   0
+ demo/checkout/main.go                     |   0
+ demo/checkout/main_test.go                |   0
+ demo/fakedb/Dockerfile                    |   0
+ demo/fakedb/main.go                       |   0
+ demo/fakedb/main_test.go                  |   0
+ demo/k8s/checkout.yaml                    |   0
+ demo/k8s/fakedb.yaml                      |   0
+ demo/k8s/monitoring.yaml                  |  17 ---
+ demo/k8s/namespace.yaml                   |   0
+ demo/README.md => docs/old-demo-README.md |   0
+ go.mod                                    |   6 +
+ go.sum                                    |   4 +
+ {demo/k6 => loadtest}/surge.js            |   0
+ workload/checkout/Dockerfile              |  24 ++++
+ workload/checkout/main.go                 | 169 ++++++++++++++++++++++++++
+ workload/checkout/main_test.go            |  83 +++++++++++++
+ workload/fakedb/Dockerfile                |  24 ++++
+
+=== File tracking table ===
+TRACKED   internal/scaledobject/plan.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   internal/scaledobject/plan_test.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   internal/scaledobject/patch.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   internal/scaledobject/patch_test.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   internal/predictor/client.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   internal/predictor/client_test.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   cmd/prescaler/main.go | added: d8e9eef chore: new project skeleton
+TRACKED   cmd/prescaler/Dockerfile | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   deploy/prescaler/deployment.yaml | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   deploy/prescaler/kustomization.yaml | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   deploy/prescaler/namespace.yaml | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   deploy/prescaler/rbac.yaml | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   Makefile | added: d8e9eef chore: new project skeleton
+
+=== Dockerfiles in git ===
+cmd/prescaler/Dockerfile
+workload/checkout/Dockerfile
+workload/fakedb/Dockerfile
+
+=== First 15 lines of each Dockerfile ===
+
+-- cmd/prescaler/Dockerfile --
+FROM golang:1.27-alpine AS builder
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /prescaler ./cmd/prescaler
+
+FROM alpine:3.21
+RUN apk add --no-cache ca-certificates
+COPY --from=builder /prescaler /prescaler
+USER nobody
+ENTRYPOINT ["/prescaler"]
+
+-- workload/checkout/Dockerfile --
+# Build stage
+FROM golang:1.27-alpine AS builder
+
+WORKDIR /workspace
+
+# Copy dependency manifests
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy source code and build
+COPY workload/checkout/ ./workload/checkout/
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /bin/checkout ./workload/checkout
+
+# Runtime stage
+FROM alpine:3.21
+
+-- workload/fakedb/Dockerfile --
+# Build stage
+FROM golang:1.27-alpine AS builder
+
+WORKDIR /workspace
+
+# Copy dependency manifests
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy source code and build
+COPY workload/fakedb/ ./workload/fakedb/
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /bin/fakedb ./workload/fakedb
+
+# Runtime stage
+FROM alpine:3.21
+
+=== docs/reports listing ===
+docs/:
+total 16
+-rw-r--r--. 1 unhealthycoder unhealthycoder 4878 Oct 26 20:37 old-demo-README.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder 4746 Oct 26 23:30 predictor-contract.md
+drwxr-xr-x. 1 unhealthycoder unhealthycoder  134 Oct 27 00:17 reports
+
+docs/reports/:
+total 76
+drwxr-xr-x. 1 unhealthycoder unhealthycoder    12 Oct 27 00:17 data
+-rw-r--r--. 1 unhealthycoder unhealthycoder 23815 Oct 26 19:37 REPO_CONTEXT.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder 25832 Oct 26 20:28 REPORT_PART_1.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder 14082 Oct 26 20:43 REPORT_PART_2.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder  5550 Oct 26 23:40 REPORT_PART_4.md
+docs/reports/REPORT_PART_1.md
+docs/reports/REPORT_PART_2.md
+docs/reports/REPORT_PART_4.md
+docs/reports/REPO_CONTEXT.md
+
+-- wc -l docs/reports/REPORT_PART_4.md --
+159 docs/reports/REPORT_PART_4.md
+# Part 4 Report — Prescaler Hardening & Verification
+
+Branch: `predictive-rebuild`  
+Date: 2026-10-26  
+Tests: **73 PASS / 0 FAIL** across 4 packages  
+Build: `go build ./...` exit 0  
+Vet: `go vet ./...` exit 0
+
+MISSING: docs/reports/REPORT_PART_4C.md
+
+=== AGENTS.md summary ===
+320 AGENTS.md
+1:# prescale - AI Agent Guide
+3:## Project Structure
+37:## Critical Rules
+39:### Never Edit These (Auto-Generated)
+46:### Never Remove Scaffold Markers
+49:### Keep Project Structure
+52:### Always Use CLI Commands
+55:### E2E Tests Require an Isolated Kind Cluster
+59:## After Making Changes
+73:## CLI Commands Cheat Sheet
+75:### Create API (your own types)
+80:### Deploy Image Plugin (scaffold to deploy/manage ANY container image)
+85:# Example: deploying memcached
+94:### Create Webhooks
+96:# Validation + defaulting
+100:# Conversion webhook (for multi-version APIs)
+105:### Controller for Core Kubernetes Types
+107:# Watch Pods
+111:# Watch Deployments
+116:### Controller for External Types (e.g., from other operators)
+121:# Example: watching cert-manager Certificate resources
+132:### Webhook for External Types
+135:# Example: validating external resources
+144:## Testing & Development
+153:## Deployment Workflow
+156:# 1. Regenerate manifests
+159:# 2. Build & deploy
+164:# 3. Test
+167:# 4. Debug
+171:### API Design
+193:### Controller Design
+213:### Logging
+232:### Webhooks
+240:### Learning from Examples
+251:## Distribution Options
+253:### Option 1: YAML Bundle (Kustomize)
+256:# Generate dist/install.yaml from Kustomize manifests
+270:### Option 2: Helm Chart
+297:### Publish Container Image
+304:## References
+306:### Essential Reading
+312:### API Design & Implementation
+317:### Tools & Libraries
+
+-- kubebuilder/scaffold mentions --
+8:api/<version>/*_types.go       CRD schemas (+kubebuilder markers)
+16:PROJECT                        Kubebuilder metadata Auto-generated (DO NOT EDIT)
+29:1. Run: `kubebuilder edit --multigroup=true`
+44:- `PROJECT` - from `kubebuilder [OPTIONS]`
+46:### Never Remove Scaffold Markers
+47:Do NOT delete `// +kubebuilder:scaffold:*` comments. CLI injects code at these markers.
+53:Always use `kubebuilder create api` and `kubebuilder create webhook` to scaffold. Do NOT create files manually.
+77:kubebuilder create api --group <group> --version <version> --kind <Kind>
+80:### Deploy Image Plugin (scaffold to deploy/manage ANY container image)
+86:kubebuilder create api --group example.com --version v1alpha1 --kind Memcached \
+88:  --plugins=deploy-image.go.kubebuilder.io/v1-alpha
+91:Scaffolds good-practice code: reconciliation logic, status conditions, finalizers, RBAC. Use as a reference implementation.
+97:kubebuilder create webhook --group <group> --version <version> --kind <Kind> \
+101:kubebuilder create webhook --group <group> --version v1 --kind <Kind> \
+108:kubebuilder create api --group core --version v1 --kind Pod \
+112:kubebuilder create api --group apps --version v1 --kind Deployment \
+116:### Controller for External Types (e.g., from other operators)
+122:kubebuilder create api \
+136:kubebuilder create webhook \
+176:// +kubebuilder:object:root=true
+177:// +kubebuilder:subresource:status
+178:// +kubebuilder:resource:scope=Namespaced
+179:// +kubebuilder:printcolumn:name="Status",type=string,JSONPath=".status.conditions[?(@.type=='Ready')].status"
+182:// +kubebuilder:validation:Required
+183:// +kubebuilder:validation:Minimum=1
+184:// +kubebuilder:validation:MaxLength=100
+185:// +kubebuilder:validation:Pattern="^[a-z]+$"
+186:// +kubebuilder:default="value"
+198:// +kubebuilder:rbac:groups=mygroup.example.com,resources=mykinds,verbs=get;list;watch;create;update;patch;delete
+199:// +kubebuilder:rbac:groups=mygroup.example.com,resources=mykinds/status,verbs=get;update;patch
+200:// +kubebuilder:rbac:groups=mygroup.example.com,resources=mykinds/finalizers,verbs=update
+201:// +kubebuilder:rbac:groups=events.k8s.io,resources=events,verbs=create;patch
+202:// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+234:- **When`--force`is used**: Backup custom logic first, then restore after scaffolding
+242:The **deploy-image plugin** scaffolds a complete controller following good practices. Use it as a reference implementation:
+245:kubebuilder create api --group example --version v1alpha1 --kind MyApp \
+246:  --image=<your-image> --plugins=deploy-image.go.kubebuilder.io/v1-alpha
+273:kubebuilder edit --plugins=helm/v2-alpha                      # Generates dist/chart/ (default)
+274:kubebuilder edit --plugins=helm/v2-alpha --output-dir=charts  # Generates charts/chart/
+294:2. Re-run: `kubebuilder edit --plugins=helm/v2-alpha --force` (use same `--output-dir` if customized)
+307:- **Kubebuilder Book**: https://book.kubebuilder.io (comprehensive guide)
+309:- **Good Practices**: https://book.kubebuilder.io/reference/good-practices.html (why reconciliation is idempotent, status conditions, etc.)
+314:- **Operator Pattern**: https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+315:- **Markers Reference**: https://book.kubebuilder.io/reference/markers.html
+320:- **Kubebuilder Repo**: https://github.com/kubernetes-sigs/kubebuilder
+
+=== untracked file q ===
+-rw-r--r--. 1 unhealthycoder unhealthycoder 997 Oct 27 00:00 q
+q: ASCII text, with escape sequences
+[33m182a159[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpredictive-rebuild[m[33m)[m docs: part 4 verification report (73 tests, live cluster state)
+[33m65cad3b[m docs: predictor contract draft
+[33mb5c9f02[m scripts: stub predictor for prescaler testing
+[33m4f88a87[m prescaler: lease-based boost with safe release
+[33m56bbb78[m workload: kustomize base and baseline/predictive overlays
+[33m462acb1[m deploy: keda
+[33mca271ee[m deploy: observability stack (victoriametrics, ksm, metri
+
+=== File tracking table ===
+TRACKED   internal/scaledobject/plan.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   internal/scaledobject/patch.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   internal/predictor/client.go | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   cmd/prescaler/main.go | added: d8e9eef chore: new project skeleton
+TRACKED   cmd/prescaler/Dockerfile | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   deploy/prescaler/deployment.yaml | added: 4f88a87 prescaler: lease-based boost with safe release
+TRACKED   Makefile | added: d8e9eef chore: new project skeleton
+
+=== Dockerfiles in git ===
+cmd/prescaler/Dockerfile
+workload/checkout/Dockerfile
+workload/fakedb/Dockerfile
+First 15 lines of each:
+
+[cmd/prescaler/Dockerfile]
+FROM golang:1.27-alpine AS builder
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /prescaler ./cmd/prescaler
+
+FROM alpine:3.21
+RUN apk add --no-cache ca-certificates
+COPY --from=builder /prescaler /prescaler
+USER nobody
+ENTRYPOINT ["/prescaler"]
+
+[workload/checkout/Dockerfile]
+# Build stage
+FROM golang:1.27-alpine AS builder
+
+WORKDIR /workspace
+
+# Copy dependency manifests
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy source code and build
+COPY workload/checkout/ ./workload/checkout/
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /bin/checkout ./workload/checkout
+
+# Runtime stage
+FROM alpine:3.21
+
+[workload/fakedb/Dockerfile]
+# Build stage
+FROM golang:1.27-alpine AS builder
+
+WORKDIR /workspace
+
+# Copy dependency manifests
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy source code and build
+COPY workload/fakedb/ ./workload/fakedb/
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /bin/fakedb ./workload/fakedb
+
+# Runtime stage
+FROM alpine:3.21
+
+=== docs listing ===
+total 16
+-rw-r--r--. 1 unhealthycoder unhealthycoder 4878 Oct 26 20:37 old-demo-README.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder 4746 Oct 26 23:30 predictor-contract.md
+drwxr-xr-x. 1 unhealthycoder unhealthycoder  134 Oct 27 00:17 reports
+total 76
+drwxr-xr-x. 1 unhealthycoder unhealthycoder    12 Oct 27 00:17 data
+-rw-r--r--. 1 unhealthycoder unhealthycoder 23815 Oct 26 19:37 REPO_CONTEXT.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder 25832 Oct 26 20:28 REPORT_PART_1.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder 14082 Oct 26 20:43 REPORT_PART_2.md
+-rw-r--r--. 1 unhealthycoder unhealthycoder  5550 Oct 26 23:40 REPORT_PART_4.md
+docs/reports/REPORT_PART_1.md
+docs/reports/REPORT_PART_2.md
+docs/reports/REPORT_PART_4.md
+docs/reports/REPO_CONTEXT.md
+159 docs/reports/REPORT_PART_4.md
+# Part 4 Report — Prescaler Hardening & Verification
+
+Branch: `predictive-rebuild`  
+Date: 2026-10-26  
+Tests: **73 PASS / 0 FAIL** across 4 packages  
+Build: `go build ./...` exit 0  
+Vet: `go vet ./...` exit 0
+
+MISSING: docs/reports/REPORT_PART_4C.md
+
+=== AGENTS.md ===
+320 AGENTS.md
+1:# prescale - AI Agent Guide
+3:## Project Structure
+37:## Critical Rules
+39:### Never Edit These (Auto-Generated)
+46:### Never Remove Scaffold Markers
+49:### Keep Project Structure
+52:### Always Use CLI Commands
+55:### E2E Tests Require an Isolated Kind Cluster
+59:## After Making Changes
+73:## CLI Commands Cheat Sheet
+75:### Create API (your own types)
+80:### Deploy Image Plugin (scaffold to deploy/manage ANY container image)
+85:# Example: deploying memcached
+94:### Create Webhooks
+96:# Validation + defaulting
+100:# Conversion webhook (for multi-version APIs)
+105:### Controller for Core Kubernetes Types
+107:# Watch Pods
+111:# Watch Deployments
+116:### Controller for External Types (e.g., from other operators)
+121:# Example: watching cert-manager Certificate resources
+132:### Webhook for External Types
+135:# Example: validating external resources
+144:## Testing & Development
+153:## Deployment Workflow
+156:# 1. Regenerate manifests
+159:# 2. Build & deploy
+164:# 3. Test
+167:# 4. Debug
+171:### API Design
+193:### Controller Design
+213:### Logging
+232:### Webhooks
+240:### Learning from Examples
+251:## Distribution Options
+253:### Option 1: YAML Bundle (Kustomize)
+256:# Generate dist/install.yaml from Kustomize manifests
+270:### Option 2: Helm Chart
+297:### Publish Container Image
+304:## References
+306:### Essential Reading
+312:### API Design & Implementation
+317:### Tools & Libraries
+37
+
+=== untracked file q ===
+-rw-r--r--. 1 unhealthycoder unhealthycoder 997 Oct 27 00:00 q
+q: ASCII text, with escape sequences
+[33m182a159[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpredictive-rebuild[m[33m)[m docs: part 4 verification report (73 tests, live cluster state)
+[33m65cad3b[m docs: predictor contract draft
+

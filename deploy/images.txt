@@ -1,0 +1,19 @@
+# Cluster base node image
+kindest/node:v1.32.0
+
+# Workload images (built locally from pinned base images)
+# Builder base: golang:1.27-alpine
+# Runtime base: alpine:3.21
+prescale/checkout:dev
+prescale/fakedb:dev
+
+# Observability images
+registry.k8s.io/metrics-server/metrics-server:v0.9.0
+quay.io/victoriametrics/victoria-metrics:v1.115.0
+registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.15.0
+grafana/grafana:11.4.0
+
+# KEDA v2.19.0 images
+ghcr.io/kedacore/keda:2.19.0
+ghcr.io/kedacore/keda-metrics-apiserver:2.19.0
+ghcr.io/kedacore/keda-admission-webhooks:2.19.0

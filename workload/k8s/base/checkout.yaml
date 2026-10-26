@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout
+  labels:
+    app: checkout
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: checkout
+  template:
+    metadata:
+      labels:
+        app: checkout
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: checkout
+        image: prescale/checkout:dev
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+        env:
+        - name: STARTUP_DELAY_SECONDS
+          value: "30"
+        - name: CPU_BURN_MS
+          value: "5"
+        - name: CONNS_PER_POD
+          value: "20"
+        - name: DB_URL
+          value: "http://fakedb:8080"
+        resources:
+          requests:
+            cpu: 400m
+            memory: 64Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          periodSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: checkout
+  labels:
+    app: checkout
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  selector:
+    app: checkout

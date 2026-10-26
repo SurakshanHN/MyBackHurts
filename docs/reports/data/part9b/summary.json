@@ -1,0 +1,62 @@
+[
+  {
+    "case": "G1_error",
+    "boost_epoch": 1793054764.2372997,
+    "failure_epoch": 1793054764.2373233,
+    "release_epoch": 1793054809.846503,
+    "release_offset_s": 45.61,
+    "not_released": false,
+    "release_reason": "consecutive failures (3) reached max-failures (3)",
+    "quoted_log": "time=2026-10-26T22:46:49.085Z level=INFO msg=\"Prescaler tick\" forecast=0 desired=0 current=6 original=3 action=release reason=\"consecutive failures (3) reached max-failures (3)\"",
+    "final_min": 3,
+    "annotations_cleaned": true
+  },
+  {
+    "case": "G2_slow",
+    "boost_epoch": 1793054819.4602928,
+    "failure_epoch": 1793054819.4603515,
+    "release_epoch": 1793054871.238275,
+    "release_offset_s": 51.78,
+    "not_released": false,
+    "release_reason": "consecutive failures (3) reached max-failures (3)",
+    "quoted_log": "time=2026-10-26T22:47:49.450Z level=INFO msg=\"Prescaler tick\" forecast=0 desired=0 current=6 original=3 action=release reason=\"consecutive failures (3) reached max-failures (3)\"",
+    "final_min": 3,
+    "annotations_cleaned": true
+  },
+  {
+    "case": "G3_garbage",
+    "boost_epoch": 1793054883.8990915,
+    "failure_epoch": 1793054883.8991299,
+    "release_epoch": 1793054927.4587007,
+    "release_offset_s": 43.56,
+    "not_released": false,
+    "release_reason": "consecutive failures (3) reached max-failures (3)",
+    "quoted_log": "time=2026-10-26T22:48:46.960Z level=INFO msg=\"Prescaler tick\" forecast=0 desired=0 current=6 original=3 action=release reason=\"consecutive failures (3) reached max-failures (3)\"",
+    "final_min": 3,
+    "annotations_cleaned": true
+  },
+  {
+    "case": "G4_stopped",
+    "boost_epoch": 1793054937.0445297,
+    "failure_epoch": 1793054937.0445719,
+    "release_epoch": 1793054986.7286003,
+    "release_offset_s": 49.68,
+    "not_released": false,
+    "release_reason": "consecutive failures (3) reached max-failures (3)",
+    "quoted_log": "time=2026-10-26T22:49:45.092Z level=INFO msg=\"Prescaler tick\" forecast=0 desired=0 current=6 original=3 action=release reason=\"consecutive failures (3) reached max-failures (3)\"",
+    "final_min": 3,
+    "annotations_cleaned": true
+  },
+  {
+    "case": "G5_restarted",
+    "boost_epoch": 1793055001.7605176,
+    "failure_epoch": 1793055001.7605424,
+    "release_epoch": 1793055005.082674,
+    "release_offset_s": 3.32,
+    "not_released": false,
+    "release_reason": "desired (3) <= original (3)",
+    "quoted_log": "time=2026-10-26T22:50:03.882Z level=INFO msg=\"Prescaler tick\" forecast=60 desired=3 current=6 original=3 action=release reason=\"desired (3) <= original (3)\"",
+    "final_min": 3,
+    "annotations_cleaned": true
+  }
+]
