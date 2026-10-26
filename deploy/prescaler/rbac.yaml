@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prescaler
+  namespace: predictive
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: prescaler
+  namespace: predictive
+rules:
+  - apiGroups: ["keda.sh"]
+    resources: ["scaledobjects"]
+    verbs: ["get", "list", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prescaler
+  namespace: predictive
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: prescaler
+subjects:
+  - kind: ServiceAccount
+    name: prescaler
+    namespace: predictive
