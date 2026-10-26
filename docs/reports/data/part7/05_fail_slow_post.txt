@@ -1,0 +1,8 @@
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.15
+Date: Mon, 26 Oct 2026 21:05:47 GMT
+Content-Type: application/json
+Content-Length: 134
+
+{"predicted_rps": 490.0, "horizon_seconds": 90, "generated_at": 1793048747.117288, "model": "standin-schedule", "contract": "draft-1"}
+time_total: 10.001201s

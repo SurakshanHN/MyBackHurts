@@ -9,14 +9,18 @@
 
 ## 1. Specification
 
-### `GET /healthz`
-Health check endpoint.
-- **Response:** `200 OK`, `Content-Type: text/plain`, body: `"ok\n"`
-
-### `GET /predict?horizon=<seconds>`
-Forecast traffic load `horizon` seconds into the future.
-- **Query Parameters:**
-  - `horizon` (*integer*, optional, default: `90`): Lookahead horizon in seconds.
+### `POST /predict` (Contract in Use)
+Synchronous inference endpoint consumed by the Go prescaler client (`internal/predictor`).
+- **Headers:** `Content-Type: application/json`
+- **Request Body:**
+  ```json
+  {
+    "window": [12.4, 14.1, 13.8, 18.5, 24.2, 31.0],
+    "horizon": 90
+  }
+  ```
+  - `window` (*array of float*, required by Go client): Chronological historical RPS observations over the scrape window. The stand-in service accepts and logs this field (comment: a real model would use it for autoregressive inference).
+  - `horizon` (*integer*, optional, default: env `DEFAULT_HORIZON` or `90`): Lookahead horizon in seconds.
 - **Response `200 OK`:**
   - `Content-Type: application/json`
   - **Schema:**
@@ -24,17 +28,22 @@ Forecast traffic load `horizon` seconds into the future.
     {
       "predicted_rps": 490.0,
       "horizon_seconds": 90,
-      "generated_at": 1793048333.92,
+      "generated_at": 1793048737.08,
       "model": "standin-schedule",
       "contract": "draft-1"
     }
     ```
-- **Fields & Units:**
-  - `predicted_rps` (*float*): Forecasted load in requests per second (RPS) at target time $(t_{\text{now}} + \text{horizon})$. Non-negative.
-  - `horizon_seconds` (*integer*): Evaluated lookahead window in seconds.
-  - `generated_at` (*float*): Unix epoch timestamp of evaluation in seconds.
-  - `model` (*string*): Model identifier (e.g. `"standin-schedule"`).
-  - `contract` (*string*): Contract version string (`"draft-1"`).
+
+### `GET /predict?horizon=<seconds>` (Convenience Endpoint)
+Convenience endpoint for curl, manual inspection, and health probing.
+- **Query Parameters:**
+  - `horizon` (*integer*, optional, default: env `DEFAULT_HORIZON` or `90`): Lookahead horizon in seconds.
+- **Response `200 OK`:**
+  - Schema and response payload identical to `POST /predict`.
+
+### `GET /healthz`
+Health check endpoint.
+- **Response:** `200 OK`, `Content-Type: text/plain`, body: `"ok\n"`
 
 ---
 

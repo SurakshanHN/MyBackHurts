@@ -139,6 +139,36 @@ class PredictorHandler(BaseHTTPRequestHandler):
         except Exception:
             payload = {}
 
+        if url.path == "/predict":
+            if self._handle_fail_mode():
+                return
+
+            # Read and ignore window telemetry; a real model would use it for autoregressive inference
+            _ = payload.get("window", [])
+
+            horizon_val = payload.get("horizon")
+            if horizon_val is not None:
+                try:
+                    horizon = int(float(horizon_val))
+                except ValueError:
+                    horizon = int(os.getenv("DEFAULT_HORIZON", "90"))
+            else:
+                horizon = int(os.getenv("DEFAULT_HORIZON", "90"))
+
+            now = time.time()
+            target_time = now + horizon
+            predicted_rps = model.predict(target_time)
+
+            resp = {
+                "predicted_rps": round(predicted_rps, 2),
+                "horizon_seconds": horizon,
+                "generated_at": now,
+                "model": "standin-schedule",
+                "contract": "draft-1"
+            }
+            self._send_json(200, resp)
+            return
+
         if url.path == "/schedule":
             if "surge_start_epoch" in payload:
                 model.surge_start_epoch = float(payload["surge_start_epoch"])
