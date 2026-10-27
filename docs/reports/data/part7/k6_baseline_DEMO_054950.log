@@ -1,0 +1,1764 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /loadtest/surge_demo.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 500 max VUs, 6m20s max duration (incl. graceful stop):
+              * surge_demo: Up to 490.00 iterations/s for 5m50s over 5 stages (maxVUs: 100-500, gracefulStop: 30s)
+
+
+running (0m01.0s), 001/100 VUs, 57 complete and 0 interrupted iterations
+surge_demo   [   0% ] 001/100 VUs  0m01.0s/5m50s  060.00 iters/s
+
+running (0m02.0s), 001/100 VUs, 117 complete and 0 interrupted iterations
+surge_demo   [   1% ] 001/100 VUs  0m02.0s/5m50s  060.00 iters/s
+
+running (0m03.0s), 001/100 VUs, 177 complete and 0 interrupted iterations
+surge_demo   [   1% ] 001/100 VUs  0m03.0s/5m50s  060.00 iters/s
+
+running (0m04.0s), 001/100 VUs, 237 complete and 0 interrupted iterations
+surge_demo   [   1% ] 001/100 VUs  0m04.0s/5m50s  060.00 iters/s
+
+running (0m05.0s), 001/100 VUs, 297 complete and 0 interrupted iterations
+surge_demo   [   1% ] 001/100 VUs  0m05.0s/5m50s  060.00 iters/s
+
+running (0m06.0s), 001/100 VUs, 357 complete and 0 interrupted iterations
+surge_demo   [   2% ] 001/100 VUs  0m06.0s/5m50s  060.00 iters/s
+
+running (0m07.0s), 001/100 VUs, 417 complete and 0 interrupted iterations
+surge_demo   [   2% ] 001/100 VUs  0m07.0s/5m50s  060.00 iters/s
+
+running (0m08.0s), 001/100 VUs, 477 complete and 0 interrupted iterations
+surge_demo   [   2% ] 001/100 VUs  0m08.0s/5m50s  060.00 iters/s
+
+running (0m09.0s), 001/100 VUs, 537 complete and 0 interrupted iterations
+surge_demo   [   3% ] 001/100 VUs  0m09.0s/5m50s  060.00 iters/s
+
+running (0m10.0s), 001/100 VUs, 597 complete and 0 interrupted iterations
+surge_demo   [   3% ] 001/100 VUs  0m10.0s/5m50s  060.00 iters/s
+
+running (0m11.0s), 001/100 VUs, 657 complete and 0 interrupted iterations
+surge_demo   [   3% ] 001/100 VUs  0m11.0s/5m50s  060.00 iters/s
+
+running (0m12.0s), 001/100 VUs, 717 complete and 0 interrupted iterations
+surge_demo   [   3% ] 001/100 VUs  0m12.0s/5m50s  060.00 iters/s
+
+running (0m13.0s), 001/100 VUs, 777 complete and 0 interrupted iterations
+surge_demo   [   4% ] 001/100 VUs  0m13.0s/5m50s  060.00 iters/s
+
+running (0m14.0s), 001/100 VUs, 837 complete and 0 interrupted iterations
+surge_demo   [   4% ] 001/100 VUs  0m14.0s/5m50s  060.00 iters/s
+
+running (0m15.0s), 001/100 VUs, 897 complete and 0 interrupted iterations
+surge_demo   [   4% ] 001/100 VUs  0m15.0s/5m50s  060.00 iters/s
+
+running (0m16.0s), 001/100 VUs, 957 complete and 0 interrupted iterations
+surge_demo   [   5% ] 001/100 VUs  0m16.0s/5m50s  060.00 iters/s
+
+running (0m17.0s), 001/100 VUs, 1017 complete and 0 interrupted iterations
+surge_demo   [   5% ] 001/100 VUs  0m17.0s/5m50s  060.00 iters/s
+
+running (0m18.0s), 001/100 VUs, 1077 complete and 0 interrupted iterations
+surge_demo   [   5% ] 001/100 VUs  0m18.0s/5m50s  060.00 iters/s
+
+running (0m19.0s), 001/100 VUs, 1137 complete and 0 interrupted iterations
+surge_demo   [   5% ] 001/100 VUs  0m19.0s/5m50s  060.00 iters/s
+
+running (0m20.0s), 001/100 VUs, 1197 complete and 0 interrupted iterations
+surge_demo   [   6% ] 001/100 VUs  0m20.0s/5m50s  060.00 iters/s
+
+running (0m21.0s), 001/100 VUs, 1257 complete and 0 interrupted iterations
+surge_demo   [   6% ] 001/100 VUs  0m21.0s/5m50s  060.00 iters/s
+
+running (0m22.0s), 001/100 VUs, 1317 complete and 0 interrupted iterations
+surge_demo   [   6% ] 001/100 VUs  0m22.0s/5m50s  060.00 iters/s
+
+running (0m23.0s), 001/100 VUs, 1377 complete and 0 interrupted iterations
+surge_demo   [   7% ] 001/100 VUs  0m23.0s/5m50s  060.00 iters/s
+
+running (0m24.0s), 001/100 VUs, 1437 complete and 0 interrupted iterations
+surge_demo   [   7% ] 001/100 VUs  0m24.0s/5m50s  060.00 iters/s
+
+running (0m25.0s), 001/100 VUs, 1497 complete and 0 interrupted iterations
+surge_demo   [   7% ] 001/100 VUs  0m25.0s/5m50s  060.00 iters/s
+
+running (0m26.0s), 001/100 VUs, 1557 complete and 0 interrupted iterations
+surge_demo   [   7% ] 001/100 VUs  0m26.0s/5m50s  060.00 iters/s
+
+running (0m27.0s), 001/100 VUs, 1617 complete and 0 interrupted iterations
+surge_demo   [   8% ] 001/100 VUs  0m27.0s/5m50s  060.00 iters/s
+
+running (0m28.0s), 001/100 VUs, 1677 complete and 0 interrupted iterations
+surge_demo   [   8% ] 001/100 VUs  0m28.0s/5m50s  060.00 iters/s
+
+running (0m29.0s), 001/100 VUs, 1737 complete and 0 interrupted iterations
+surge_demo   [   8% ] 001/100 VUs  0m29.0s/5m50s  060.00 iters/s
+
+running (0m30.0s), 001/100 VUs, 1797 complete and 0 interrupted iterations
+surge_demo   [   9% ] 001/100 VUs  0m30.0s/5m50s  060.00 iters/s
+
+running (0m31.0s), 001/100 VUs, 1857 complete and 0 interrupted iterations
+surge_demo   [   9% ] 001/100 VUs  0m31.0s/5m50s  060.00 iters/s
+
+running (0m32.0s), 001/100 VUs, 1917 complete and 0 interrupted iterations
+surge_demo   [   9% ] 001/100 VUs  0m32.0s/5m50s  060.00 iters/s
+
+running (0m33.0s), 001/100 VUs, 1977 complete and 0 interrupted iterations
+surge_demo   [   9% ] 001/100 VUs  0m33.0s/5m50s  060.00 iters/s
+
+running (0m34.0s), 001/100 VUs, 2037 complete and 0 interrupted iterations
+surge_demo   [  10% ] 001/100 VUs  0m34.0s/5m50s  060.00 iters/s
+
+running (0m35.0s), 001/100 VUs, 2097 complete and 0 interrupted iterations
+surge_demo   [  10% ] 001/100 VUs  0m35.0s/5m50s  060.00 iters/s
+
+running (0m36.0s), 001/100 VUs, 2157 complete and 0 interrupted iterations
+surge_demo   [  10% ] 001/100 VUs  0m36.0s/5m50s  060.00 iters/s
+
+running (0m37.0s), 001/100 VUs, 2217 complete and 0 interrupted iterations
+surge_demo   [  11% ] 001/100 VUs  0m37.0s/5m50s  060.00 iters/s
+
+running (0m38.0s), 001/100 VUs, 2277 complete and 0 interrupted iterations
+surge_demo   [  11% ] 001/100 VUs  0m38.0s/5m50s  060.00 iters/s
+
+running (0m39.0s), 001/100 VUs, 2337 complete and 0 interrupted iterations
+surge_demo   [  11% ] 001/100 VUs  0m39.0s/5m50s  060.00 iters/s
+
+running (0m40.0s), 001/100 VUs, 2397 complete and 0 interrupted iterations
+surge_demo   [  11% ] 001/100 VUs  0m40.0s/5m50s  060.00 iters/s
+
+running (0m41.0s), 001/100 VUs, 2457 complete and 0 interrupted iterations
+surge_demo   [  12% ] 001/100 VUs  0m41.0s/5m50s  060.00 iters/s
+
+running (0m42.0s), 001/100 VUs, 2517 complete and 0 interrupted iterations
+surge_demo   [  12% ] 001/100 VUs  0m42.0s/5m50s  060.00 iters/s
+
+running (0m43.0s), 001/100 VUs, 2577 complete and 0 interrupted iterations
+surge_demo   [  12% ] 001/100 VUs  0m43.0s/5m50s  060.00 iters/s
+
+running (0m44.0s), 001/100 VUs, 2637 complete and 0 interrupted iterations
+surge_demo   [  13% ] 001/100 VUs  0m44.0s/5m50s  060.00 iters/s
+
+running (0m45.0s), 001/100 VUs, 2697 complete and 0 interrupted iterations
+surge_demo   [  13% ] 001/100 VUs  0m45.0s/5m50s  060.00 iters/s
+
+running (0m46.0s), 001/100 VUs, 2757 complete and 0 interrupted iterations
+surge_demo   [  13% ] 001/100 VUs  0m46.0s/5m50s  060.00 iters/s
+
+running (0m47.0s), 001/100 VUs, 2817 complete and 0 interrupted iterations
+surge_demo   [  13% ] 001/100 VUs  0m47.0s/5m50s  060.00 iters/s
+
+running (0m48.0s), 001/100 VUs, 2877 complete and 0 interrupted iterations
+surge_demo   [  14% ] 001/100 VUs  0m48.0s/5m50s  060.00 iters/s
+
+running (0m49.0s), 001/100 VUs, 2937 complete and 0 interrupted iterations
+surge_demo   [  14% ] 001/100 VUs  0m49.0s/5m50s  060.00 iters/s
+
+running (0m50.0s), 001/100 VUs, 2997 complete and 0 interrupted iterations
+surge_demo   [  14% ] 001/100 VUs  0m50.0s/5m50s  060.00 iters/s
+
+running (0m51.0s), 001/100 VUs, 3057 complete and 0 interrupted iterations
+surge_demo   [  15% ] 001/100 VUs  0m51.0s/5m50s  060.00 iters/s
+
+running (0m52.0s), 001/100 VUs, 3117 complete and 0 interrupted iterations
+surge_demo   [  15% ] 001/100 VUs  0m52.0s/5m50s  060.00 iters/s
+
+running (0m53.0s), 001/100 VUs, 3177 complete and 0 interrupted iterations
+surge_demo   [  15% ] 001/100 VUs  0m53.0s/5m50s  060.00 iters/s
+
+running (0m54.0s), 001/100 VUs, 3237 complete and 0 interrupted iterations
+surge_demo   [  15% ] 001/100 VUs  0m54.0s/5m50s  060.00 iters/s
+
+running (0m55.0s), 001/100 VUs, 3297 complete and 0 interrupted iterations
+surge_demo   [  16% ] 001/100 VUs  0m55.0s/5m50s  060.00 iters/s
+
+running (0m56.0s), 001/100 VUs, 3357 complete and 0 interrupted iterations
+surge_demo   [  16% ] 001/100 VUs  0m56.0s/5m50s  060.00 iters/s
+
+running (0m57.0s), 001/100 VUs, 3417 complete and 0 interrupted iterations
+surge_demo   [  16% ] 001/100 VUs  0m57.0s/5m50s  060.00 iters/s
+
+running (0m58.0s), 001/100 VUs, 3477 complete and 0 interrupted iterations
+surge_demo   [  17% ] 001/100 VUs  0m58.0s/5m50s  060.00 iters/s
+
+running (0m59.0s), 001/100 VUs, 3537 complete and 0 interrupted iterations
+surge_demo   [  17% ] 001/100 VUs  0m59.0s/5m50s  060.00 iters/s
+
+running (1m00.0s), 001/100 VUs, 3597 complete and 0 interrupted iterations
+surge_demo   [  17% ] 001/100 VUs  1m00.0s/5m50s  060.00 iters/s
+
+running (1m01.0s), 002/100 VUs, 3676 complete and 0 interrupted iterations
+surge_demo   [  17% ] 002/100 VUs  1m01.0s/5m50s  101.74 iters/s
+
+running (1m02.0s), 002/100 VUs, 3799 complete and 0 interrupted iterations
+surge_demo   [  18% ] 002/100 VUs  1m02.0s/5m50s  144.67 iters/s
+
+running (1m03.0s), 003/100 VUs, 3965 complete and 0 interrupted iterations
+surge_demo   [  18% ] 003/100 VUs  1m03.0s/5m50s  187.86 iters/s
+
+running (1m04.0s), 005/100 VUs, 4172 complete and 0 interrupted iterations
+surge_demo   [  18% ] 005/100 VUs  1m04.0s/5m50s  230.79 iters/s
+
+running (1m05.0s), 005/100 VUs, 4424 complete and 0 interrupted iterations
+surge_demo   [  19% ] 005/100 VUs  1m05.0s/5m50s  273.75 iters/s
+
+running (1m06.0s), 009/100 VUs, 4716 complete and 0 interrupted iterations
+surge_demo   [  19% ] 009/100 VUs  1m06.0s/5m50s  316.85 iters/s
+
+running (1m07.0s), 029/100 VUs, 5034 complete and 0 interrupted iterations
+surge_demo   [  19% ] 029/100 VUs  1m07.0s/5m50s  359.81 iters/s
+
+running (1m08.0s), 075/100 VUs, 5369 complete and 0 interrupted iterations
+surge_demo   [  19% ] 075/100 VUs  1m08.0s/5m50s  402.77 iters/s
+
+running (1m09.0s), 124/126 VUs, 5719 complete and 0 interrupted iterations
+surge_demo   [  20% ] 124/126 VUs  1m09.0s/5m50s  445.84 iters/s
+
+running (1m10.0s), 190/192 VUs, 6054 complete and 0 interrupted iterations
+surge_demo   [  20% ] 190/192 VUs  1m10.0s/5m50s  488.81 iters/s
+
+running (1m11.0s), 262/266 VUs, 6396 complete and 0 interrupted iterations
+surge_demo   [  20% ] 262/266 VUs  1m11.0s/5m50s  490.00 iters/s
+
+running (1m12.0s), 337/340 VUs, 6737 complete and 0 interrupted iterations
+surge_demo   [  21% ] 337/340 VUs  1m12.0s/5m50s  490.00 iters/s
+
+running (1m13.0s), 409/410 VUs, 7080 complete and 0 interrupted iterations
+surge_demo   [  21% ] 409/410 VUs  1m13.0s/5m50s  490.00 iters/s
+
+running (1m14.0s), 484/484 VUs, 7422 complete and 0 interrupted iterations
+surge_demo   [  21% ] 484/484 VUs  1m14.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:21:24Z" level=warning msg="Insufficient VUs, reached 500 active VUs and cannot initialize more" executor=ramping-arrival-rate scenario=surge_demo
+
+running (1m15.0s), 500/500 VUs, 7760 complete and 0 interrupted iterations
+surge_demo   [  21% ] 500/500 VUs  1m15.0s/5m50s  490.00 iters/s
+
+running (1m16.0s), 500/500 VUs, 8099 complete and 0 interrupted iterations
+surge_demo   [  22% ] 500/500 VUs  1m16.0s/5m50s  490.00 iters/s
+
+running (1m17.0s), 498/500 VUs, 8437 complete and 0 interrupted iterations
+surge_demo   [  22% ] 498/500 VUs  1m17.0s/5m50s  490.00 iters/s
+
+running (1m18.0s), 500/500 VUs, 8772 complete and 0 interrupted iterations
+surge_demo   [  22% ] 500/500 VUs  1m18.0s/5m50s  490.00 iters/s
+
+running (1m19.0s), 499/500 VUs, 9126 complete and 0 interrupted iterations
+surge_demo   [  23% ] 499/500 VUs  1m19.0s/5m50s  490.00 iters/s
+
+running (1m20.0s), 500/500 VUs, 9466 complete and 0 interrupted iterations
+surge_demo   [  23% ] 500/500 VUs  1m20.0s/5m50s  490.00 iters/s
+
+running (1m21.0s), 499/500 VUs, 9801 complete and 0 interrupted iterations
+surge_demo   [  23% ] 499/500 VUs  1m21.0s/5m50s  490.00 iters/s
+
+running (1m22.0s), 500/500 VUs, 10149 complete and 0 interrupted iterations
+surge_demo   [  23% ] 500/500 VUs  1m22.0s/5m50s  490.00 iters/s
+
+running (1m23.0s), 497/500 VUs, 10491 complete and 0 interrupted iterations
+surge_demo   [  24% ] 497/500 VUs  1m23.0s/5m50s  490.00 iters/s
+
+running (1m24.0s), 497/500 VUs, 10835 complete and 0 interrupted iterations
+surge_demo   [  24% ] 497/500 VUs  1m24.0s/5m50s  490.00 iters/s
+
+running (1m25.0s), 499/500 VUs, 11175 complete and 0 interrupted iterations
+surge_demo   [  24% ] 499/500 VUs  1m25.0s/5m50s  490.00 iters/s
+
+running (1m26.0s), 500/500 VUs, 11517 complete and 0 interrupted iterations
+surge_demo   [  25% ] 500/500 VUs  1m26.0s/5m50s  490.00 iters/s
+
+running (1m27.0s), 500/500 VUs, 11861 complete and 0 interrupted iterations
+surge_demo   [  25% ] 500/500 VUs  1m27.0s/5m50s  490.00 iters/s
+
+running (1m28.0s), 499/500 VUs, 12200 complete and 0 interrupted iterations
+surge_demo   [  25% ] 499/500 VUs  1m28.0s/5m50s  490.00 iters/s
+
+running (1m29.0s), 497/500 VUs, 12547 complete and 0 interrupted iterations
+surge_demo   [  25% ] 497/500 VUs  1m29.0s/5m50s  490.00 iters/s
+
+running (1m30.0s), 500/500 VUs, 12890 complete and 0 interrupted iterations
+surge_demo   [  26% ] 500/500 VUs  1m30.0s/5m50s  490.00 iters/s
+
+running (1m31.0s), 498/500 VUs, 13247 complete and 0 interrupted iterations
+surge_demo   [  26% ] 498/500 VUs  1m31.0s/5m50s  490.00 iters/s
+
+running (1m32.0s), 499/500 VUs, 13592 complete and 0 interrupted iterations
+surge_demo   [  26% ] 499/500 VUs  1m32.0s/5m50s  490.00 iters/s
+
+running (1m33.0s), 497/500 VUs, 13936 complete and 0 interrupted iterations
+surge_demo   [  27% ] 497/500 VUs  1m33.0s/5m50s  490.00 iters/s
+
+running (1m34.0s), 500/500 VUs, 14272 complete and 0 interrupted iterations
+surge_demo   [  27% ] 500/500 VUs  1m34.0s/5m50s  490.00 iters/s
+
+running (1m35.0s), 500/500 VUs, 14608 complete and 0 interrupted iterations
+surge_demo   [  27% ] 500/500 VUs  1m35.0s/5m50s  490.00 iters/s
+
+running (1m36.0s), 497/500 VUs, 14957 complete and 0 interrupted iterations
+surge_demo   [  27% ] 497/500 VUs  1m36.0s/5m50s  490.00 iters/s
+
+running (1m37.0s), 500/500 VUs, 15301 complete and 0 interrupted iterations
+surge_demo   [  28% ] 500/500 VUs  1m37.0s/5m50s  490.00 iters/s
+
+running (1m38.0s), 495/500 VUs, 15650 complete and 0 interrupted iterations
+surge_demo   [  28% ] 495/500 VUs  1m38.0s/5m50s  490.00 iters/s
+
+running (1m39.0s), 500/500 VUs, 15993 complete and 0 interrupted iterations
+surge_demo   [  28% ] 500/500 VUs  1m39.0s/5m50s  490.00 iters/s
+
+running (1m40.0s), 500/500 VUs, 16328 complete and 0 interrupted iterations
+surge_demo   [  29% ] 500/500 VUs  1m40.0s/5m50s  490.00 iters/s
+
+running (1m41.0s), 500/500 VUs, 16664 complete and 0 interrupted iterations
+surge_demo   [  29% ] 500/500 VUs  1m41.0s/5m50s  490.00 iters/s
+
+running (1m42.0s), 500/500 VUs, 17010 complete and 0 interrupted iterations
+surge_demo   [  29% ] 500/500 VUs  1m42.0s/5m50s  490.00 iters/s
+
+running (1m43.0s), 499/500 VUs, 17356 complete and 0 interrupted iterations
+surge_demo   [  29% ] 499/500 VUs  1m43.0s/5m50s  490.00 iters/s
+
+running (1m44.0s), 499/500 VUs, 17698 complete and 0 interrupted iterations
+surge_demo   [  30% ] 499/500 VUs  1m44.0s/5m50s  490.00 iters/s
+
+running (1m45.0s), 500/500 VUs, 18041 complete and 0 interrupted iterations
+surge_demo   [  30% ] 500/500 VUs  1m45.0s/5m50s  490.00 iters/s
+
+running (1m46.0s), 500/500 VUs, 18391 complete and 0 interrupted iterations
+surge_demo   [  30% ] 500/500 VUs  1m46.0s/5m50s  490.00 iters/s
+
+running (1m47.0s), 499/500 VUs, 18733 complete and 0 interrupted iterations
+surge_demo   [  31% ] 499/500 VUs  1m47.0s/5m50s  490.00 iters/s
+
+running (1m48.0s), 499/500 VUs, 19069 complete and 0 interrupted iterations
+surge_demo   [  31% ] 499/500 VUs  1m48.0s/5m50s  490.00 iters/s
+
+running (1m49.0s), 499/500 VUs, 19416 complete and 0 interrupted iterations
+surge_demo   [  31% ] 499/500 VUs  1m49.0s/5m50s  490.00 iters/s
+
+running (1m50.0s), 499/500 VUs, 19759 complete and 0 interrupted iterations
+surge_demo   [  31% ] 499/500 VUs  1m50.0s/5m50s  490.00 iters/s
+
+running (1m51.0s), 500/500 VUs, 20103 complete and 0 interrupted iterations
+surge_demo   [  32% ] 500/500 VUs  1m51.0s/5m50s  490.00 iters/s
+
+running (1m52.0s), 500/500 VUs, 20444 complete and 0 interrupted iterations
+surge_demo   [  32% ] 500/500 VUs  1m52.0s/5m50s  490.00 iters/s
+
+running (1m53.0s), 500/500 VUs, 20793 complete and 0 interrupted iterations
+surge_demo   [  32% ] 500/500 VUs  1m53.0s/5m50s  490.00 iters/s
+
+running (1m54.0s), 496/500 VUs, 21127 complete and 0 interrupted iterations
+surge_demo   [  33% ] 496/500 VUs  1m54.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:04Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (1m55.0s), 500/500 VUs, 21471 complete and 0 interrupted iterations
+surge_demo   [  33% ] 500/500 VUs  1m55.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:05Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (1m56.0s), 496/500 VUs, 21816 complete and 0 interrupted iterations
+surge_demo   [  33% ] 496/500 VUs  1m56.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:06Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (1m57.0s), 498/500 VUs, 22153 complete and 0 interrupted iterations
+surge_demo   [  33% ] 498/500 VUs  1m57.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:07Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (1m58.0s), 498/500 VUs, 22506 complete and 0 interrupted iterations
+surge_demo   [  34% ] 498/500 VUs  1m58.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:08Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (1m59.0s), 500/500 VUs, 22853 complete and 0 interrupted iterations
+surge_demo   [  34% ] 500/500 VUs  1m59.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:09Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m00.0s), 500/500 VUs, 23203 complete and 0 interrupted iterations
+surge_demo   [  34% ] 500/500 VUs  2m00.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:10Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m01.0s), 499/500 VUs, 23559 complete and 0 interrupted iterations
+surge_demo   [  35% ] 499/500 VUs  2m01.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:11Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m02.0s), 499/500 VUs, 23898 complete and 0 interrupted iterations
+surge_demo   [  35% ] 499/500 VUs  2m02.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:12Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m03.0s), 500/500 VUs, 24247 complete and 0 interrupted iterations
+surge_demo   [  35% ] 500/500 VUs  2m03.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:13Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m04.0s), 498/500 VUs, 24594 complete and 0 interrupted iterations
+surge_demo   [  35% ] 498/500 VUs  2m04.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:14Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m05.0s), 498/500 VUs, 24932 complete and 0 interrupted iterations
+surge_demo   [  36% ] 498/500 VUs  2m05.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:15Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:16Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:16Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m06.0s), 500/500 VUs, 25278 complete and 0 interrupted iterations
+surge_demo   [  36% ] 500/500 VUs  2m06.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:16Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:16Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:16Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:16Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m07.0s), 499/500 VUs, 25621 complete and 0 interrupted iterations
+surge_demo   [  36% ] 499/500 VUs  2m07.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:17Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m08.0s), 500/500 VUs, 25963 complete and 0 interrupted iterations
+surge_demo   [  37% ] 500/500 VUs  2m08.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:18Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:18Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:18Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:18Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:18Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:18Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:18Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m09.0s), 500/500 VUs, 26310 complete and 0 interrupted iterations
+surge_demo   [  37% ] 500/500 VUs  2m09.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:19Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m10.0s), 417/500 VUs, 26838 complete and 0 interrupted iterations
+surge_demo   [  37% ] 417/500 VUs  2m10.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:20Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m11.0s), 295/500 VUs, 27450 complete and 0 interrupted iterations
+surge_demo   [  37% ] 295/500 VUs  2m11.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:21Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m12.0s), 233/500 VUs, 28002 complete and 0 interrupted iterations
+surge_demo   [  38% ] 233/500 VUs  2m12.0s/5m50s  490.00 iters/s
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+time="2026-10-27T00:22:22Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": request timeout"
+
+running (2m13.0s), 181/500 VUs, 28544 complete and 0 interrupted iterations
+surge_demo   [  38% ] 181/500 VUs  2m13.0s/5m50s  490.00 iters/s
+
+running (2m14.0s), 141/500 VUs, 29074 complete and 0 interrupted iterations
+surge_demo   [  38% ] 141/500 VUs  2m14.0s/5m50s  490.00 iters/s
+
+running (2m15.0s), 108/500 VUs, 29597 complete and 0 interrupted iterations
+surge_demo   [  39% ] 108/500 VUs  2m15.0s/5m50s  490.00 iters/s
+
+running (2m16.0s), 053/500 VUs, 30142 complete and 0 interrupted iterations
+surge_demo   [  39% ] 053/500 VUs  2m16.0s/5m50s  490.00 iters/s
+
+running (2m17.0s), 010/500 VUs, 30675 complete and 0 interrupted iterations
+surge_demo   [  39% ] 010/500 VUs  2m17.0s/5m50s  490.00 iters/s
+
+running (2m18.0s), 008/500 VUs, 31167 complete and 0 interrupted iterations
+surge_demo   [  39% ] 008/500 VUs  2m18.0s/5m50s  490.00 iters/s
+
+running (2m19.0s), 009/500 VUs, 31656 complete and 0 interrupted iterations
+surge_demo   [  40% ] 009/500 VUs  2m19.0s/5m50s  490.00 iters/s
+
+running (2m20.0s), 008/500 VUs, 32146 complete and 0 interrupted iterations
+surge_demo   [  40% ] 008/500 VUs  2m20.0s/5m50s  490.00 iters/s
+
+running (2m21.0s), 012/500 VUs, 32633 complete and 0 interrupted iterations
+surge_demo   [  40% ] 012/500 VUs  2m21.0s/5m50s  490.00 iters/s
+
+running (2m22.0s), 007/500 VUs, 33127 complete and 0 interrupted iterations
+surge_demo   [  41% ] 007/500 VUs  2m22.0s/5m50s  490.00 iters/s
+
+running (2m23.0s), 010/500 VUs, 33615 complete and 0 interrupted iterations
+surge_demo   [  41% ] 010/500 VUs  2m23.0s/5m50s  490.00 iters/s
+
+running (2m24.0s), 009/500 VUs, 34106 complete and 0 interrupted iterations
+surge_demo   [  41% ] 009/500 VUs  2m24.0s/5m50s  490.00 iters/s
+
+running (2m25.0s), 009/500 VUs, 34595 complete and 0 interrupted iterations
+surge_demo   [  41% ] 009/500 VUs  2m25.0s/5m50s  490.00 iters/s
+
+running (2m26.0s), 008/500 VUs, 35086 complete and 0 interrupted iterations
+surge_demo   [  42% ] 009/500 VUs  2m26.0s/5m50s  490.00 iters/s
+
+running (2m27.0s), 009/500 VUs, 35576 complete and 0 interrupted iterations
+surge_demo   [  42% ] 009/500 VUs  2m27.0s/5m50s  490.00 iters/s
+
+running (2m28.0s), 008/500 VUs, 36067 complete and 0 interrupted iterations
+surge_demo   [  42% ] 008/500 VUs  2m28.0s/5m50s  490.00 iters/s
+
+running (2m29.0s), 011/500 VUs, 36554 complete and 0 interrupted iterations
+surge_demo   [  43% ] 011/500 VUs  2m29.0s/5m50s  490.00 iters/s
+
+running (2m30.0s), 009/500 VUs, 37046 complete and 0 interrupted iterations
+surge_demo   [  43% ] 009/500 VUs  2m30.0s/5m50s  490.00 iters/s
+
+running (2m31.0s), 009/500 VUs, 37536 complete and 0 interrupted iterations
+surge_demo   [  43% ] 009/500 VUs  2m31.0s/5m50s  490.00 iters/s
+
+running (2m32.0s), 011/500 VUs, 38024 complete and 0 interrupted iterations
+surge_demo   [  43% ] 011/500 VUs  2m32.0s/5m50s  490.00 iters/s
+
+running (2m33.0s), 009/500 VUs, 38516 complete and 0 interrupted iterations
+surge_demo   [  44% ] 009/500 VUs  2m33.0s/5m50s  490.00 iters/s
+
+running (2m34.0s), 010/500 VUs, 39005 complete and 0 interrupted iterations
+surge_demo   [  44% ] 010/500 VUs  2m34.0s/5m50s  490.00 iters/s
+
+running (2m35.0s), 010/500 VUs, 39495 complete and 0 interrupted iterations
+surge_demo   [  44% ] 010/500 VUs  2m35.0s/5m50s  490.00 iters/s
+
+running (2m36.0s), 009/500 VUs, 39986 complete and 0 interrupted iterations
+surge_demo   [  45% ] 009/500 VUs  2m36.0s/5m50s  490.00 iters/s
+
+running (2m37.0s), 009/500 VUs, 40476 complete and 0 interrupted iterations
+surge_demo   [  45% ] 009/500 VUs  2m37.0s/5m50s  490.00 iters/s
+
+running (2m38.0s), 007/500 VUs, 40967 complete and 0 interrupted iterations
+surge_demo   [  45% ] 007/500 VUs  2m38.0s/5m50s  490.00 iters/s
+
+running (2m39.0s), 009/500 VUs, 41456 complete and 0 interrupted iterations
+surge_demo   [  45% ] 009/500 VUs  2m39.0s/5m50s  490.00 iters/s
+
+running (2m40.0s), 010/500 VUs, 41945 complete and 0 interrupted iterations
+surge_demo   [  46% ] 010/500 VUs  2m40.0s/5m50s  490.00 iters/s
+
+running (2m41.0s), 011/500 VUs, 42434 complete and 0 interrupted iterations
+surge_demo   [  46% ] 011/500 VUs  2m41.0s/5m50s  490.00 iters/s
+
+running (2m42.0s), 009/500 VUs, 42926 complete and 0 interrupted iterations
+surge_demo   [  46% ] 009/500 VUs  2m42.0s/5m50s  490.00 iters/s
+
+running (2m43.0s), 009/500 VUs, 43416 complete and 0 interrupted iterations
+surge_demo   [  47% ] 009/500 VUs  2m43.0s/5m50s  490.00 iters/s
+
+running (2m44.0s), 009/500 VUs, 43906 complete and 0 interrupted iterations
+surge_demo   [  47% ] 009/500 VUs  2m44.0s/5m50s  490.00 iters/s
+
+running (2m45.0s), 009/500 VUs, 44396 complete and 0 interrupted iterations
+surge_demo   [  47% ] 009/500 VUs  2m45.0s/5m50s  490.00 iters/s
+
+running (2m46.0s), 009/500 VUs, 44886 complete and 0 interrupted iterations
+surge_demo   [  47% ] 009/500 VUs  2m46.0s/5m50s  490.00 iters/s
+
+running (2m47.0s), 012/500 VUs, 45373 complete and 0 interrupted iterations
+surge_demo   [  48% ] 012/500 VUs  2m47.0s/5m50s  490.00 iters/s
+
+running (2m48.0s), 008/500 VUs, 45867 complete and 0 interrupted iterations
+surge_demo   [  48% ] 008/500 VUs  2m48.0s/5m50s  490.00 iters/s
+
+running (2m49.0s), 008/500 VUs, 46357 complete and 0 interrupted iterations
+surge_demo   [  48% ] 008/500 VUs  2m49.0s/5m50s  490.00 iters/s
+
+running (2m50.0s), 008/500 VUs, 46847 complete and 0 interrupted iterations
+surge_demo   [  49% ] 008/500 VUs  2m50.0s/5m50s  490.00 iters/s
+
+running (2m51.0s), 009/500 VUs, 47336 complete and 0 interrupted iterations
+surge_demo   [  49% ] 009/500 VUs  2m51.0s/5m50s  490.00 iters/s
+
+running (2m52.0s), 008/500 VUs, 47827 complete and 0 interrupted iterations
+surge_demo   [  49% ] 008/500 VUs  2m52.0s/5m50s  490.00 iters/s
+
+running (2m53.0s), 009/500 VUs, 48316 complete and 0 interrupted iterations
+surge_demo   [  49% ] 009/500 VUs  2m53.0s/5m50s  490.00 iters/s
+
+running (2m54.0s), 009/500 VUs, 48806 complete and 0 interrupted iterations
+surge_demo   [  50% ] 009/500 VUs  2m54.0s/5m50s  490.00 iters/s
+
+running (2m55.0s), 009/500 VUs, 49296 complete and 0 interrupted iterations
+surge_demo   [  50% ] 009/500 VUs  2m55.0s/5m50s  490.00 iters/s
+
+running (2m56.0s), 009/500 VUs, 49786 complete and 0 interrupted iterations
+surge_demo   [  50% ] 009/500 VUs  2m56.0s/5m50s  490.00 iters/s
+
+running (2m57.0s), 012/500 VUs, 50273 complete and 0 interrupted iterations
+surge_demo   [  51% ] 012/500 VUs  2m57.0s/5m50s  490.00 iters/s
+
+running (2m58.0s), 010/500 VUs, 50765 complete and 0 interrupted iterations
+surge_demo   [  51% ] 010/500 VUs  2m58.0s/5m50s  490.00 iters/s
+
+running (2m59.0s), 009/500 VUs, 51256 complete and 0 interrupted iterations
+surge_demo   [  51% ] 009/500 VUs  2m59.0s/5m50s  490.00 iters/s
+
+running (3m00.0s), 009/500 VUs, 51746 complete and 0 interrupted iterations
+surge_demo   [  51% ] 009/500 VUs  3m00.0s/5m50s  490.00 iters/s
+
+running (3m01.0s), 009/500 VUs, 52236 complete and 0 interrupted iterations
+surge_demo   [  52% ] 009/500 VUs  3m01.0s/5m50s  490.00 iters/s
+
+running (3m02.0s), 010/500 VUs, 52725 complete and 0 interrupted iterations
+surge_demo   [  52% ] 010/500 VUs  3m02.0s/5m50s  490.00 iters/s
+
+running (3m03.0s), 009/500 VUs, 53216 complete and 0 interrupted iterations
+surge_demo   [  52% ] 009/500 VUs  3m03.0s/5m50s  490.00 iters/s
+
+running (3m04.0s), 009/500 VUs, 53706 complete and 0 interrupted iterations
+surge_demo   [  53% ] 009/500 VUs  3m04.0s/5m50s  490.00 iters/s
+
+running (3m05.0s), 009/500 VUs, 54196 complete and 0 interrupted iterations
+surge_demo   [  53% ] 009/500 VUs  3m05.0s/5m50s  490.00 iters/s
+
+running (3m06.0s), 012/500 VUs, 54683 complete and 0 interrupted iterations
+surge_demo   [  53% ] 012/500 VUs  3m06.0s/5m50s  490.00 iters/s
+
+running (3m07.0s), 009/500 VUs, 55176 complete and 0 interrupted iterations
+surge_demo   [  53% ] 009/500 VUs  3m07.0s/5m50s  490.00 iters/s
+
+running (3m08.0s), 010/500 VUs, 55665 complete and 0 interrupted iterations
+surge_demo   [  54% ] 010/500 VUs  3m08.0s/5m50s  490.00 iters/s
+
+running (3m09.0s), 009/500 VUs, 56156 complete and 0 interrupted iterations
+surge_demo   [  54% ] 009/500 VUs  3m09.0s/5m50s  490.00 iters/s
+
+running (3m10.0s), 010/500 VUs, 56644 complete and 0 interrupted iterations
+surge_demo   [  54% ] 010/500 VUs  3m10.0s/5m50s  490.00 iters/s
+
+running (3m11.0s), 009/500 VUs, 57136 complete and 0 interrupted iterations
+surge_demo   [  55% ] 009/500 VUs  3m11.0s/5m50s  490.00 iters/s
+
+running (3m12.0s), 009/500 VUs, 57626 complete and 0 interrupted iterations
+surge_demo   [  55% ] 009/500 VUs  3m12.0s/5m50s  490.00 iters/s
+
+running (3m13.0s), 009/500 VUs, 58116 complete and 0 interrupted iterations
+surge_demo   [  55% ] 009/500 VUs  3m13.0s/5m50s  490.00 iters/s
+
+running (3m14.0s), 008/500 VUs, 58606 complete and 0 interrupted iterations
+surge_demo   [  55% ] 008/500 VUs  3m14.0s/5m50s  490.00 iters/s
+
+running (3m15.0s), 009/500 VUs, 59096 complete and 0 interrupted iterations
+surge_demo   [  56% ] 009/500 VUs  3m15.0s/5m50s  490.00 iters/s
+
+running (3m16.0s), 008/500 VUs, 59586 complete and 0 interrupted iterations
+surge_demo   [  56% ] 008/500 VUs  3m16.0s/5m50s  490.00 iters/s
+
+running (3m17.0s), 008/500 VUs, 60077 complete and 0 interrupted iterations
+surge_demo   [  56% ] 008/500 VUs  3m17.0s/5m50s  490.00 iters/s
+
+running (3m18.0s), 009/500 VUs, 60566 complete and 0 interrupted iterations
+surge_demo   [  57% ] 009/500 VUs  3m18.0s/5m50s  490.00 iters/s
+
+running (3m19.0s), 008/500 VUs, 61057 complete and 0 interrupted iterations
+surge_demo   [  57% ] 008/500 VUs  3m19.0s/5m50s  490.00 iters/s
+
+running (3m20.0s), 009/500 VUs, 61546 complete and 0 interrupted iterations
+surge_demo   [  57% ] 009/500 VUs  3m20.0s/5m50s  490.00 iters/s
+
+running (3m21.0s), 009/500 VUs, 62036 complete and 0 interrupted iterations
+surge_demo   [  57% ] 009/500 VUs  3m21.0s/5m50s  490.00 iters/s
+
+running (3m22.0s), 009/500 VUs, 62526 complete and 0 interrupted iterations
+surge_demo   [  58% ] 009/500 VUs  3m22.0s/5m50s  490.00 iters/s
+
+running (3m23.0s), 007/500 VUs, 63017 complete and 0 interrupted iterations
+surge_demo   [  58% ] 008/500 VUs  3m23.0s/5m50s  490.00 iters/s
+
+running (3m24.0s), 007/500 VUs, 63507 complete and 0 interrupted iterations
+surge_demo   [  58% ] 008/500 VUs  3m24.0s/5m50s  490.00 iters/s
+
+running (3m25.0s), 009/500 VUs, 63996 complete and 0 interrupted iterations
+surge_demo   [  59% ] 009/500 VUs  3m25.0s/5m50s  490.00 iters/s
+
+running (3m26.0s), 010/500 VUs, 64485 complete and 0 interrupted iterations
+surge_demo   [  59% ] 010/500 VUs  3m26.0s/5m50s  490.00 iters/s
+
+running (3m27.0s), 008/500 VUs, 64977 complete and 0 interrupted iterations
+surge_demo   [  59% ] 008/500 VUs  3m27.0s/5m50s  490.00 iters/s
+
+running (3m28.0s), 009/500 VUs, 65466 complete and 0 interrupted iterations
+surge_demo   [  59% ] 009/500 VUs  3m28.0s/5m50s  490.00 iters/s
+
+running (3m29.0s), 008/500 VUs, 65957 complete and 0 interrupted iterations
+surge_demo   [  60% ] 008/500 VUs  3m29.0s/5m50s  490.00 iters/s
+
+running (3m30.0s), 007/500 VUs, 66447 complete and 0 interrupted iterations
+surge_demo   [  60% ] 007/500 VUs  3m30.0s/5m50s  490.00 iters/s
+
+running (3m31.0s), 010/500 VUs, 66935 complete and 0 interrupted iterations
+surge_demo   [  60% ] 010/500 VUs  3m31.0s/5m50s  490.00 iters/s
+
+running (3m32.0s), 010/500 VUs, 67425 complete and 0 interrupted iterations
+surge_demo   [  61% ] 010/500 VUs  3m32.0s/5m50s  490.00 iters/s
+
+running (3m33.0s), 009/500 VUs, 67916 complete and 0 interrupted iterations
+surge_demo   [  61% ] 008/500 VUs  3m33.0s/5m50s  490.00 iters/s
+
+running (3m34.0s), 008/500 VUs, 68407 complete and 0 interrupted iterations
+surge_demo   [  61% ] 008/500 VUs  3m34.0s/5m50s  490.00 iters/s
+
+running (3m35.0s), 009/500 VUs, 68896 complete and 0 interrupted iterations
+surge_demo   [  61% ] 009/500 VUs  3m35.0s/5m50s  490.00 iters/s
+
+running (3m36.0s), 009/500 VUs, 69386 complete and 0 interrupted iterations
+surge_demo   [  62% ] 009/500 VUs  3m36.0s/5m50s  490.00 iters/s
+
+running (3m37.0s), 008/500 VUs, 69876 complete and 0 interrupted iterations
+surge_demo   [  62% ] 008/500 VUs  3m37.0s/5m50s  490.00 iters/s
+
+running (3m38.0s), 008/500 VUs, 70366 complete and 0 interrupted iterations
+surge_demo   [  62% ] 008/500 VUs  3m38.0s/5m50s  490.00 iters/s
+
+running (3m39.0s), 008/500 VUs, 70857 complete and 0 interrupted iterations
+surge_demo   [  63% ] 008/500 VUs  3m39.0s/5m50s  490.00 iters/s
+
+running (3m40.0s), 009/500 VUs, 71346 complete and 0 interrupted iterations
+surge_demo   [  63% ] 009/500 VUs  3m40.0s/5m50s  490.00 iters/s
+
+running (3m41.0s), 009/500 VUs, 71815 complete and 0 interrupted iterations
+surge_demo   [  63% ] 009/500 VUs  3m41.0s/5m50s  448.25 iters/s
+
+running (3m42.0s), 007/500 VUs, 72244 complete and 0 interrupted iterations
+surge_demo   [  63% ] 007/500 VUs  3m42.0s/5m50s  405.22 iters/s
+
+running (3m43.0s), 006/500 VUs, 72629 complete and 0 interrupted iterations
+surge_demo   [  64% ] 006/500 VUs  3m43.0s/5m50s  362.19 iters/s
+
+running (3m44.0s), 005/500 VUs, 72970 complete and 0 interrupted iterations
+surge_demo   [  64% ] 006/500 VUs  3m44.0s/5m50s  319.15 iters/s
+
+running (3m45.0s), 004/500 VUs, 73269 complete and 0 interrupted iterations
+surge_demo   [  64% ] 004/500 VUs  3m45.0s/5m50s  276.25 iters/s
+
+running (3m46.0s), 004/500 VUs, 73524 complete and 0 interrupted iterations
+surge_demo   [  65% ] 004/500 VUs  3m46.0s/5m50s  233.20 iters/s
+
+running (3m47.0s), 004/500 VUs, 73736 complete and 0 interrupted iterations
+surge_demo   [  65% ] 004/500 VUs  3m47.0s/5m50s  190.13 iters/s
+
+running (3m48.0s), 002/500 VUs, 73906 complete and 0 interrupted iterations
+surge_demo   [  65% ] 002/500 VUs  3m48.0s/5m50s  147.32 iters/s
+
+running (3m49.0s), 002/500 VUs, 74032 complete and 0 interrupted iterations
+surge_demo   [  65% ] 002/500 VUs  3m49.0s/5m50s  104.24 iters/s
+
+running (3m50.0s), 001/500 VUs, 74116 complete and 0 interrupted iterations
+surge_demo   [  66% ] 001/500 VUs  3m50.0s/5m50s  061.06 iters/s
+
+running (3m51.0s), 001/500 VUs, 74176 complete and 0 interrupted iterations
+surge_demo   [  66% ] 001/500 VUs  3m51.0s/5m50s  060.00 iters/s
+
+running (3m52.0s), 001/500 VUs, 74236 complete and 0 interrupted iterations
+surge_demo   [  66% ] 001/500 VUs  3m52.0s/5m50s  060.00 iters/s
+
+running (3m53.0s), 001/500 VUs, 74296 complete and 0 interrupted iterations
+surge_demo   [  67% ] 001/500 VUs  3m53.0s/5m50s  060.00 iters/s
+
+running (3m54.0s), 001/500 VUs, 74356 complete and 0 interrupted iterations
+surge_demo   [  67% ] 001/500 VUs  3m54.0s/5m50s  060.00 iters/s
+
+running (3m55.0s), 001/500 VUs, 74416 complete and 0 interrupted iterations
+surge_demo   [  67% ] 001/500 VUs  3m55.0s/5m50s  060.00 iters/s
+
+running (3m56.0s), 001/500 VUs, 74476 complete and 0 interrupted iterations
+surge_demo   [  67% ] 001/500 VUs  3m56.0s/5m50s  060.00 iters/s
+
+running (3m57.0s), 001/500 VUs, 74536 complete and 0 interrupted iterations
+surge_demo   [  68% ] 001/500 VUs  3m57.0s/5m50s  060.00 iters/s
+
+running (3m58.0s), 001/500 VUs, 74596 complete and 0 interrupted iterations
+surge_demo   [  68% ] 001/500 VUs  3m58.0s/5m50s  060.00 iters/s
+
+running (3m59.0s), 001/500 VUs, 74656 complete and 0 interrupted iterations
+surge_demo   [  68% ] 001/500 VUs  3m59.0s/5m50s  060.00 iters/s
+
+running (4m00.0s), 001/500 VUs, 74716 complete and 0 interrupted iterations
+surge_demo   [  69% ] 001/500 VUs  4m00.0s/5m50s  060.00 iters/s
+
+running (4m01.0s), 001/500 VUs, 74776 complete and 0 interrupted iterations
+surge_demo   [  69% ] 001/500 VUs  4m01.0s/5m50s  060.00 iters/s
+
+running (4m02.0s), 001/500 VUs, 74836 complete and 0 interrupted iterations
+surge_demo   [  69% ] 001/500 VUs  4m02.0s/5m50s  060.00 iters/s
+
+running (4m03.0s), 001/500 VUs, 74896 complete and 0 interrupted iterations
+surge_demo   [  69% ] 001/500 VUs  4m03.0s/5m50s  060.00 iters/s
+
+running (4m04.0s), 001/500 VUs, 74956 complete and 0 interrupted iterations
+surge_demo   [  70% ] 001/500 VUs  4m04.0s/5m50s  060.00 iters/s
+
+running (4m05.0s), 001/500 VUs, 75016 complete and 0 interrupted iterations
+surge_demo   [  70% ] 001/500 VUs  4m05.0s/5m50s  060.00 iters/s
+
+running (4m06.0s), 001/500 VUs, 75076 complete and 0 interrupted iterations
+surge_demo   [  70% ] 001/500 VUs  4m06.0s/5m50s  060.00 iters/s
+
+running (4m07.0s), 001/500 VUs, 75136 complete and 0 interrupted iterations
+surge_demo   [  71% ] 001/500 VUs  4m07.0s/5m50s  060.00 iters/s
+
+running (4m08.0s), 001/500 VUs, 75196 complete and 0 interrupted iterations
+surge_demo   [  71% ] 001/500 VUs  4m08.0s/5m50s  060.00 iters/s
+
+running (4m09.0s), 001/500 VUs, 75256 complete and 0 interrupted iterations
+surge_demo   [  71% ] 001/500 VUs  4m09.0s/5m50s  060.00 iters/s
+
+running (4m10.0s), 001/500 VUs, 75316 complete and 0 interrupted iterations
+surge_demo   [  71% ] 001/500 VUs  4m10.0s/5m50s  060.00 iters/s
+
+running (4m11.0s), 001/500 VUs, 75376 complete and 0 interrupted iterations
+surge_demo   [  72% ] 001/500 VUs  4m11.0s/5m50s  060.00 iters/s
+
+running (4m12.0s), 001/500 VUs, 75436 complete and 0 interrupted iterations
+surge_demo   [  72% ] 001/500 VUs  4m12.0s/5m50s  060.00 iters/s
+
+running (4m13.0s), 001/500 VUs, 75496 complete and 0 interrupted iterations
+surge_demo   [  72% ] 001/500 VUs  4m13.0s/5m50s  060.00 iters/s
+
+running (4m14.0s), 001/500 VUs, 75556 complete and 0 interrupted iterations
+surge_demo   [  73% ] 001/500 VUs  4m14.0s/5m50s  060.00 iters/s
+
+running (4m15.0s), 001/500 VUs, 75616 complete and 0 interrupted iterations
+surge_demo   [  73% ] 001/500 VUs  4m15.0s/5m50s  060.00 iters/s
+
+running (4m16.0s), 001/500 VUs, 75676 complete and 0 interrupted iterations
+surge_demo   [  73% ] 001/500 VUs  4m16.0s/5m50s  060.00 iters/s
+
+running (4m17.0s), 001/500 VUs, 75736 complete and 0 interrupted iterations
+surge_demo   [  73% ] 001/500 VUs  4m17.0s/5m50s  060.00 iters/s
+
+running (4m18.0s), 001/500 VUs, 75796 complete and 0 interrupted iterations
+surge_demo   [  74% ] 001/500 VUs  4m18.0s/5m50s  060.00 iters/s
+
+running (4m19.0s), 001/500 VUs, 75856 complete and 0 interrupted iterations
+surge_demo   [  74% ] 001/500 VUs  4m19.0s/5m50s  060.00 iters/s
+
+running (4m20.0s), 001/500 VUs, 75916 complete and 0 interrupted iterations
+surge_demo   [  74% ] 001/500 VUs  4m20.0s/5m50s  060.00 iters/s
+
+running (4m21.0s), 001/500 VUs, 75976 complete and 0 interrupted iterations
+surge_demo   [  75% ] 001/500 VUs  4m21.0s/5m50s  060.00 iters/s
+
+running (4m22.0s), 001/500 VUs, 76036 complete and 0 interrupted iterations
+surge_demo   [  75% ] 001/500 VUs  4m22.0s/5m50s  060.00 iters/s
+
+running (4m23.0s), 001/500 VUs, 76096 complete and 0 interrupted iterations
+surge_demo   [  75% ] 001/500 VUs  4m23.0s/5m50s  060.00 iters/s
+
+running (4m24.0s), 001/500 VUs, 76156 complete and 0 interrupted iterations
+surge_demo   [  75% ] 001/500 VUs  4m24.0s/5m50s  060.00 iters/s
+
+running (4m25.0s), 001/500 VUs, 76216 complete and 0 interrupted iterations
+surge_demo   [  76% ] 001/500 VUs  4m25.0s/5m50s  060.00 iters/s
+
+running (4m26.0s), 001/500 VUs, 76276 complete and 0 interrupted iterations
+surge_demo   [  76% ] 001/500 VUs  4m26.0s/5m50s  060.00 iters/s
+
+running (4m27.0s), 001/500 VUs, 76336 complete and 0 interrupted iterations
+surge_demo   [  76% ] 001/500 VUs  4m27.0s/5m50s  060.00 iters/s
+
+running (4m28.0s), 001/500 VUs, 76396 complete and 0 interrupted iterations
+surge_demo   [  77% ] 001/500 VUs  4m28.0s/5m50s  060.00 iters/s
+
+running (4m29.0s), 001/500 VUs, 76456 complete and 0 interrupted iterations
+surge_demo   [  77% ] 001/500 VUs  4m29.0s/5m50s  060.00 iters/s
+
+running (4m30.0s), 001/500 VUs, 76516 complete and 0 interrupted iterations
+surge_demo   [  77% ] 001/500 VUs  4m30.0s/5m50s  060.00 iters/s
+
+running (4m31.0s), 001/500 VUs, 76576 complete and 0 interrupted iterations
+surge_demo   [  77% ] 001/500 VUs  4m31.0s/5m50s  060.00 iters/s
+
+running (4m32.0s), 001/500 VUs, 76636 complete and 0 interrupted iterations
+surge_demo   [  78% ] 001/500 VUs  4m32.0s/5m50s  060.00 iters/s
+
+running (4m33.0s), 001/500 VUs, 76696 complete and 0 interrupted iterations
+surge_demo   [  78% ] 001/500 VUs  4m33.0s/5m50s  060.00 iters/s
+
+running (4m34.0s), 001/500 VUs, 76756 complete and 0 interrupted iterations
+surge_demo   [  78% ] 001/500 VUs  4m34.0s/5m50s  060.00 iters/s
+
+running (4m35.0s), 001/500 VUs, 76816 complete and 0 interrupted iterations
+surge_demo   [  79% ] 001/500 VUs  4m35.0s/5m50s  060.00 iters/s
+
+running (4m36.0s), 001/500 VUs, 76876 complete and 0 interrupted iterations
+surge_demo   [  79% ] 001/500 VUs  4m36.0s/5m50s  060.00 iters/s
+
+running (4m37.0s), 001/500 VUs, 76936 complete and 0 interrupted iterations
+surge_demo   [  79% ] 001/500 VUs  4m37.0s/5m50s  060.00 iters/s
+
+running (4m38.0s), 001/500 VUs, 76996 complete and 0 interrupted iterations
+surge_demo   [  79% ] 001/500 VUs  4m38.0s/5m50s  060.00 iters/s
+
+running (4m39.0s), 001/500 VUs, 77056 complete and 0 interrupted iterations
+surge_demo   [  80% ] 001/500 VUs  4m39.0s/5m50s  060.00 iters/s
+
+running (4m40.0s), 001/500 VUs, 77116 complete and 0 interrupted iterations
+surge_demo   [  80% ] 001/500 VUs  4m40.0s/5m50s  060.00 iters/s
+
+running (4m41.0s), 001/500 VUs, 77176 complete and 0 interrupted iterations
+surge_demo   [  80% ] 001/500 VUs  4m41.0s/5m50s  060.00 iters/s
+
+running (4m42.0s), 001/500 VUs, 77236 complete and 0 interrupted iterations
+surge_demo   [  81% ] 001/500 VUs  4m42.0s/5m50s  060.00 iters/s
+
+running (4m43.0s), 001/500 VUs, 77296 complete and 0 interrupted iterations
+surge_demo   [  81% ] 001/500 VUs  4m43.0s/5m50s  060.00 iters/s
+
+running (4m44.0s), 001/500 VUs, 77356 complete and 0 interrupted iterations
+surge_demo   [  81% ] 001/500 VUs  4m44.0s/5m50s  060.00 iters/s
+
+running (4m45.0s), 001/500 VUs, 77416 complete and 0 interrupted iterations
+surge_demo   [  81% ] 001/500 VUs  4m45.0s/5m50s  060.00 iters/s
+
+running (4m46.0s), 001/500 VUs, 77476 complete and 0 interrupted iterations
+surge_demo   [  82% ] 001/500 VUs  4m46.0s/5m50s  060.00 iters/s
+
+running (4m47.0s), 001/500 VUs, 77536 complete and 0 interrupted iterations
+surge_demo   [  82% ] 001/500 VUs  4m47.0s/5m50s  060.00 iters/s
+
+running (4m48.0s), 001/500 VUs, 77596 complete and 0 interrupted iterations
+surge_demo   [  82% ] 001/500 VUs  4m48.0s/5m50s  060.00 iters/s
+
+running (4m49.0s), 001/500 VUs, 77656 complete and 0 interrupted iterations
+surge_demo   [  83% ] 001/500 VUs  4m49.0s/5m50s  060.00 iters/s
+
+running (4m50.0s), 001/500 VUs, 77716 complete and 0 interrupted iterations
+surge_demo   [  83% ] 001/500 VUs  4m50.0s/5m50s  060.00 iters/s
+
+running (4m51.0s), 001/500 VUs, 77776 complete and 0 interrupted iterations
+surge_demo   [  83% ] 001/500 VUs  4m51.0s/5m50s  060.00 iters/s
+
+running (4m52.0s), 001/500 VUs, 77836 complete and 0 interrupted iterations
+surge_demo   [  83% ] 001/500 VUs  4m52.0s/5m50s  060.00 iters/s
+
+running (4m53.0s), 001/500 VUs, 77896 complete and 0 interrupted iterations
+surge_demo   [  84% ] 001/500 VUs  4m53.0s/5m50s  060.00 iters/s
+
+running (4m54.0s), 001/500 VUs, 77956 complete and 0 interrupted iterations
+surge_demo   [  84% ] 001/500 VUs  4m54.0s/5m50s  060.00 iters/s
+
+running (4m55.0s), 001/500 VUs, 78016 complete and 0 interrupted iterations
+surge_demo   [  84% ] 001/500 VUs  4m55.0s/5m50s  060.00 iters/s
+
+running (4m56.0s), 001/500 VUs, 78076 complete and 0 interrupted iterations
+surge_demo   [  85% ] 001/500 VUs  4m56.0s/5m50s  060.00 iters/s
+
+running (4m57.0s), 001/500 VUs, 78136 complete and 0 interrupted iterations
+surge_demo   [  85% ] 001/500 VUs  4m57.0s/5m50s  060.00 iters/s
+
+running (4m58.0s), 001/500 VUs, 78196 complete and 0 interrupted iterations
+surge_demo   [  85% ] 001/500 VUs  4m58.0s/5m50s  060.00 iters/s
+
+running (4m59.0s), 001/500 VUs, 78256 complete and 0 interrupted iterations
+surge_demo   [  85% ] 001/500 VUs  4m59.0s/5m50s  060.00 iters/s
+
+running (5m00.0s), 001/500 VUs, 78316 complete and 0 interrupted iterations
+surge_demo   [  86% ] 001/500 VUs  5m00.0s/5m50s  060.00 iters/s
+
+running (5m01.0s), 001/500 VUs, 78376 complete and 0 interrupted iterations
+surge_demo   [  86% ] 001/500 VUs  5m01.0s/5m50s  060.00 iters/s
+
+running (5m02.0s), 001/500 VUs, 78436 complete and 0 interrupted iterations
+surge_demo   [  86% ] 001/500 VUs  5m02.0s/5m50s  060.00 iters/s
+
+running (5m03.0s), 001/500 VUs, 78496 complete and 0 interrupted iterations
+surge_demo   [  87% ] 001/500 VUs  5m03.0s/5m50s  060.00 iters/s
+
+running (5m04.0s), 001/500 VUs, 78556 complete and 0 interrupted iterations
+surge_demo   [  87% ] 001/500 VUs  5m04.0s/5m50s  060.00 iters/s
+
+running (5m05.0s), 001/500 VUs, 78616 complete and 0 interrupted iterations
+surge_demo   [  87% ] 001/500 VUs  5m05.0s/5m50s  060.00 iters/s
+
+running (5m06.0s), 001/500 VUs, 78676 complete and 0 interrupted iterations
+surge_demo   [  87% ] 001/500 VUs  5m06.0s/5m50s  060.00 iters/s
+
+running (5m07.0s), 001/500 VUs, 78736 complete and 0 interrupted iterations
+surge_demo   [  88% ] 001/500 VUs  5m07.0s/5m50s  060.00 iters/s
+time="2026-10-27T00:25:17Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": EOF"
+time="2026-10-27T00:25:17Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": EOF"
+time="2026-10-27T00:25:17Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": read tcp 127.0.0.1:51544->127.0.0.1:8081: read: connection reset by peer"
+time="2026-10-27T00:25:17Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": read tcp 127.0.0.1:51552->127.0.0.1:8081: read: connection reset by peer"
+time="2026-10-27T00:25:17Z" level=warning msg="Request Failed" error="Post \"http://localhost:8081/\": EOF"
+
+running (5m08.0s), 001/500 VUs, 78796 complete and 0 interrupted iterations
+surge_demo   [  88% ] 001/500 VUs  5m08.0s/5m50s  060.00 iters/s
+
+running (5m09.0s), 001/500 VUs, 78856 complete and 0 interrupted iterations
+surge_demo   [  88% ] 001/500 VUs  5m09.0s/5m50s  060.00 iters/s
+
+running (5m10.0s), 001/500 VUs, 78916 complete and 0 interrupted iterations
+surge_demo   [  89% ] 001/500 VUs  5m10.0s/5m50s  060.00 iters/s
+
+running (5m11.0s), 001/500 VUs, 78976 complete and 0 interrupted iterations
+surge_demo   [  89% ] 001/500 VUs  5m11.0s/5m50s  060.00 iters/s
+
+running (5m12.0s), 001/500 VUs, 79036 complete and 0 interrupted iterations
+surge_demo   [  89% ] 001/500 VUs  5m12.0s/5m50s  060.00 iters/s
+
+running (5m13.0s), 001/500 VUs, 79096 complete and 0 interrupted iterations
+surge_demo   [  89% ] 001/500 VUs  5m13.0s/5m50s  060.00 iters/s
+
+running (5m14.0s), 001/500 VUs, 79156 complete and 0 interrupted iterations
+surge_demo   [  90% ] 001/500 VUs  5m14.0s/5m50s  060.00 iters/s
+
+running (5m15.0s), 001/500 VUs, 79216 complete and 0 interrupted iterations
+surge_demo   [  90% ] 001/500 VUs  5m15.0s/5m50s  060.00 iters/s
+
+running (5m16.0s), 001/500 VUs, 79276 complete and 0 interrupted iterations
+surge_demo   [  90% ] 001/500 VUs  5m16.0s/5m50s  060.00 iters/s
+
+running (5m17.0s), 001/500 VUs, 79336 complete and 0 interrupted iterations
+surge_demo   [  91% ] 001/500 VUs  5m17.0s/5m50s  060.00 iters/s
+
+running (5m18.0s), 001/500 VUs, 79396 complete and 0 interrupted iterations
+surge_demo   [  91% ] 001/500 VUs  5m18.0s/5m50s  060.00 iters/s
+
+running (5m19.0s), 001/500 VUs, 79456 complete and 0 interrupted iterations
+surge_demo   [  91% ] 001/500 VUs  5m19.0s/5m50s  060.00 iters/s
+
+running (5m20.0s), 001/500 VUs, 79516 complete and 0 interrupted iterations
+surge_demo   [  91% ] 001/500 VUs  5m20.0s/5m50s  060.00 iters/s
+
+running (5m21.0s), 001/500 VUs, 79576 complete and 0 interrupted iterations
+surge_demo   [  92% ] 001/500 VUs  5m21.0s/5m50s  060.00 iters/s
+
+running (5m22.0s), 001/500 VUs, 79636 complete and 0 interrupted iterations
+surge_demo   [  92% ] 001/500 VUs  5m22.0s/5m50s  060.00 iters/s
+
+running (5m23.0s), 001/500 VUs, 79696 complete and 0 interrupted iterations
+surge_demo   [  92% ] 001/500 VUs  5m23.0s/5m50s  060.00 iters/s
+
+running (5m24.0s), 001/500 VUs, 79756 complete and 0 interrupted iterations
+surge_demo   [  93% ] 001/500 VUs  5m24.0s/5m50s  060.00 iters/s
+
+running (5m25.0s), 001/500 VUs, 79816 complete and 0 interrupted iterations
+surge_demo   [  93% ] 001/500 VUs  5m25.0s/5m50s  060.00 iters/s
+
+running (5m26.0s), 001/500 VUs, 79876 complete and 0 interrupted iterations
+surge_demo   [  93% ] 001/500 VUs  5m26.0s/5m50s  060.00 iters/s
+
+running (5m27.0s), 001/500 VUs, 79936 complete and 0 interrupted iterations
+surge_demo   [  93% ] 001/500 VUs  5m27.0s/5m50s  060.00 iters/s
+
+running (5m28.0s), 001/500 VUs, 79996 complete and 0 interrupted iterations
+surge_demo   [  94% ] 001/500 VUs  5m28.0s/5m50s  060.00 iters/s
+
+running (5m29.0s), 001/500 VUs, 80056 complete and 0 interrupted iterations
+surge_demo   [  94% ] 001/500 VUs  5m29.0s/5m50s  060.00 iters/s
+
+running (5m30.0s), 001/500 VUs, 80116 complete and 0 interrupted iterations
+surge_demo   [  94% ] 001/500 VUs  5m30.0s/5m50s  060.00 iters/s
+
+running (5m31.0s), 001/500 VUs, 80176 complete and 0 interrupted iterations
+surge_demo   [  95% ] 001/500 VUs  5m31.0s/5m50s  060.00 iters/s
+
+running (5m32.0s), 001/500 VUs, 80236 complete and 0 interrupted iterations
+surge_demo   [  95% ] 001/500 VUs  5m32.0s/5m50s  060.00 iters/s
+
+running (5m33.0s), 001/500 VUs, 80296 complete and 0 interrupted iterations
+surge_demo   [  95% ] 001/500 VUs  5m33.0s/5m50s  060.00 iters/s
+
+running (5m34.0s), 001/500 VUs, 80356 complete and 0 interrupted iterations
+surge_demo   [  95% ] 001/500 VUs  5m34.0s/5m50s  060.00 iters/s
+
+running (5m35.0s), 001/500 VUs, 80416 complete and 0 interrupted iterations
+surge_demo   [  96% ] 001/500 VUs  5m35.0s/5m50s  060.00 iters/s
+
+running (5m36.0s), 001/500 VUs, 80476 complete and 0 interrupted iterations
+surge_demo   [  96% ] 001/500 VUs  5m36.0s/5m50s  060.00 iters/s
+
+running (5m37.0s), 001/500 VUs, 80536 complete and 0 interrupted iterations
+surge_demo   [  96% ] 001/500 VUs  5m37.0s/5m50s  060.00 iters/s
+
+running (5m38.0s), 001/500 VUs, 80596 complete and 0 interrupted iterations
+surge_demo   [  97% ] 001/500 VUs  5m38.0s/5m50s  060.00 iters/s
+
+running (5m39.0s), 001/500 VUs, 80656 complete and 0 interrupted iterations
+surge_demo   [  97% ] 001/500 VUs  5m39.0s/5m50s  060.00 iters/s
+
+running (5m40.0s), 001/500 VUs, 80716 complete and 0 interrupted iterations
+surge_demo   [  97% ] 001/500 VUs  5m40.0s/5m50s  060.00 iters/s
+
+running (5m41.0s), 001/500 VUs, 80776 complete and 0 interrupted iterations
+surge_demo   [  97% ] 001/500 VUs  5m41.0s/5m50s  060.00 iters/s
+
+running (5m42.0s), 001/500 VUs, 80836 complete and 0 interrupted iterations
+surge_demo   [  98% ] 001/500 VUs  5m42.0s/5m50s  060.00 iters/s
+
+running (5m43.0s), 001/500 VUs, 80896 complete and 0 interrupted iterations
+surge_demo   [  98% ] 001/500 VUs  5m43.0s/5m50s  060.00 iters/s
+
+running (5m44.0s), 001/500 VUs, 80956 complete and 0 interrupted iterations
+surge_demo   [  98% ] 001/500 VUs  5m44.0s/5m50s  060.00 iters/s
+
+running (5m45.0s), 001/500 VUs, 81016 complete and 0 interrupted iterations
+surge_demo   [  99% ] 001/500 VUs  5m45.0s/5m50s  060.00 iters/s
+
+running (5m46.0s), 001/500 VUs, 81076 complete and 0 interrupted iterations
+surge_demo   [  99% ] 001/500 VUs  5m46.0s/5m50s  060.00 iters/s
+
+running (5m47.0s), 001/500 VUs, 81136 complete and 0 interrupted iterations
+surge_demo   [  99% ] 001/500 VUs  5m47.0s/5m50s  060.00 iters/s
+
+running (5m48.0s), 001/500 VUs, 81196 complete and 0 interrupted iterations
+surge_demo   [  99% ] 001/500 VUs  5m48.0s/5m50s  060.00 iters/s
+
+running (5m49.0s), 001/500 VUs, 81256 complete and 0 interrupted iterations
+surge_demo   [ 100% ] 001/500 VUs  5m49.0s/5m50s  060.00 iters/s
+
+running (5m50.0s), 001/500 VUs, 81316 complete and 0 interrupted iterations
+surge_demo   [ 100% ] 001/500 VUs  5m50.0s/5m50s  060.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 81318  232.33325/s
+    checks_succeeded...: 99.18% 80653 out of 81318
+    checks_failed......: 0.81%  665 out of 81318
+
+    ✗ status is 200
+      ↳  99% — ✓ 80653 / ✗ 665
+
+    HTTP
+    http_req_duration..............: avg=389.78ms min=148.3µs med=16.75ms max=3s    p(50)=16.75ms p(90)=1.35s p(95)=2.35s p(99)=2.98s
+      { expected_response:true }...: avg=368.44ms min=15.4ms  med=16.74ms max=2.99s p(50)=16.74ms p(90)=1.31s p(95)=2.26s p(99)=2.91s
+    http_req_failed................: 0.81% 665 out of 81318
+    http_reqs......................: 81318 232.33325/s
+
+    EXECUTION
+    dropped_iterations.............: 8481  24.231023/s
+    iteration_duration.............: avg=390.1ms  min=1.05ms  med=17.14ms max=3s    p(50)=17.14ms p(90)=1.35s p(95)=2.35s p(99)=2.98s
+    iterations.....................: 81318 232.33325/s
+    vus............................: 1     min=1            max=500
+    vus_max........................: 500   min=100          max=500
+
+    NETWORK
+    data_received..................: 13 MB 36 kB/s
+    data_sent......................: 12 MB 33 kB/s
+
+
+
+
+running (5m50.0s), 000/500 VUs, 81318 complete and 0 interrupted iterations
+surge_demo ✓ [ 100% ] 000/500 VUs  5m50s  060.00 iters/s

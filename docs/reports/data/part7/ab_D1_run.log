@@ -1,17 +1,11 @@
-[2026-10-27T03:52:25+0530] === Starting A/B Run D1 (NO_REUSE=1, PEAK_RPS=490) ===
-[2026-10-27T03:52:25+0530] SLO: SLO_P99_MS=300, SLO_ERR_PCT=1
-[2026-10-27T03:52:25+0530] Host sysctls: net.ipv4.tcp_tw_reuse=2, net.ipv4.ip_local_port_range=32768	60999
-[2026-10-27T03:52:25+0530] Pre-checking both sides for 3 ready pods and SO min 3 (max wait 600s)...
-[2026-10-27T03:52:25+0530] Pre-check wait duration: 0s (settled: true)
-[2026-10-27T03:52:25+0530] Predictive ScaledObject annotations BEFORE run: {"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"keda.sh/v1alpha1\",\"kind\":\"ScaledObject\",\"metadata\":{\"annotations\":{},\"labels\":{\"prescale.io/side\":\"predictive\"},\"name\":\"checkout\",\"namespace\":\"predictive\"},\"spec\":{\"advanced\":{\"horizontalPodAutoscalerConfig\":{\"behavior\":{\"scaleDown\":{\"stabilizationWindowSeconds\":60}}}},\"maxReplicaCount\":10,\"minReplicaCount\":3,\"pollingInterval\":5,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"checkout\"},\"triggers\":[{\"metadata\":{\"value\":\"50\"},\"metricType\":\"Utilization\",\"type\":\"cpu\"}]}}\n"}
-[2026-10-27T03:52:25+0530] Scaling prescaler to 1 in predictive namespace...
-[2026-10-27T03:52:25+0530] Waiting 15s for one prescaler evaluation interval...
-[2026-10-27T03:52:41+0530] T_LAUNCH: 1793053361 (SURGE_START: 1793053421 / T_LAUNCH + 60s)
-[2026-10-27T03:52:41+0530] Predictor schedule set: {"status": "ok", "surge_start_epoch": 1793053421.0, "base_rps": 60.0, "peak_rps": 490.0}
-[2026-10-27T03:52:41+0530] Launched k6-ab-baseline (pid 780858) and k6-ab-predictive (pid 780859)
-[2026-10-27T03:58:34+0530] Both k6 containers exited. T_FINISH: 1793053714 (run duration: 353s)
-[2026-10-27T03:58:34+0530] Predictive ScaledObject annotations AFTER run: {"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"keda.sh/v1alpha1\",\"kind\":\"ScaledObject\",\"metadata\":{\"annotations\":{},\"labels\":{\"prescale.io/side\":\"predictive\"},\"name\":\"checkout\",\"namespace\":\"predictive\"},\"spec\":{\"advanced\":{\"horizontalPodAutoscalerConfig\":{\"behavior\":{\"scaleDown\":{\"stabilizationWindowSeconds\":60}}}},\"maxReplicaCount\":10,\"minReplicaCount\":3,\"pollingInterval\":5,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"checkout\"},\"triggers\":[{\"metadata\":{\"value\":\"50\"},\"metricType\":\"Utilization\",\"type\":\"cpu\"}]}}\n"}
-[2026-10-27T03:58:34+0530] Scaling prescaler to 0 in predictive namespace...
-[2026-10-27T03:58:34+0530] ss -s TIME-WAIT count at end: 6669
-[2026-10-27T03:58:34+0530] Waiting 10s for VictoriaMetrics ingestion lag...
-[2026-10-27T03:58:44+0530] A/B Run D1 complete.
+[2026-10-27T08:22:47+0530] === Starting A/B Run D1 (NO_REUSE=1, PEAK_RPS=490) ===
+[2026-10-27T08:22:47+0530] SLO: SLO_P99_MS=300, SLO_ERR_PCT=1
+[2026-10-27T08:22:47+0530] Host sysctls: net.ipv4.tcp_tw_reuse=2, net.ipv4.ip_local_port_range=32768	60999
+[2026-10-27T08:22:47+0530] Pre-checking both sides for 3 ready pods and SO min 3 (max wait 600s)...
+[2026-10-27T08:23:02+0530] Pre-check wait duration: 15s (settled: true)
+[2026-10-27T08:23:03+0530] Predictive ScaledObject annotations BEFORE run: {"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"keda.sh/v1alpha1\",\"kind\":\"ScaledObject\",\"metadata\":{\"annotations\":{},\"labels\":{\"prescale.io/side\":\"predictive\"},\"name\":\"checkout\",\"namespace\":\"predictive\"},\"spec\":{\"advanced\":{\"horizontalPodAutoscalerConfig\":{\"behavior\":{\"scaleDown\":{\"stabilizationWindowSeconds\":60}}}},\"maxReplicaCount\":10,\"minReplicaCount\":3,\"pollingInterval\":5,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"checkout\"},\"triggers\":[{\"metadata\":{\"value\":\"50\"},\"metricType\":\"Utilization\",\"type\":\"cpu\"}]}}\n"}
+[2026-10-27T08:23:03+0530] Scaling prescaler to 1 in predictive namespace...
+[2026-10-27T08:23:03+0530] Waiting 15s for one prescaler evaluation interval...
+[2026-10-27T08:23:18+0530] T_LAUNCH: 1793069598 (SURGE_START: 1793069658 / T_LAUNCH + 60s)
+[2026-10-27T08:23:18+0530] Predictor schedule set: {"status": "ok", "surge_start_epoch": 1793069658.0, "base_rps": 60.0, "peak_rps": 490.0}
+[2026-10-27T08:23:18+0530] Launched k6-ab-baseline (pid 1027181) and k6-ab-predictive (pid 1027182)

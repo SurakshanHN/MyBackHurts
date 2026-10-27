@@ -1,0 +1,17 @@
+[2026-10-27T05:16:12+0530] === Starting A/B Run D2 (NO_REUSE=1, PEAK_RPS=490) ===
+[2026-10-27T05:16:12+0530] SLO: SLO_P99_MS=300, SLO_ERR_PCT=1
+[2026-10-27T05:16:12+0530] Host sysctls: net.ipv4.tcp_tw_reuse=2, net.ipv4.ip_local_port_range=32768	60999
+[2026-10-27T05:16:12+0530] Pre-checking both sides for 3 ready pods and SO min 3 (max wait 600s)...
+[2026-10-27T05:16:12+0530] Pre-check wait duration: 0s (settled: true)
+[2026-10-27T05:16:12+0530] Predictive ScaledObject annotations BEFORE run: {"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"keda.sh/v1alpha1\",\"kind\":\"ScaledObject\",\"metadata\":{\"annotations\":{},\"labels\":{\"prescale.io/side\":\"predictive\"},\"name\":\"checkout\",\"namespace\":\"predictive\"},\"spec\":{\"advanced\":{\"horizontalPodAutoscalerConfig\":{\"behavior\":{\"scaleDown\":{\"stabilizationWindowSeconds\":60}}}},\"maxReplicaCount\":10,\"minReplicaCount\":3,\"pollingInterval\":5,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"checkout\"},\"triggers\":[{\"metadata\":{\"value\":\"50\"},\"metricType\":\"Utilization\",\"type\":\"cpu\"}]}}\n"}
+[2026-10-27T05:16:12+0530] Scaling prescaler to 1 in predictive namespace...
+[2026-10-27T05:16:12+0530] Waiting 15s for one prescaler evaluation interval...
+[2026-10-27T05:16:27+0530] T_LAUNCH: 1793058387 (SURGE_START: 1793058447 / T_LAUNCH + 60s)
+[2026-10-27T05:16:27+0530] Predictor schedule set: 
+[2026-10-27T05:16:27+0530] Launched k6-ab-baseline (pid 839667) and k6-ab-predictive (pid 839668)
+[2026-10-27T05:21:47+0530] Both k6 containers exited. T_FINISH: 1793058707 (run duration: 320s)
+[2026-10-27T05:21:47+0530] Predictive ScaledObject annotations AFTER run: {"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"keda.sh/v1alpha1\",\"kind\":\"ScaledObject\",\"metadata\":{\"annotations\":{},\"labels\":{\"prescale.io/side\":\"predictive\"},\"name\":\"checkout\",\"namespace\":\"predictive\"},\"spec\":{\"advanced\":{\"horizontalPodAutoscalerConfig\":{\"behavior\":{\"scaleDown\":{\"stabilizationWindowSeconds\":60}}}},\"maxReplicaCount\":10,\"minReplicaCount\":3,\"pollingInterval\":5,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"checkout\"},\"triggers\":[{\"metadata\":{\"value\":\"50\"},\"metricType\":\"Utilization\",\"type\":\"cpu\"}]}}\n"}
+[2026-10-27T05:21:47+0530] Scaling prescaler to 0 in predictive namespace...
+[2026-10-27T05:21:47+0530] ss -s TIME-WAIT count at end: 7509
+[2026-10-27T05:21:47+0530] Waiting 10s for VictoriaMetrics ingestion lag...
+[2026-10-27T05:21:57+0530] A/B Run D2 complete.

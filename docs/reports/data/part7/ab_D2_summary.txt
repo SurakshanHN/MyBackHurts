@@ -1,0 +1,22 @@
+=== A/B Run D2 Results (NO_REUSE=1, PEAK_RPS=490) ===
+Pre-check wait duration: 0s
+T_LAUNCH: 1793058387, SURGE_START: 1793058447, T_FINISH: 1793058707
+
+--- Side: baseline ---
+client p99: 0.00 ms, server p99: 2542.10 ms
+breach_seconds: 80 s, failed %: 0.00%, non-2xx: 1
+dropped_iterations: 0, max ready replicas: 10
+first scale-out epoch offset from SURGE_START: 68 s, pod_seconds: 2055 pod*s
+
+--- Side: predictive ---
+client p99: 0.00 ms, server p99: 2540.52 ms
+breach_seconds: 90 s, failed %: 0.00%, non-2xx: 0
+dropped_iterations: 0, max ready replicas: 10
+first scale-out epoch offset from SURGE_START: 68 s, pod_seconds: 2075 pod*s
+PREDICTIVE EXTRA:
+  boost epoch offset: none s
+  boosted min value: 3
+  release offset: none s
+  annotations cleaned: yes
+  replicas ready at SURGE_START: 3
+  replicas ready at SURGE_START+30s: 3

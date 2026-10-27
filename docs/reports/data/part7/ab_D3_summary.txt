@@ -1,0 +1,22 @@
+=== A/B Run D3 Results (NO_REUSE=1, PEAK_RPS=490) ===
+Pre-check wait duration: 97s
+T_LAUNCH: 1793058722, SURGE_START: 1793058782, T_FINISH: 1793059074
+
+--- Side: baseline ---
+client p99: 2346.75 ms, server p99: 2543.46 ms
+breach_seconds: 80 s, failed %: 0.06%, non-2xx: 0
+dropped_iterations: 7083, max ready replicas: 10
+first scale-out epoch offset from SURGE_START: 68 s, pod_seconds: 2140 pod*s
+
+--- Side: predictive ---
+client p99: 2927.71 ms, server p99: 4897.46 ms
+breach_seconds: 90 s, failed %: 0.58%, non-2xx: 110
+dropped_iterations: 7809, max ready replicas: 10
+first scale-out epoch offset from SURGE_START: 68 s, pod_seconds: 2140 pod*s
+PREDICTIVE EXTRA:
+  boost epoch offset: none s
+  boosted min value: 3
+  release offset: none s
+  annotations cleaned: yes
+  replicas ready at SURGE_START: 3
+  replicas ready at SURGE_START+30s: 3

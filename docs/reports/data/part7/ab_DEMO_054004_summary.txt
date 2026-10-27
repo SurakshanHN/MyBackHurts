@@ -1,0 +1,22 @@
+=== A/B Run DEMO_054004 Results (NO_REUSE=1, PEAK_RPS=490) ===
+Pre-check wait duration: 0s
+T_LAUNCH: 1793059820, SURGE_START: 1793059880, T_FINISH: 1793060173
+
+--- Side: baseline ---
+client p99: 2313.40 ms, server p99: 2543.95 ms
+breach_seconds: 75 s, failed %: 0.01%, non-2xx: 1
+dropped_iterations: 6702, max ready replicas: 10
+first scale-out epoch offset from SURGE_START: 65 s, pod_seconds: 2155 pod*s
+
+--- Side: predictive ---
+client p99: 2271.02 ms, server p99: 2541.97 ms
+breach_seconds: 90 s, failed %: 0.05%, non-2xx: 1
+dropped_iterations: 9501, max ready replicas: 10
+first scale-out epoch offset from SURGE_START: 80 s, pod_seconds: 2050 pod*s
+PREDICTIVE EXTRA:
+  boost epoch offset: none s
+  boosted min value: 3
+  release offset: none s
+  annotations cleaned: yes
+  replicas ready at SURGE_START: 3
+  replicas ready at SURGE_START+30s: 3
