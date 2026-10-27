@@ -74,6 +74,7 @@ get_status_line() {
     echo -e "  • Prescaler Daemon:  ${prescaler_status}"
     echo -e "  • Baseline SO Min:   ${CYAN}${b_min}${RESET} pods (HPA reactive only)"
     echo -e "  • Predictive SO Min: ${GREEN}${p_min}${RESET} pods (HPA + Prescaler boost)"
+    echo -e "  • Grafana Dashboard: ${BOLD}${MAGENTA}http://localhost:3000/d/prescale-demo${RESET} ${CYAN}(Live A/B Metrics)${RESET}"
     echo "-----------------------------------------------------------------------"
 }
 
@@ -181,6 +182,26 @@ elif [ "${1:-}" = "--status" ]; then
     exit 0
 fi
 
+show_grafana_guide() {
+    print_banner
+    echo -e "${BOLD}${MAGENTA}=== How to Run a Live Demo with Grafana ===${RESET}\n"
+    echo -e "1. ${BOLD}Open Grafana in your browser:${RESET}"
+    echo -e "   URL: ${CYAN}http://localhost:3000/d/prescale-demo/prescale-demo3a-baseline-vs-predictive${RESET}"
+    echo -e "   (Direct access enabled; admin/admin if prompted)\n"
+    echo -e "2. ${BOLD}Configure Dashboard Window:${RESET}"
+    echo -e "   • Time range (top-right): ${YELLOW}'Last 5 minutes'${RESET}"
+    echo -e "   • Auto-refresh: ${YELLOW}'5s'${RESET}\n"
+    echo -e "3. ${BOLD}Launch Live A/B Surge Test:${RESET}"
+    echo -e "   • Choose menu option ${GREEN}[2] Live Scenario 1: A/B Traffic Surge${RESET}\n"
+    echo -e "4. ${BOLD}What to Highlight to Audience / Judges:${RESET}"
+    echo -e "   • ${BOLD}ScaledObject Min Replicas:${RESET} Predictive pre-scales 3 → 7 pods 60s ahead of traffic."
+    echo -e "   • ${BOLD}Ready Pods:${RESET} Predictive has 7 warmed pods ready; Baseline lags reactively."
+    echo -e "   • ${BOLD}p99 Latency:${RESET} Baseline breaches the 300ms red SLO line; Predictive stays flat."
+    echo -e "   • ${BOLD}Breach Seconds:${RESET} Baseline has significant SLO breach time; Predictive stays at 0s."
+    echo ""
+    read -rp "Press Enter to return to main menu..."
+}
+
 # Interactive Loop
 while true; do
     print_banner
@@ -193,12 +214,13 @@ while true; do
     echo -e "  ${BOLD}${GREEN}[4]${RESET} Live Scenario 3: Lease TTL Expiry ${CYAN}(Automatic stale boost cleanup)${RESET}"
     echo -e "  ${BOLD}${GREEN}[5]${RESET} Live Scenario 4: Daemon Crash Recovery ${CYAN}(State reconstruction from K8s)${RESET}"
     echo -e "  ${BOLD}${GREEN}[6]${RESET} Run All Live Failure & Safety Scenarios ${CYAN}(Full automated test suite)${RESET}"
+    echo -e "  ${BOLD}${MAGENTA}[g]${RESET} ${BOLD}Grafana Live Demo Guide & Direct Link${RESET}"
     echo -e "  ${BOLD}${BLUE}[7]${RESET} Detailed Cluster Health & Recent Logs"
     echo -e "  ${BOLD}${BLUE}[8]${RESET} Start Demo Stack (Predictor + Prescaler up)"
     echo -e "  ${BOLD}${YELLOW}[9]${RESET} Teardown & Reset Cluster State"
     echo -e "  ${BOLD}${RED}[0]${RESET} Exit"
     echo ""
-    read -rp "Enter choice [0-9]: " choice
+    read -rp "Enter choice [0-9, g]: " choice
 
     case "$choice" in
         1) run_fast_simulator ;;
@@ -207,6 +229,7 @@ while true; do
         4) run_live_scenario_3 ;;
         5) run_live_scenario_4 ;;
         6) run_all_live_failures ;;
+        g|G) show_grafana_guide ;;
         7) show_cluster_health ;;
         8) start_stack ;;
         9) teardown_stack ;;
