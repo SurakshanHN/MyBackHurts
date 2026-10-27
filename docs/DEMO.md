@@ -121,12 +121,36 @@ bash scripts/demo/demo.sh --down    # or bash scripts/demo/down.sh
 
 ---
 
-## 5. Grafana Dashboard
+## 5. Live Grafana Dashboard Walkthrough
 
-- **Import script**: `scripts/grafana_import.sh`
-- **Dashboard JSON**: `deploy/grafana/prescale-demo.json`
-- **Port-forward / Local URL**: `http://localhost:3000` (admin / admin)
-- Visualizes side-by-side RPS, server-side p99 latency, ready replica counts, and prescaler boost lease status.
+The kind cluster already has Grafana running with the pre-imported demo dashboard.
+
+- **Dashboard Direct URL**: [http://localhost:3000/d/prescale-demo/prescale-demo3a-baseline-vs-predictive](http://localhost:3000/d/prescale-demo/prescale-demo3a-baseline-vs-predictive)
+- **Authentication**: No login required (or `admin` / `admin` if prompted).
+- **Import Script (if needed)**: `bash scripts/grafana_import.sh`
+
+### Step-by-Step Live Demo Presentation:
+
+1. **Open the Dashboard**: Navigate to [http://localhost:3000/d/prescale-demo/prescale-demo3a-baseline-vs-predictive](http://localhost:3000/d/prescale-demo/prescale-demo3a-baseline-vs-predictive).
+2. **Set Live Refresh**: In the top-right corner of Grafana, set the time window to **"Last 5 minutes"** and auto-refresh to **"5s"**.
+3. **Launch the Live A/B Surge Test**:
+   ```bash
+   bash scripts/demo/demo.sh --live 1
+   # (Or select [2] in the interactive menu)
+   ```
+4. **Key Panels to Point Out During the Presentation**:
+   - **`ScaledObject Min Replicas` (HPA Spec Min)**:
+     - *Baseline*: Remains locked at 3 pods.
+     - *Predictive*: Jumps from 3 → 7 pods **60 seconds before** the surge hits!
+   - **`Ready Pods & Desired Replicas`**:
+     - *Predictive*: Already has 7 warmed, ready pods when traffic hits.
+     - *Baseline*: Struggles reactively, lagging several minutes behind.
+   - **`p99 Latency (SLO 300ms)`**:
+     - *Baseline*: Suffers an extreme latency spike breaching the 300ms red SLO threshold line.
+     - *Predictive*: Remains completely flat, well beneath the 300ms SLO.
+   - **`Breach Seconds` & `Total Non-2xx Errors` Scorecard**:
+     - *Baseline*: Accumulates breach seconds and dropped iterations.
+     - *Predictive*: Achieves **0 breach seconds**!
 
 ---
 
