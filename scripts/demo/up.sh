@@ -65,10 +65,16 @@ done
 log "Waiting for checkout deployment to be ready (min 3)..."
 $KC rollout status deploy/checkout -n $NS --timeout=120s
 
+# 5. Import Grafana dashboard
+log "Importing Grafana dashboard..."
+bash "$REPO_ROOT/scripts/grafana_import.sh" >/dev/null 2>&1 || true
+
 log ""
 log "=== demo/up complete ==="
 log "  Predictor : http://$PREDICTOR_IP:8000/predict (oracle/stand-in)"
 log "  Prescaler : $($KC get pods -n $NS -l app=prescaler -o name 2>/dev/null | head -1)"
 log "  Checkout  : $($KC get deploy checkout -n $NS -o jsonpath='{.status.readyReplicas}') ready replicas"
+log "  Dashboard : http://localhost:3000/d/prescale-demo/prescale-demo3a-baseline-vs-predictive"
 log ""
 log "Next: bash scripts/demo/run.sh"
+
