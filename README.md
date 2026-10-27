@@ -108,3 +108,25 @@ make fmt
 # Clean built binaries
 make clean
 ```
+
+---
+
+## Running the Demo
+
+Prescale includes an interactive Demo Runner and Scenario Simulator:
+
+```bash
+# 1. Interactive Demo Runner (Terminal UI)
+bash scripts/demo/demo.sh
+
+# 2. Fast Offline Scenario Simulator (5 scenarios in < 2s with ASCII timelines)
+python3 scripts/demo/simulator.py all
+
+# 3. Live A/B Surge Benchmark (KEDA reactive vs Predictive Prescaler)
+bash scripts/demo/demo.sh --live 1
+
+# 4. Check cluster health & status
+bash scripts/demo/demo.sh --status
+```
+
+See [docs/DEMO.md](docs/DEMO.md) for full walkthrough and scenario details.

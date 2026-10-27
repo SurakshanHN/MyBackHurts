@@ -1,102 +1,155 @@
-# prescale — Demo Guide
+# prescale — Complete Demo & Scenario Simulation Suite
 
-> **Forecaster**: The stand-in oracle predictor (`prescale-predictor:0.1.1`) is used.
-> It emits a pre-scheduled surge at a fixed time offset; it is **not** a trained ML model.
+> **Forecaster**: The stand-in oracle predictor (`prescale-predictor:0.1.1`) is used for live surge schedules.
+> The fast scenario simulator (`scripts/demo/simulator.py`) directly verifies the deterministic Go decision logic across real-world operational scenarios.
 
-## Prerequisites
+---
 
-| Requirement | Check |
-|---|---|
-| `kind` cluster `prescale-demo` | `kubectl --context kind-prescale-demo cluster-info` |
-| Docker available | `docker info` |
-| Images loaded | `prescale/prescaler:dev`, `prescale-predictor:0.1.1` in kind |
-| k6 image tag | `cat loadtest/K6_IMAGE` |
-| `baseline` namespace | checkout deploy + ScaledObject (HPA-only) |
-| `predictive` namespace | checkout deploy + ScaledObject + prescaler deploy |
+## 1. Quickstart: Interactive Demo Runner
 
-## One-command demo
+Launch the unified interactive terminal demo:
 
 ```bash
-# 1. Start predictor + prescaler
-bash scripts/demo/up.sh
-
-# 2. Run A/B load test (baseline HPA vs predictive HPA+prescaler)
-bash scripts/demo/run.sh [RUN_ID]   # default: D1
-
-# 3. Tear down
-bash scripts/demo/down.sh
+bash scripts/demo/demo.sh
 ```
 
-## What `up.sh` does
+This presents a terminal control center:
+```text
+  ╔═══════════════════════════════════════════════════════════════════════╗
+  ║     Predictive Kubernetes Auto-Scaler Demo & Scenario Simulator       ║
+  ╚═══════════════════════════════════════════════════════════════════════╝
 
-1. Starts `prescale-predictor:0.1.1` container on Docker network `kind` at `172.19.0.100:8000`
-2. Scales `deploy/prescaler` in `predictive` namespace to 1 replica
-3. Waits for both pods to be Running
+Current System Health & Cluster Status:
+  • Cluster:           OK
+  • Stand-in Predictor:RUNNING (172.19.0.100:8000)
+  • Prescaler Daemon:  RUNNING (1/1)
+  • Baseline SO Min:   3 pods (HPA reactive only)
+  • Predictive SO Min: 3 pods (HPA + Prescaler boost)
+-----------------------------------------------------------------------
 
-## What `run.sh` does
+Select a Demo Scenario or Action:
+  [1] Fast Scenario Simulator (5 scenarios in <2s with ASCII timelines)
+  [2] Live Scenario 1: A/B Traffic Surge (KEDA reactive vs Predictive)
+  [3] Live Scenario 2: Predictor Outage & Fallback (Self-healing lease release)
+  [4] Live Scenario 3: Lease TTL Expiry (Automatic stale boost cleanup)
+  [5] Live Scenario 4: Daemon Crash Recovery (State reconstruction from K8s)
+  [6] Run All Live Failure & Safety Scenarios (Full automated test suite)
+  [7] Detailed Cluster Health & Recent Logs
+  [8] Start Demo Stack (Predictor + Prescaler up)
+  [9] Teardown & Reset Cluster State
+  [0] Exit
+```
 
-Thin wrapper around `scripts/load/ab_run.sh`. Runs concurrent k6 load against:
-- `baseline` namespace (HPA only)
-- `predictive` namespace (HPA + prescaler)
+---
 
-Profile: `NO_REUSE=1`, `PEAK_RPS=490`, surge matches the oracle predictor's schedule.
+## 2. Fast Scenario Simulator (Offline / < 2s)
 
-Output saved to `docs/reports/data/part7/`.
+For fast verification or demonstration without running full 6-minute k6 load tests, run the built-in simulator engine:
 
-## What `down.sh` does
+```bash
+# Run all 5 scenarios with visual ASCII timelines:
+python3 scripts/demo/simulator.py all
 
-1. Scales prescaler to 0
-2. Releases any active boost (clears ScaledObject annotations)
-3. Stops and removes the predictor container
-4. Leaves the kind cluster intact
+# Or run individual scenarios (e.g. Scenario 2):
+python3 scripts/demo/simulator.py 2
+```
 
-## Known limits (from Part 5B / Part 7)
+### Simulated Scenarios Covered:
 
-These are reported; not investigated in this demo:
+| # | Scenario | What it Tests | Expected Outcome |
+|---|---|---|---|
+| **S1** | **Anticipated Surge** | Traffic jumps 60 → 490 RPS, predicted 60s in advance. | Pre-warms `minReplicaCount` to 7 before spike arrives; flat latency curve. |
+| **S2** | **Predictor Outage** | Predictor drops offline (HTTP 500 / timeout) mid-boost. | Holds lease across transient glitches, auto-releases to baseline min=3 after 3 failed ticks. |
+| **S3** | **Safety Bounds & Clamping** | Huge flash crowd demands 20 replicas (ceiling is 10). | Enforces `maxStep=3` per tick and hard clamps at `maxLimit=10` ceiling. |
+| **S4** | **Demand Drop & Cooldown** | Traffic abruptly subsides; noisy spikes follow. | Releases boost immediately; enforces 30s cooldown to prevent flapping. |
+| **S5** | **Daemon Crash & Recovery** | Prescaler process killed during active boost. | New pod restarts and reconstructs lease state from ScaledObject annotations. |
 
-- Per-pod RPS and CPU metrics do not reconcile with k6 client-side RPS
-- k6 drops iterations at `PEAK_RPS=490` with `NO_REUSE=1`
-- k6 p99 latency improvement may be modest (prescaler boosts minimum pods before surge)
+### Visual Output Example:
 
-## Failure behavior
+```text
+Replica Count & Traffic Timeline:
+Time    | RPS    | Prescaled Min  | Visual Replica Level (1-10)    | Action    
+---------------------------------------------------------------------------
++0s     | 60     | 3              | [██████░░░░░░░░░░░░░░] (3)     | NOOP
++15s    | 60     | 6              | [████████████░░░░░░░░] (6)     | RAISE
++30s    | 60     | 7              | [██████████████░░░░░░] (7)     | RAISE
++45s    | 60     | 7              | [██████████████░░░░░░] (7)     | HOLD
++60s    | 60     | 7              | [██████████████░░░░░░] (7)     | HOLD
++75s    | 490    | 7              | [██████████████░░░░░░] (7)     | HOLD
++90s    | 490    | 7              | [██████████████░░░░░░] (7)     | HOLD
++105s   | 490    | 3              | [██████░░░░░░░░░░░░░░] (3)     | RELEASE
++120s   | 60     | 3              | [██████░░░░░░░░░░░░░░] (3)     | NOOP
+```
 
-The prescaler releases a boost automatically when:
+---
 
-| Trigger | Mechanism |
-|---|---|
-| Predictor unreachable × 3 ticks | `consecutiveFailures >= maxFailures` → `action=release` |
-| Boost TTL expired | `now >= boostedUntil` → `action=release` |
-| Desired ≤ original min | Demand dropped → `action=release` |
-| Pod restart | New pod reads annotations; releases if lease expired |
+## 3. Live Cluster Scenarios
 
-To test failure behavior: `bash scripts/failure_test.sh`
+Run individual live scenarios directly from CLI flags or the menu:
 
-## Grafana dashboard
+```bash
+# 1. Live A/B Surge Benchmark (KEDA reactive vs Prescale under live k6 traffic)
+bash scripts/demo/demo.sh --live 1
 
-Import: `scripts/grafana_import.sh`  
-Dashboard: `deploy/grafana/prescale-demo.json`
+# 2. Live Predictor Outage (Kill predictor container -> watch auto-release in cluster)
+bash scripts/demo/demo.sh --live 2
 
-## Directory layout
+# 3. Live TTL Lease Expiry (Expired timestamp detection and cleanup)
+bash scripts/demo/demo.sh --live 3
+
+# 4. Live Daemon Crash & Restart (Kill prescaler pod -> verify annotation reconstruction)
+bash scripts/demo/demo.sh --live 4
+
+# 5. Run full live failure & safety test suite (F1-F5)
+bash scripts/demo/demo.sh --live all
+```
+
+---
+
+## 4. Stack Lifecycle Commands
+
+```bash
+# Bring up predictor and prescaler daemon
+bash scripts/demo/demo.sh --up      # or bash scripts/demo/up.sh
+
+# Check current cluster status
+bash scripts/demo/demo.sh --status
+
+# Teardown demo state and release boosts
+bash scripts/demo/demo.sh --down    # or bash scripts/demo/down.sh
+```
+
+---
+
+## 5. Grafana Dashboard
+
+- **Import script**: `scripts/grafana_import.sh`
+- **Dashboard JSON**: `deploy/grafana/prescale-demo.json`
+- **Port-forward / Local URL**: `http://localhost:3000` (admin / admin)
+- Visualizes side-by-side RPS, server-side p99 latency, ready replica counts, and prescaler boost lease status.
+
+---
+
+## 6. Directory Layout
 
 ```
 scripts/demo/
-  up.sh           Start predictor + prescaler
-  run.sh          Run A/B load test
-  down.sh         Tear down demo state
+  demo.sh                   Unified Interactive Demo Runner
+  simulator.py              High-speed visual scenario simulator
+  up.sh                     Start predictor + prescaler daemon
+  run.sh                    Run live A/B load test
+  down.sh                   Tear down demo state and release boost
+  scenarios/
+    s1_surge_ab.sh          Live A/B benchmark runner
+    s2_predictor_outage.sh  Live predictor failure & recovery
+    s3_ttl_expiry.sh        Live TTL expiration test
+    s4_crash_recovery.sh    Live daemon crash recovery test
 scripts/
-  failure_test.sh  F1-F5 failure scenario tests
-  load/ab_run.sh   Core A/B concurrent k6 runner
-  grafana_import.sh  Grafana dashboard import
-loadtest/
-  surge_demo.js    k6 script (surge profile)
-  K6_IMAGE         k6 Docker image tag
-  slo.env          SLO thresholds (p99, error%)
+  failure_test.sh           Full F1-F5 failure scenario tests
+  load/ab_run.sh            Concurrent A/B k6 runner
+  grafana_import.sh         Grafana dashboard import via API
 docs/
-  DEMO.md          This file
-  BACKUP.md        Backup/restore cluster state
-  reports/         All part reports + raw data
-predictor/
-  server.py        Stand-in oracle predictor source
-  Dockerfile
-deploy/prescaler/  Kubernetes manifests (deployment, rbac, etc.)
+  DEMO.md                   This guide
+  BACKUP.md                 Cluster state backup/restore guide
+  reports/                  Per-part analysis reports & test data
 ```
