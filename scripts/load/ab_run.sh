@@ -93,11 +93,16 @@ log "T_LAUNCH: ${T_LAUNCH} (SURGE_START: ${SURGE_START} / T_LAUNCH + 60s)"
 # Set predictor schedule: surge_start_epoch = SURGE_START
 sched_resp=$(python3 -c '
 import urllib.request, json, sys
-url = "http://127.0.0.2:8000/schedule"
 payload = json.dumps({"surge_start_epoch": int(sys.argv[1])}).encode("utf-8")
-req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
-with urllib.request.urlopen(req, timeout=5) as resp:
-    print(resp.read().decode())
+for url in ["http://172.19.0.100:8000/schedule", "http://127.0.0.2:8000/schedule", "http://127.0.0.1:8000/schedule"]:
+    try:
+        req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            print(resp.read().decode().strip())
+            sys.exit(0)
+    except Exception:
+        continue
+print("ERROR: could not reach predictor on any IP")
 ' "$SURGE_START")
 log "Predictor schedule set: ${sched_resp}"
 
